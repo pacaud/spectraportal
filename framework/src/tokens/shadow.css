@@ -1,0 +1,24 @@
+/* Spectra Tokens: Shadow
+   File: src/tokens/shadow.css
+
+   Rules:
+   - Tokens only (no selectors).
+   - Dark-theme friendly, soft elevation.
+*/
+
+:root{
+  /* Subtle lift (buttons, inputs) */
+  --sp-shadow-1:
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+
+  /* Medium lift (cards, popovers) */
+  --sp-shadow-2:
+    0 4px 12px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+
+  /* High lift (drawers, modals) */
+  --sp-shadow-3:
+    0 10px 30px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+}

@@ -1,0 +1,43 @@
+/* Spectra Tokens: Core (glue)
+   File: src/tokens/core.css
+
+   Rules:
+   - Tokens only (no selectors beyond :root).
+   - Keep it small. This file is the glue primitives that everything references.
+*/
+
+:root{
+  /* Border widths */
+  --sp-border-1: 1px;
+  --sp-border-2: 2px;
+
+  /* Outline widths */
+  --sp-outline-1: 2px;
+
+  /* Focus ring sizing (actual color lives in color tokens) */
+  --sp-ring-1: 3px;
+
+  /* Layers (z-index) */
+  --sp-layer-panel: 50;
+  --sp-layer-modal: 60;
+  --sp-layer-toast: 70;
+
+  /* Floating UI offset (used by drawers/menus/toasts) */
+  --sp-float-gap: var(--sp-4);
+  --sp-float-gap-lg: var(--sp-5);
+
+  /* Drawer sizing */
+  --sp-drawer-w: 360px;
+  --sp-drawer-h: 320px;
+
+  /* Backdrop */
+  --sp-backdrop: rgba(0,0,0,0.55);
+
+  /* Opacity (minimal) */
+  --sp-opacity-0: 0;
+  --sp-opacity-20: 0.2;
+  --sp-opacity-40: 0.4;
+  --sp-opacity-60: 0.6;
+  --sp-opacity-80: 0.8;
+  --sp-opacity-100: 1;
+}

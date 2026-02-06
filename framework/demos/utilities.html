@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Utilities</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+  <link rel="stylesheet" href="/theme.css">
+<style>
+    /* Demo-only padding so fixed-position previews don't fight the page content. */
+    @media (min-width: 900px){
+      .sp-pos-demo-pad{
+        padding-top: 96px;
+        padding-left: 240px;
+        padding-right: 240px;
+        padding-bottom: 96px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sp-container sp-content sp-pos-demo-pad" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Utilities</h1>
+      <p style="margin: 0;">
+        This page is intentionally small. Utilities should stay minimal and token-driven.
+      </p>
+
+      <article class="sp-card">
+        <header class="sp-card__header"><strong>Text helpers</strong></header>
+        <div class="sp-card__body sp-stack">
+          <p class="sp-muted" style="margin: 0;">.sp-muted — muted text</p>
+          <p class="sp-subtle" style="margin: 0;">.sp-subtle — subtler text</p>
+
+          <!-- subtle divider for clarity (token-driven) -->
+          <div aria-hidden="true" style="height: var(--sp-border-1); background: var(--sp-border); border-radius: var(--sp-radius-1);"></div>
+
+          <p class="sp-text-center" style="margin: 0;">.sp-text-center — centered text</p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <header class="sp-card__header"><strong>Visibility</strong></header>
+        <div class="sp-card__body sp-stack">
+          <p style="margin: 0;">
+            <span class="sp-visually-hidden">Screen reader only: this text is visually hidden.</span>
+            .sp-visually-hidden — keeps content available to screen readers.
+          </p>
+          <p class="sp-hidden" style="margin: 0;">
+            You should not see this line. (.sp-hidden)
+          </p>
+          <p class="sp-muted" style="margin: 0;">
+            Tip: check DevTools to confirm the hidden line exists in the DOM.
+          </p>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <header class="sp-card__header"><strong>Spacing helpers</strong></header>
+        <div class="sp-card__body">
+          <div class="sp-card sp-card--elev sp-mb-4">
+            <div class="sp-card__body">
+              This card has <code style="font-family: var(--sp-font-mono);">.sp-mb-4</code>
+            </div>
+          </div>
+          <div class="sp-card sp-card--elev sp-mt-4">
+            <div class="sp-card__body">
+              This card has <code style="font-family: var(--sp-font-mono);">.sp-mt-4</code>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <header class="sp-card__header"><strong>Layout helpers</strong></header>
+        <div class="sp-card__body sp-stack">
+          <div class="sp-inline">
+            <span class="sp-muted">.sp-inline:</span>
+            <button class="sp-btn" type="button">One</button>
+            <button class="sp-btn sp-btn--ghost" type="button">Two</button>
+          </div>
+
+          <div class="sp-row">
+            <span class="sp-muted">.sp-row:</span>
+            <button class="sp-btn" type="button">Alpha</button>
+            <button class="sp-btn sp-btn--primary" type="button">Beta</button>
+            <button class="sp-btn sp-btn--ghost" type="button">Gamma</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="sp-card">
+        <header class="sp-card__header"><strong>Position helpers</strong></header>
+        <div class="sp-card__body sp-stack">
+          <p class="sp-muted" style="margin: 0;">
+            These are fixed-position helpers intended for drawers/menus/toasts. They use
+            <code class="sp-code">--sp-float-gap</code> and
+            <code class="sp-code">--sp-layer-panel</code>.
+          </p>
+          <p style="margin: 0;">
+            Try tabbing around to confirm focus rings still behave correctly.
+          </p>
+
+          <div class="sp-row">
+            <span class="sp-muted"><span class="sp-muted">Examples:</span> </span>
+            <code class="sp-code">.sp-pos-top-left</code>
+            <code class="sp-code">.sp-pos-bottom-right</code>
+            <code class="sp-code">.sp-pos-center-right</code>
+            <code class="sp-code">.sp-pos-center</code>
+          </div>
+
+          <p class="sp-muted" style="margin: 0;">
+            Note: these helpers use <code class="sp-code">position: fixed</code> and pin to the viewport.
+            Apply <strong>one</strong> <code class="sp-code">.sp-pos-*</code> helper per element.
+          </p>
+
+          <ul class="sp-code-list" aria-label="Position helper list">
+            <li><code class="sp-code">.sp-pos-top-left</code><span class="sp-muted">viewport top-left</span></li>
+            <li><code class="sp-code">.sp-pos-top-right</code><span class="sp-muted">viewport top-right</span></li>
+            <li><code class="sp-code">.sp-pos-bottom-left</code><span class="sp-muted">viewport bottom-left</span></li>
+            <li><code class="sp-code">.sp-pos-bottom-right</code><span class="sp-muted">viewport bottom-right</span></li>
+            <li><code class="sp-code">.sp-pos-center-left</code><span class="sp-muted">viewport center-left</span></li>
+            <li><code class="sp-code">.sp-pos-center-right</code><span class="sp-muted">viewport center-right</span></li>
+            <li><code class="sp-code">.sp-pos-center</code><span class="sp-muted">viewport center</span></li>
+          </ul>
+
+          <pre aria-label="Example" style="margin: 0; padding: var(--sp-3); border-radius: var(--sp-radius-md); background: var(--sp-surface-2); border: 1px solid var(--sp-border); overflow: auto;" class="sp-codeblock"><code class="sp-code">&lt;aside class=&quot;sp-card sp-card--elev sp-pos-bottom-right&quot; style=&quot;width: 280px;&quot;&gt;
+  &lt;div class=&quot;sp-card__body&quot;&gt;Pinned panel (bottom-right)&lt;/div&gt;
+&lt;/aside&gt;</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

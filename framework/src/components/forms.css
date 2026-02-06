@@ -1,0 +1,51 @@
+/* Spectra Forms Helpers (minimal)
+   File: src/components/forms.css
+
+   Purpose:
+   - Keep form composition consistent across inputs + toggles.
+   - Avoid relying on generic layout utilities for every form row.
+*/
+
+.sp-control{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.sp-control--stack{
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.sp-fieldset{
+  display: grid;
+  gap: var(--sp-2);
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.sp-legend{
+  font-family: var(--sp-font);
+  font-size: var(--sp-fs-2);
+  line-height: var(--sp-lh-1);
+  color: var(--sp-text);
+}
+
+/* Error group hook: tint controls inside a failing field */
+.sp-field--error :where(.sp-check, .sp-radio, .sp-switch){
+  border-color: var(--sp-danger);
+}
+
+.sp-field--error :where(.sp-check, .sp-radio, .sp-switch):focus-visible{
+  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-danger), transparent 70%);
+}
+
+/* Radios are small; bump contrast slightly in error focus for clearer visibility */
+.sp-field--error .sp-radio:focus-visible{
+  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-danger), transparent 60%);
+}
+
+.sp-field--error :where(.sp-check, .sp-radio, .sp-switch):focus:not(:focus-visible){
+  box-shadow: none;
+}

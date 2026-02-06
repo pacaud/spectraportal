@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Toggles</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Toggles</h1>
+      <p style="margin: 0;">
+        Minimal controls:
+        <code style="font-family: var(--sp-font-mono);">.sp-switch</code>,
+        <code style="font-family: var(--sp-font-mono);">.sp-check</code>,
+        <code style="font-family: var(--sp-font-mono);">.sp-radio</code>.
+      </p>
+
+      <div class="sp-stack" style="margin-top: var(--sp-4); max-width: 44rem;">
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Switch</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-switch" id="sw1" type="checkbox" />
+                <label class="sp-label" for="sw1">Enable notifications</label>
+              </div>
+              <div class="sp-help sp-subtle">Native checkbox under the hood.</div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-switch" id="sw2" type="checkbox" checked />
+                <label class="sp-label" for="sw2">Dark mode</label>
+              </div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-switch" id="sw3" type="checkbox" disabled />
+                <label class="sp-label sp-muted" for="sw3">Disabled</label>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Checkbox</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-check" id="cb1" type="checkbox" />
+                <label class="sp-label" for="cb1">Remember me</label>
+              </div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-check" id="cb2" type="checkbox" checked />
+                <label class="sp-label" for="cb2">Auto-save</label>
+              </div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-check" id="cb3" type="checkbox" disabled checked />
+                <label class="sp-label sp-muted" for="cb3">Disabled</label>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Radio group</strong></header>
+          <div class="sp-card__body sp-stack">
+            <fieldset class="sp-fieldset" aria-label="Plan">
+              <legend class="sp-legend">Plan</legend>
+
+              <div class="sp-field">
+                <div class="sp-control">
+                  <input class="sp-radio" id="r1" name="plan" type="radio" checked />
+                  <label class="sp-label" for="r1">Free</label>
+                </div>
+              </div>
+
+              <div class="sp-field">
+                <div class="sp-control">
+                  <input class="sp-radio" id="r2" name="plan" type="radio" />
+                  <label class="sp-label" for="r2">Pro</label>
+                </div>
+              </div>
+
+              <div class="sp-field sp-field--error">
+                <div class="sp-control">
+                  <input class="sp-radio" id="r3" name="plan" type="radio" />
+                  <label class="sp-label" for="r3">Team</label>
+                </div>
+                <div class="sp-help">Pick a plan to continue.</div>
+              </div>
+            </fieldset>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Notes</strong></header>
+          <div class="sp-card__body sp-stack">
+            <p class="sp-muted" style="margin: 0;">
+              These controls are native inputs with light styling. Keep behavior in your app, not the framework.
+            </p>
+            <p class="sp-muted" style="margin: 0;">
+              Tip: Tab through this page to verify focus rings + labels feel right.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

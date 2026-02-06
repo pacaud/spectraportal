@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+  <link rel="stylesheet" href="/theme.css" />
+  <title>Spectra Docs — Getting Started</title>
+</head>
+<body>
+  <main class="sp-container sp-content">
+    <section class="sp-stack" style="margin-top: var(--sp-6);">
+      <header class="sp-stack" style="gap: var(--sp-2);">
+        <h1 style="font-family: var(--sp-font-display); margin: 0;">Getting Started</h1>
+        <p style="margin: 0;">
+          The goal of this page is simple: get your <strong>first success</strong> in a few minutes,
+          then point you to the next step.
+        </p>
+      </header>
+
+      <nav style="margin-bottom: var(--sp-4);">
+        <a href="./index.html" style="color:var(--sp-link);">Start Here</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./getting-started.html" style="color:var(--sp-link);">Getting Started</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./tokens.html" style="color:var(--sp-link);">Tokens</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./components.html" style="color:var(--sp-link);">Components</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./layouts.html" style="color:var(--sp-link);">Layouts</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./versioning.html" style="color:var(--sp-link);">Versioning</a>
+      </nav>
+
+      <h2 style="margin: 0;">1) Install (CDN)</h2>
+      <p style="margin: 0;">
+        Add Spectra to any HTML page. No build tools required.
+      </p>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://spectraportal.dev/framework/cdn/v0.1/spectra.css&quot; /&gt;</code></pre>
+
+      <h2 style="margin: 0;">2) Drop in something visible</h2>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;button class=&quot;sp-button sp-primary&quot;&gt;Hello Spectra&lt;/button&gt;</code></pre>
+      <p class="sp-muted" style="margin: 0;">
+        If you see a nice button with clean spacing, you’re set.
+      </p>
+
+      <h2 style="margin: 0;">3) Change one token (optional, but satisfying)</h2>
+      <p style="margin: 0;">
+        Override tokens in your own CSS file <em>after</em> Spectra.
+        Start with one variable:
+      </p>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">:root{
+  --sp-primary: #7c5cff;
+}</code></pre>
+
+      <h2 style="margin: 0;">Where to go next</h2>
+      <ul style="margin: 0; padding-left: var(--sp-5);">
+        <li><a class="sp-link" href="./components.html">Browse components</a> (copy/paste examples)</li>
+        <li><a class="sp-link" href="./tokens.html">Learn tokens</a> (what to change vs leave alone)</li>
+        <li><a class="sp-link" href="../demos/index.html">Open demos</a> (see real pages)</li>
+      </ul>
+
+      <div class="sp-inline" style="margin-top: var(--sp-2);">
+        <a class="sp-link" href="./tokens.html">Next: Tokens →</a>
+        <a class="sp-link" href="../demos/index.html">Browse demos</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

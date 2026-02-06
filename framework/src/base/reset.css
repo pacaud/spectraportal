@@ -1,0 +1,58 @@
+/* Spectra Base: Reset
+   File: src/base/reset.css
+
+   Philosophy:
+   - Minimal, predictable reset
+   - Token-driven
+   - No opinions beyond consistency
+*/
+
+/* Box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margins */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Body defaults (token-driven) */
+body {
+  background: var(--sp-bg);
+  color: var(--sp-text);
+  font-family: var(--sp-font);
+  line-height: var(--sp-lh-2);
+}
+
+/* Media elements */
+img, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements inherit typography */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Buttons */
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* Links (color only, no decoration opinion yet) */
+a {
+  color: var(--sp-link);
+}
+
+/* Lists */
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

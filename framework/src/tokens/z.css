@@ -1,0 +1,20 @@
+/* Spectra Tokens: Z-Index
+   File: src/tokens/z.css
+
+   Rules:
+   - Tokens only (no selectors).
+   - Small, named scale. Avoid random z-index values in components.
+*/
+
+:root{
+  --sp-z-base: 0;
+
+  /* Raised UI layers */
+  --sp-z-sticky: 10;     /* sticky headers/footers */
+  --sp-z-dropdown: 20;   /* menus, selects */
+  --sp-z-popover: 30;    /* tooltips, popovers */
+  --sp-z-drawer: 40;     /* side panels/drawers */
+  --sp-z-modal: 50;      /* modal dialogs */
+  --sp-z-toast: 60;      /* toasts/notifications */
+  --sp-z-overlay: 70;    /* global overlays (blocking) */
+}

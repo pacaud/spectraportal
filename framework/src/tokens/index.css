@@ -1,0 +1,17 @@
+/* Spectra Tokens Index
+   File: src/tokens/index.css
+
+   Import order matters:
+   - core glue first
+   - then space/type/color/radius/shadow/z/motion/breakpoints
+*/
+
+@import "./core.css";
+@import "./space.css";
+@import "./type.css";
+@import "./color.css";
+@import "./radius.css";
+@import "./shadow.css";
+@import "./z.css";
+@import "./motion.css";
+@import "./breakpoints.css";

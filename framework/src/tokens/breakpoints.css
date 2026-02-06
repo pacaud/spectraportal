@@ -1,0 +1,17 @@
+/* Spectra Tokens: Breakpoints (token-ish)
+   File: src/tokens/breakpoints.css
+
+   Mobile-first approach:
+   - Mobile (phones) is the default: 0 → xs
+   - Breakpoints apply as the screen gets wider
+   - For compatibility, use literal values in @media queries
+     and reference the token name in comments.
+*/
+
+:root{
+  --sp-bp-xs: 30rem; /* 480px  — large phones / small tablets */
+  --sp-bp-sm: 40rem; /* 640px  — tablets */
+  --sp-bp-md: 52rem; /* 832px  — small laptops / wide tablets */
+  --sp-bp-lg: 75rem; /* 1200px — desktop */
+  --sp-bp-xl: 90rem; /* 1440px — large desktop */
+}

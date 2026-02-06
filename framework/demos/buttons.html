@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Buttons</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Buttons</h1>
+      <p style="margin: 0;">
+        Minimal button component: <code style="font-family: var(--sp-font-mono);">.sp-btn</code>.
+        Links can be styled as buttons intentionally (use <code style="font-family: var(--sp-font-mono);">a.sp-btn</code>).
+      </p>
+
+      <div class="sp-stack" style="margin-top: var(--sp-4);">
+        <div style="display:flex; gap: var(--sp-3); flex-wrap: wrap;">
+          <button class="sp-btn" type="button">Default</button>
+          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+          <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
+          <button class="sp-btn" type="button" disabled>Disabled</button>
+        </div>
+
+        <div style="display:flex; gap: var(--sp-3); flex-wrap: wrap;">
+          <a class="sp-btn" href="#">Link Button</a>
+          <a class="sp-btn sp-btn--primary" href="#">Primary Link</a>
+          <a class="sp-btn sp-btn--ghost" href="#">Ghost Link</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

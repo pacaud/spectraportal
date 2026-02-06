@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+  <link rel="stylesheet" href="/theme.css" />
+  <title>Spectra Docs — Versioning</title>
+</head>
+<body>
+  <main class="sp-container sp-content">
+    <section class="sp-stack" style="margin-top: var(--sp-6);">
+      <header class="sp-stack" style="gap: var(--sp-2);">
+        <h1 style="font-family: var(--sp-font-display); margin: 0;">Versioning</h1>
+        <p style="margin: 0;">
+          This page exists to answer the quiet question: <em>“Is this safe to use?”</em>
+        </p>
+      </header>
+
+      <nav style="margin-bottom: var(--sp-4);">
+        <a href="./index.html" style="color:var(--sp-link);">Start Here</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./getting-started.html" style="color:var(--sp-link);">Getting Started</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./tokens.html" style="color:var(--sp-link);">Tokens</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./components.html" style="color:var(--sp-link);">Components</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./layouts.html" style="color:var(--sp-link);">Layouts</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./versioning.html" style="color:var(--sp-link);">Versioning</a>
+      </nav>
+
+      <h2 style="margin: 0;">Current status</h2>
+      <p style="margin: 0;">
+        You’re reading docs for <strong>v0.1</strong>.
+        That means the system is already useful and consistent, but you should expect occasional small refinements.
+      </p>
+
+      <h2 style="margin: 0;">What “stable” means here</h2>
+      <ul style="margin: 0; padding-left: var(--sp-5);">
+        <li><strong>Tokens are the contract.</strong> Token names should not churn.</li>
+        <li><strong>Classes are conservative.</strong> Common classes (like <code>.sp-button</code>) should remain valid.</li>
+        <li><strong>Demos are the truth.</strong> If the demos still render correctly, Spectra is functioning as expected.</li>
+      </ul>
+
+      <h2 style="margin: 0;">How to upgrade safely</h2>
+      <ol style="margin: 0; padding-left: var(--sp-5);">
+        <li>Pin a versioned CSS URL (don’t use an unversioned “latest” for production).</li>
+        <li>Open the demo index and spot check key pages (buttons, forms, cards, drawer).</li>
+        <li>If you override tokens, scan your overrides for renamed variables.</li>
+      </ol>
+
+      <h2 style="margin: 0;">File layout (for contributors)</h2>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">framework/
+  src/        (source)
+  dist/       (built CSS)
+  docs/       (these pages)
+  demos/      (real examples)</code></pre>
+
+      <div class="sp-inline" style="margin-top: var(--sp-2);">
+        <a class="sp-link" href="../demos/index.html">Browse demos</a>
+        <a class="sp-link" href="./getting-started.html">Back to Getting Started</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

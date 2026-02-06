@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Docs — Start Here</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+  <link rel="stylesheet" href="/theme.css" />
+</head>
+<body>
+  <header class="sp-hero sp-hero--surface">
+    <div class="sp-hero__inner sp-stack">
+      <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
+      <h1 class="sp-hero__title">Start Here</h1>
+      <p class="sp-hero__sub sp-muted">
+        Spectra is a small, token-first CSS framework. Most styling flows from variables (<code>--sp-*</code>).
+      </p>
+      <nav class="sp-hero__actions" aria-label="Primary">
+        <a class="sp-btn sp-btn--ghost" href="../demos/index.html">Open Demos</a>
+        <a class="sp-btn sp-btn--primary" href="./components.html">Components</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <nav style="margin-bottom: var(--sp-4);">
+        <a href="./index.html" style="color:var(--sp-link);">Start Here</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./tokens.html" style="color:var(--sp-link);">Tokens</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./base.html" style="color:var(--sp-link);">Base</a>
+      </nav>
+
+      <h2 style="margin: 0;">Core rules</h2>
+      <ul style="margin: 0; padding-left: var(--sp-5);">
+        <li><strong>Tokens are the source of truth.</strong> Spacing, color, type, radius, shadow, motion, z-index.</li>
+        <li><strong>No raw values.</strong> If it can’t be expressed with a Spectra token, it doesn’t belong yet.</li>
+        <li><strong>Themes swap values, not structure.</strong> Themes override tokens; components don’t change.</li>
+        <li><strong>Framework first, tools second.</strong> Tools depend on Spectra; Spectra never depends on tools.</li>
+      </ul>
+
+      <h2 style="margin: 0;">How to use</h2>
+      <p style="margin: 0;">Load the built CSS from the portal:</p>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://spectraportal.dev/framework/cdn/v0.1/spectra.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/theme.css&quot; /&gt;</code></pre>
+
+      <h2 style="margin: 0;">Docs rule</h2>
+      <p style="margin: 0;">
+        Docs should not invent styling. If the docs need a style, it probably belongs in Spectra (token/base/util),
+        not as one-off CSS.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

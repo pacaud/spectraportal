@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Cards</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Cards</h1>
+      <p style="margin: 0;">
+        Minimal card component:
+        <code style="font-family: var(--sp-font-mono);">.sp-card</code>
+      </p>
+
+      <div class="sp-stack" style="margin-top: var(--sp-4);">
+        <article class="sp-card">
+          <header class="sp-card__header">
+            <strong>Default Card</strong>
+          </header>
+          <div class="sp-card__body">
+            <p style="margin: 0 0 var(--sp-3) 0;">
+              Token-driven surface, border, radius, and shadow.
+            </p>
+            <div style="display:flex; gap: var(--sp-3); flex-wrap: wrap;">
+              <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+              <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
+            </div>
+          </div>
+          <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+            <span style="color: var(--sp-muted);">Footer meta</span>
+            <a href="#" style="color: var(--sp-link);">Action link</a>
+          </footer>
+        </article>
+
+        <article class="sp-card sp-card--elev">
+          <header class="sp-card__header">
+            <strong>Elevated Card</strong>
+          </header>
+          <div class="sp-card__body">
+            <p style="margin: 0;">
+              Uses <code style="font-family: var(--sp-font-mono);">.sp-card--elev</code> for a slightly lifted surface.
+            </p>
+          </div>
+        </article>
+
+        <article class="sp-card sp-card--compact">
+          <header class="sp-card__header">
+            <strong>Compact Card</strong>
+          </header>
+          <div class="sp-card__body">
+            <p style="margin: 0;">
+              Uses <code style="font-family: var(--sp-font-mono);">.sp-card--compact</code> for tighter padding.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

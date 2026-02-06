@@ -1,0 +1,184 @@
+/* =========================================================
+   Spectra Component: Drawer
+   File: src/components/drawer.css
+
+   Minimal, token-driven drawer.
+   - Supports left / right / top / bottom.
+   - Uses a wrap + backdrop pattern.
+   - JS is optional (demo provides a tiny helper).
+   ========================================================= */
+
+.sp-drawer-wrap{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: calc(var(--sp-layer-panel) - 1);
+}
+
+/* Scroll lock (set by JS helper or app code). Keeps the page from moving behind an open drawer.
+   Use JS to set --sp-scrollbar-comp for scrollbar compensation when needed. */
+body.sp-scroll-lock{
+  overflow: hidden;
+  overscroll-behavior: none;
+  padding-right: var(--sp-scrollbar-comp, 0px);
+}
+
+.sp-drawer-wrap[data-open="true"]{
+  pointer-events: auto;
+}
+
+.sp-drawer-backdrop{
+  position: absolute;
+  inset: 0;
+  background: var(--sp-backdrop);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, visibility 0ms linear 180ms;
+}
+
+.sp-drawer-wrap[data-open="true"] .sp-drawer-backdrop{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 180ms ease;
+}
+
+.sp-drawer{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--sp-elev);
+  color: var(--sp-text);
+  border: var(--sp-border-1) solid var(--sp-border);
+  box-shadow: var(--sp-shadow-3);
+  border-radius: var(--sp-radius-3);
+  outline: none;
+  transform: translate3d(0,0,0);
+  transition: transform 220ms ease;
+}
+
+.sp-drawer__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-bottom: var(--sp-border-1) solid var(--sp-border);
+}
+
+.sp-drawer__title{
+  margin: 0;
+  font-weight: 700;
+}
+
+.sp-drawer__body{
+  padding: var(--sp-4);
+  overflow: auto;
+}
+
+.sp-drawer__footer{
+  padding: var(--sp-4);
+  border-top: var(--sp-border-1) solid var(--sp-border);
+}
+
+/* Optional modifier: remove the footer divider (useful when you want the action row to
+   feel like part of the same section). */
+.sp-drawer__footer--flat{
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Placements ------------------------------------------------ */
+
+/* Right */
+.sp-drawer--right{
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(92vw, var(--sp-drawer-w));
+  border-radius: 0;
+  border-left: var(--sp-border-1) solid var(--sp-border);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translateX(100%);
+}
+
+/* Left */
+.sp-drawer--left{
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: min(92vw, var(--sp-drawer-w));
+  border-radius: 0;
+  border-right: var(--sp-border-1) solid var(--sp-border);
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 0;
+  transform: translateX(-100%);
+}
+
+/* Bottom */
+.sp-drawer--bottom{
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(80dvh, var(--sp-drawer-h));
+  border-radius: 0;
+  border-top: var(--sp-border-1) solid var(--sp-border);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  transform: translateY(100%);
+}
+
+/* Top */
+.sp-drawer--top{
+  left: 0;
+  right: 0;
+  top: 0;
+  height: min(80dvh, var(--sp-drawer-h));
+  border-radius: 0;
+  border-bottom: var(--sp-border-1) solid var(--sp-border);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  transform: translateY(-100%);
+}
+
+/* Open state */
+.sp-drawer-wrap[data-open="true"] .sp-drawer{
+  transform: translate(0,0);
+}
+
+/* Safe area padding (optional, but nice) */
+.sp-drawer--right .sp-drawer__header,
+.sp-drawer--right .sp-drawer__body,
+.sp-drawer--right .sp-drawer__footer{
+  padding-right: calc(var(--sp-4) + env(safe-area-inset-right, 0px));
+}
+
+.sp-drawer--left .sp-drawer__header,
+.sp-drawer--left .sp-drawer__body,
+.sp-drawer--left .sp-drawer__footer{
+  padding-left: calc(var(--sp-4) + env(safe-area-inset-left, 0px));
+}
+
+.sp-drawer--top .sp-drawer__header,
+.sp-drawer--top .sp-drawer__body,
+.sp-drawer--top .sp-drawer__footer{
+  padding-top: calc(var(--sp-4) + env(safe-area-inset-top, 0px));
+}
+
+.sp-drawer--bottom .sp-drawer__header,
+.sp-drawer--bottom .sp-drawer__body,
+.sp-drawer--bottom .sp-drawer__footer{
+  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .sp-drawer,
+  .sp-drawer-backdrop{
+    transition: none !important;
+  }
+}

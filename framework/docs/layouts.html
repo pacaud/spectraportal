@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+  <link rel="stylesheet" href="/theme.css" />
+  <title>Spectra Docs — Layouts &amp; Patterns</title>
+</head>
+<body>
+  <main class="sp-container sp-content">
+    <section class="sp-stack" style="margin-top: var(--sp-6);">
+      <header class="sp-stack" style="gap: var(--sp-2);">
+        <h1 style="font-family: var(--sp-font-display); margin: 0;">Layouts &amp; Patterns</h1>
+        <p style="margin: 0;">
+          Spectra stays lightweight, so “layout” lives mostly in a few tiny primitives. This page shows
+          common patterns you can build with them.
+        </p>
+      </header>
+
+      <nav style="margin-bottom: var(--sp-4);">
+        <a href="./index.html" style="color:var(--sp-link);">Start Here</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./getting-started.html" style="color:var(--sp-link);">Getting Started</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./tokens.html" style="color:var(--sp-link);">Tokens</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./components.html" style="color:var(--sp-link);">Components</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./layouts.html" style="color:var(--sp-link);">Layouts</a>
+        <span aria-hidden="true"> · </span>
+        <a href="./versioning.html" style="color:var(--sp-link);">Versioning</a>
+      </nav>
+
+      <h2 style="margin: 0;">The three primitives</h2>
+      <ul style="margin: 0; padding-left: var(--sp-5);">
+        <li><code>.sp-container</code> — centered container with max-width + token padding</li>
+        <li><code>.sp-content</code> — readable content width (used by docs)</li>
+        <li><code>.sp-stack</code> — vertical spacing between children (no custom margins)</li>
+      </ul>
+
+      <h2 style="margin: 0;">Pattern: readable page</h2>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;main class=&quot;sp-container sp-content&quot;&gt;
+  &lt;section class=&quot;sp-stack&quot;&gt;
+    &lt;h1&gt;Title&lt;/h1&gt;
+    &lt;p&gt;Body text…&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+
+      <h2 style="margin: 0;">Pattern: card grid</h2>
+      <p style="margin: 0;">Use your own grid (CSS grid/flex) and place Spectra surfaces inside.</p>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;div style=&quot;display:grid; gap:var(--sp-4); grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));&quot;&gt;
+  &lt;article class=&quot;sp-card&quot;&gt;...&lt;/article&gt;
+  &lt;article class=&quot;sp-card&quot;&gt;...&lt;/article&gt;
+&lt;/div&gt;</code></pre>
+
+      <h2 style="margin: 0;">Pattern: tool layout (sidebar + content)</h2>
+      <p style="margin: 0;">Spectra won’t force a layout system — but it plays nicely with simple flex patterns.</p>
+      <pre style="margin: 0; padding: var(--sp-3); background: var(--sp-elev-2); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1); overflow:auto;"><code style="font-family: var(--sp-font-mono);">&lt;div style=&quot;display:flex; gap:var(--sp-4); align-items:stretch;&quot;&gt;
+  &lt;aside class=&quot;sp-card&quot; style=&quot;width:18rem;&quot;&gt;Sidebar…&lt;/aside&gt;
+  &lt;section class=&quot;sp-card&quot; style=&quot;flex:1;&quot;&gt;Content…&lt;/section&gt;
+&lt;/div&gt;</code></pre>
+
+      <h2 style="margin: 0;">See it live</h2>
+      <ul style="margin: 0; padding-left: var(--sp-5);">
+        <li><a class="sp-link" href="../demos/cards.html">Cards demo</a></li>
+        <li><a class="sp-link" href="../demos/utilities.html">Utilities demo</a></li>
+        <li><a class="sp-link" href="../demos/drawer.html">Drawer demo</a> (overlays/panels)</li>
+      </ul>
+
+      <div class="sp-inline" style="margin-top: var(--sp-2);">
+        <a class="sp-link" href="./components.html">Back: Components</a>
+        <a class="sp-link" href="../demos/index.html">Browse demos</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

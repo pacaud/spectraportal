@@ -1,0 +1,38 @@
+/* Spectra Framework Entry
+   File: src/spectra.css
+
+   Demos/tools should load https://cdn.spectraportal.dev/cdn/v0.1/spectra.css (built output).
+*/
+
+/* 1) Tokens (variables) */
+@import "./tokens/index.css";
+
+/* 2) Themes (overrides) — add when ready */
+/* @import "./themes/index.css"; */
+
+/* 3) Base layer */
+@import "./base/reset.css";
+@import "./base/a11y.css";
+@import "./base/layout.css";
+@import "./base/utilities.css";
+
+/* 4) Components */
+@import "./components/button.css";
+@import "./components/card.css";
+@import "./components/input.css";
+@import "./components/form-controls.css";
+@import "./components/toggles.css";
+@import "./components/hero.css";
+@import "./components/forms.css";
+
+/* Drawer */
+@import "./components/drawer.css";
+
+/* Tabs */
+@import "./components/tabs.css";
+
+/* Toast */
+@import "./components/toast.css";
+
+/* Future components */
+/* @import "./components/modal.css"; */

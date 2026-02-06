@@ -1,0 +1,21 @@
+/* Spectra Tokens: Motion
+   File: src/tokens/motion.css
+
+   Rules:
+   - Tokens only (no selectors).
+   - Keep it minimal and consistent (no random durations/easings).
+*/
+
+:root{
+  /* Durations */
+  --sp-duration-1: 120ms; /* micro */
+  --sp-duration-2: 180ms; /* fast */
+  --sp-duration-3: 260ms; /* normal */
+  --sp-duration-4: 360ms; /* slow (drawers/modals) */
+
+  /* Easing */
+  --sp-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --sp-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --sp-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --sp-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}

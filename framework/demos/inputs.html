@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Inputs</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Inputs</h1>
+      <p style="margin: 0;">
+        Minimal field + input component:
+        <code style="font-family: var(--sp-font-mono);">.sp-field</code>,
+        <code style="font-family: var(--sp-font-mono);">.sp-label</code>,
+        <code style="font-family: var(--sp-font-mono);">.sp-input</code>.
+      </p>
+
+      <div class="sp-stack" style="margin-top: var(--sp-4); max-width: 40rem;">
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Default</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field">
+              <label class="sp-label" for="name">Name</label>
+              <input class="sp-input" id="name" type="text" placeholder="Kevin" />
+              <div class="sp-help">Helper text lives here.</div>
+            </div>
+
+            <div class="sp-field">
+              <label class="sp-label" for="email">Email</label>
+              <input class="sp-input" id="email" type="email" placeholder="you@example.com" />
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Error</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field sp-field--error">
+              <label class="sp-label" for="code">Invite code</label>
+              <input class="sp-input" id="code" type="text" value="ABC123" />
+              <div class="sp-help">That code doesn’t look right.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Disabled</strong></header>
+          <div class="sp-card__body">
+            <div class="sp-field">
+              <label class="sp-label" for="disabled">Disabled field</label>
+              <input class="sp-input" id="disabled" type="text" value="Locked" disabled />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

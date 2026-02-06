@@ -1,0 +1,48 @@
+/* Toast
+   Minimal feedback messages.
+
+   Notes:
+   - Use .sp-card (and optionally .sp-card--elev) for the surface.
+   - Use position helpers (.sp-pos-*) to pin to viewport.
+*/
+
+:root{
+  --sp-toast-w: 360px;
+  --sp-toast-max-w: calc(100vw - (var(--sp-float-gap) * 2));
+  --sp-toast-gap: var(--sp-2);
+}
+
+.sp-toast{
+  width: min(var(--sp-toast-w), var(--sp-toast-max-w));
+  display: grid;
+  gap: var(--sp-toast-gap);
+  pointer-events: auto;
+}
+
+.sp-toast__row{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+
+.sp-toast__title{
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.sp-toast__body{
+  line-height: 1.45;
+}
+
+.sp-toast__close{
+  flex: 0 0 auto;
+}
+
+/* For stacks of multiple toasts */
+.sp-toast-stack{
+  display: grid;
+  gap: var(--sp-2);
+  width: min(var(--sp-toast-w), var(--sp-toast-max-w));
+}

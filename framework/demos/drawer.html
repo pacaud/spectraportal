@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra • Drawer</title>
+
+  <!-- Spectra (stable) -->
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+
+<body class="sp-bg">
+  <main class="sp-container sp-content" style="margin-top:var(--sp-7)">
+    <header class="sp-stack" style="gap:var(--sp-2);margin-bottom:var(--sp-6)">
+      <h1 class="sp-h1">Drawer</h1>
+      <p class="sp-muted" style="max-width:70ch">
+        Minimal, token-driven drawers. The component supports left/right/top/bottom placements and a backdrop.
+        This demo includes a tiny, dependency-free toggle helper (ESC to close, backdrop click closes, focus returns).
+      </p>
+    </header>
+
+    <section class="sp-card sp-card--elev">
+      <div class="sp-card__body sp-stack" style="gap:var(--sp-4)">
+        <div class="sp-row" style="gap:var(--sp-2);flex-wrap:wrap">
+          <button class="sp-btn" data-open-drawer="drawerRight">Open right drawer</button>
+          <button class="sp-btn" data-open-drawer="drawerLeft">Open left drawer</button>
+          <button class="sp-btn" data-open-drawer="drawerBottom">Open bottom drawer</button>
+          <button class="sp-btn" data-open-drawer="drawerTop">Open top drawer</button>
+        </div>
+
+        <p class="sp-subtle" style="max-width:70ch">
+          Tip: the drawer content is just normal HTML. Use buttons, forms, links, etc. The layout is a header/body/footer stack.
+        </p>
+      </div>
+    </section>
+
+    <p class="sp-muted" style="margin-top:var(--sp-6)">
+      <a href="index.html" class="sp-link">Back to Demos</a>
+    </p>
+  </main>
+
+  <!-- Right Drawer -->
+  <div class="sp-drawer-wrap" id="drawerRight" data-open="false">
+    <div class="sp-drawer-backdrop" data-drawer-close></div>
+    <aside class="sp-drawer sp-drawer--right" role="dialog" aria-modal="true" aria-label="Right drawer" tabindex="-1">
+      <div class="sp-drawer__header">
+        <h2 class="sp-drawer__title">Right drawer</h2>
+        <button class="sp-btn sp-btn--ghost" data-drawer-close aria-label="Close">✕</button>
+      </div>
+      <div class="sp-drawer__body sp-stack" style="gap:var(--sp-3)">
+        <p class="sp-muted">This is a right-side drawer. Great for nav, settings, or quick tools.</p>
+        <label class="sp-label" for="drawerEmail">Email</label>
+        <input id="drawerEmail" class="sp-input" placeholder="you@example.com" />
+      </div>
+      <div class="sp-drawer__footer sp-drawer__footer--flat sp-row" style="justify-content:flex-end;gap:var(--sp-2)">
+        <button class="sp-btn">Save</button>
+        <button class="sp-btn sp-btn--ghost" data-drawer-close>Cancel</button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Left Drawer -->
+  <div class="sp-drawer-wrap" id="drawerLeft" data-open="false">
+    <div class="sp-drawer-backdrop" data-drawer-close></div>
+    <aside class="sp-drawer sp-drawer--left" role="dialog" aria-modal="true" aria-label="Left drawer" tabindex="-1">
+      <div class="sp-drawer__header">
+        <h2 class="sp-drawer__title">Left drawer</h2>
+        <button class="sp-btn sp-btn--ghost" data-drawer-close aria-label="Close">✕</button>
+      </div>
+      <div class="sp-drawer__body sp-stack" style="gap:var(--sp-3)">
+        <p class="sp-muted">This is a left-side drawer. Often used for primary navigation.</p>
+        <a class="sp-link" href="#">Dashboard</a>
+        <a class="sp-link" href="#">Projects</a>
+        <a class="sp-link" href="#">Settings</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Bottom Drawer -->
+  <div class="sp-drawer-wrap" id="drawerBottom" data-open="false">
+    <div class="sp-drawer-backdrop" data-drawer-close></div>
+    <aside class="sp-drawer sp-drawer--bottom" role="dialog" aria-modal="true" aria-label="Bottom drawer" tabindex="-1">
+      <div class="sp-drawer__header">
+        <h2 class="sp-drawer__title">Bottom drawer</h2>
+        <button class="sp-btn sp-btn--ghost" data-drawer-close aria-label="Close">✕</button>
+      </div>
+      <div class="sp-drawer__body">
+        <p class="sp-muted">Bottom drawers are nice for mobile actions, command palettes, or quick pickers.</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Top Drawer -->
+  <div class="sp-drawer-wrap" id="drawerTop" data-open="false">
+    <div class="sp-drawer-backdrop" data-drawer-close></div>
+    <aside class="sp-drawer sp-drawer--top" role="dialog" aria-modal="true" aria-label="Top drawer" tabindex="-1">
+      <div class="sp-drawer__header">
+        <h2 class="sp-drawer__title">Top drawer</h2>
+        <button class="sp-btn sp-btn--ghost" data-drawer-close aria-label="Close">✕</button>
+      </div>
+      <div class="sp-drawer__body">
+        <p class="sp-muted">Top drawers are handy for alerts, banners, or temporary tool trays.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    (function(){
+      const wraps = Array.from(document.querySelectorAll('.sp-drawer-wrap'));
+      const state = new Map(); // wrap -> {lastFocus:Element|null}
+
+      function anyOpen(){
+        return wraps.some(w => w.dataset.open === 'true');
+      }
+
+      function updateScrollLock(){
+        const open = anyOpen();
+        if(open){
+          // scrollbar compensation so the page doesn't "jump" when we lock scrolling
+          const sw = window.innerWidth - document.documentElement.clientWidth;
+          document.body.style.setProperty('--sp-scrollbar-comp', sw > 0 ? `${sw}px` : '0px');
+          document.body.classList.add('sp-scroll-lock');
+        }else{
+          document.body.classList.remove('sp-scroll-lock');
+          document.body.style.removeProperty('--sp-scrollbar-comp');
+        }
+      }
+
+      function getFocusable(root){
+        const sel = [
+          'a[href]',
+          'button:not([disabled])',
+          'input:not([disabled]):not([type="hidden"])',
+          'select:not([disabled])',
+          'textarea:not([disabled])',
+          '[tabindex]:not([tabindex="-1"])'
+        ].join(',');
+        return Array.from(root.querySelectorAll(sel)).filter(el => {
+          // basic visibility filter
+          const r = el.getBoundingClientRect();
+          return (r.width > 0 || r.height > 0) && getComputedStyle(el).visibility !== 'hidden';
+        });
+      }
+
+      function topmostOpenWrap(){
+        // Prefer the most recently opened drawer
+        const openWraps = wraps.filter(w => w.dataset.open === 'true');
+        if(!openWraps.length) return null;
+        return openWraps[openWraps.length - 1];
+      }
+
+      function setOpen(wrap, open){
+        if(!wrap) return;
+        wrap.dataset.open = open ? 'true' : 'false';
+        const drawer = wrap.querySelector('.sp-drawer');
+        if(open){
+          const lastFocus = document.activeElement;
+          state.set(wrap, { lastFocus });
+          // focus the drawer (or the first focusable inside)
+          const first = getFocusable(drawer)[0];
+          (first || drawer).focus({preventScroll:true});
+        }else{
+          const s = state.get(wrap);
+          if(s && s.lastFocus && typeof s.lastFocus.focus === 'function'){
+            s.lastFocus.focus({preventScroll:true});
+          }
+          state.delete(wrap);
+        }
+
+        updateScrollLock();
+      }
+
+      function closeAll(){
+        wraps.forEach(w => setOpen(w, false));
+      }
+
+      // Open buttons
+      document.addEventListener('click', (e)=>{
+        const btn = e.target.closest('[data-open-drawer]');
+        if(btn){
+          const id = btn.getAttribute('data-open-drawer');
+          const wrap = document.getElementById(id);
+          setOpen(wrap, true);
+          return;
+        }
+      });
+
+      // Close buttons + backdrop
+      wraps.forEach(wrap => {
+        wrap.addEventListener('click', (e)=>{
+          if(e.target.closest('[data-drawer-close]')){
+            setOpen(wrap, false);
+          }
+        });
+      });
+
+      // ESC closes any open drawer
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'Escape') closeAll();
+
+        // Focus trap (nice-to-have): keep Tab inside the open drawer
+        if(e.key === 'Tab'){
+          const wrap = topmostOpenWrap();
+          if(!wrap) return;
+          const drawer = wrap.querySelector('.sp-drawer');
+          if(!drawer) return;
+          const f = getFocusable(drawer);
+          if(!f.length){
+            // If nothing focusable inside, keep focus on the drawer
+            e.preventDefault();
+            drawer.focus({preventScroll:true});
+            return;
+          }
+          const first = f[0];
+          const last = f[f.length - 1];
+          const active = document.activeElement;
+
+          if(e.shiftKey){
+            if(active === first || active === drawer){
+              e.preventDefault();
+              last.focus({preventScroll:true});
+            }
+          }else{
+            if(active === last){
+              e.preventDefault();
+              first.focus({preventScroll:true});
+            }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/* Spectra Tokens: Spacing
+   File: src/tokens/space.css
+
+   Rules:
+   - Tokens only (no selectors).
+   - Base rhythm: 4px.
+   - Use these for margin, padding, gaps, layout spacing.
+*/
+
+:root{
+  --sp-0: 0;
+  --sp-1: 0.25rem; /* 4px */
+  --sp-2: 0.5rem;  /* 8px */
+  --sp-3: 0.75rem; /* 12px */
+  --sp-4: 1rem;    /* 16px */
+  --sp-5: 1.25rem; /* 20px */
+  --sp-6: 1.5rem;  /* 24px */
+  --sp-8: 2rem;    /* 32px */
+  --sp-10: 2.5rem; /* 40px */
+
+  /* Optional helpers (enable later if needed) */
+  /* --sp-container-max: 72rem; */
+  /* --sp-content-max: 60rem; */
+}

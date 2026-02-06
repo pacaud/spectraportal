@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra • Tabs</title>
+
+  <!-- Spectra (stable) -->
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+
+<body class="sp-bg">
+  <main class="sp-container sp-content" style="margin-top:var(--sp-7)">
+    <header class="sp-stack" style="gap:var(--sp-2);margin-bottom:var(--sp-6)">
+      <h1 class="sp-h1">Tabs</h1>
+      <p class="sp-muted" style="max-width:70ch">
+        Minimal tabs: styling is CSS, and the demo uses a tiny script to toggle <code>aria-selected</code> and panel visibility.
+      </p>
+    </header>
+
+    <section class="sp-card sp-card--elev">
+      <div class="sp-card__body">
+        <div class="sp-tabs" data-tabs>
+          <div class="sp-tablist" role="tablist" aria-label="Example tabs">
+            <button class="sp-tab is-active" role="tab" aria-selected="true" aria-controls="panel-one" id="tab-one">Overview</button>
+            <button class="sp-tab" role="tab" aria-selected="false" aria-controls="panel-two" id="tab-two">Settings</button>
+            <button class="sp-tab" role="tab" aria-selected="false" aria-controls="panel-three" id="tab-three">Logs</button>
+          </div>
+
+          <div class="sp-tabpanel" role="tabpanel" id="panel-one" aria-labelledby="tab-one">
+            <p class="sp-muted" style="margin:0">
+              A simple, token-friendly tab style. Use it for profile sections, settings panels, or dashboards.
+            </p>
+          </div>
+          <div class="sp-tabpanel" role="tabpanel" id="panel-two" aria-labelledby="tab-two" hidden>
+            <div class="sp-stack" style="gap:var(--sp-3)">
+              <label class="sp-label" for="tabEmail">Email</label>
+              <input id="tabEmail" class="sp-input" placeholder="you@example.com" />
+              <label class="sp-label"><input type="checkbox" class="sp-checkbox" /> Enable notifications</label>
+            </div>
+          </div>
+          <div class="sp-tabpanel" role="tabpanel" id="panel-three" aria-labelledby="tab-three" hidden>
+            <pre class="sp-code" style="margin:0">[10:12:44] Started
+[10:12:45] Saved
+[10:12:47] Done</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="sp-muted" style="margin-top:var(--sp-6)">
+      <a href="index.html" class="sp-link">Back to Demos</a>
+    </p>
+  </main>
+
+  <script>
+    (function(){
+      const roots = Array.from(document.querySelectorAll('[data-tabs]'));
+      roots.forEach(root => {
+        const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+        const panels = Array.from(root.querySelectorAll('[role="tabpanel"]'));
+
+        function activate(tab){
+          tabs.forEach(t => {
+            const on = t === tab;
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+            t.classList.toggle('is-active', on);
+          });
+          panels.forEach(p => {
+            const on = p.id === tab.getAttribute('aria-controls');
+            p.hidden = !on;
+          });
+          tab.focus();
+        }
+
+        tabs.forEach(t => {
+          t.addEventListener('click', () => activate(t));
+          t.addEventListener('keydown', (e) => {
+            const i = tabs.indexOf(t);
+            if(e.key === 'ArrowRight'){ e.preventDefault(); activate(tabs[(i+1) % tabs.length]); }
+            if(e.key === 'ArrowLeft'){ e.preventDefault(); activate(tabs[(i-1+tabs.length) % tabs.length]); }
+            if(e.key === 'Home'){ e.preventDefault(); activate(tabs[0]); }
+            if(e.key === 'End'){ e.preventDefault(); activate(tabs[tabs.length-1]); }
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

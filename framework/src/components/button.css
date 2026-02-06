@@ -1,0 +1,77 @@
+/* Spectra Components: Button (minimal)
+   File: src/components/button.css
+
+   Rules:
+   - Token-driven only.
+   - Minimal variants: base, primary, ghost.
+   - No size variants yet.
+*/
+
+.sp-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--sp-radius-2);
+  border: var(--sp-border-1) solid transparent;
+
+  background: transparent;
+  color: var(--sp-text);
+
+  font-family: var(--sp-font);
+  font-size: var(--sp-fs-3);
+  line-height: var(--sp-lh-1);
+
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+
+  transition:
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    color var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    transform var(--sp-duration-1) var(--sp-ease-out),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+/* Default hover: slightly clearer lift on dark themes */
+.sp-btn:hover{
+  background: var(--sp-elev-2);
+}
+
+/* Active press */
+.sp-btn:active{
+  transform: translateY(1px);
+}
+
+/* Disabled */
+.sp-btn:disabled,
+.sp-btn[aria-disabled="true"]{
+  opacity: var(--sp-opacity-60);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary */
+.sp-btn--primary{
+  background: var(--sp-accent);
+  color: var(--sp-bg);
+}
+
+.sp-btn--primary:hover{
+  background: var(--sp-accent-hover);
+}
+
+/* Ghost */
+.sp-btn--ghost{
+  background: transparent;
+  border-color: var(--sp-border);
+  color: var(--sp-text);
+}
+
+.sp-btn--ghost:hover{
+  background: var(--sp-elev);
+  border-color: var(--sp-border-strong);
+}

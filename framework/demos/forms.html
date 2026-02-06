@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Demo — Forms (All)</title>
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+    <section class="sp-stack">
+      <h1 style="font-family: var(--sp-font-display); margin: 0;">Forms (All Controls)</h1>
+      <p class="sp-muted" style="margin: 0; max-width: 60rem;">
+        One page to sanity-check consistency: spacing, labels, help text, disabled, error states, and focus rings.
+        Tip: hit <kbd>Tab</kbd> and walk through everything.
+      </p>
+
+      <div class="sp-grid" style="display:grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); margin-top: var(--sp-4);">
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Account</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field">
+              <label class="sp-label" for="f_name">Display name</label>
+              <input class="sp-input" id="f_name" type="text" placeholder="Kevin" />
+              <div class="sp-help">This shows on your profile.</div>
+            </div>
+
+            <div class="sp-field sp-field--error">
+              <label class="sp-label" for="f_email">Email</label>
+              <input class="sp-input" id="f_email" type="email" value="kevin@" />
+              <div class="sp-help">Please enter a valid email.</div>
+            </div>
+
+            <div class="sp-field">
+              <label class="sp-label" for="f_role">Role</label>
+              <select class="sp-select" id="f_role">
+                <option>Developer</option>
+                <option>Designer</option>
+                <option>Builder</option>
+              </select>
+              <div class="sp-help sp-subtle">Select styling stays intentionally light.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Preferences</strong></header>
+          <div class="sp-card__body sp-stack">
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-switch" id="f_sw1" type="checkbox" checked />
+                <label class="sp-label" for="f_sw1">Enable notifications</label>
+              </div>
+              <div class="sp-help sp-subtle">Native switch (checkbox) with minimal styling.</div>
+            </div>
+
+            <div class="sp-field sp-field--error">
+              <div class="sp-control">
+                <input class="sp-switch" id="f_sw2" type="checkbox" />
+                <label class="sp-label" for="f_sw2">Terms accepted</label>
+              </div>
+              <div class="sp-help">You must accept terms to continue.</div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-check" id="f_cb1" type="checkbox" />
+                <label class="sp-label" for="f_cb1">Remember me</label>
+              </div>
+            </div>
+
+            <div class="sp-field">
+              <div class="sp-control">
+                <input class="sp-check" id="f_cb2" type="checkbox" disabled checked />
+                <label class="sp-label sp-muted" for="f_cb2">Auto-save (disabled)</label>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <header class="sp-card__header"><strong>Plan</strong></header>
+          <div class="sp-card__body sp-stack">
+            <fieldset class="sp-fieldset" aria-label="Plan">
+              <legend class="sp-legend">Choose a plan</legend>
+
+              <div class="sp-field">
+                <div class="sp-control">
+                  <input class="sp-radio" id="f_r1" name="plan2" type="radio" checked />
+                  <label class="sp-label" for="f_r1">Free</label>
+                </div>
+              </div>
+
+              <div class="sp-field">
+                <div class="sp-control">
+                  <input class="sp-radio" id="f_r2" name="plan2" type="radio" />
+                  <label class="sp-label" for="f_r2">Pro</label>
+                </div>
+              </div>
+
+              <div class="sp-field sp-field--error">
+                <div class="sp-control">
+                  <input class="sp-radio" id="f_r3" name="plan2" type="radio" />
+                  <label class="sp-label" for="f_r3">Team</label>
+                </div>
+                <div class="sp-help">Pick a plan to continue.</div>
+              </div>
+            </fieldset>
+          </div>
+        </article>
+
+        <article class="sp-card" style="grid-column: 1 / -1;">
+          <header class="sp-card__header"><strong>Long-form</strong></header>
+          <div class="sp-card__body sp-stack" style="max-width: 60rem;">
+            <div class="sp-field">
+              <label class="sp-label" for="f_about">About</label>
+              <textarea class="sp-textarea" id="f_about" placeholder="Write something…"></textarea>
+              <div class="sp-help">Textarea should match input focus + error behavior.</div>
+            </div>
+
+            <div class="sp-field sp-field--error">
+              <label class="sp-label" for="f_about2">About (error)</label>
+              <textarea class="sp-textarea" id="f_about2">Too short</textarea>
+              <div class="sp-help">Add a little more detail.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="height:1px;background:var(--sp-border);opacity:.55;margin:var(--sp-5) 0 var(--sp-3);"></div>
+      <p class="sp-muted" style="margin:0;">
+        Back to <a href="./index.html">Demos</a>
+        <span aria-hidden="true">•</span>
+        Docs <a href="../docs/index.html">framework/docs</a>
+      </p>
+    </section>
+  </main>
+</body>
+</html>

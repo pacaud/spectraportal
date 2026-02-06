@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra • Toast</title>
+
+  <!-- Spectra (stable) -->
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
+<link rel="stylesheet" href="/theme.css">
+</head>
+
+<body class="sp-bg">
+  <main class="sp-container sp-content" style="margin-top:var(--sp-7)">
+    <header class="sp-stack" style="gap:var(--sp-2);margin-bottom:var(--sp-6)">
+      <h1 class="sp-h1">Toast</h1>
+      <p class="sp-muted" style="max-width:70ch">
+        Lightweight feedback messages. This demo uses a tiny helper that creates DOM toasts and auto-dismisses them.
+        Pair with position helpers like <code>.sp-pos-bottom-right</code>.
+      </p>
+    </header>
+
+    <section class="sp-card sp-card--elev">
+      <div class="sp-card__body sp-stack" style="gap:var(--sp-4)">
+        <div class="sp-row" style="gap:var(--sp-2);flex-wrap:wrap">
+          <button class="sp-btn" data-toast="success">Success toast</button>
+          <button class="sp-btn sp-btn--ghost" data-toast="info">Info toast</button>
+          <button class="sp-btn sp-btn--ghost" data-toast="error">Error toast</button>
+          <button class="sp-btn sp-btn--ghost" data-toast="bottom-left">Bottom-left stack</button>
+        </div>
+
+        <p class="sp-subtle" style="max-width:70ch;margin:0">
+          Tip: you can render toasts as <span class="sp-muted">plain HTML</span> too—no JS required.
+          JS just makes it convenient to spawn and dismiss.
+        </p>
+      </div>
+    </section>
+
+    <p class="sp-muted" style="margin-top:var(--sp-6)">
+      <a href="index.html" class="sp-link">Back to Demos</a>
+    </p>
+  </main>
+
+  <!-- Toast stacks pinned to viewport -->
+  <div id="toastStackBR" class="sp-toast-stack sp-pos-bottom-right" aria-live="polite" aria-relevant="additions"></div>
+  <div id="toastStackBL" class="sp-toast-stack sp-pos-bottom-left" aria-live="polite" aria-relevant="additions"></div>
+
+  <script>
+    (function(){
+      const stackBR = document.getElementById('toastStackBR');
+      const stackBL = document.getElementById('toastStackBL');
+
+      function makeToast({title, body, kind, stack}){
+        const el = document.createElement('div');
+        el.className = 'sp-toast sp-card sp-card--elev';
+        el.setAttribute('role', 'status');
+
+        // slight tints by kind (token-friendly, demo-only)
+        if(kind === 'success') el.style.borderColor = 'rgba(46,160,67,0.45)';
+        if(kind === 'info') el.style.borderColor = 'rgba(167,139,250,0.45)';
+        if(kind === 'error') el.style.borderColor = 'rgba(239,68,68,0.45)';
+
+        const row = document.createElement('div');
+        row.className = 'sp-toast__row';
+
+        const left = document.createElement('div');
+        left.className = 'sp-stack';
+        left.style.gap = 'var(--sp-1)';
+
+        const t = document.createElement('div');
+        t.className = 'sp-toast__title';
+        t.textContent = title;
+
+        const b = document.createElement('div');
+        b.className = 'sp-toast__body sp-muted';
+        b.textContent = body;
+
+        left.appendChild(t);
+        left.appendChild(b);
+
+        const close = document.createElement('button');
+        close.className = 'sp-btn sp-btn--ghost sp-toast__close';
+        close.setAttribute('aria-label','Dismiss');
+        close.textContent = '✕';
+
+        close.addEventListener('click', () => {
+          el.remove();
+        });
+
+        row.appendChild(left);
+        row.appendChild(close);
+        el.appendChild(row);
+
+        (stack || stackBR).appendChild(el);
+
+        // auto-dismiss
+        window.setTimeout(() => {
+          if(el.isConnected) el.remove();
+        }, 3200);
+      }
+
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-toast]');
+        if(!btn) return;
+        const mode = btn.getAttribute('data-toast');
+
+        if(mode === 'bottom-left'){
+          makeToast({
+            title: 'Bottom-left',
+            body: 'Same toast, different stack.',
+            kind: 'info',
+            stack: stackBL
+          });
+          return;
+        }
+
+        if(mode === 'success') makeToast({title:'Saved', body:'Your changes were saved.', kind:'success'});
+        if(mode === 'info') makeToast({title:'Heads up', body:'This is a small info message.', kind:'info'});
+        if(mode === 'error') makeToast({title:'Uh oh', body:'Something went wrong. Try again.', kind:'error'});
+      });
+    })();
+  </script>
+</body>
+</html>

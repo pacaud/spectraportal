@@ -1,0 +1,168 @@
+/* Spectra Components: Toggles + Checkbox + Radio (minimal)
+   File: src/components/toggles.css
+
+   Rules:
+   - Token-driven only.
+   - Use native inputs (accessible) with light styling.
+   - Keep variants minimal.
+*/
+
+/* Shared focus ring helper (keyboard-first) */
+:where(.sp-switch, .sp-check, .sp-radio):focus{
+  outline: none;
+}
+
+:where(.sp-switch, .sp-check, .sp-radio):focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
+}
+
+:where(.sp-switch, .sp-check, .sp-radio):focus:not(:focus-visible){
+  box-shadow: none;
+}
+
+/* Disabled (shared) */
+:where(.sp-switch, .sp-check, .sp-radio):disabled{
+  opacity: var(--sp-opacity-60);
+  cursor: not-allowed;
+}
+
+/* Switch (checkbox input) */
+.sp-switch{
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 2.75rem;
+  height: 1.55rem;
+
+  border-radius: 999px;
+  border: var(--sp-border-1) solid var(--sp-border);
+  background: var(--sp-elev-2);
+
+  display: inline-grid;
+  align-items: center;
+
+  position: relative;
+  cursor: pointer;
+
+  transition:
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-switch::before{
+  content: "";
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+
+  background: var(--sp-text);
+  opacity: var(--sp-opacity-80);
+
+  position: absolute;
+  left: var(--sp-2);
+  top: 50%;
+  transform: translateY(-50%);
+
+  transition:
+    transform var(--sp-duration-2) var(--sp-ease-standard),
+    opacity var(--sp-duration-2) var(--sp-ease-standard),
+    background var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-switch:hover{
+  border-color: var(--sp-border-strong);
+}
+
+.sp-switch:checked{
+  background: color-mix(in srgb, var(--sp-accent-3), var(--sp-elev) 15%);
+  border-color: color-mix(in srgb, var(--sp-accent-3), var(--sp-border) 35%);
+}
+
+.sp-switch:checked::before{
+  transform: translateY(-50%) translateX(1.15rem);
+  background: var(--sp-bg);
+  opacity: 1;
+}
+
+/* Checkbox (input type=checkbox) */
+.sp-check{
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 1.1rem;
+  height: 1.1rem;
+
+  border-radius: var(--sp-radius-1);
+  border: var(--sp-border-1) solid var(--sp-border);
+  background: var(--sp-elev-2);
+
+  display: inline-grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition:
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-check:hover{
+  border-color: var(--sp-border-strong);
+}
+
+.sp-check:checked{
+  background: var(--sp-accent-3);
+  border-color: color-mix(in srgb, var(--sp-accent-3), var(--sp-border) 25%);
+}
+
+.sp-check:checked::after{
+  content: "";
+  width: 0.55rem;
+  height: 0.30rem;
+  border-left: var(--sp-border-2) solid var(--sp-bg);
+  border-bottom: var(--sp-border-2) solid var(--sp-bg);
+  transform: rotate(-45deg);
+  margin-top: -1px;
+}
+
+/* Radio (input type=radio) */
+.sp-radio{
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 1.1rem;
+  height: 1.1rem;
+
+  border-radius: 999px;
+  border: var(--sp-border-1) solid var(--sp-border);
+  background: var(--sp-elev-2);
+
+  display: inline-grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition:
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-radio:hover{
+  border-color: var(--sp-border-strong);
+}
+
+.sp-radio:checked{
+  border-color: color-mix(in srgb, var(--sp-accent-3), var(--sp-border) 25%);
+}
+
+.sp-radio:checked::after{
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--sp-accent-3);
+}

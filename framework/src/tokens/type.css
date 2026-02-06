@@ -1,0 +1,35 @@
+/* Spectra Tokens: Typography
+   File: src/tokens/type.css
+
+   Rules:
+   - Tokens only (no element selectors)
+   - System-first for speed and stability
+   - Display font reserved for future use
+*/
+
+:root{
+  /* Font families */
+  --sp-font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
+             "Apple Color Emoji", "Segoe UI Emoji";
+  --sp-font-display: var(--sp-font); /* Vivi (reserved for future upgrade) */
+  --sp-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                  "Liberation Mono", "Courier New", monospace;
+
+  /* Font sizes (scale) */
+  --sp-fs-1: 0.75rem;  /* small */
+  --sp-fs-2: 0.875rem; /* ui small */
+  --sp-fs-3: 1rem;     /* base */
+  --sp-fs-4: 1.125rem; /* medium */
+  --sp-fs-5: 1.25rem;  /* large */
+  --sp-fs-6: 1.5rem;   /* xl */
+
+  /* Line heights */
+  --sp-lh-1: 1.2;
+  --sp-lh-2: 1.4;
+  --sp-lh-3: 1.6;
+
+  /* Font weights */
+  --sp-fw-regular: 400;
+  --sp-fw-medium: 500;
+  --sp-fw-semibold: 600;
+}

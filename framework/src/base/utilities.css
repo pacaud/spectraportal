@@ -1,0 +1,146 @@
+/* Spectra Base: Utilities (minimal)
+   File: src/base/utilities.css
+
+   Rules:
+   - Token-driven only.
+   - Keep tiny. Add only when multiple places need the same pattern.
+*/
+
+/* Visibility */
+.sp-hidden{
+  display: none !important;
+}
+
+.sp-visually-hidden{
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Text helpers */
+
+.sp-link{
+  color: var(--sp-link);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.sp-link:hover{
+  color: var(--sp-link-hover, var(--sp-link));
+}
+
+.sp-muted{
+  color: var(--sp-muted) !important;
+}
+
+.sp-subtle{
+  color: var(--sp-subtle) !important;
+}
+
+.sp-text-center{
+  text-align: center !important;
+}
+
+/* Spacing helpers (minimal) */
+.sp-mt-2{ margin-top: var(--sp-2) !important; }
+.sp-mt-3{ margin-top: var(--sp-3) !important; }
+.sp-mt-4{ margin-top: var(--sp-4) !important; }
+
+.sp-mb-2{ margin-bottom: var(--sp-2) !important; }
+.sp-mb-3{ margin-bottom: var(--sp-3) !important; }
+.sp-mb-4{ margin-bottom: var(--sp-4) !important; }
+
+/* Layout helpers */
+.sp-inline{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.sp-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  align-items: center;
+}
+
+/* Code helpers (docs-friendly) */
+.sp-code{
+  font-family: var(--sp-font-mono);
+}
+
+.sp-code-list{
+  list-style: none;
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--sp-border);
+  background: var(--sp-surface-2);
+  border-radius: var(--sp-radius-md);
+  font-family: var(--sp-font-mono);
+  font-size: var(--sp-text-sm);
+}
+
+.sp-code-list li{
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-1) 0;
+}
+
+.sp-code-list li + li{
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.sp-code-list code{
+  font-family: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  flex: 0 0 220px;
+  max-width: 100%;
+}
+
+.sp-code-list span{
+  min-width: 0;
+}
+
+/* Position helpers (floating UI)
+   - These are intentionally opinionated for drawers/menus/toasts.
+   - Use tokens for offsets + layers so behavior stays consistent.
+*/
+/* Safe-area aware offsets (notches / iOS browser UI) */
+:root{
+  --sp-float-safe-top:    calc(var(--sp-float-gap) + env(safe-area-inset-top, 0px));
+  --sp-float-safe-right:  calc(var(--sp-float-gap) + env(safe-area-inset-right, 0px));
+  --sp-float-safe-bottom: calc(var(--sp-float-gap) + env(safe-area-inset-bottom, 0px));
+  --sp-float-safe-left:   calc(var(--sp-float-gap) + env(safe-area-inset-left, 0px));
+}
+
+.sp-float{ position: fixed; z-index: var(--sp-layer-panel); }
+
+.sp-pos-top-left{ position: fixed; top: var(--sp-float-safe-top); left: var(--sp-float-safe-left); z-index: var(--sp-layer-panel); }
+.sp-pos-top-right{ position: fixed; top: var(--sp-float-safe-top); right: var(--sp-float-safe-right); z-index: var(--sp-layer-panel); }
+.sp-pos-bottom-left{ position: fixed; bottom: var(--sp-float-safe-bottom); left: var(--sp-float-safe-left); z-index: var(--sp-layer-panel); }
+.sp-pos-bottom-right{ position: fixed; bottom: var(--sp-float-safe-bottom); right: var(--sp-float-safe-right); z-index: var(--sp-layer-panel); }
+
+.sp-pos-top{ position: fixed; top: var(--sp-float-safe-top); left: 50%; transform: translateX(-50%); z-index: var(--sp-layer-panel); }
+.sp-pos-bottom{ position: fixed; bottom: var(--sp-float-safe-bottom); left: 50%; transform: translateX(-50%); z-index: var(--sp-layer-panel); }
+.sp-pos-left{ position: fixed; left: var(--sp-float-safe-left); top: 50%; transform: translateY(-50%); z-index: var(--sp-layer-panel); }
+.sp-pos-right{ position: fixed; right: var(--sp-float-safe-right); top: 50%; transform: translateY(-50%); z-index: var(--sp-layer-panel); }
+
+.sp-pos-center{ position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: var(--sp-layer-panel); }
+.sp-pos-center-left{ position: fixed; left: var(--sp-float-safe-left); top: 50%; transform: translateY(-50%); z-index: var(--sp-layer-panel); }
+.sp-pos-center-right{ position: fixed; right: var(--sp-float-safe-right); top: 50%; transform: translateY(-50%); z-index: var(--sp-layer-panel); }
+
+
+/* Code block helper (docs/demos) */
+.sp-codeblock{
+  max-height: 180px;
+  overflow: auto;
+}
