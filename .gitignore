@@ -1,8 +1,33 @@
-﻿node_modules/
+# --- Secrets / local env ---
+.env
+.env.*
+!.env.example
+
+# --- Node / JS ---
+node_modules/
 dist/
 build/
 .cache/
-.DS_Store
-.env
-.env.*
+.next/
+out/
+coverage/
+.nyc_output/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.envrc
+.pytest_cache/
+
+# --- Logs ---
+logs/
 *.log
+
+# --- Editors / OS ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
