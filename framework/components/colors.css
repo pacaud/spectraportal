@@ -1,0 +1,70 @@
+/* Spectra component: colors demo helpers
+   Goal: preview token values with NO inline styles.
+   Keep everything token-driven (var(--sp-*)). */
+
+.sp-color-grid{
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--sp-4) * 12), 1fr));
+}
+
+.sp-color-swatch{
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.sp-color-meta{
+  display: flex;
+  gap: var(--sp-2);
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.sp-color-chip{
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-2, var(--sp-2));
+  height: calc(var(--sp-4) * 2);
+}
+
+.sp-shadow-chip{
+  background: var(--sp-surface);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-2, var(--sp-2));
+  height: calc(var(--sp-4) * 2);
+}
+
+/* Color chips */
+.sp-color-chip--bg{ background: var(--sp-bg); }
+.sp-color-chip--surface{ background: var(--sp-surface); }
+.sp-color-chip--elev{ background: var(--sp-elev); }
+.sp-color-chip--elev2{ background: var(--sp-elev-2); }
+
+.sp-color-chip--text{ background: var(--sp-text); }
+.sp-color-chip--muted{ background: var(--sp-muted); }
+.sp-color-chip--subtle{ background: var(--sp-subtle); }
+
+.sp-color-chip--border{ background: var(--sp-border); }
+.sp-color-chip--border-strong{ background: var(--sp-border-strong); }
+
+.sp-color-chip--accent{ background: var(--sp-accent); }
+.sp-color-chip--accent-2{ background: var(--sp-accent-2); }
+.sp-color-chip--accent-3{ background: var(--sp-accent-3); }
+
+.sp-color-chip--success{ background: var(--sp-success); }
+.sp-color-chip--warning{ background: var(--sp-warning); }
+.sp-color-chip--danger{ background: var(--sp-danger); }
+.sp-color-chip--info{ background: var(--sp-info); }
+
+/* Shadow previews */
+.sp-shadow-chip--1{ box-shadow: var(--sp-shadow-1); }
+.sp-shadow-chip--2{ box-shadow: var(--sp-shadow-2); }
+.sp-shadow-chip--3{ box-shadow: var(--sp-shadow-3); }
+
+/* Link sample (use token directly so you can visually confirm it) */
+.sp-color-link{
+  color: var(--sp-link);
+}
+.sp-color-link:hover{
+  text-decoration: underline;
+}

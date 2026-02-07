@@ -3,78 +3,147 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra Demo — Tokens Preview</title>
+  <title>Spectra — Tokens Preview</title>
 
-  <!--
-    NOTE:
-    Spectra is currently TOKENS-ONLY + minimal base/reset.
-    This demo relies on base/reset for global defaults.
-    Inline styles are used ONLY to preview specific token values.
-  -->
-
+  <!-- Framework CSS (CDN) -->
   <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.css" />
-<link rel="stylesheet" href="/theme.css">
+  <!-- Site theme (local to portal / your repo root) -->
+  <link rel="stylesheet" href="/theme.css" />
+  <!-- Demo helpers (lives in framework/components/) -->
+  <link rel="stylesheet" href="../components/colors.css" />
 </head>
 
 <body>
+  <main class="sp-container sp-content sp-stack">
+    <header class="sp-stack">
+      <h1>Spectra — Tokens Preview</h1>
+      <p class="sp-muted">
+        Token swatches rendered via component CSS (no inline styles). Uses <code>var(--sp-*)</code>.
+      </p>
+    </header>
 
-<h1 style="font-family:var(--sp-font-display); margin: 0 0 var(--sp-3) 0;">
-  Spectra — Tokens Preview
-</h1>
+    <section class="sp-stack">
+      <h2>Surfaces & text</h2>
+      <div class="sp-color-grid">
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--bg"></div>
+          <div class="sp-color-meta"><code>--sp-bg</code></div>
+        </article>
 
-<p style="margin: 0 0 var(--sp-4) 0;">
-  This page previews token values using inline styles only.
-  <code style="font-family:var(--sp-font-mono);">--sp-*</code>
-</p>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--surface"></div>
+          <div class="sp-color-meta"><code>--sp-surface</code></div>
+        </article>
 
-<!-- Stacked blocks (no borders / grids / components). Just tokens. -->
-<div style="background:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-bg</div>
-<div style="background:var(--sp-surface); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-surface</div>
-<div style="background:var(--sp-elev); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-elev</div>
-<div style="background:var(--sp-elev-2); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-elev-2</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--elev"></div>
+          <div class="sp-color-meta"><code>--sp-elev</code></div>
+        </article>
 
-<div style="height: var(--sp-2);"></div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--elev2"></div>
+          <div class="sp-color-meta"><code>--sp-elev-2</code></div>
+        </article>
 
-<div style="background:var(--sp-text); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-text</div>
-<div style="background:var(--sp-muted); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-muted</div>
-<div style="background:var(--sp-subtle); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-subtle</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--text"></div>
+          <div class="sp-color-meta"><code>--sp-text</code></div>
+        </article>
 
-<div style="height: var(--sp-2);"></div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--muted"></div>
+          <div class="sp-color-meta"><code>--sp-muted</code></div>
+        </article>
 
-<div style="background:var(--sp-border); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-border</div>
-<div style="background:var(--sp-border-strong); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-border-strong</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--subtle"></div>
+          <div class="sp-color-meta"><code>--sp-subtle</code></div>
+        </article>
 
-<div style="height: var(--sp-2);"></div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--border"></div>
+          <div class="sp-color-meta"><code>--sp-border</code></div>
+        </article>
 
-<div style="background:var(--sp-accent); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-accent (Kevin)</div>
-<div style="background:var(--sp-accent-2); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-accent-2 (Vivi)</div>
-<div style="background:var(--sp-accent-3); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-accent-3 (Voxia)</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--border-strong"></div>
+          <div class="sp-color-meta"><code>--sp-border-strong</code></div>
+        </article>
+      </div>
+    </section>
 
-<div style="height: var(--sp-2);"></div>
+    <section class="sp-stack">
+      <h2>Accents</h2>
+      <div class="sp-color-grid">
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--accent"></div>
+          <div class="sp-color-meta"><code>--sp-accent</code> <span class="sp-muted">(Kevin)</span></div>
+        </article>
 
-<div style="background:var(--sp-success); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-success</div>
-<div style="background:var(--sp-warning); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-warning</div>
-<div style="background:var(--sp-danger); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-danger</div>
-<div style="background:var(--sp-info); color:var(--sp-bg); padding: var(--sp-2) var(--sp-3); border-radius: var(--sp-radius-2);">--sp-info</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--accent-2"></div>
+          <div class="sp-color-meta"><code>--sp-accent-2</code> <span class="sp-muted">(Vivi)</span></div>
+        </article>
 
-<div style="height: var(--sp-4);"></div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--accent-3"></div>
+          <div class="sp-color-meta"><code>--sp-accent-3</code> <span class="sp-muted">(Voxia)</span></div>
+        </article>
+      </div>
+    </section>
 
-<p style="margin: 0 0 var(--sp-3) 0;">
-  Shadow tokens (preview blocks):
-</p>
+    <section class="sp-stack">
+      <h2>Feedback</h2>
+      <div class="sp-color-grid">
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--success"></div>
+          <div class="sp-color-meta"><code>--sp-success</code></div>
+        </article>
 
-<div style="background:var(--sp-elev-2); padding: var(--sp-3); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-1);">--sp-shadow-1</div>
-<div style="height: var(--sp-2);"></div>
-<div style="background:var(--sp-elev-2); padding: var(--sp-3); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-2);">--sp-shadow-2</div>
-<div style="height: var(--sp-2);"></div>
-<div style="background:var(--sp-elev-2); padding: var(--sp-3); border-radius: var(--sp-radius-2); box-shadow: var(--sp-shadow-3);">--sp-shadow-3</div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--warning"></div>
+          <div class="sp-color-meta"><code>--sp-warning</code></div>
+        </article>
 
-<div style="height: var(--sp-4);"></div>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--danger"></div>
+          <div class="sp-color-meta"><code>--sp-danger</code></div>
+        </article>
 
-<p style="margin: 0;">
-  Link sample:
-  <a href="#" style="color:var(--sp-link);">--sp-link</a>
-</p>
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-color-chip sp-color-chip--info"></div>
+          <div class="sp-color-meta"><code>--sp-info</code></div>
+        </article>
+      </div>
+    </section>
 
+    <section class="sp-stack">
+      <h2>Shadow tokens</h2>
+      <div class="sp-color-grid">
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-shadow-chip sp-shadow-chip--1"></div>
+          <div class="sp-color-meta"><code>--sp-shadow-1</code></div>
+        </article>
+
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-shadow-chip sp-shadow-chip--2"></div>
+          <div class="sp-color-meta"><code>--sp-shadow-2</code></div>
+        </article>
+
+        <article class="sp-card sp-color-swatch">
+          <div class="sp-shadow-chip sp-shadow-chip--3"></div>
+          <div class="sp-color-meta"><code>--sp-shadow-3</code></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="sp-stack">
+      <h2>Link token</h2>
+      <p>
+        <a href="#" class="sp-color-link">Link sample</a>
+        <span class="sp-muted">— <code>--sp-link</code></span>
+      </p>
+    </section>
+  </main>
 </body>
 </html>
