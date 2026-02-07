@@ -1,0 +1,28 @@
+/* SpectraPortal theme.css (single theme)
+   Loaded AFTER Spectra CSS to override tokens + base surfaces.
+   Keep this file lightweight: tokens first, then tiny global hooks.
+*/
+
+:root{
+  /* Core surface + text */
+  --sp-text: #f5f5f7;
+  --sp-surface-2: #141419;
+  --sp-line: rgba(255,255,255,.12);
+
+  /* Shape */
+  --sp-radius-md: 12px;
+  --sp-radius-lg: 18px;
+
+  /* Focus */
+  --sp-focus-ring: 0 0 0 3px rgba(124,92,255,.40);
+
+  /* Optional spacing tweaks (leave commented unless needed)
+  --sp-2: 8px;
+  --sp-3: 12px;
+  */
+}
+
+html, body{
+  background: #0b0b0c;
+  color: var(--sp-text);
+}
