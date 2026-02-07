@@ -1,18 +1,24 @@
 # SpectraPortal
 
-Public-facing home for **Spectra** (design system / UI framework) and related docs + tooling.
+Public-facing home for **Spectra** — a design system / UI framework (tokens + utilities + components) plus docs and demos.
+
+**In the larger setup:**
+- `spectraportal.dev` = the equipment (framework, docs, tools)
+- `codecruncherstechnologies.com` = the play (services/portfolio)
+- `hollowverse.studio` = the stage (curated world / studio presence)
 
 ## What this repo is for
 - Framework code (tokens, utilities, components)
 - Documentation site / examples
 - Public issues + roadmap
 
+## Repo layout (high level)
+- `framework/` — core framework code
+- `index.html` / `theme.css` — simple landing/demo scaffolding
+
 ## Quick start
 ```bash
-# install deps
 npm install
-
-# dev server (edit as needed)
 npm run dev
 ```
 

@@ -5,14 +5,17 @@ Thanks for helping improve this project.
 ## Ground rules
 - Keep changes focused and small when possible.
 - Avoid committing secrets (API keys, tokens, `.env`, private URLs).
-- Prefer clear commit messages.
+- Prefer clear commit messages (what/why).
 
-## How to contribute
+## Typical workflow
 1. Fork the repo (or create a branch if you have access)
 2. Create a feature branch:
    - `git checkout -b feature/your-change`
 3. Make your changes
-4. Run tests / build (if the project has them)
+4. Run checks (if available):
+   - `npm test`
+   - `npm run lint`
+   - `npm run build`
 5. Open a Pull Request with:
    - what you changed
    - why you changed it
@@ -20,4 +23,4 @@ Thanks for helping improve this project.
 
 ## Code style
 - Match the existing style in the repo.
-- If formatting tools exist, please run them before opening a PR.
+- If formatting tools exist (Prettier/ESLint), please run them before opening a PR.
