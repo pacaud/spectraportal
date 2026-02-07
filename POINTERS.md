@@ -1,41 +1,36 @@
-# POINTERS — pacaud/spectraportal
+# POINTERS — SpectraPortal
 
-This file is a *single-source pointer map* so an assistant can open repo files reliably via Raw URLs.
+default_branch: main
+repo: https://github.com/pacaud/spectraportal
 
-## Repo
-- repo: pacaud/spectraportal
-- default_branch: main
+## How Voxia should resolve “open/display <file>”
+- If you want verbatim source and the file is HTML:
+  - Use `source_mirror` (GitHub raw HTML can render instead of showing literal `<html>`).
+- For CSS/JS/MD:
+  - `raw_url` usually works.
+- If a pointer is missing:
+  - Add one small entry here (don’t paste giant link lists).
 
-## Raw base (DRY)
-RAW_BASE:
-- https://raw.githubusercontent.com/pacaud/spectraportal/main/
+## Key entrypoints
 
-## How to build any raw link
-- raw_url = RAW_BASE + <path>
+- id: landing_html
+  runtime: index.html
+  source_mirror: source/index.html.txt
+  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/index.html
 
-Example:
-- RAW_BASE + "index.html"
-- => https://raw.githubusercontent.com/pacaud/spectraportal/main/index.html
+- id: landing_theme
+  runtime: theme.css
+  source_mirror: source/theme.css.txt
+  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/theme.css
 
-## Key entrypoints (paths)
-### Site
-- index: index.html
-- theme: theme.css
+- id: readme
+  runtime: README.md
+  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/README.md
 
-### Docs / policy
-- readme: README.md
-- contributing: CONTRIBUTING.md
-- security: SECURITY.md
-- license: LICENSE
+- id: contributing
+  runtime: CONTRIBUTING.md
+  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/CONTRIBUTING.md
 
-### Dev / config (safe public)
-- env_example: .env.example
-- gitignore: .gitignore
-
-### Major folders
-- framework_dir: framework/
-
-## Assistant workflow notes
-- If Kevin says “open spectra index”, open: RAW_BASE + "index.html"
-- If Kevin says “open theme”, open: RAW_BASE + "theme.css"
-- If a file isn’t listed here, ask for its repo-relative path (then open RAW_BASE + that path).
+## Notes
+- `source/` is the “chat-safe mirrors” folder.
+- Mirrors are verbatim copies (same content, `.txt` extension).
