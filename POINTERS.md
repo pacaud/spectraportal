@@ -1,36 +1,34 @@
 # POINTERS — SpectraPortal
 
-default_branch: main
 repo: https://github.com/pacaud/spectraportal
+default_branch: main
 
-## How Voxia should resolve “open/display <file>”
-- If you want verbatim source and the file is HTML:
-  - Use `source_mirror` (GitHub raw HTML can render instead of showing literal `<html>`).
-- For CSS/JS/MD:
-  - `raw_url` usually works.
-- If a pointer is missing:
-  - Add one small entry here (don’t paste giant link lists).
+## Resolver rules (Voxia)
+- HTML: prefer `source_mirror` for verbatim display
+- CSS: raw is fine, mirror is also fine
+- If you want me to display text in chat: paste the `raw_mirror_url`
 
-## Key entrypoints
+## Entrypoints
 
 - id: landing_html
   runtime: index.html
   source_mirror: source/index.html.txt
   raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/index.html
+  raw_mirror_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/source/index.html.txt
 
 - id: landing_theme
   runtime: theme.css
   source_mirror: source/theme.css.txt
   raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/theme.css
+  raw_mirror_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/source/theme.css.txt
+
+## Meta
+
+- id: pointers
+  runtime: POINTERS.md
+  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/POINTERS.md
 
 - id: readme
   runtime: README.md
   raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/README.md
 
-- id: contributing
-  runtime: CONTRIBUTING.md
-  raw_url: https://raw.githubusercontent.com/pacaud/spectraportal/main/CONTRIBUTING.md
-
-## Notes
-- `source/` is the “chat-safe mirrors” folder.
-- Mirrors are verbatim copies (same content, `.txt` extension).
