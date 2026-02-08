@@ -1,28 +1,166 @@
-/* SpectraPortal theme.css (single theme)
-   Loaded AFTER Spectra CSS to override tokens + base surfaces.
-   Keep this file lightweight: tokens first, then tiny global hooks.
+/* SpectraPortal site theme (loads after /framework/cdn/v0.1/theme.min.css)
+   Scope: homepage polish only (hero + snippet + spark dust)
 */
 
 :root{
-  /* Core surface + text */
-  --sp-text: #f5f5f7;
-  --sp-surface-2: #141419;
-  --sp-line: rgba(255,255,255,.12);
-
-  /* Shape */
-  --sp-radius-md: 12px;
-  --sp-radius-lg: 18px;
-
-  /* Focus */
-  --sp-focus-ring: 0 0 0 3px rgba(124,92,255,.40);
-
-  /* Optional spacing tweaks (leave commented unless needed)
-  --sp-2: 8px;
-  --sp-3: 12px;
-  */
+  --sp-hero-ink: var(--sp-text, rgba(255,255,255,.92));
+  --sp-hero-muted: rgba(255,255,255,.72);
+  --sp-hero-art-opacity: .55;
+  --sp-hero-spark-ink: rgba(255,255,255,.14);
 }
 
-html, body{
-  background: #0b0b0c;
-  color: var(--sp-text);
+/* --- Hero: center horizontally + vertically --- */
+.sp-hero{
+  position: relative;
+  overflow: clip;
+
+  min-height: min(560px, 72vh);
+  display: grid;
+  align-items: center;
+}
+
+/* Top-left spark dust (subtle) */
+.sp-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.22;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(255,255,255,.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 14% 26%, rgba(255,255,255,.10) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 8%  30%, rgba(255,255,255,.08) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 18% 14%, rgba(255,255,255,.07) 0 1px, transparent 3px),
+    radial-gradient(circle at 22% 22%, rgba(255,255,255,.06) 0 1px, transparent 3px);
+}
+
+/* content stack */
+.sp-hero__inner{
+  position:relative;
+  z-index:2;
+
+  text-align:center;
+  margin-inline:auto;
+
+  max-width: 62rem;
+  padding: var(--sp-space-10, 3rem) var(--sp-space-8, 2rem);
+  color: var(--sp-hero-ink);
+}
+
+.sp-hero__kicker{
+  margin: 0 0 var(--sp-space-3, .75rem);
+  color: var(--sp-hero-muted);
+  letter-spacing: .02em;
+}
+
+.sp-hero__title{
+  margin: 0 0 var(--sp-space-3, .75rem);
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  color: var(--sp-hero-ink);
+}
+
+.sp-hero__sub{
+  margin: 0 0 var(--sp-space-6, 1.5rem);
+  max-width: 40rem;
+  margin-inline: auto;
+  color: var(--sp-hero-muted);
+}
+
+/* buttons row */
+.sp-hero__actions{
+  display:flex;
+  justify-content:center;
+  gap: var(--sp-space-3, .75rem);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-space-5, 1.25rem);
+}
+
+/* underline accent */
+.sp-underline{
+  text-decoration: underline;
+  text-decoration-thickness: .09em;
+  text-underline-offset: .2em;
+  text-decoration-color: rgba(255,255,255,.55);
+}
+
+/* Make the snippet scrollbar match the dark theme */
+.sp-hero__snippet{
+  scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.06); /* Firefox */
+  scrollbar-width: thin; /* Firefox */
+  max-width: 40rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 18px 50px rgba(0,0,0,.25);
+}
+
+.sp-hero__snippet::-webkit-scrollbar{
+  height: 10px;
+}
+.sp-hero__snippet::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+}
+.sp-hero__snippet::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.22);
+  border-radius: 999px;
+}
+.sp-hero__snippet::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,.32);
+}
+
+@supports (color: color-mix(in srgb, white 50%, transparent)){
+  .sp-underline{
+    text-decoration-color: color-mix(in srgb, var(--sp-primary, #7bdcff) 65%, transparent);
+  }
+}
+
+/* ghost buttons: a touch more presence */
+.sp-btn--ghost{
+  background: rgba(255,255,255,.03);
+  border-color: rgba(255,255,255,.10);
+}
+.sp-btn--ghost:hover{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.16);
+}
+
+/* CDN snippet block */
+.sp-hero__snippet{
+  margin: 0 auto;
+  padding: var(--sp-space-4, 1rem) var(--sp-space-5, 1.25rem);
+  max-width: 44rem;
+
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: var(--sp-radius-3, 12px);
+
+  color: rgba(255,255,255,.82);
+  font-size: .92rem;
+  line-height: 1.35;
+
+  overflow:auto;
+  white-space: pre;
+}
+.sp-hero__snippet code{
+  font-family: var(--sp-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+}
+
+/* Decorative art */
+.sp-hero__art{
+  position:absolute;
+  top: calc(-1 * var(--sp-space-9, 2.25rem));
+  right: calc(-1 * var(--sp-space-9, 2.25rem));
+  width: min(560px, 62vw);
+  max-width: 560px;
+  pointer-events:none;
+  z-index:1;
+  opacity: var(--sp-hero-art-opacity);
+}
+.sp-hero__spark{
+  width: 100%;
+  height: auto;
+  display:block;
+  color: var(--sp-hero-spark-ink);
 }
