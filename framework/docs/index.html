@@ -4,23 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spectra Docs — Start Here</title>
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css">
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css">
+  <link rel="stylesheet" href="theme.css">
+
 </head>
 <body>
-  <header class="sp-hero sp-hero--surface">
-    <div class="sp-hero__inner sp-stack">
-      <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
-      <h1 class="sp-hero__title">Start Here</h1>
-      <p class="sp-hero__sub sp-muted">
-        Spectra is a small, token-first CSS framework. Most styling flows from variables (<code>--sp-*</code>).
-      </p>
-      <nav class="sp-hero__actions" aria-label="Primary">
-        <a class="sp-btn sp-btn--ghost" href="../demos/index.html">Open Demos</a>
-        <a class="sp-btn sp-btn--primary" href="./components.html">Components</a>
-      </nav>
+
+<a class="sp-skip" href="#content">Skip to content</a>
+
+<header class="sp-topnav" role="banner">
+  <div class="sp-topnav__inner">
+    <a class="sp-topnav__brand" href="/" aria-label="SpectraPortal home">
+      <span class="sp-topnav__brandName">Spectra</span>
+      <span class="sp-topnav__brandTag">Framework Docs</span>
+    </a>
+
+    <nav class="sp-topnav__links" aria-label="Docs navigation">
+      <a class="sp-btn sp-btn--ghost" href="/framework/docs/" aria-current="page">Start Here</a>
+      <a class="sp-btn sp-btn--ghost" href="/framework/docs/tokens/">Tokens</a>
+      <a class="sp-btn sp-btn--ghost" href="/framework/docs/base/">Base</a>
+      <a class="sp-btn sp-btn--ghost" href="/framework/docs/components/">Components</a>
+      <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Demos</a>
+    </nav>
+
+    <div class="sp-topnav__actions">
+      <button class="sp-btn sp-btn--soft" type="button" data-copy-cdn>
+        Copy CDN
+      </button>
+      <a class="sp-btn sp-btn--primary" href="/">Portal</a>
     </div>
-  </header>
+  </div>
+</header>
+
+<main id="content" class="sp-docs">
+  <!-- your docs content continues... -->
+</main>
+
 
   <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
     <section class="sp-stack">
