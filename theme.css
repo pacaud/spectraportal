@@ -69,3 +69,6 @@
   border-color: rgba(255,255,255,.075);
   box-shadow: 0 18px 60px rgba(0,0,0,.38);
 }
+
+.portal-brand--ghost{ display:none; }
+.portal-top__inner{ justify-content: flex-end; }
