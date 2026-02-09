@@ -1,5 +1,5 @@
 /* SpectraPortal site theme (loads after /framework/cdn/v0.1/theme.min.css)
-   Scope: homepage polish only (hero + snippet + spark dust)
+   Scope: homepage polish only (hero + sections + snippet/code).
 */
 
 :root{
@@ -9,8 +9,11 @@
   --sp-hero-spark-ink: rgba(255,255,255,.14);
 }
 
-/* --- Hero: center horizontally + vertically --- */
-.sp-hero{
+/* =========================================================
+   HERO (scoped to homepage hero only)
+   ========================================================= */
+
+.portal-hero.sp-hero{
   position: relative;
   overflow: hidden;
   min-height: min(560px, 72vh);
@@ -18,8 +21,14 @@
   align-items: center;
 }
 
+/* Kill-switch: hide redundant hero UI (top nav already has it) */
+.portal-hero .sp-hero__kicker,
+.portal-hero .sp-hero__actions{
+  display: none !important;
+}
+
 /* Top-left spark dust (subtle) */
-.sp-hero::before{
+.portal-hero::before{
   content:"";
   position:absolute;
   inset:0;
@@ -35,7 +44,7 @@
 }
 
 /* content stack */
-.sp-hero__inner{
+.portal-hero .sp-hero__inner{
   position:relative;
   z-index:2;
 
@@ -47,85 +56,128 @@
   color: var(--sp-hero-ink);
 }
 
-.sp-hero__kicker{
-  margin: 0 0 var(--sp-space-3, .75rem);
-  color: var(--sp-hero-muted);
-  letter-spacing: .02em;
-}
-
-.sp-hero__title{
+.portal-hero .sp-hero__title{
   margin: 0 0 var(--sp-space-3, .75rem);
   font-size: clamp(2.2rem, 4vw, 3.25rem);
   line-height: 1.05;
   color: var(--sp-hero-ink);
 }
 
-.sp-hero__sub{
-  margin: 0 0 var(--sp-space-6, 1.5rem);
+.portal-hero .sp-hero__sub{
+  margin: 0;
   max-width: 40rem;
   margin-inline: auto;
   color: var(--sp-hero-muted);
 }
 
-/* buttons row */
-.sp-hero__actions{
-  display:flex;
-  justify-content:center;
-  gap: var(--sp-space-3, .75rem);
-  flex-wrap: wrap;
-  margin-bottom: var(--sp-space-5, 1.25rem);
+/* Decorative art container (works with either <svg> or <img>) */
+.portal-hero .sp-hero__art,
+.portal-hero .portal-hero__art{
+  position:absolute;
+  top: calc(-1 * var(--sp-space-9, 2.25rem));
+  right: calc(-1 * var(--sp-space-9, 2.25rem));
+  width: min(560px, 62vw);
+  max-width: 560px;
+  pointer-events:none;
+  z-index:1;
+  opacity: var(--sp-hero-art-opacity);
 }
 
-/* underline accent */
-.sp-underline{
-  text-decoration: underline;
-  text-decoration-thickness: .09em;
-  text-underline-offset: .2em;
-  text-decoration-color: rgba(255,255,255,.55);
+/* If you keep the <svg class="sp-hero__spark"> */
+.portal-hero .sp-hero__spark{
+  width: 100%;
+  height: auto;
+  display:block;
+  color: var(--sp-hero-spark-ink);
 }
 
-/* Make the snippet scrollbar match the dark theme */
-.sp-hero__snippet{
-  scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.06); /* Firefox */
-  scrollbar-width: thin; /* Firefox */
-  max-width: 40rem;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 18px 50px rgba(0,0,0,.25);
+/* If you switch to <img src="/assets/hero_spark.symbol.svg"> */
+.portal-hero .sp-hero__art img,
+.portal-hero .portal-hero__art img{
+  width: 100%;
+  height: auto;
+  display:block;
+  /* makes dark SVG visible on dark bg */
+  filter: invert(1) brightness(1.05) contrast(1.05);
 }
 
-.sp-hero__snippet::-webkit-scrollbar{
-  height: 10px;
-}
-.sp-hero__snippet::-webkit-scrollbar-track{
-  background: rgba(255,255,255,.06);
-  border-radius: 999px;
-}
-.sp-hero__snippet::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.22);
-  border-radius: 999px;
-}
-.sp-hero__snippet::-webkit-scrollbar-thumb:hover{
-  background: rgba(255,255,255,.32);
-}
+/* =========================================================
+   BUTTONS (scoped to homepage header + hero only)
+   ========================================================= */
 
-@supports (color: color-mix(in srgb, white 50%, transparent)){
-  .sp-underline{
-    text-decoration-color: color-mix(in srgb, var(--sp-primary, #7bdcff) 65%, transparent);
-  }
-}
-
-/* ghost buttons: a touch more presence */
-.sp-btn--ghost{
+.portal-top .sp-btn--ghost,
+.portal-hero .sp-btn--ghost{
   background: rgba(255,255,255,.03);
   border-color: rgba(255,255,255,.10);
 }
-.sp-btn--ghost:hover{
+.portal-top .sp-btn--ghost:hover,
+.portal-hero .sp-btn--ghost:hover{
   background: rgba(255,255,255,.06);
   border-color: rgba(255,255,255,.16);
 }
 
-/* CDN snippet block */
+/* =========================================================
+   SECTIONS / GRID (support both older .sp-section/.sp-features AND portal-* markup)
+   ========================================================= */
+
+.sp-section,
+.portal-section{
+  padding: 64px 0 80px;
+  background:
+    radial-gradient(1200px 600px at 50% 0%,
+    rgba(255,255,255,0.06),
+    rgba(0,0,0,0.55) 55%,
+    rgba(0,0,0,0.78) 100%);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.sp-features,
+.portal-grid{
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px){
+  .sp-features,
+  .portal-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px){
+  .sp-features,
+  .portal-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* IMPORTANT: don't globally restyle every .sp-card in the framework.
+   Only polish cards inside homepage sections. */
+.sp-section .sp-card,
+.portal-section .sp-card{
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.sp-section .sp-card h2,
+.portal-section .sp-card h2{
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+.sp-section .sp-card p,
+.portal-section .sp-card p{
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   QUICK START CODE (your HTML uses .portal-code; older version used .sp-hero__snippet)
+   ========================================================= */
+
+.portal-code,
 .sp-hero__snippet{
   margin: 0 auto;
   padding: var(--sp-space-4, 1rem) var(--sp-space-5, 1.25rem);
@@ -141,62 +193,33 @@
 
   overflow:auto;
   white-space: pre;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 18px 50px rgba(0,0,0,.25);
 }
+
+.portal-code code,
 .sp-hero__snippet code{
   font-family: var(--sp-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
 }
 
-/* Decorative art */
-.sp-hero__art{
-  position:absolute;
-  top: calc(-1 * var(--sp-space-9, 2.25rem));
-  right: calc(-1 * var(--sp-space-9, 2.25rem));
-  width: min(560px, 62vw);
-  max-width: 560px;
-  pointer-events:none;
-  z-index:1;
-  opacity: var(--sp-hero-art-opacity);
+/* Scrollbar polish (safe) */
+.portal-code{
+  scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.06);
+  scrollbar-width: thin;
 }
-.sp-hero__spark{
-  width: 100%;
-  height: auto;
-  display:block;
-  color: var(--sp-hero-spark-ink);
+.portal-code::-webkit-scrollbar{ height: 10px; }
+.portal-code::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
 }
-
-.sp-section{
-  padding: 64px 0 80px;
-  background:
-    radial-gradient(1200px 600px at 50% 0%,
-    rgba(255,255,255,0.06),
-    rgba(0,0,0,0.55) 55%,
-    rgba(0,0,0,0.78) 100%);
-  border-top: 1px solid rgba(255,255,255,0.06);
+.portal-code::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.22);
+  border-radius: 999px;
+}
+.portal-code::-webkit-scrollbar-thumb:hover{
+  background: rgba(255,255,255,.32);
 }
 
-.sp-features{
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.sp-card{
-  padding: 16px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.sp-card h2{ margin: 0 0 8px; font-size: 18px; }
-.sp-card p{ margin: 0; opacity: 0.9; }
-
-.sp-quickstart{ margin-top: 32px; }
-
-@media (max-width: 900px){
-  .sp-features{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 520px){
-  .sp-features{ grid-template-columns: 1fr; }
-}
 
