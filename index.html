@@ -4,128 +4,146 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SpectraPortal.dev</title>
-  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css">
-  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css">
+
+  <!-- Spectra CDN -->
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css" />
+
+  <!-- Site layer -->
   <link rel="stylesheet" href="/theme.css" />
 </head>
 <body>
 
+  <!-- Top bar -->
+  <header class="portal-top">
+    <div class="sp-container portal-top__inner">
+      <a class="portal-brand sp-muted" href="/">CodeCrunchers • SpectraPortal</a>
 
-<header class="sp-hero sp-hero--surface">
+      <nav class="portal-top__nav" aria-label="Primary">
+        <a class="sp-btn sp-btn--ghost" href="/framework/docs/">Docs</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Demos</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/docs/components.html">Components</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="sp-hero__inner">
-    <p class="sp-hero__kicker">CodeCrunchers • SpectraPortal</p>
-
-    <h1 class="sp-hero__title">
-      Spectra <span class="sp-underline">Framework</span>
-    </h1>
-
-    <p class="sp-hero__sub">
-      Token-driven CSS + components — built for fast theming, clean UI, and zero fuss.
-    </p>
-
-    <nav class="sp-hero__actions" aria-label="Spectra links">
-      <a class="sp-btn sp-btn--primary" href="/framework/docs/">Docs</a>
-      <a class="sp-btn sp-btn--primary" href="../docs/components.html">Components</a>
-      <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Demos</a>
-    </nav>
-
-  </div>
-
-  <div class="sp-hero__art" aria-hidden="true">
-    <svg class="sp-hero__spark"
+  <!-- Hero -->
+  <header class="sp-hero portal-hero">
+    <div class="sp-hero__inner sp-stack sp-text-center">
+      <h1 class="sp-hero__title">Spectra Framework</h1>
+      <p class="sp-hero__sub sp-muted">
+        Token-driven CSS + components — built for fast theming, clean UI, and zero fuss.
+      </p>
+    </div>
+    <div class="sp-hero__art" aria-hidden="true">
+     <svg class="sp-hero__spark"
          aria-hidden="true"
          focusable="false"
          viewBox="0 0 1200 600"
          preserveAspectRatio="xMaxYMin meet">
       <use href="/assets/hero_spark.symbol.svg#hero-spark"
            xlink:href="/assets/hero_spark.symbol.svg#hero-spark"></use>
-    </svg>
+     </svg>
   </div>
-</header>
+  </header>
 
-<main class="sp-section">
-  <div class="wrap">
-
+  <main class="portal-main">
     <!-- Features -->
-    <section class="sp-block" id="features">
-      <h2 class="sp-h2">Built for speed and clarity</h2>
-      <p class="sp-lead muted">Tokens first, clean defaults, and a tiny learning curve.</p>
+    <section class="portal-section">
+      <div class="sp-container sp-stack">
+        <h2>Built for speed and clarity</h2>
+        <p class="sp-muted">Tokens first, clean defaults, and a tiny learning curve.</p>
 
-      <div class="sp-grid4">
-        <article class="sp-card">
-          <h3>Token system</h3>
-          <p>Color, spacing, radius, shadows—everything stays consistent.</p>
-        </article>
-        <article class="sp-card">
-          <h3>Components</h3>
-          <p>Buttons, cards, forms, drawers—practical UI you can ship.</p>
-        </article>
-        <article class="sp-card">
-          <h3>Theming</h3>
-          <p>Swap themes without wrestling specificity.</p>
-        </article>
-        <article class="sp-card">
-          <h3>CDN ready</h3>
-          <p>No build step required—drop in the CSS and go.</p>
-        </article>
+        <div class="portal-grid">
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>Token system</h3>
+              <p class="sp-muted">Color, spacing, radius, shadows — everything stays consistent.</p>
+            </div>
+          </article>
+
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>Components</h3>
+              <p class="sp-muted">Buttons, cards, forms, drawers — practical UI you can ship.</p>
+            </div>
+          </article>
+
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>Theming</h3>
+              <p class="sp-muted">Swap themes without wrestling specificity.</p>
+            </div>
+          </article>
+
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>CDN ready</h3>
+              <p class="sp-muted">No build step required — drop in the CSS and go.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Quick Start -->
-    <section class="sp-block" id="quickstart">
-      <h2 class="sp-h2">Quick Start</h2>
-      <p class="sp-lead muted">Paste these into your <code>&lt;head&gt;</code>.</p>
+    <!-- Quick start -->
+    <section class="portal-section">
+      <div class="sp-container sp-stack">
+        <h2>Quick Start</h2>
+        <p class="sp-muted">Paste these into your <code>&lt;head&gt;</code>.</p>
 
-      <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css"&gt;
+        <article class="sp-card sp-card--elev">
+          <div class="sp-card__body sp-stack">
+            <pre class="portal-code"><code>&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css"&gt;
 &lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css"&gt;</code></pre>
 
-      <div class="sp-actions">
-        <a class="sp-btn sp-btn--primary" href="/framework/docs/">Read the Docs</a>
-        <a class="sp-btn" href="/framework/demos/">Browse Demos</a>
-      </div>
-    </section>
-
-    <!-- Examples -->
-    <section class="sp-block" id="examples">
-      <h2 class="sp-h2">What it feels like</h2>
-      <p class="sp-lead muted">A few quick building blocks to show the vibe.</p>
-
-      <div class="sp-grid2">
-        <article class="sp-card">
-          <h3>Card layout</h3>
-          <p>Soft borders, quiet depth, readable spacing.</p>
-          <div class="sp-miniRow">
-            <span class="sp-pill">Tokens</span>
-            <span class="sp-pill">UI</span>
-            <span class="sp-pill">Theme</span>
-          </div>
-        </article>
-
-        <article class="sp-card">
-          <h3>Buttons</h3>
-          <p>Nice defaults with obvious hover/focus.</p>
-          <div class="sp-actions">
-            <button class="sp-btn sp-btn--primary" type="button">Primary</button>
-            <button class="sp-btn" type="button">Secondary</button>
+            <div class="portal-inline">
+              <a class="sp-btn sp-btn--primary" href="/framework/docs/">Read the Docs</a>
+              <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Browse Demos</a>
+            </div>
           </div>
         </article>
       </div>
     </section>
 
-  </div>
-</main>
+    <!-- Vibe -->
+    <section class="portal-section">
+      <div class="sp-container sp-stack">
+        <h2>What it feels like</h2>
+        <p class="sp-muted">A few quick building blocks to show the vibe.</p>
 
-<footer class="sp-footer">
-  <div class="wrap muted">
-    <p>© <span id="y"></span> Code Crunchers Technologies • SpectraPortal</p>
-  </div>
-</footer>
+        <div class="portal-grid">
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>Card layout</h3>
+              <p class="sp-muted">Soft borders, quiet depth, readable spacing.</p>
+              <p class="sp-muted">Tokens UI Theme</p>
+            </div>
+          </article>
 
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+          <article class="sp-card sp-card--elev">
+            <div class="sp-card__body sp-stack">
+              <h3>Buttons</h3>
+              <p class="sp-muted">Nice defaults with obvious hover/focus.</p>
+              <div class="portal-inline">
+                <a class="sp-btn sp-btn--primary" href="#">Primary</a>
+                <a class="sp-btn sp-btn--ghost" href="#">Secondary</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer class="portal-footer">
+    <div class="sp-container sp-muted">
+      <p>© <span id="y"></span> Code Crunchers Technologies • SpectraPortal</p>
+    </div>
+  </footer>
 
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
