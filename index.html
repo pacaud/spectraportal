@@ -47,5 +47,88 @@
   </div>
 </header>
 
+<main class="sp-section">
+  <div class="wrap">
+
+    <!-- Features -->
+    <section class="sp-block" id="features">
+      <h2 class="sp-h2">Built for speed and clarity</h2>
+      <p class="sp-lead muted">Tokens first, clean defaults, and a tiny learning curve.</p>
+
+      <div class="sp-grid4">
+        <article class="sp-card">
+          <h3>Token system</h3>
+          <p>Color, spacing, radius, shadows—everything stays consistent.</p>
+        </article>
+        <article class="sp-card">
+          <h3>Components</h3>
+          <p>Buttons, cards, forms, drawers—practical UI you can ship.</p>
+        </article>
+        <article class="sp-card">
+          <h3>Theming</h3>
+          <p>Swap themes without wrestling specificity.</p>
+        </article>
+        <article class="sp-card">
+          <h3>CDN ready</h3>
+          <p>No build step required—drop in the CSS and go.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Quick Start -->
+    <section class="sp-block" id="quickstart">
+      <h2 class="sp-h2">Quick Start</h2>
+      <p class="sp-lead muted">Paste these into your <code>&lt;head&gt;</code>.</p>
+
+      <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css"&gt;
+&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css"&gt;</code></pre>
+
+      <div class="sp-actions">
+        <a class="sp-btn sp-btn--primary" href="/framework/docs/">Read the Docs</a>
+        <a class="sp-btn" href="/framework/demos/">Browse Demos</a>
+      </div>
+    </section>
+
+    <!-- Examples -->
+    <section class="sp-block" id="examples">
+      <h2 class="sp-h2">What it feels like</h2>
+      <p class="sp-lead muted">A few quick building blocks to show the vibe.</p>
+
+      <div class="sp-grid2">
+        <article class="sp-card">
+          <h3>Card layout</h3>
+          <p>Soft borders, quiet depth, readable spacing.</p>
+          <div class="sp-miniRow">
+            <span class="sp-pill">Tokens</span>
+            <span class="sp-pill">UI</span>
+            <span class="sp-pill">Theme</span>
+          </div>
+        </article>
+
+        <article class="sp-card">
+          <h3>Buttons</h3>
+          <p>Nice defaults with obvious hover/focus.</p>
+          <div class="sp-actions">
+            <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+            <button class="sp-btn" type="button">Secondary</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="sp-footer">
+  <div class="wrap muted">
+    <p>© <span id="y"></span> Code Crunchers Technologies • SpectraPortal</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+
 </body>
 </html>
