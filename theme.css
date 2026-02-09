@@ -12,8 +12,7 @@
 /* --- Hero: center horizontally + vertically --- */
 .sp-hero{
   position: relative;
-  overflow: clip;
-
+  overflow: hidden;
   min-height: min(560px, 72vh);
   display: grid;
   align-items: center;
@@ -164,3 +163,36 @@
   display:block;
   color: var(--sp-hero-spark-ink);
 }
+
+.sp-section{
+  padding: 48px 0 64px;
+  background: rgba(0,0,0,0.35); /* keeps the dark vibe, but not pure black */
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.sp-features{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.sp-card{
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.sp-card h2{ margin: 0 0 8px; font-size: 18px; }
+.sp-card p{ margin: 0; opacity: 0.9; }
+
+.sp-quickstart{ margin-top: 32px; }
+
+@media (max-width: 900px){
+  .sp-features{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px){
+  .sp-features{ grid-template-columns: 1fr; }
+}
+
