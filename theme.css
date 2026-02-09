@@ -1,147 +1,71 @@
-cat > /opt/spectraportal-src/theme.css <<'CSS'
-/* SpectraPortal homepage layer (minimal overrides; let Spectra do the heavy lifting) */
+/* === Cozy polish (Vivi pass) === */
 
-:root{
-  --portal-ink: rgba(255,255,255,.92);
-  --portal-muted: rgba(255,255,255,.72);
-}
-
-/* Background: one consistent page backdrop (no per-section banding) */
-body{
-  min-height: 100vh;
-  background:
-    radial-gradient(1100px 650px at 75% -10%, rgba(80,160,255,.14), transparent 60%),
-    radial-gradient(900px 520px at 12% 10%, rgba(0,210,170,.10), transparent 62%),
-    linear-gradient(#07090d, #05060a 60%, #040506);
-}
-
-/* Top bar */
-.portal-top{
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,.35);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.portal-top__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 16px;
-  padding: 14px 0;
-}
+/* brand shouldn't look like a hyperlink all the time */
 .portal-brand{
-  color: rgba(255,255,255,.85);
   text-decoration: none;
 }
-.portal-brand:hover{ text-decoration: underline; }
-.portal-top__nav{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.portal-brand:hover{
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.35);
 }
 
-/* Hero */
+/* hero: a little taller + softer glow */
 .portal-hero{
-  position: relative;
-  overflow: hidden;
-  padding: 80px 0 56px;
+  padding: 110px 0 86px; /* more breathing room */
 }
-.portal-hero__inner{
+
+/* soft “mist” overlay so sections don’t feel like hard black slabs */
+.portal-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:
+    radial-gradient(900px 420px at 50% 0%, rgba(255,255,255,.05), transparent 70%),
+    radial-gradient(700px 520px at 15% 15%, rgba(0,210,170,.06), transparent 72%),
+    radial-gradient(760px 520px at 80% 10%, rgba(80,160,255,.08), transparent 74%);
+  opacity:.9;
+}
+
+/* make sure inner content stays above overlays */
+.portal-hero__inner,
+.portal-hero .sp-hero__inner{
   position: relative;
   z-index: 2;
 }
-.portal-hero__title{
-  color: var(--portal-ink);
-  margin: 0 0 10px;
-  font-size: clamp(2.2rem, 4vw, 3.25rem);
-  line-height: 1.05;
-}
-.portal-hero__sub{
-  color: var(--portal-muted);
-  max-width: 46rem;
-  margin: 0 auto 20px;
-}
-.portal-hero__actions{
-  display:flex;
-  justify-content:center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
 
-/* Snippet */
-.portal-snippet{
+/* snippet: support both class names (in case HTML differs) */
+.portal-snippet,
+.sp-hero__snippet{
   max-width: 52rem;
   margin: 0 auto;
   padding: 14px 16px;
   border-radius: 16px;
-  background: rgba(0,0,0,.28);
-  border: 1px solid rgba(255,255,255,.08);
-  overflow:auto;
-}
-.portal-snippet pre{ margin: 0; }
-.portal-snippet code{
-  color: rgba(255,255,255,.82);
-  font-size: .92rem;
-  line-height: 1.35;
+  background: rgba(0,0,0,.26);
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 18px 60px rgba(0,0,0,.35);
+  overflow: auto;
 }
 
-/* Optional hero art */
-.portal-hero__art{
-  position: absolute;
-  top: -22px;
-  right: -22px;
-  width: min(560px, 60vw);
-  max-width: 560px;
-  opacity: .55;
-  pointer-events: none;
-  z-index: 1;
-}
-.portal-hero__spark{
-  width: 100%;
-  height: auto;
-  display:block;
-  /* makes darker SVG visible on dark bg */
-  filter: invert(1) brightness(1.05) contrast(1.05);
+/* buttons row: support both class names */
+.portal-hero__actions,
+.sp-hero__actions{
+  gap: 12px;
 }
 
-/* Sections */
+/* sections: remove harsh banding */
 .portal-section{
-  padding: 56px 0;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-.portal-main h2{ margin: 0; }
-.portal-main .sp-muted{ max-width: 52rem; }
-
-/* Grids */
-.portal-grid{
-  display:grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin-top: 16px;
-}
-.portal-grid--2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.portal-inline{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.portal-footer{
-  padding: 28px 0 40px;
+  background: transparent !important;
   border-top: 1px solid rgba(255,255,255,.06);
 }
 
-@media (max-width: 900px){
-  .portal-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .portal-grid--2{ grid-template-columns: 1fr; }
-  .portal-hero{ padding: 64px 0 44px; }
-}
-@media (max-width: 520px){
-  .portal-grid{ grid-template-columns: 1fr; }
+/* cards: slightly softer edges + consistent depth */
+.portal-grid .sp-card{
+  border-radius: 18px;
+  background: rgba(255,255,255,.028);
+  border-color: rgba(255,255,255,.075);
+  box-shadow: 0 18px 60px rgba(0,0,0,.38);
 }
