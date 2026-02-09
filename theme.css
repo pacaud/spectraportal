@@ -222,7 +222,3 @@
   background: rgba(255,255,255,.32);
 }
 
-/* DEBUG: force hero art visible */
-.portal-hero .sp-hero__art{ opacity: 1 !important; outline: 1px dashed rgba(255,0,0,.7); }
-.portal-hero .sp-hero__spark{ color: rgba(255,255,255,.95) !important; fill: currentColor !important; stroke: currentColor !important; }
-
