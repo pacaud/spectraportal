@@ -165,8 +165,12 @@
 }
 
 .sp-section{
-  padding: 48px 0 64px;
-  background: rgba(0,0,0,0.35); /* keeps the dark vibe, but not pure black */
+  padding: 64px 0 80px;
+  background:
+    radial-gradient(1200px 600px at 50% 0%,
+    rgba(255,255,255,0.06),
+    rgba(0,0,0,0.55) 55%,
+    rgba(0,0,0,0.78) 100%);
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
