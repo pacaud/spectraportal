@@ -17,7 +17,7 @@
   <!-- Top bar -->
   <header class="portal-top">
     <div class="sp-container portal-top__inner">
-      <a class="portal-brand sp-muted" href="/">CodeCrunchers • SpectraPortal</a>
+      <a class="portal-brand" href="/">CodeCrunchers • SpectraPortal</a>
 
       <nav class="portal-top__nav" aria-label="Primary">
         <a class="sp-btn sp-btn--ghost" href="/framework/docs/">Docs</a>
@@ -28,19 +28,33 @@
   </header>
 
   <!-- Hero -->
-  <header class="sp-hero portal-hero">
-    <div class="sp-hero__inner sp-stack sp-text-center">
-      <h1 class="sp-hero__title">Spectra Framework</h1>
-      <p class="sp-hero__sub sp-muted">
+  <header class="portal-hero sp-hero">
+    <div class="sp-container portal-hero__inner sp-stack sp-text-center">
+      <h1 class="portal-hero__title">Spectra Framework</h1>
+      <p class="portal-hero__sub sp-muted">
         Token-driven CSS + components — built for fast theming, clean UI, and zero fuss.
       </p>
+
+      <div class="portal-hero__actions">
+        <a class="sp-btn sp-btn--primary" href="/framework/docs/">Read the Docs</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/docs/components.html">Browse Components</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/demos/">View Demos</a>
+      </div>
+
+      <div class="portal-snippet" role="region" aria-label="CDN snippet">
+        <pre><code>&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css"&gt;
+&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css"&gt;</code></pre>
+      </div>
     </div>
-   <div class="sp-hero__art" aria-hidden="true">
-     <img class="sp-hero__spark" src="/assets/hero_spark.svg" alt="" />
-   </div>
+
+    <!-- Optional hero art (won’t break layout if missing) -->
+    <div class="portal-hero__art" aria-hidden="true">
+      <img class="portal-hero__spark" src="/assets/hero_spark.svg" alt="" loading="lazy" />
+    </div>
   </header>
 
   <main class="portal-main">
+
     <!-- Features -->
     <section class="portal-section">
       <div class="sp-container sp-stack">
@@ -79,33 +93,13 @@
       </div>
     </section>
 
-    <!-- Quick start -->
-    <section class="portal-section">
-      <div class="sp-container sp-stack">
-        <h2>Quick Start</h2>
-        <p class="sp-muted">Paste these into your <code>&lt;head&gt;</code>.</p>
-
-        <article class="sp-card sp-card--elev">
-          <div class="sp-card__body sp-stack">
-            <pre class="portal-code"><code>&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css"&gt;
-&lt;link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css"&gt;</code></pre>
-
-            <div class="portal-inline">
-              <a class="sp-btn sp-btn--primary" href="/framework/docs/">Read the Docs</a>
-              <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Browse Demos</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <!-- Vibe -->
     <section class="portal-section">
       <div class="sp-container sp-stack">
         <h2>What it feels like</h2>
         <p class="sp-muted">A few quick building blocks to show the vibe.</p>
 
-        <div class="portal-grid">
+        <div class="portal-grid portal-grid--2">
           <article class="sp-card sp-card--elev">
             <div class="sp-card__body sp-stack">
               <h3>Card layout</h3>
@@ -127,6 +121,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="portal-footer">

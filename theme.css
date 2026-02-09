@@ -1,224 +1,148 @@
-/* SpectraPortal site theme (loads after /framework/cdn/v0.1/theme.min.css)
-   Scope: homepage polish only (hero + sections + snippet/code).
-*/
+cat > /opt/spectraportal-src/theme.css <<'CSS'
+/* SpectraPortal homepage layer (minimal overrides; let Spectra do the heavy lifting) */
 
 :root{
-  --sp-hero-ink: var(--sp-text, rgba(255,255,255,.92));
-  --sp-hero-muted: rgba(255,255,255,.72);
-  --sp-hero-art-opacity: .55;
-  --sp-hero-spark-ink: rgba(255,255,255,.14);
+  --portal-ink: rgba(255,255,255,.92);
+  --portal-muted: rgba(255,255,255,.72);
 }
 
-/* =========================================================
-   HERO (scoped to homepage hero only)
-   ========================================================= */
+/* Background: one consistent page backdrop (no per-section banding) */
+body{
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 650px at 75% -10%, rgba(80,160,255,.14), transparent 60%),
+    radial-gradient(900px 520px at 12% 10%, rgba(0,210,170,.10), transparent 62%),
+    linear-gradient(#07090d, #05060a 60%, #040506);
+}
 
-.portal-hero.sp-hero{
+/* Top bar */
+.portal-top{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,.35);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.portal-top__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+.portal-brand{
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+}
+.portal-brand:hover{ text-decoration: underline; }
+.portal-top__nav{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Hero */
+.portal-hero{
   position: relative;
   overflow: hidden;
-  min-height: min(560px, 72vh);
-  display: grid;
-  align-items: center;
+  padding: 80px 0 56px;
 }
-
-/* Kill-switch: hide redundant hero UI (top nav already has it) */
-.portal-hero .sp-hero__kicker,
-.portal-hero .sp-hero__actions{
-  display: none !important;
+.portal-hero__inner{
+  position: relative;
+  z-index: 2;
 }
-
-/* Top-left spark dust (subtle) */
-.portal-hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  opacity:.22;
-  background:
-    radial-gradient(circle at 10% 18%, rgba(255,255,255,.16) 0 2px, transparent 3px),
-    radial-gradient(circle at 14% 26%, rgba(255,255,255,.10) 0 1.5px, transparent 3px),
-    radial-gradient(circle at 8%  30%, rgba(255,255,255,.08) 0 1.2px, transparent 3px),
-    radial-gradient(circle at 18% 14%, rgba(255,255,255,.07) 0 1px, transparent 3px),
-    radial-gradient(circle at 22% 22%, rgba(255,255,255,.06) 0 1px, transparent 3px);
-}
-
-/* content stack */
-.portal-hero .sp-hero__inner{
-  position:relative;
-  z-index:2;
-
-  text-align:center;
-  margin-inline:auto;
-
-  max-width: 62rem;
-  padding: var(--sp-space-10, 3rem) var(--sp-space-8, 2rem);
-  color: var(--sp-hero-ink);
-}
-
-.portal-hero .sp-hero__title{
-  margin: 0 0 var(--sp-space-3, .75rem);
+.portal-hero__title{
+  color: var(--portal-ink);
+  margin: 0 0 10px;
   font-size: clamp(2.2rem, 4vw, 3.25rem);
   line-height: 1.05;
-  color: var(--sp-hero-ink);
+}
+.portal-hero__sub{
+  color: var(--portal-muted);
+  max-width: 46rem;
+  margin: 0 auto 20px;
+}
+.portal-hero__actions{
+  display:flex;
+  justify-content:center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
-.portal-hero .sp-hero__sub{
-  margin: 0;
-  max-width: 40rem;
-  margin-inline: auto;
-  color: var(--sp-hero-muted);
-}
-
-/* Decorative art container (works with either <svg> or <img>) */
-.portal-hero .sp-hero__art,
-.portal-hero .portal-hero__art{
-  position:absolute;
-  top: calc(-1 * var(--sp-space-9, 2.25rem));
-  right: calc(-1 * var(--sp-space-9, 2.25rem));
-  width: min(560px, 62vw);
-  max-width: 560px;
-  pointer-events:none;
-  z-index:1;
-  opacity: var(--sp-hero-art-opacity);
-}
-
-/* If you keep the <svg class="sp-hero__spark"> */
-.portal-hero .sp-hero__spark{
-  width: 100%;
-  height: auto;
-  display:block;
-  color: var(--sp-hero-spark-ink);
-}
-
-/* If you switch to <img src="/assets/hero_spark.symbol.svg"> */
-.portal-hero .sp-hero__art img,
-.portal-hero .portal-hero__art img{
-  width: 100%;
-  height: auto;
-  display:block;
-  /* makes dark SVG visible on dark bg */
-  filter: invert(1) brightness(1.05) contrast(1.05);
-}
-
-/* =========================================================
-   BUTTONS (scoped to homepage header + hero only)
-   ========================================================= */
-
-.portal-top .sp-btn--ghost,
-.portal-hero .sp-btn--ghost{
-  background: rgba(255,255,255,.03);
-  border-color: rgba(255,255,255,.10);
-}
-.portal-top .sp-btn--ghost:hover,
-.portal-hero .sp-btn--ghost:hover{
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.16);
-}
-
-/* =========================================================
-   SECTIONS / GRID (support both older .sp-section/.sp-features AND portal-* markup)
-   ========================================================= */
-
-.sp-section,
-.portal-section{
-  padding: 64px 0 80px;
-  background:
-    radial-gradient(1200px 600px at 50% 0%,
-    rgba(255,255,255,0.06),
-    rgba(0,0,0,0.55) 55%,
-    rgba(0,0,0,0.78) 100%);
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-
-.sp-features,
-.portal-grid{
-  display: grid;
-  gap: 16px;
-  margin-top: 16px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-@media (max-width: 900px){
-  .sp-features,
-  .portal-grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 520px){
-  .sp-features,
-  .portal-grid{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* IMPORTANT: don't globally restyle every .sp-card in the framework.
-   Only polish cards inside homepage sections. */
-.sp-section .sp-card,
-.portal-section .sp-card{
-  padding: 16px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.sp-section .sp-card h2,
-.portal-section .sp-card h2{
-  margin: 0 0 8px;
-  font-size: 18px;
-}
-.sp-section .sp-card p,
-.portal-section .sp-card p{
-  margin: 0;
-  opacity: 0.9;
-}
-
-/* =========================================================
-   QUICK START CODE (your HTML uses .portal-code; older version used .sp-hero__snippet)
-   ========================================================= */
-
-.portal-code,
-.sp-hero__snippet{
+/* Snippet */
+.portal-snippet{
+  max-width: 52rem;
   margin: 0 auto;
-  padding: var(--sp-space-4, 1rem) var(--sp-space-5, 1.25rem);
-  max-width: 44rem;
-
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.10);
-  border-radius: var(--sp-radius-3, 12px);
-
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.08);
+  overflow:auto;
+}
+.portal-snippet pre{ margin: 0; }
+.portal-snippet code{
   color: rgba(255,255,255,.82);
   font-size: .92rem;
   line-height: 1.35;
-
-  overflow:auto;
-  white-space: pre;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 18px 50px rgba(0,0,0,.25);
 }
 
-.portal-code code,
-.sp-hero__snippet code{
-  font-family: var(--sp-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+/* Optional hero art */
+.portal-hero__art{
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  width: min(560px, 60vw);
+  max-width: 560px;
+  opacity: .55;
+  pointer-events: none;
+  z-index: 1;
+}
+.portal-hero__spark{
+  width: 100%;
+  height: auto;
+  display:block;
+  /* makes darker SVG visible on dark bg */
+  filter: invert(1) brightness(1.05) contrast(1.05);
 }
 
-/* Scrollbar polish (safe) */
-.portal-code{
-  scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.06);
-  scrollbar-width: thin;
+/* Sections */
+.portal-section{
+  padding: 56px 0;
+  border-top: 1px solid rgba(255,255,255,.06);
 }
-.portal-code::-webkit-scrollbar{ height: 10px; }
-.portal-code::-webkit-scrollbar-track{
-  background: rgba(255,255,255,.06);
-  border-radius: 999px;
+.portal-main h2{ margin: 0; }
+.portal-main .sp-muted{ max-width: 52rem; }
+
+/* Grids */
+.portal-grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
 }
-.portal-code::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.22);
-  border-radius: 999px;
-}
-.portal-code::-webkit-scrollbar-thumb:hover{
-  background: rgba(255,255,255,.32);
+.portal-grid--2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.portal-inline{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.portal-footer{
+  padding: 28px 0 40px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+@media (max-width: 900px){
+  .portal-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .portal-grid--2{ grid-template-columns: 1fr; }
+  .portal-hero{ padding: 64px 0 44px; }
+}
+@media (max-width: 520px){
+  .portal-grid{ grid-template-columns: 1fr; }
+}
+CSS
