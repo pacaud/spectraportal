@@ -5,9 +5,11 @@
    ========================================================= */
 
   /* text-shadows */
+root {
   --sp-text-shadow-1: 0 1px 1px rgba(0,0,0,.55), 0 0 1px hsla(0,0%,100%,.02);
   --sp-text-shadow-2: 0 2px 8px rgba(0,0,0,.60), 0 0 1px hsla(0,0%,100%,.03);
   --sp-text-shadow-3: 0 6px 18px rgba(0,0,0,.65), 0 0 1px hsla(0,0%,100%,.04);
+}
 
 /* =========================================================
    Optional: utilities (add near your existing .sp-shadow-* utilities)
