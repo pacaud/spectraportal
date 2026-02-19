@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra Demos — Navbar</title>
+
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css">
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css">
+  <link rel="stylesheet" href="/theme.css">
+</head>
+
+<body class="sp-bg">
+  <header class="sp-border-b" style="background: var(--sp-surface);">
+    <div class="sp-container sp-row sp-between sp-center-y" style="padding: 14px 0;">
+      <!-- left -->
+      <a href="/" class="sp-row sp-center-y" style="gap:10px; text-decoration:none;">
+        <span class="sp-pill" style="background: var(--sp-elev); border:1px solid var(--sp-border); padding:6px 10px;">
+          SP
+        </span>
+        <strong class="sp-text">Spectra</strong>
+      </a>
+
+      <!-- center (optional) -->
+      <nav class="sp-row sp-center-y sp-hide-sm" aria-label="Primary" style="gap:8px;">
+        <a class="sp-btn sp-btn--ghost" href="/framework/docs/">Docs</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/demos/">Demos</a>
+        <a class="sp-btn sp-btn--ghost" href="/framework/docs/components.html">Components</a>
+      </nav>
+
+      <!-- right -->
+      <div class="sp-row sp-center-y" style="gap:8px;">
+        <a class="sp-btn sp-btn--ghost sp-hide-sm" href="/framework/demos/color.html">Colors</a>
+        <a class="sp-btn" href="/framework/docs/">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sp-container" style="padding: 28px 0 60px;">
+    <h1 class="sp-h2">Navbar demo</h1>
+    <p class="sp-muted" style="max-width: 60ch;">
+      This is a “real” navigation bar built using existing Spectra primitives:
+      container, buttons, borders, and surface tokens.
+    </p>
+
+    <section class="sp-card" style="margin-top: 18px;">
+      <div class="sp-card__body">
+        <p class="sp-text">
+          Try resizing the window: the center nav hides on small screens.
+          You can later add a drawer/hamburger pattern as a second demo.
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
