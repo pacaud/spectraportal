@@ -6,7 +6,7 @@
 /* base */
 .sp-nav{
   background: var(--sp-surface);
-  border-bottom: 1px solid var(--sp-border);
+  border-bottom: var(--sp-border-1, solid, --sp-border);
 }
 
 /* inner layout */
@@ -15,10 +15,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--sp-3);
 
   /* use tokens but keep it simple */
-  padding: 14px 0;
+  padding: var(--sp-3, 0);
 }
 
 /* clusters */
@@ -26,7 +26,7 @@
 .sp-nav__right{
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--sp-3);
   min-width: 0;
 }
 
@@ -36,7 +36,7 @@
 .sp-nav__brand{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--sp-3);
   text-decoration: none;
 }
 
@@ -44,8 +44,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 10px;
-  border-radius: var(--sp-radius-2, 10px);
+  padding: var(--sp-2, --sp-3);
+  border-radius: var(--sp-radius-2, 12px);
   background: var(--sp-elev);
   border: 1px solid var(--sp-border);
 }
@@ -54,7 +54,7 @@
 .sp-nav__links{
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-2);
   white-space: nowrap;
 }
 
@@ -74,7 +74,7 @@
   display: none; /* not used */
 }
 .sp-nav--right .sp-nav__right{
-  gap: 8px;
+  gap: var(--sp-2);
 }
 .sp-nav--right .sp-nav__right .sp-nav__links{
   /* links live inside right cluster */
@@ -90,11 +90,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--sp-3);
 }
 
 .sp-nav--stacked .sp-nav__row + .sp-nav__row{
-  margin-top: 10px;
+  margin-top: var(--sp-3);
 }
 
 .sp-nav--stacked .sp-nav__links{
