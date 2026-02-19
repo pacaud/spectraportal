@@ -1,0 +1,110 @@
+/* ===========================
+   Spectra: Navbar Component
+   File: framework/src/components/navbar.css
+   =========================== */
+
+/* base */
+.sp-nav{
+  background: var(--sp-surface);
+  border-bottom: 1px solid var(--sp-border);
+}
+
+/* inner layout */
+.sp-nav__inner{
+  position: relative;           /* enables true-center variant */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  /* use tokens but keep it simple */
+  padding: 14px 0;
+}
+
+/* clusters */
+.sp-nav__left,
+.sp-nav__right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.sp-nav__right{ justify-content: flex-end; }
+
+/* brand */
+.sp-nav__brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.sp-nav__badge{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: var(--sp-radius-2, 10px);
+  background: var(--sp-elev);
+  border: 1px solid var(--sp-border);
+}
+
+/* links */
+.sp-nav__links{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+/* --------------------------------
+   Variants
+   -------------------------------- */
+
+/* center: keeps links truly centered even if left/right widths differ */
+.sp-nav--center .sp-nav__center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* right: cluster nav + actions at right */
+.sp-nav--right .sp-nav__center{
+  display: none; /* not used */
+}
+.sp-nav--right .sp-nav__right{
+  gap: 8px;
+}
+.sp-nav--right .sp-nav__right .sp-nav__links{
+  /* links live inside right cluster */
+}
+
+/* stacked: two-row layout */
+.sp-nav--stacked .sp-nav__inner{
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.sp-nav--stacked .sp-nav__row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sp-nav--stacked .sp-nav__row + .sp-nav__row{
+  margin-top: 10px;
+}
+
+.sp-nav--stacked .sp-nav__links{
+  justify-content: flex-end;
+}
+
+/* --------------------------------
+   Responsive helpers (optional)
+   If you already have sp-hide-sm, you can skip this.
+   -------------------------------- */
+@media (max-width: 720px){
+  .sp-nav__links[data-collapse="sm"]{ display:none; }
+}
