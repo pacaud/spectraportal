@@ -4,13 +4,7 @@
    Demos/tools should load https://cdn.spectraportal.dev/cdn/v0.1/spectra.css (built output).
 */
 
-/* 1) Tokens (variables) */
-@import "./tokens/index.css";
-
-/* 2) Themes (overrides) — add when ready */
-/* @import "./themes/index.css"; */
-
-/* 3) Base layer */
+/* 1) Base layer */
 @import "./base/reset.css";
 @import "./base/a11y.css";
 @import "./base/layout.css";
