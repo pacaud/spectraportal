@@ -14,7 +14,6 @@
 @import "./base/reset.css";
 @import "./base/a11y.css";
 @import "./base/layout.css";
-@import "./base/utilities.css";
 
 /* 4) Components */
 @import "./components/button.css";
@@ -22,17 +21,15 @@
 @import "./components/input.css";
 @import "./components/form-controls.css";
 @import "./components/toggles.css";
+@import "./components/navbar.css";
 @import "./components/hero.css";
 @import "./components/forms.css";
-
-/* Drawer */
 @import "./components/drawer.css";
-
-/* Tabs */
 @import "./components/tabs.css";
-
-/* Toast */
 @import "./components/toast.css";
+
+/* 5) utilities */
+@import "./base/utilities.css";
 
 /* Future components */
 /* @import "./components/modal.css"; */
