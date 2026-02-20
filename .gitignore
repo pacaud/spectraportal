@@ -31,3 +31,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# local deploy config
+scripts/sp_deploy.env
+scripts/*.env.local
