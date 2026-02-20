@@ -44,10 +44,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--sp-2, --sp-3);
+  padding: var(--sp-2) var(--sp-3);
   border-radius: var(--sp-radius-2, 12px);
   background: var(--sp-elev);
-  border: 1px solid var(--sp-border);
+  border: var(--sp-border-1);
 }
 
 /* links */
