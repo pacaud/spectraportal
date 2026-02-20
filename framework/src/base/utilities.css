@@ -79,7 +79,7 @@
   list-style: none;
   margin: 0;
   padding: var(--sp-2) var(--sp-3);
-  border: 1px solid var(--sp-border);
+  border: var(--sp-border-1);
   background: var(--sp-surface-2);
   border-radius: var(--sp-radius-md);
   font-family: var(--sp-font-mono);
@@ -94,7 +94,7 @@
 }
 
 .sp-code-list li + li{
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: var(--sp-border-1);
 }
 
 .sp-code-list code{

@@ -5,6 +5,7 @@
 /* 0) Tokens (must come first) */
 @import "./tokens/core.css";
 @import "./tokens/color.css";
+@import "./tokens/borders.css";
 @import "./tokens/type.css";
 @import "./tokens/space.css";
 @import "./tokens/radius.css";

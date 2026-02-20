@@ -1,0 +1,21 @@
+/* Spectra Tokens: Borders
+   File: framework/src/base/tokens/borders.css
+
+   Rules:
+   - Token-driven only (derive from existing tokens)
+   - Keep tiny; add only when reused across components
+*/
+
+:root{
+  /* Border widths (optional but nice for clarity) */
+  --sp-border-w-1: 1px;
+  --sp-border-w-2: 2px;
+
+  /* Shorthand borders (most common) */
+  --sp-border-1: var(--sp-border-w-1) solid var(--sp-border);
+  --sp-border-2: var(--sp-border-w-2) solid var(--sp-border);
+
+  /* Optional: subtle + strong variants if you already have these colors */
+  /* --sp-border-soft-1: var(--sp-border-w-1) solid var(--sp-border-soft); */
+  /* --sp-border-strong-1: var(--sp-border-w-1) solid var(--sp-border-strong); */
+}
