@@ -7,6 +7,7 @@
 .sp-nav{
   background: var(--sp-surface);
   border-bottom: var(--sp-border-1);
+  margin-bottom: var(--sp-8);
 }
 
 /* inner layout */
