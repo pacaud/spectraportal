@@ -14,7 +14,7 @@
 
   padding: var(--sp-2) var(--sp-3);
   border-radius: var(--sp-radius-2);
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
 
   background: var(--sp-elev-2);
   color: var(--sp-text);
@@ -70,7 +70,7 @@
 
   padding: var(--sp-2) var(--sp-3);
   border-radius: var(--sp-radius-2);
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
 
   background: var(--sp-elev-2);
   color: var(--sp-text);

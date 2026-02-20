@@ -63,5 +63,5 @@
 /* Optional "surface" variant */
 .sp-hero--surface{
   background: var(--sp-surface);
-  border-bottom: var(--sp-border-1) solid var(--sp-border);
+  border-bottom: var(--sp-border-1);
 }

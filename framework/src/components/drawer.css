@@ -48,7 +48,7 @@ body.sp-scroll-lock{
   flex-direction: column;
   background: var(--sp-elev);
   color: var(--sp-text);
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
   box-shadow: var(--sp-shadow-3);
   border-radius: var(--sp-radius-3);
   outline: none;
@@ -62,7 +62,7 @@ body.sp-scroll-lock{
   justify-content: space-between;
   gap: var(--sp-3);
   padding: var(--sp-4);
-  border-bottom: var(--sp-border-1) solid var(--sp-border);
+  border-bottom: var(--sp-border-1);
 }
 
 .sp-drawer__title{
@@ -77,7 +77,7 @@ body.sp-scroll-lock{
 
 .sp-drawer__footer{
   padding: var(--sp-4);
-  border-top: var(--sp-border-1) solid var(--sp-border);
+  border-top: var(--sp-border-1);
 }
 
 /* Optional modifier: remove the footer divider (useful when you want the action row to
@@ -96,7 +96,7 @@ body.sp-scroll-lock{
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
   border-radius: 0;
-  border-left: var(--sp-border-1) solid var(--sp-border);
+  border-left: var(--sp-border-1);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
@@ -110,7 +110,7 @@ body.sp-scroll-lock{
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
   border-radius: 0;
-  border-right: var(--sp-border-1) solid var(--sp-border);
+  border-right: var(--sp-border-1);
   border-top: 0;
   border-left: 0;
   border-bottom: 0;
@@ -124,7 +124,7 @@ body.sp-scroll-lock{
   bottom: 0;
   height: min(80dvh, var(--sp-drawer-h));
   border-radius: 0;
-  border-top: var(--sp-border-1) solid var(--sp-border);
+  border-top: var(--sp-border-1);
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
@@ -138,7 +138,7 @@ body.sp-scroll-lock{
   top: 0;
   height: min(80dvh, var(--sp-drawer-h));
   border-radius: 0;
-  border-bottom: var(--sp-border-1) solid var(--sp-border);
+  border-bottom: var(--sp-border-1);
   border-left: 0;
   border-right: 0;
   border-top: 0;

@@ -36,7 +36,7 @@
   height: 1.55rem;
 
   border-radius: 999px;
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
   background: var(--sp-elev-2);
 
   display: inline-grid;
@@ -95,7 +95,7 @@
   height: 1.1rem;
 
   border-radius: var(--sp-radius-1);
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
   background: var(--sp-elev-2);
 
   display: inline-grid;
@@ -137,7 +137,7 @@
   height: 1.1rem;
 
   border-radius: 999px;
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
   background: var(--sp-elev-2);
 
   display: inline-grid;

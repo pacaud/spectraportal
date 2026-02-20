@@ -11,7 +11,7 @@
   background: var(--sp-surface);
   color: var(--sp-text);
 
-  border: var(--sp-border-1) solid var(--sp-border);
+  border: var(--sp-border-1);
   border-radius: var(--sp-radius-3);
 
   box-shadow: var(--sp-shadow-1);
@@ -31,11 +31,11 @@
 }
 
 .sp-card__header{
-  border-bottom: var(--sp-border-1) solid var(--sp-border);
+  border-bottom: var(--sp-border-1);
 }
 
 .sp-card__footer{
-  border-top: var(--sp-border-1) solid var(--sp-border);
+  border-top: var(--sp-border-1);
   /* Slightly softer footer text by default (keeps hierarchy calm) */
   color: var(--sp-subtle);
 }
