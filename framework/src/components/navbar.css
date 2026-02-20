@@ -6,7 +6,7 @@
 /* base */
 .sp-nav{
   background: var(--sp-surface);
-  border-bottom: var(--sp-border-1, solid, --sp-border);
+  border-bottom: var(--sp-border-1);
 }
 
 /* inner layout */
@@ -18,7 +18,7 @@
   gap: var(--sp-3);
 
   /* use tokens but keep it simple */
-  padding: var(--sp-3, 0);
+  padding: var(--sp-3) 0;
 }
 
 /* clusters */
