@@ -1,2 +1,16 @@
+/* =========================
+   Demo safety rails
+   (prevents portal-wide layout rules from hijacking demos)
+========================= */
+body.sp-demo-page{
+  display: block !important;
+  justify-content: initial !important;
+  align-items: initial !important;
+  place-content: initial !important;
+  min-height: 100% !important;
+}
 
+body.sp-demo-page > *{
+  margin: 0;
+}
 
