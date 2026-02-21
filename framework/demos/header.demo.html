@@ -3,36 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hero • Spectra Demo</title>
-  <!-- Framework first, theme after -->
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css" /> 
-  <link rel="stylesheet" href="/overrides.css" />
+  <title>Header • Spectra Demo</title>
+
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+
+  <style>
+    /* demo safety rails (prevents “everything at bottom” surprises) */
+    html, body { height: 100%; }
+    body { margin: 0; }
+  </style>
 </head>
+
 <body>
-<header class="sp-header" role="banner">
-  <div class="sp-header__inner sp-container">
-    <!-- Brand -->
-    <a class="sp-brand" href="/" aria-label="SpectraPortal Home">
-      <img class="sp-brand__logo" src="/assets/brand/spectraportal-mark.svg" alt="" />
-      <span class="sp-brand__text">SpectraPortal</span>
-      <span class="sp-badge sp-badge--soft">v0.1</span>
-    </a>
+  <header class="sp-header" role="banner">
+    <div class="sp-header__inner sp-container">
+      <a class="sp-brand" href="/" aria-label="SpectraPortal Home">
+        <img class="sp-brand__logo" src="/assets/brand/spectraportal-mark.svg" alt="" />
+        <span class="sp-brand__text">SpectraPortal</span>
+        <span class="sp-badge sp-badge--soft">v0.1</span>
+      </a>
 
-    <!-- Nav -->
-    <nav class="sp-nav" aria-label="Primary">
-      <a class="sp-nav__link is-active" href="/framework/docs/" aria-current="page">Docs</a>
-      <a class="sp-nav__link" href="/framework/demos/">Demos</a>
-      <a class="sp-nav__link" href="/framework/components/">Components</a>
-      <a class="sp-nav__link" href="/framework/tokens/">Tokens</a>
-    </nav>
+      <nav class="sp-nav" aria-label="Primary">
+        <a class="sp-nav__link" href="/framework/docs/">Docs</a>
+        <a class="sp-nav__link is-active" href="/framework/demos/" aria-current="page">Demos</a>
+        <a class="sp-nav__link" href="/framework/components/">Components</a>
+        <a class="sp-nav__link" href="/framework/tokens/">Tokens</a>
+      </nav>
 
-    <!-- Actions (optional) -->
-    <div class="sp-header__actions">
-      <button class="sp-btn sp-btn--ghost" type="button" data-theme-toggle>Theme</button>
-      <a class="sp-btn sp-btn--primary" href="https://github.com/pacaud/spectraportal">GitHub</a>
+      <div class="sp-header__actions">
+        <button class="sp-btn sp-btn--ghost" type="button" data-theme-toggle>Theme</button>
+        <a class="sp-btn sp-btn--primary" href="https://github.com/pacaud/spectraportal">GitHub</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+
+  <main class="sp-container" style="padding: var(--sp-space-6) var(--sp-space-4);">
+    <h1 style="margin:0;">Header demo</h1>
+    <p style="max-width:70ch; color: var(--sp-text-2);">
+      If the header still ends up at the bottom-left, your overrides/theme CSS is applying layout rules to body.
+    </p>
+  </main>
 </body>
 </html>
