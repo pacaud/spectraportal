@@ -18,10 +18,18 @@ echo "[deploy] webroot: $WEBROOT"
 
 # Ensure targets exist
 ssh "$REMOTE" "mkdir -p \
+  '$WEBROOT/assets/brand' \
   '$WEBROOT/framework/cdn/v0.1' \
   '$WEBROOT/framework/demos' \
   '$WEBROOT/framework/docs' \
 "
+
+# 0) Assets (SVGs, images, etc.)
+if [[ -d assets ]]; then
+  rsync -av --delete \
+    assets/ \
+    "$REMOTE:$WEBROOT/assets/"
+fi
 
 # 1) CDN CSS
 rsync -av --delete \
