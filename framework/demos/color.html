@@ -12,246 +12,287 @@
 </head>
 
 <body>
-  <main style="max-width:1100px;margin:0 auto;padding:calc(var(--sp-6));">
-    <h1 style="margin:0 0 var(--sp-3) 0;">Spectra — Tokens Preview</h1>
-    <p style="margin:0 0 var(--sp-6) 0;opacity:.9;">
-      Token preview (inline styles). <code>--sp-*</code>
-    </p>
+  <main class="sp-container sp-demo sp-stack">
+    <header class="sp-stack">
+      <h1 class="sp-demo__title">Spectra — Tokens Preview</h1>
+      <p class="sp-demo__lede">
+        Token preview (no inline styles). <code class="sp-code">--sp-*</code>
+      </p>
+    </header>
 
-    <h2 style="margin:0 0 var(--sp-3) 0;">Color tokens</h2>
+    <section class="sp-card sp-stack">
+      <h2 class="sp-card__title">Color tokens</h2>
 
-    <table id="colors" style="width:100%;border-collapse:separate;border-spacing:0 var(--sp-2);">
-      <thead>
-        <tr>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Preview</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Token</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Name</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Hex</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Nearest name</th>
-        </tr>
-      </thead>
+      <table id="colors" class="sp-table sp-token-table">
+        <thead>
+          <tr>
+            <th class="sp-th">Preview</th>
+            <th class="sp-th">Token</th>
+            <th class="sp-th">Name</th>
+            <th class="sp-th">Hex</th>
+            <th class="sp-th">Nearest name</th>
+          </tr>
+        </thead>
 
-      <tbody id="color-rows">
-        
-        <tr data-token="--sp-bg" data-name="Background" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-bg)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-bg</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+        <tbody id="color-rows">
+          <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--bg" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-surface" data-name="Surface" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-surface)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-surface</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-surface" data-name="Surface" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--surface" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-surface</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-elev" data-name="Elevation" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-elev)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-elev</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-elev" data-name="Elevation" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--elev" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-elev</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-elev-2" data-name="Elevation 2" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-elev-2)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-elev-2</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-elev-2" data-name="Elevation 2" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--elev-2" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-elev-2</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-text" data-name="Text" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-text)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-text</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-text" data-name="Text" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--text" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-text</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-muted" data-name="Muted Text" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-muted)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-muted</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-muted" data-name="Muted Text" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--muted" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-muted</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-subtle" data-name="Subtle" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-subtle)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-subtle</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-subtle" data-name="Subtle" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--subtle" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-subtle</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-border" data-name="Border" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-border)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-border</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-border" data-name="Border" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--border" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-border</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-border-strong" data-name="Border Strong" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-border-strong)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-border-strong</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-border-strong" data-name="Border Strong" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--border-strong" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-accent" data-name="Accent (Kevin)" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-accent)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-accent</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-accent" data-name="Accent (Kevin)" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--accent" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-accent</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-accent-2)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-accent-2</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--accent-2" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-accent-2</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-accent-3)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-accent-3</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--accent-3" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-success" data-name="Success" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-success)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-success</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-success" data-name="Success" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--success" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-success</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-warning" data-name="Warning" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-warning)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-warning</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-warning" data-name="Warning" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--warning" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-warning</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-danger" data-name="Danger" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-danger)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-danger</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-token="--sp-danger" data-name="Danger" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--danger" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-danger</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-token="--sp-info" data-name="Info" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-info)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-info</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-hex" style="padding:var(--sp-2) var(--sp-2);"><code>—</code></td>
-          <td class="js-colorname" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
-      </tbody>
-    </table>
+          <tr data-token="--sp-info" data-name="Info" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--info" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-info</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-hex"><code class="sp-code">—</code></td>
+            <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    <h2 style="margin:var(--sp-7) 0 var(--sp-3) 0;">Shadow tokens</h2>
-    <table style="width:100%;border-collapse:separate;border-spacing:0 var(--sp-2);">
-      <thead>
-        <tr>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Preview</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Token</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Name</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-surface);box-shadow:var(--sp-shadow-1)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-shadow-1</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+    <section class="sp-card sp-stack">
+      <h2 class="sp-card__title">Shadow tokens</h2>
 
-        <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-surface);box-shadow:var(--sp-shadow-2)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-shadow-2</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+      <table class="sp-table sp-token-table">
+        <thead>
+          <tr>
+            <th class="sp-th">Preview</th>
+            <th class="sp-th">Token</th>
+            <th class="sp-th">Name</th>
+            <th class="sp-th">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--shadow-1" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
 
-        <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);"><div style="width:calc(var(--sp-4)*4);height:calc(var(--sp-4)*4);border-radius:var(--sp-radius-md);border:1px solid var(--sp-border);background:var(--sp-surface);box-shadow:var(--sp-shadow-3)"></div></td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-shadow-3</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
-      </tbody>
-    </table>
+          <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--shadow-2" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
 
-    
-    <h2 style="margin:var(--sp-7) 0 var(--sp-3) 0;">Text-shadow tokens</h2>
-    <table style="width:100%;border-collapse:separate;border-spacing:0 var(--sp-2);">
-      <thead>
-        <tr>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Preview</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Token</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Name</th>
-          <th align="left" style="padding:0 var(--sp-2) var(--sp-2) var(--sp-2);border-bottom:1px solid var(--sp-border);">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);">
-            <div style="height:calc(var(--sp-4)*4);display:flex;align-items:center;">
-              <span style="font-size:calc(var(--sp-4)*2);line-height:1;color:var(--sp-text);text-shadow:var(--sp-text-shadow-1);">Spectra</span>
-            </div>
-          </td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-text-shadow-1</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+          <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--shadow-3" aria-hidden="true"></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-        <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);">
-            <div style="height:calc(var(--sp-4)*4);display:flex;align-items:center;">
-              <span style="font-size:calc(var(--sp-4)*2);line-height:1;color:var(--sp-text);text-shadow:var(--sp-text-shadow-2);">Spectra</span>
-            </div>
-          </td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-text-shadow-2</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
+    <section class="sp-card sp-stack">
+      <h2 class="sp-card__title">Text-shadow tokens</h2>
 
-        <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" style="background:var(--sp-surface);border:1px solid var(--sp-border);">
-          <td style="padding:var(--sp-2) var(--sp-2);border-radius:var(--sp-radius-md) 0 0 var(--sp-radius-md);">
-            <div style="height:calc(var(--sp-4)*4);display:flex;align-items:center;">
-              <span style="font-size:calc(var(--sp-4)*2);line-height:1;color:var(--sp-text);text-shadow:var(--sp-text-shadow-3);">Spectra</span>
-            </div>
-          </td>
-          <td style="padding:var(--sp-2) var(--sp-2);"><code>--sp-text-shadow-3</code></td>
-          <td class="js-name" style="padding:var(--sp-2) var(--sp-2);"></td>
-          <td class="js-val" style="padding:var(--sp-2) var(--sp-2);border-radius:0 var(--sp-radius-md) var(--sp-radius-md) 0;"><code>—</code></td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="sp-table sp-token-table">
+        <thead>
+          <tr>
+            <th class="sp-th">Preview</th>
+            <th class="sp-th">Token</th>
+            <th class="sp-th">Name</th>
+            <th class="sp-th">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--textshadow-1" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-text-shadow-1</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
 
+          <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--textshadow-2" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-text-shadow-2</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
 
-<h2 style="margin:var(--sp-7) 0 var(--sp-3) 0;">Link token</h2>
-    <p style="margin:0;">
-      Link sample:
-      <a href="#" id="link-sample" style="color:var(--sp-link);">--sp-link</a>
-      <span id="link-meta" style="margin-left:var(--sp-3);"><code>—</code></span>
-    </p>
+          <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" class="sp-tr sp-token-row">
+            <td class="sp-td sp-td--preview">
+              <div class="sp-chip sp-chip--textshadow-3" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+            </td>
+            <td class="sp-td"><code class="sp-code">--sp-text-shadow-3</code></td>
+            <td class="sp-td js-name"></td>
+            <td class="sp-td js-val"><code class="sp-code">—</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="sp-card sp-stack">
+      <h2 class="sp-card__title">Link token</h2>
+
+      <p class="sp-demo__linkrow">
+        Link sample:
+        <a href="#" id="link-sample" class="sp-link">--sp-link</a>
+        <span id="link-meta" class="sp-demo__linkmeta"><code class="sp-code">—</code></span>
+      </p>
+    </section>
 
     <script>
       function getVar(name){
@@ -348,10 +389,10 @@
         if(nameCell) nameCell.textContent = semName;
 
         const hexCell = row.querySelector(".js-hex");
-        if(hexCell) hexCell.innerHTML = "<code>" + (hex || "—") + "</code>";
+        if(hexCell) hexCell.innerHTML = "<code class='sp-code'>" + (hex || "—") + "</code>";
 
         const colorNameCell = row.querySelector(".js-colorname");
-        if(colorNameCell) colorNameCell.innerHTML = "<code>" + (hex ? nearestName(hex) : "—") + "</code>";
+        if(colorNameCell) colorNameCell.innerHTML = "<code class='sp-code'>" + (hex ? nearestName(hex) : "—") + "</code>";
       }
 
       for (const row of document.querySelectorAll("tr[data-shadow]")){
@@ -363,10 +404,9 @@
         if(nameCell) nameCell.textContent = name;
 
         const valCell = row.querySelector(".js-val");
-        if(valCell) valCell.innerHTML = "<code>" + (val || "—") + "</code>";
+        if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
       }
 
-      // Fill text-shadow table (safe even if tokens don't exist yet)
       for (const row of document.querySelectorAll("tr[data-textshadow]")){
         const token = row.getAttribute("data-textshadow");
         const name = row.getAttribute("data-name") || token;
@@ -376,14 +416,14 @@
         if(nameCell) nameCell.textContent = name;
 
         const valCell = row.querySelector(".js-val");
-        if(valCell) valCell.innerHTML = "<code>" + (val || "—") + "</code>";
+        if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
       }
 
       const linkVal = getVar("--sp-link");
       const linkHex = toHex(linkVal);
       const linkName = linkHex ? nearestName(linkHex) : "—";
       document.getElementById("link-meta").innerHTML =
-        "<code>" + (linkHex || "—") + "</code> &nbsp; <code>" + linkName + "</code>";
+        "<code class='sp-code'>" + (linkHex || "—") + "</code> &nbsp; <code class='sp-code'>" + linkName + "</code>";
     </script>
   </main>
 </body>

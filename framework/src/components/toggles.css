@@ -14,7 +14,7 @@
 
 :where(.sp-switch, .sp-check, .sp-radio):focus-visible{
   outline: none;
-  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
+  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
 }
 
 :where(.sp-switch, .sp-check, .sp-radio):focus:not(:focus-visible){
@@ -32,10 +32,10 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: 2.75rem;
-  height: 1.55rem;
+  width: calc(var(--sp-4) * 2.75);  /* 2.75rem */
+  height: calc(var(--sp-4) * 1.55); /* 1.55rem */
 
-  border-radius: 999px;
+  border-radius: var(--sp-radius-round, 9999px);
   border: var(--sp-border-1);
   background: var(--sp-elev-2);
 
@@ -53,9 +53,9 @@
 
 .sp-switch::before{
   content: "";
-  width: 1.15rem;
-  height: 1.15rem;
-  border-radius: 999px;
+  width: calc(var(--sp-4) * 1.15);  /* 1.15rem */
+  height: calc(var(--sp-4) * 1.15); /* 1.15rem */
+  border-radius: var(--sp-radius-round, 9999px);
 
   background: var(--sp-text);
   opacity: var(--sp-opacity-80);
@@ -81,9 +81,9 @@
 }
 
 .sp-switch:checked::before{
-  transform: translateY(-50%) translateX(1.15rem);
+  transform: translateY(-50%) translateX(calc(var(--sp-4) * 1.15)); /* knob travel */
   background: var(--sp-bg);
-  opacity: 1;
+  opacity: var(--sp-opacity-100);
 }
 
 /* Checkbox (input type=checkbox) */
@@ -91,8 +91,8 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: 1.1rem;
-  height: 1.1rem;
+  width: calc(var(--sp-4) * 1.1);   /* 1.1rem */
+  height: calc(var(--sp-4) * 1.1);  /* 1.1rem */
 
   border-radius: var(--sp-radius-1);
   border: var(--sp-border-1);
@@ -120,12 +120,12 @@
 
 .sp-check:checked::after{
   content: "";
-  width: 0.55rem;
-  height: 0.30rem;
-  border-left: var(--sp-border-2) solid var(--sp-bg);
-  border-bottom: var(--sp-border-2) solid var(--sp-bg);
+  width: calc(var(--sp-4) * 0.55);  /* 0.55rem */
+  height: calc(var(--sp-4) * 0.30); /* 0.30rem */
+  border-left: var(--sp-border-w-2) solid var(--sp-bg);
+  border-bottom: var(--sp-border-w-2) solid var(--sp-bg);
   transform: rotate(-45deg);
-  margin-top: -1px;
+  margin-top: calc(var(--sp-border-w-1) * -1);
 }
 
 /* Radio (input type=radio) */
@@ -133,10 +133,10 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: 1.1rem;
-  height: 1.1rem;
+  width: calc(var(--sp-4) * 1.1);   /* 1.1rem */
+  height: calc(var(--sp-4) * 1.1);  /* 1.1rem */
 
-  border-radius: 999px;
+  border-radius: var(--sp-radius-round, 9999px);
   border: var(--sp-border-1);
   background: var(--sp-elev-2);
 
@@ -161,8 +161,8 @@
 
 .sp-radio:checked::after{
   content: "";
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 999px;
+  width: calc(var(--sp-4) * 0.55);  /* 0.55rem */
+  height: calc(var(--sp-4) * 0.55); /* 0.55rem */
+  border-radius: var(--sp-radius-round, 9999px);
   background: var(--sp-accent-3);
 }

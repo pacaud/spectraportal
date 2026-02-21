@@ -1,14 +1,19 @@
 .sp-badge{
   display: inline-flex;
   align-items: center;
-  padding: var(--sp-space-1) var(--sp-space-2);
+  gap: var(--sp-1);
+
+  padding: var(--sp-1) var(--sp-2);
   border-radius: var(--sp-radius-3);
-  font-size: var(--sp-font-size-2);
-  line-height: var(--sp-line-height-2);
+
+  font-size: var(--sp-fs-2);
+  line-height: var(--sp-lh-2);
+  font-weight: var(--sp-fw-semibold, 600);
 }
 
+/* Soft badge */
 .sp-badge--soft{
-  background: var(--sp-surface-2);
-  color: var(--sp-text-2);
-  border: 1px solid var(--sp-border-1);
+  background: var(--sp-elev, var(--sp-surface));
+  color: var(--sp-text);
+  border: var(--sp-border-1);
 }

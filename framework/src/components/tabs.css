@@ -5,9 +5,9 @@
 */
 
 :root{
-  --sp-tab-h: 38px;
+  --sp-tab-h: calc(var(--sp-4) * 2.375); /* 38px approx (2.375rem if --sp-4=1rem) */
   --sp-tab-pad-x: var(--sp-3);
-  --sp-tab-radius: var(--sp-radius-md);
+  --sp-tab-radius: var(--sp-radius-2);
 }
 
 .sp-tabs{
@@ -17,45 +17,12 @@
 .sp-tablist{
   display: flex;
   flex-wrap: wrap;
+
   gap: var(--sp-2);
   padding: var(--sp-2);
-  border: 1px solid var(--sp-line);
-  border-radius: var(--sp-radius-lg);
-  background: var(--sp-surface-2);
-}
 
-.sp-tab{
-  appearance: none;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--sp-text);
-  height: var(--sp-tab-h);
-  padding: 0 var(--sp-tab-pad-x);
-  border-radius: var(--sp-tab-radius);
-  font-weight: 600;
-  line-height: 1;
-  cursor: pointer;
-}
+  border: var(--sp-border-1);
+  border-radius: var(--sp-radius-3);
 
-.sp-tab:hover{
-  background: rgba(255,255,255,0.04);
-}
-
-.sp-tab[aria-selected="true"],
-.sp-tab.is-active{
-  background: rgba(96,165,250,0.12); /* sp-accent-2 tint */
-  border-color: rgba(96,165,250,0.35);
-}
-
-.sp-tab:focus-visible{
-  outline: none;
-  box-shadow: var(--sp-focus-ring);
-}
-
-.sp-tabpanel{
-  margin-top: var(--sp-3);
-}
-
-.sp-tabpanel[hidden]{
-  display: none !important;
+  background: var(--sp-elev, var(--sp-surface));
 }

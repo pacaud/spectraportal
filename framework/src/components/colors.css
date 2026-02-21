@@ -22,15 +22,15 @@
 }
 
 .sp-color-chip{
-  border: 1px solid var(--sp-border);
-  border-radius: var(--sp-radius-2, var(--sp-2));
+  border: var(--sp-border-1);
+  border-radius: var(--sp-radius-2);
   height: calc(var(--sp-4) * 2);
 }
 
 .sp-shadow-chip{
   background: var(--sp-surface);
-  border: 1px solid var(--sp-border);
-  border-radius: var(--sp-radius-2, var(--sp-2));
+  border: var(--sp-border-1);
+  border-radius: var(--sp-radius-2);
   height: calc(var(--sp-4) * 2);
 }
 

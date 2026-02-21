@@ -1,58 +1,139 @@
 /* Spectra Base: Reset
    File: src/base/reset.css
 
-   Philosophy:
-   - Minimal, predictable reset
-   - Token-driven
-   - No opinions beyond consistency
+   Goals:
+   - Normalize browser defaults without styling components
+   - Establish safe base typography + colors
+   - Token-driven with fallbacks (never hard-break if a token is missing)
+*/
+
+/* Spectra Base: Reset
+   File: src/base/reset.css
+
+   Goals:
+   - Normalize browser defaults without styling components
+   - Establish safe base typography + colors
+   - Token-driven with fallbacks (never hard-break if a token is missing)
 */
 
 /* Box sizing */
-*, *::before, *::after {
+*,
+*::before,
+*::after{
   box-sizing: border-box;
 }
 
-/* Remove default margins */
-html, body {
-  margin: 0;
-  padding: 0;
+/* Remove default margins/padding */
+html,
+body{
+  margin: var(--sp-0, 0);
+  padding: var(--sp-0, 0);
 }
 
-/* Body defaults (token-driven) */
-body {
-  background: var(--sp-bg);
-  color: var(--sp-text);
-  font-family: var(--sp-font);
-  line-height: var(--sp-lh-2);
+/* Base page defaults (token-driven + fallbacks) */
+html{
+  color-scheme: light dark;
+
+  /* Smooth font rendering where supported */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* Media elements */
-img, video, canvas, svg {
+body{
+  min-height: var(--sp-page-min-h, 100vh);
+
+  /* Tokens with fallbacks */
+  background: var(--sp-bg, #0b0f14);
+  color: var(--sp-text, #e6edf3);
+
+  font-family: var(--sp-font, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif);
+  font-size: var(--sp-font-size, 16px);
+  line-height: var(--sp-line-height, 1.5);
+}
+
+/* Media defaults */
+img,
+svg,
+video,
+canvas{
   display: block;
   max-width: 100%;
 }
 
-/* Form elements inherit typography */
-input, button, textarea, select {
+img{
+  height: auto;
+}
+
+/* Forms inherit typography */
+input,
+button,
+textarea,
+select{
   font: inherit;
   color: inherit;
 }
 
-/* Buttons */
-button {
-  background: none;
-  border: 0;
-  padding: 0;
+/* Remove default button quirks (components will style buttons) */
+button{
+  background: transparent;
+  border: var(--sp-0, 0);
+  padding: var(--sp-0, 0);
 }
 
-/* Links (color only, no decoration opinion yet) */
-a {
-  color: var(--sp-link);
+/* Tables: predictable defaults */
+table{
+  border-collapse: collapse;
+  border-spacing: var(--sp-0, 0);
 }
 
-/* Lists */
-ul, ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* Links: minimal reset (components/utilities can style) */
+a{
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* Lists: remove browser spacing (optional but common) */
+ul,
+ol{
+  margin: var(--sp-0, 0);
+  padding: var(--sp-0, 0);
+}
+
+/* Headings/paragraphs: remove browser margins (optional; typography can add) */
+h1,h2,h3,h4,h5,h6,
+p{
+  margin: var(--sp-0, 0);
+}
+
+/* HR: tokenized border + spacing */
+hr{
+  border: var(--sp-0, 0);
+  border-top: var(--sp-border-1);
+  margin: var(--sp-6, 1.5rem) 0;
+}
+
+/* Code baseline (light touch) */
+code,
+pre,
+kbd,
+samp{
+  font-family: var(--sp-font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+}
+
+/* Textarea resize (optional; remove if you want free resize) */
+textarea{
+  resize: vertical;
+}
+
+/* Reduced motion baseline (token-driven) */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration: var(--sp-motion-reduce, 1ms) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--sp-motion-reduce, 1ms) !important;
+    scroll-behavior: auto !important;
+  }
 }

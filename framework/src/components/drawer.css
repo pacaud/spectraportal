@@ -20,7 +20,7 @@
 body.sp-scroll-lock{
   overflow: hidden;
   overscroll-behavior: none;
-  padding-right: var(--sp-scrollbar-comp, 0px);
+  padding-right: var(--sp-scrollbar-comp, var(--sp-0, 0));
 }
 
 .sp-drawer-wrap[data-open="true"]{
@@ -30,30 +30,38 @@ body.sp-scroll-lock{
 .sp-drawer-backdrop{
   position: absolute;
   inset: 0;
+
   background: var(--sp-backdrop);
-  opacity: 0;
+  opacity: var(--sp-opacity-0, 0);
   visibility: hidden;
-  transition: opacity 180ms ease, visibility 0ms linear 180ms;
+
+  transition:
+    opacity var(--sp-duration-3) var(--sp-ease-standard),
+    visibility 0ms linear var(--sp-duration-3);
 }
 
 .sp-drawer-wrap[data-open="true"] .sp-drawer-backdrop{
-  opacity: 1;
+  opacity: var(--sp-opacity-100, 1);
   visibility: visible;
-  transition: opacity 180ms ease;
+  transition: opacity var(--sp-duration-3) var(--sp-ease-standard);
 }
 
 .sp-drawer{
   position: absolute;
   display: flex;
   flex-direction: column;
+
   background: var(--sp-elev);
   color: var(--sp-text);
+
   border: var(--sp-border-1);
   box-shadow: var(--sp-shadow-3);
   border-radius: var(--sp-radius-3);
+
   outline: none;
   transform: translate3d(0,0,0);
-  transition: transform 220ms ease;
+
+  transition: transform var(--sp-duration-4) var(--sp-ease-standard);
 }
 
 .sp-drawer__header{
@@ -61,13 +69,14 @@ body.sp-scroll-lock{
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-3);
+
   padding: var(--sp-4);
   border-bottom: var(--sp-border-1);
 }
 
 .sp-drawer__title{
-  margin: 0;
-  font-weight: 700;
+  margin: var(--sp-0, 0);
+  font-weight: var(--sp-fw-bold, 700);
 }
 
 .sp-drawer__body{
@@ -83,65 +92,73 @@ body.sp-scroll-lock{
 /* Optional modifier: remove the footer divider (useful when you want the action row to
    feel like part of the same section). */
 .sp-drawer__footer--flat{
-  border-top: 0;
-  padding-top: 0;
+  border-top: var(--sp-0, 0);
+  padding-top: var(--sp-0, 0);
 }
 
 /* Placements ------------------------------------------------ */
 
 /* Right */
 .sp-drawer--right{
-  top: 0;
-  right: 0;
+  top: var(--sp-0, 0);
+  right: var(--sp-0, 0);
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
-  border-radius: 0;
+  border-radius: var(--sp-0, 0);
+
   border-left: var(--sp-border-1);
-  border-top: 0;
-  border-right: 0;
-  border-bottom: 0;
+  border-top: var(--sp-0, 0);
+  border-right: var(--sp-0, 0);
+  border-bottom: var(--sp-0, 0);
+
   transform: translateX(100%);
 }
 
 /* Left */
 .sp-drawer--left{
-  top: 0;
-  left: 0;
+  top: var(--sp-0, 0);
+  left: var(--sp-0, 0);
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
-  border-radius: 0;
+  border-radius: var(--sp-0, 0);
+
   border-right: var(--sp-border-1);
-  border-top: 0;
-  border-left: 0;
-  border-bottom: 0;
+  border-top: var(--sp-0, 0);
+  border-left: var(--sp-0, 0);
+  border-bottom: var(--sp-0, 0);
+
   transform: translateX(-100%);
 }
 
 /* Bottom */
 .sp-drawer--bottom{
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: var(--sp-0, 0);
+  right: var(--sp-0, 0);
+  bottom: var(--sp-0, 0);
   height: min(80dvh, var(--sp-drawer-h));
-  border-radius: 0;
+  border-radius: var(--sp-0, 0);
+
   border-top: var(--sp-border-1);
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 0;
+  border-left: var(--sp-0, 0);
+  border-right: var(--sp-0, 0);
+  border-bottom: var(--sp-0, 0);
+
   transform: translateY(100%);
 }
 
 /* Top */
 .sp-drawer--top{
-  left: 0;
-  right: 0;
-  top: 0;
+  left: var(--sp-0, 0);
+  right: var(--sp-0, 0);
+  top: var(--sp-0, 0);
   height: min(80dvh, var(--sp-drawer-h));
-  border-radius: 0;
+  border-radius: var(--sp-0, 0);
+
   border-bottom: var(--sp-border-1);
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
+  border-left: var(--sp-0, 0);
+  border-right: var(--sp-0, 0);
+  border-top: var(--sp-0, 0);
+
   transform: translateY(-100%);
 }
 

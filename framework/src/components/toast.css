@@ -6,13 +6,12 @@
    - Use position helpers (.sp-pos-*) to pin to viewport.
 */
 
-:root{
-  --sp-toast-w: 360px;
-  --sp-toast-max-w: calc(100vw - (var(--sp-float-gap) * 2));
-  --sp-toast-gap: var(--sp-2);
-}
-
 .sp-toast{
+  /* component-scoped config */
+  --sp-toast-w: calc(var(--sp-4) * 22.5); /* ~360px if --sp-4=1rem */
+  --sp-toast-gap: var(--sp-2);
+  --sp-toast-max-w: calc(100vw - (var(--sp-4) * 2));
+
   width: min(var(--sp-toast-w), var(--sp-toast-max-w));
   display: grid;
   gap: var(--sp-toast-gap);
@@ -27,13 +26,13 @@
 }
 
 .sp-toast__title{
-  font-weight: 650;
+  font-weight: var(--sp-fw-semibold, 600);
   letter-spacing: -0.01em;
-  line-height: 1.25;
+  line-height: var(--sp-lh-1, 1.2);
 }
 
 .sp-toast__body{
-  line-height: 1.45;
+  line-height: var(--sp-lh-2, 1.4);
 }
 
 .sp-toast__close{
@@ -42,7 +41,12 @@
 
 /* For stacks of multiple toasts */
 .sp-toast-stack{
+  /* reuse the same component-scoped config */
+  --sp-toast-w: calc(var(--sp-4) * 22.5);
+  --sp-toast-gap: var(--sp-2);
+  --sp-toast-max-w: calc(100vw - (var(--sp-4) * 2));
+
   display: grid;
-  gap: var(--sp-2);
+  gap: var(--sp-toast-gap);
   width: min(var(--sp-toast-w), var(--sp-toast-max-w));
 }

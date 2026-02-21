@@ -144,3 +144,21 @@
   max-height: 180px;
   overflow: auto;
 }
+
+/* Layout helpers (docs/demos) */
+.sp-container-narrow{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--sp-6);
+}
+
+/* Effects: shadows */
+/* Shadows (box-shadow) */
+.sp-shadow-1{ box-shadow: var(--sp-shadow-1); }
+.sp-shadow-2{ box-shadow: var(--sp-shadow-2); }
+.sp-shadow-3{ box-shadow: var(--sp-shadow-3); }
+
+/* Text shadows */
+.sp-text-shadow-1{ text-shadow: var(--sp-text-shadow-1); }
+.sp-text-shadow-2{ text-shadow: var(--sp-text-shadow-2); }
+.sp-text-shadow-3{ text-shadow: var(--sp-text-shadow-3); }

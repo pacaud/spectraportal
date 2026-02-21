@@ -1,10 +1,5 @@
 /* Spectra Components: Field + Input (minimal)
    File: src/components/input.css
-
-   Rules:
-   - Token-driven only.
-   - Minimal structure: field, label, input, help text.
-   - One error state hook.
 */
 
 .sp-field{
@@ -13,7 +8,6 @@
 }
 
 .sp-label{
-  font-family: var(--sp-font);
   font-size: var(--sp-fs-2);
   line-height: var(--sp-lh-1);
   color: var(--sp-text);
@@ -24,7 +18,6 @@
   color: var(--sp-muted);
 }
 
-/* Base input */
 .sp-input{
   width: 100%;
   display: block;
@@ -36,9 +29,8 @@
   background: var(--sp-elev-2);
   color: var(--sp-text);
 
-  font-family: var(--sp-font);
   font-size: var(--sp-fs-3);
-  line-height: var(--sp-lh-1);
+  line-height: var(--sp-lh-2, 1.4);
 
   transition:
     border-color var(--sp-duration-2) var(--sp-ease-standard),
@@ -51,12 +43,10 @@
   color: var(--sp-subtle);
 }
 
-/* Hover / focus */
 .sp-input:hover{
   border-color: var(--sp-border-strong);
 }
 
-/* Focus (keyboard-first) */
 .sp-input:focus{
   outline: none;
 }
@@ -64,22 +54,20 @@
 .sp-input:focus-visible{
   outline: none;
   border-color: var(--sp-accent-3);
-  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
+  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
 }
 
 .sp-input:focus:not(:focus-visible){
   box-shadow: none;
 }
 
-/* Disabled (slightly softer than default) */
 .sp-input:disabled{
-  opacity: var(--sp-opacity-60);
+  opacity: var(--sp-opacity-60, .6);
   cursor: not-allowed;
   background: var(--sp-elev);
   border-color: var(--sp-border);
 }
 
-/* Error state (apply to .sp-field) */
 .sp-field--error .sp-help{
   color: var(--sp-danger);
 }
@@ -90,7 +78,7 @@
 
 .sp-field--error .sp-input:focus-visible{
   border-color: var(--sp-danger);
-  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-danger), transparent 70%);
+  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-danger), transparent 70%);
 }
 
 .sp-field--error .sp-input:focus:not(:focus-visible){

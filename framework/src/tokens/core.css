@@ -7,6 +7,9 @@
 */
 
 :root{
+  /* Page defaults */
+  --sp-page-min-h: 100vh;
+
   /* Border widths */
   --sp-border-1: 1px;
   --sp-border-2: 2px;

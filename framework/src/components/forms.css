@@ -20,9 +20,9 @@
 .sp-fieldset{
   display: grid;
   gap: var(--sp-2);
-  padding: 0;
-  border: 0;
-  margin: 0;
+  padding: var(--sp-0, 0);
+  border: var(--sp-0, 0);
+  margin: var(--sp-0, 0);
 }
 
 .sp-legend{
@@ -38,12 +38,12 @@
 }
 
 .sp-field--error :where(.sp-check, .sp-radio, .sp-switch):focus-visible{
-  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-danger), transparent 70%);
+  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-danger), transparent 70%);
 }
 
 /* Radios are small; bump contrast slightly in error focus for clearer visibility */
 .sp-field--error .sp-radio:focus-visible{
-  box-shadow: 0 0 0 var(--sp-2) color-mix(in srgb, var(--sp-danger), transparent 60%);
+  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-danger), transparent 60%);
 }
 
 .sp-field--error :where(.sp-check, .sp-radio, .sp-switch):focus:not(:focus-visible){

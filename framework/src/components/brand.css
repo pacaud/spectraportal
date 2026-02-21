@@ -9,8 +9,9 @@
 }
 
 .sp-brand__logo{
-  width: var(--sp-size-6);
-  height: var(--sp-size-6);
+  width: var(--sp-size-5);   /* was size-6 */
+  height: var(--sp-size-5);
+  opacity: 0.85;            /* soften the mark */
 }
 
 .sp-brand__text{

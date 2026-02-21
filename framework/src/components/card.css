@@ -1,10 +1,5 @@
 /* Spectra Components: Card (minimal)
    File: src/components/card.css
-
-   Rules:
-   - Token-driven only.
-   - Minimal structure helpers: card, header, body, footer.
-   - No complex variants yet.
 */
 
 .sp-card{
@@ -12,7 +7,7 @@
   color: var(--sp-text);
 
   border: var(--sp-border-1);
-  border-radius: var(--sp-radius-3);
+  border-radius: var(--sp-radius-3, 0.75rem);
 
   box-shadow: var(--sp-shadow-1);
 
@@ -36,11 +31,9 @@
 
 .sp-card__footer{
   border-top: var(--sp-border-1);
-  /* Slightly softer footer text by default (keeps hierarchy calm) */
   color: var(--sp-subtle);
 }
 
-/* Optional: tighter card */
 .sp-card--compact .sp-card__header,
 .sp-card--compact .sp-card__body,
 .sp-card--compact .sp-card__footer{

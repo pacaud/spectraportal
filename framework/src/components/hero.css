@@ -2,35 +2,13 @@
 /* Hero (v0.1)           */
 /* ===================== */
 
-/*
-  sp-hero
-  A simple, reusable page hero.
-
-  Goals:
-  - consistent max-width + spacing rhythm
-  - token-first (no hard-coded colors)
-  - actions can be links or buttons
-
-  Suggested markup:
-
-  <header class="sp-hero">
-    <div class="sp-hero__inner sp-stack">
-      <p class="sp-hero__kicker sp-muted">...</p>
-      <h1 class="sp-hero__title">...</h1>
-      <p class="sp-hero__sub sp-muted">...</p>
-      <p class="sp-hero__meta sp-muted">...</p>
-      <nav class="sp-hero__actions" aria-label="Primary">...</nav>
-    </div>
-  </header>
-*/
-
 .sp-hero{
   padding: var(--sp-10) var(--sp-6);
 }
 
 .sp-hero__inner{
   margin-inline: auto;
-  max-width: var(--sp-content-max, 1100px);
+  max-width: var(--sp-container-max, 72rem);
 }
 
 .sp-hero__kicker{
@@ -42,11 +20,13 @@
   margin: 0 0 var(--sp-3);
   font-family: var(--sp-font-display, var(--sp-font));
   letter-spacing: -0.02em;
+  line-height: var(--sp-lh-1, 1.2);
 }
 
 .sp-hero__sub{
   margin: 0 0 var(--sp-5);
-  max-width: 52rem;
+  max-width: var(--sp-content-max, 60rem);
+  line-height: var(--sp-lh-2, 1.4);
 }
 
 .sp-hero__meta{
@@ -55,7 +35,7 @@
 
 .sp-hero__actions{
   display: flex;
-  gap: var(--sp-5);
+  gap: var(--sp-4);
   flex-wrap: wrap;
   align-items: center;
 }
