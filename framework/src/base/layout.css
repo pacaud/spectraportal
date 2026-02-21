@@ -9,7 +9,7 @@
 
 /* Page-width container */
 .sp-container{
-  max-width: var(--sp-container-max;
+  max-width: var(--sp-container-max);
   margin-inline: auto;
   padding-inline: var(--sp-4);
 }
