@@ -25,7 +25,12 @@
 @import "./components/input.css";
 @import "./components/form-controls.css";
 @import "./components/toggles.css";
+
+@import "./components/brand.css";
+@import "./components/badge.css";
 @import "./components/nav.css";
+@import "./components/header.css";
+
 @import "./components/hero.css";
 @import "./components/forms.css";
 @import "./components/drawer.css";
