@@ -26,13 +26,13 @@
 }
 
 .sp-toast__title{
-  font-weight: var(--sp-fw-semibold, 600);
+  font-weight: var(--sp-fw-semibold);
   letter-spacing: -0.01em;
-  line-height: var(--sp-lh-1, 1.2);
+  line-height: var(--sp-lh-1);
 }
 
 .sp-toast__body{
-  line-height: var(--sp-lh-2, 1.4);
+  line-height: var(--sp-lh-2);
 }
 
 .sp-toast__close{

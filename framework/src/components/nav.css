@@ -19,7 +19,7 @@
 }
 
 .sp-nav__link:hover{
-  background: var(--sp-elev, var(--sp-surface));
+  background: var(--sp-elev);
   color: var(--sp-text);
 }
 
@@ -38,6 +38,6 @@
 }
 
 .sp-nav__link.is-active{
-  background: var(--sp-elev, var(--sp-surface));
+  background: var(--sp-elev);
   color: var(--sp-text);
 }

@@ -13,10 +13,10 @@
 
 .sp-visually-hidden{
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
+  width: var(--sp-hairline) !important;
+  height: var(--sp-hairline) !important;
+  padding: var(--sp-0) !important;
+  margin: calc(var(--sp-hairline) * -1) !important;
   overflow: hidden !important;
   clip: rect(0,0,0,0) !important;
   white-space: nowrap !important;
@@ -32,7 +32,7 @@
 }
 
 .sp-link:hover{
-  color: var(--sp-link-hover, var(--sp-link));
+  color: var(--sp-link-hover);
 }
 
 .sp-muted{
@@ -77,20 +77,20 @@
 
 .sp-code-list{
   list-style: none;
-  margin: 0;
+  margin: var(--sp-0);
   padding: var(--sp-2) var(--sp-3);
   border: var(--sp-border-1);
   background: var(--sp-surface-2);
-  border-radius: var(--sp-radius-md);
+  border-radius: var(--sp-radius-2);
   font-family: var(--sp-font-mono);
-  font-size: var(--sp-text-sm);
+  font-size: var(--sp-fs-1);
 }
 
 .sp-code-list li{
   display: flex;
   align-items: baseline;
   gap: var(--sp-3);
-  padding: var(--sp-1) 0;
+  padding: var(--sp-1) var(--sp-0);
 }
 
 .sp-code-list li + li{
@@ -101,7 +101,7 @@
   font-family: inherit;
   background: transparent;
   border: 0;
-  padding: 0;
+  padding: var(--sp-0);
   flex: 0 0 220px;
   max-width: 100%;
 }
@@ -145,12 +145,6 @@
   overflow: auto;
 }
 
-/* Layout helpers (docs/demos) */
-.sp-container-narrow{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: var(--sp-6);
-}
 
 /* Effects: shadows */
 /* Shadows (box-shadow) */

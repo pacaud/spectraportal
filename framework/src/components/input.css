@@ -1,3 +1,4 @@
+
 /* Spectra Components: Field + Input (minimal)
    File: src/components/input.css
 */
@@ -30,7 +31,7 @@
   color: var(--sp-text);
 
   font-size: var(--sp-fs-3);
-  line-height: var(--sp-lh-2, 1.4);
+  line-height: var(--sp-lh-2);
 
   transition:
     border-color var(--sp-duration-2) var(--sp-ease-standard),
@@ -62,7 +63,7 @@
 }
 
 .sp-input:disabled{
-  opacity: var(--sp-opacity-60, .6);
+  opacity: var(--sp-opacity-60);
   cursor: not-allowed;
   background: var(--sp-elev);
   border-color: var(--sp-border);

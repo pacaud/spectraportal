@@ -17,4 +17,16 @@
   --sp-z-modal: 50;      /* modal dialogs */
   --sp-z-toast: 60;      /* toasts/notifications */
   --sp-z-overlay: 70;    /* global overlays (blocking) */
+
+  /* Aliases (semantic names used by utilities/components) */
+  --sp-layer-base: var(--sp-z-base);
+  --sp-layer-sticky: var(--sp-z-sticky);
+
+  /* “panel” maps best to drawers/panels */
+  --sp-layer-panel: var(--sp-z-drawer);
+
+  /* useful extras */
+  --sp-layer-modal: var(--sp-z-modal);
+  --sp-layer-toast: var(--sp-z-toast);
+  --sp-layer-overlay: var(--sp-z-overlay);
 }

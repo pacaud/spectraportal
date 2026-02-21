@@ -9,14 +9,21 @@
 
 /* Page-width container */
 .sp-container{
-  max-width: var(--sp-container-max, 72rem);
+  max-width: var(--sp-container-max;
   margin-inline: auto;
   padding-inline: var(--sp-4);
 }
 
+/* Layout helpers (docs/demos) */
+.sp-container-narrow{
+  max-width: var(--sp-container-narrow);
+  margin: var(--sp-0) auto;
+  padding: var(--sp-6);
+}
+
 /* Narrow content container (reading, docs) */
 .sp-content{
-  max-width: var(--sp-content-max, 60rem);
+  max-width: var(--sp-content-max);
   margin-inline: auto;
 }
 

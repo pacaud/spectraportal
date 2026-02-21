@@ -26,5 +26,6 @@
   /* --sp-content-max: 60rem; */
   /* Layout max widths */
   --sp-container-max: 72rem;
+  --sp-container-narrow: 68.75rem;;
   --sp-content-max: 60rem;
 }

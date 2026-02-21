@@ -8,12 +8,12 @@
 
   font-size: var(--sp-fs-2);
   line-height: var(--sp-lh-2);
-  font-weight: var(--sp-fw-semibold, 600);
+  font-weight: var(--sp-fw-semibold);
 }
 
 /* Soft badge */
 .sp-badge--soft{
-  background: var(--sp-elev, var(--sp-surface));
+  background: var(--sp-elev);
   color: var(--sp-text);
   border: var(--sp-border-1);
 }

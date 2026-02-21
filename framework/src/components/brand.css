@@ -2,21 +2,21 @@
 .sp-brand{
   display: inline-flex;
   align-items: center;
-  gap: var(--sp-space-2);
+  gap: var(--sp-2);
   text-decoration: none;
   color: inherit;
   min-width: max-content;
 }
 
 .sp-brand__logo{
-  width: var(--sp-size-5);   /* was size-6 */
-  height: var(--sp-size-5);
-  opacity: var(--sp-opacity-80, .8);            /* soften the mark */
+  width: var(--sp-5);   /* was size-6 */
+  height: var(--sp-5);
+  opacity: var(--sp-opacity-80);   /* soften the mark */
 }
 
 .sp-brand__text{
-  font-size: var(--sp-font-size-5);
-  font-weight: var(--sp-font-weight-7);
-  letter-spacing: var(--sp-tracking-tight);
+  font-size: var(--sp-fs-5);
+  font-weight: var(--sp-fw-bold);
+  /*letter-spacing: var(--sp-tracking-tight);*/
 }
 

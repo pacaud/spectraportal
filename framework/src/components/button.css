@@ -12,38 +12,38 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--sp-2, .5rem);
+  gap: var(--sp-2);
 
   /* sizing */
-  padding: var(--sp-2, .5rem) var(--sp-3, .75rem);
-  min-height: calc(var(--sp-4, 1rem) * 2.5);
+  padding: var(--sp-2) var(--sp-3);
+  min-height: calc(var(--sp-4) * 2.5);
 
   /* type */
-  font-weight: var(--sp-fw-semibold, 600);
-  font-size: var(--sp-fs-2, 0.875rem);
-  line-height: var(--sp-lh-2, 1.4);
+  font-weight: var(--sp-fw-semibold);
+  font-size: var(--sp-fs-2);
+  line-height: var(--sp-lh-2);
   text-decoration: none;
 
   /* shape + border */
-  border-radius: var(--sp-radius-md, .75rem);
+  border-radius: var(--sp-radius-3);
   border: var(--sp-border-1);
   cursor: pointer;
   user-select: none;
 
   /* colors (default button) */
-  background: var(--sp-elev, var(--sp-surface, #111827));
-  color: var(--sp-text, #e6edf3);
+  background: var(--sp-elev);
+  color: var(--sp-text);
 
   /* motion */
   transition:
-    background var(--sp-duration-2, 180ms) var(--sp-ease-standard, ease),
-    border-color var(--sp-duration-2, 180ms) var(--sp-ease-standard, ease),
-    transform var(--sp-duration-2, 180ms) var(--sp-ease-standard, ease),
-    box-shadow var(--sp-duration-2, 180ms) var(--sp-ease-standard, ease);
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    transform var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
 }
 
 .sp-btn:hover{
-  background: var(--sp-elev-2, var(--sp-elev, var(--sp-surface, #111827)));
+  background: var(--sp-elev-2);
 }
 
 .sp-btn:active{
@@ -52,20 +52,20 @@
 
 .sp-btn:disabled,
 .sp-btn[aria-disabled="true"]{
-  opacity: var(--sp-opacity-60, .6);
+  opacity: var(--sp-opacity-60);
   cursor: not-allowed;
   pointer-events: none;
 }
 
 /* Primary */
 .sp-btn--primary{
-  background: var(--sp-accent, #22c55e);
-  color: var(--sp-bg, #0b0f14);
-  border-color: color-mix(in oklab, var(--sp-accent, #22c55e) 65%, var(--sp-border, rgba(255,255,255,.14)));
+  background: var(--sp-accent);
+  color: var(--sp-bg);
+  border-color: color-mix(in oklab, var(--sp-accent) 65%, var(--sp-border));
 }
 
 .sp-btn--primary:hover{
-  background: color-mix(in oklab, var(--sp-accent, #22c55e) 88%, black);
+  background: color-mix(in oklab, var(--sp-accent) 88%, black);
 }
 
 /* Ghost */
@@ -75,19 +75,19 @@
 }
 
 .sp-btn--ghost:hover{
-  background: color-mix(in oklab, var(--sp-border, rgba(255,255,255,.14)) 35%, transparent);
+  background: color-mix(in oklab, var(--sp-border) 35%, transparent);
 }
 
 /* Small / Large */
 .sp-btn--sm{
-  padding: var(--sp-1, .25rem) var(--sp-2, .5rem);
-  min-height: calc(var(--sp-4, 1rem) * 2);
-  border-radius: var(--sp-radius-sm, .5rem);
-  font-weight: var(--sp-fw-semibold, 600);
+  padding: var(--sp-1) var(--sp-2);
+  min-height: calc(var(--sp-4) * 2);
+  border-radius: var(--sp-radius-2);
+  font-weight: var(--sp-fw-semibold);
 }
 
 .sp-btn--lg{
-  padding: var(--sp-3, .75rem) var(--sp-4, 1rem);
-  min-height: calc(var(--sp-4, 1rem) * 3);
-  border-radius: var(--sp-radius-lg, 1rem);
+  padding: var(--sp-3) var(--sp-4);
+  min-height: calc(var(--sp-4) * 3);
+  border-radius: var(--sp-radius-4);
 }

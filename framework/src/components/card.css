@@ -7,7 +7,7 @@
   color: var(--sp-text);
 
   border: var(--sp-border-1);
-  border-radius: var(--sp-radius-3, 0.75rem);
+  border-radius: var(--sp-radius-3);
 
   box-shadow: var(--sp-shadow-1);
 

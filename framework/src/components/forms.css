@@ -20,9 +20,9 @@
 .sp-fieldset{
   display: grid;
   gap: var(--sp-2);
-  padding: var(--sp-0, 0);
-  border: var(--sp-0, 0);
-  margin: var(--sp-0, 0);
+  padding: var(--sp-0);
+  border:  0;
+  margin: var(--sp-0);
 }
 
 .sp-legend{

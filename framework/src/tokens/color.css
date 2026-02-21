@@ -9,6 +9,7 @@
      ------------------------------------------------------- */
   --sp-bg: #0B0F14;          /* app background */
   --sp-surface: #111827;    /* primary surface */
+  --sp-surface-2: color-mix(in srgb, var(--sp-surface) 88%, var(--sp-fg) 12%);
   --sp-elev: #172033;       /* raised surface */
   --sp-elev-2: #1E293B;     /* higher elevation (optional) */
 
@@ -18,6 +19,7 @@
   --sp-text: #E6EDF7;       /* primary text */
   --sp-muted: #9AA7B8;      /* secondary / muted text */
   --sp-subtle: #7C8AA0;     /* subtle text (optional) */
+  --sp-fg: var(--sp-text);
 
   /* -------------------------------------------------------
      Borders

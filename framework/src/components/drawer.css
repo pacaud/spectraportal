@@ -20,7 +20,7 @@
 body.sp-scroll-lock{
   overflow: hidden;
   overscroll-behavior: none;
-  padding-right: var(--sp-scrollbar-comp, var(--sp-0, 0));
+  padding-right: var(--sp-scrollbar-comp, var(--sp-0));
 }
 
 .sp-drawer-wrap[data-open="true"]{
@@ -32,7 +32,7 @@ body.sp-scroll-lock{
   inset: 0;
 
   background: var(--sp-backdrop);
-  opacity: var(--sp-opacity-0, 0);
+  opacity: var(--sp-opacity-0);
   visibility: hidden;
 
   transition:
@@ -41,7 +41,7 @@ body.sp-scroll-lock{
 }
 
 .sp-drawer-wrap[data-open="true"] .sp-drawer-backdrop{
-  opacity: var(--sp-opacity-100, 1);
+  opacity: var(--sp-opacity-100);
   visibility: visible;
   transition: opacity var(--sp-duration-3) var(--sp-ease-standard);
 }
@@ -75,8 +75,8 @@ body.sp-scroll-lock{
 }
 
 .sp-drawer__title{
-  margin: var(--sp-0, 0);
-  font-weight: var(--sp-fw-bold, 700);
+  margin: var(--sp-0);
+  font-weight: var(--sp-fw-bold);
 }
 
 .sp-drawer__body{
@@ -92,72 +92,72 @@ body.sp-scroll-lock{
 /* Optional modifier: remove the footer divider (useful when you want the action row to
    feel like part of the same section). */
 .sp-drawer__footer--flat{
-  border-top: var(--sp-0, 0);
-  padding-top: var(--sp-0, 0);
+  border-top: 0;
+  padding-top: var(--sp-0);
 }
 
 /* Placements ------------------------------------------------ */
 
 /* Right */
 .sp-drawer--right{
-  top: var(--sp-0, 0);
-  right: var(--sp-0, 0);
+  top: 0;
+  right: 0;
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
-  border-radius: var(--sp-0, 0);
+  border-radius: 0;
 
   border-left: var(--sp-border-1);
-  border-top: var(--sp-0, 0);
-  border-right: var(--sp-0, 0);
-  border-bottom: var(--sp-0, 0);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
 
   transform: translateX(100%);
 }
 
 /* Left */
 .sp-drawer--left{
-  top: var(--sp-0, 0);
-  left: var(--sp-0, 0);
+  top: 0;
+  left:0;
   height: 100dvh;
   width: min(92vw, var(--sp-drawer-w));
-  border-radius: var(--sp-0, 0);
+  border-radius: 0;
 
   border-right: var(--sp-border-1);
-  border-top: var(--sp-0, 0);
-  border-left: var(--sp-0, 0);
-  border-bottom: var(--sp-0, 0);
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 0;
 
   transform: translateX(-100%);
 }
 
 /* Bottom */
 .sp-drawer--bottom{
-  left: var(--sp-0, 0);
-  right: var(--sp-0, 0);
-  bottom: var(--sp-0, 0);
+  left: 0;
+  right: 0;
+  bottom: 0;
   height: min(80dvh, var(--sp-drawer-h));
-  border-radius: var(--sp-0, 0);
+  border-radius: 0;
 
   border-top: var(--sp-border-1);
-  border-left: var(--sp-0, 0);
-  border-right: var(--sp-0, 0);
-  border-bottom: var(--sp-0, 0);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
 
   transform: translateY(100%);
 }
 
 /* Top */
 .sp-drawer--top{
-  left: var(--sp-0, 0);
-  right: var(--sp-0, 0);
-  top: var(--sp-0, 0);
+  left: 0;
+  right: 0;
+  top: 0;
   height: min(80dvh, var(--sp-drawer-h));
-  border-radius: var(--sp-0, 0);
+  border-radius: 0;
 
   border-bottom: var(--sp-border-1);
-  border-left: var(--sp-0, 0);
-  border-right: var(--sp-0, 0);
-  border-top: var(--sp-0, 0);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
 
   transform: translateY(-100%);
 }
