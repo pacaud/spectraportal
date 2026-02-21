@@ -1,0 +1,9 @@
+.sp-brand__mark{
+  width: 28px;
+  height: 28px;
+  display: block;
+
+  /* brighten + pop */
+  filter: brightness(1.35) contrast(1.1) drop-shadow(0 0 10px rgba(120,100,255,.25));
+  opacity: calc(var(--sp-opacity-100) - .05);
+}
