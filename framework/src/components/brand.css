@@ -1,0 +1,36 @@
+/* Brand component (portable) */
+.sp-brand{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-space-2);
+  text-decoration: none;
+  color: inherit;
+  min-width: max-content;
+}
+
+.sp-brand__logo{
+  width: var(--sp-size-6);
+  height: var(--sp-size-6);
+}
+
+.sp-brand__text{
+  font-size: var(--sp-font-size-5);
+  font-weight: var(--sp-font-weight-7);
+  letter-spacing: var(--sp-tracking-tight);
+}
+
+/* Optional badge (brand often uses it) */
+.sp-badge{
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-space-1) var(--sp-space-2);
+  border-radius: var(--sp-radius-3);
+  font-size: var(--sp-font-size-2);
+  line-height: var(--sp-line-height-2);
+}
+
+.sp-badge--soft{
+  background: var(--sp-surface-2);
+  color: var(--sp-text-2);
+  border: 1px solid var(--sp-border-1);
+}
