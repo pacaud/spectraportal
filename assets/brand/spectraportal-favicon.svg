@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Spectra Portal">
+  <defs>
+    <!-- =========
+      Token bridge:
+      - If CSS vars exist, they win.
+      - If not, fall back to safe built-in colors for favicon use.
+    ========= -->
+    <style>
+      :root{
+        --sp-fav-bg: #0b1020;
+        --sp-fav-ring: #2a2fff;
+        --sp-fav-glow: rgba(120,120,255,.45);
+        --sp-fav-bar-1: #eaf3ff;
+        --sp-fav-bar-2: #bfe4ff;
+        --sp-fav-bar-3: #57d7ff;
+        --sp-fav-bar-4: #7c5bff;
+        --sp-fav-dot: #d84dff;
+        --sp-fav-dot-glow: rgba(216,77,255,.75);
+      }
+    </style>
+
+    <!-- soft portal glow -->
+    <radialGradient id="gGlow" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="var(--sp-fav-glow)" stop-opacity="1"/>
+      <stop offset="65%" stop-color="var(--sp-fav-glow)" stop-opacity=".25"/>
+      <stop offset="100%" stop-color="var(--sp-fav-glow)" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- inner sphere shading -->
+    <radialGradient id="gSphere" cx="45%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#1a2b66" stop-opacity="1"/>
+      <stop offset="55%" stop-color="var(--sp-fav-bg)" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#070a14" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- outer ring -->
+    <radialGradient id="gRing" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="var(--sp-fav-ring)" stop-opacity="0"/>
+      <stop offset="70%" stop-color="var(--sp-fav-ring)" stop-opacity=".15"/>
+      <stop offset="100%" stop-color="var(--sp-fav-ring)" stop-opacity=".55"/>
+    </radialGradient>
+
+    <!-- dot glow -->
+    <filter id="fDotGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="1 0 0 0 0
+                0 0.6 0 0 0
+                0 1 0 0 0
+                0 0 0 1 0" result="tint"/>
+      <feMerge>
+        <feMergeNode in="tint"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- rounded-rect helper -->
+    <clipPath id="clipCircle">
+      <circle cx="128" cy="128" r="112"/>
+    </clipPath>
+  </defs>
+
+  <!-- background circle -->
+  <g clip-path="url(#clipCircle)">
+    <rect width="256" height="256" fill="url(#gSphere)"/>
+    <rect width="256" height="256" fill="url(#gGlow)"/>
+  </g>
+
+  <!-- outer ring -->
+  <circle cx="128" cy="128" r="112" fill="none" stroke="url(#gRing)" stroke-width="10"/>
+
+  <!-- mark: 4 bars + short pillar -->
+  <g transform="translate(0,2)">
+    <!-- Bars: keep them chunky for 16px legibility -->
+    <rect x="72" y="94" width="112" height="24" rx="10" fill="var(--sp-fav-bar-1)"/>
+    <rect x="72" y="126" width="112" height="24" rx="10" fill="var(--sp-fav-bar-2)"/>
+    <rect x="72" y="158" width="64"  height="24" rx="10" fill="var(--sp-fav-bar-3)"/>
+    <rect x="144" y="158" width="40" height="24" rx="10" fill="var(--sp-fav-bar-4)"/>
+
+    <!-- small pillar on right (echoes your clean mark) -->
+    <rect x="188" y="118" width="20" height="64" rx="8" fill="var(--sp-fav-bar-2)"/>
+  </g>
+
+  <!-- signal dot -->
+  <g filter="url(#fDotGlow)">
+    <circle cx="194" cy="78" r="12" fill="var(--sp-fav-dot)"/>
+    <circle cx="194" cy="78" r="22" fill="var(--sp-fav-dot-glow)" opacity=".55"/>
+  </g>
+</svg>
