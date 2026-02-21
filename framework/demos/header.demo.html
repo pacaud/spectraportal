@@ -10,39 +10,27 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 </head>
 
-<body class="sp-demo-page">
-<header class="sp-header" role="banner">
+<body>
+<header class="sp-header">
   <div class="sp-header__inner sp-container">
-
-    <!-- Brand -->
-    <a class="sp-brand" href="/" aria-label="SpectraPortal Home">
-      <img class="sp-brand__logo" src="/assets/brand/spectraportal-mark.svg" alt="" />
-      <span class="sp-brand__text">SpectraPortal</span>
-      <span class="sp-badge sp-badge--soft">v0.1</span>
-    </a>
-
-    <!-- Nav -->
-    <nav class="sp-nav" aria-label="Primary">
-      <a class="sp-nav__link" href="/framework/docs/">Docs</a>
-      <a class="sp-nav__link is-active" href="/framework/demos/" aria-current="page">Demos</a>
-      <a class="sp-nav__link" href="/framework/components/">Components</a>
-      <a class="sp-nav__link" href="/framework/tokens/">Tokens</a>
-    </nav>
-
-    <!-- Actions -->
-    <div class="sp-header__actions">
-      <button class="sp-btn sp-btn--ghost" type="button" data-theme-toggle>Theme</button>
-      <a class="sp-btn sp-btn--primary" href="https://github.com/pacaud/spectraportal">GitHub</a>
+    <div class="sp-header__left">
+      <a class="sp-brand" href="#">
+        <span class="sp-brand__mark" aria-hidden="true">✦</span>
+        <span class="sp-brand__text">Spectra</span>
+      </a>
     </div>
 
+    <nav class="sp-header__center sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="#">Docs</a>
+      <a class="sp-nav__link" href="#">Demos</a>
+      <a class="sp-nav__link" href="#">Tokens</a>
+    </nav>
+
+    <div class="sp-header__right sp-header__actions">
+      <button class="sp-btn sp-btn--ghost">Sign in</button>
+      <button class="sp-btn sp-btn--primary">Get Spectra</button>
+    </div>
   </div>
 </header>
-
-  <main class="sp-container" style="padding: var(--sp-space-6) var(--sp-space-4);">
-    <h1 style="margin:0;">Header demo</h1>
-    <p style="max-width:70ch; color: var(--sp-text-2);">
-      If the header still ends up at the bottom-left, your overrides/theme CSS is applying layout rules to body.
-    </p>
-  </main>
 </body>
 </html>
