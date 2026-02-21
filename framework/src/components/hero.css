@@ -12,25 +12,25 @@
 }
 
 .sp-hero__kicker{
-  margin: 0 0 var(--sp-3);
+  margin: var(--sp-0, 0) var(--sp-0, 0) var(--sp-3);
   letter-spacing: 0.02em;
 }
 
 .sp-hero__title{
-  margin: 0 0 var(--sp-3);
+  margin: var(--sp-0, 0) var(--sp-0, 0) var(--sp-3);
   font-family: var(--sp-font-display, var(--sp-font));
   letter-spacing: -0.02em;
   line-height: var(--sp-lh-1, 1.2);
 }
 
 .sp-hero__sub{
-  margin: 0 0 var(--sp-5);
+  margin: var(--sp-0, 0) var(--sp-0, 0) var(--sp-5);
   max-width: var(--sp-content-max, 60rem);
   line-height: var(--sp-lh-2, 1.4);
 }
 
 .sp-hero__meta{
-  margin: 0 0 var(--sp-6);
+  margin: var(--sp-0, 0) var(--sp-0, 0) var(--sp-6);
 }
 
 .sp-hero__actions{
