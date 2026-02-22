@@ -9,8 +9,8 @@
 }
 
 .sp-footer__mark{
-  width: 34px;          /* or var(--sp-9) if you want token-driven */
-  height: 34px;
+  width: var(--sp-9);    
+  height: var(--sp-9);
   display: block;
   flex: 0 0 auto;
   opacity: var(--sp-opacity-100);
