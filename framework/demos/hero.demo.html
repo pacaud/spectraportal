@@ -39,11 +39,16 @@
     flex: 1;
   }
 
+  /* space between header and first hero */
+  .demo-afterHeader{
+    padding-top: var(--sp-6);
+  }
+
   /* hairline divider between sections */
   .demo-divider{
     border: 0;
     border-top: var(--sp-border-1);
-    margin: 0;
+    margin: var(--sp-6) 0; /* adds breathing room above + below */
   }
 
   /* split hero layout (demo-only) */
@@ -169,36 +174,38 @@
     </div>
   </header>
 
-  <!-- HERO: centered (surface variant) -->
-  <section class="sp-hero sp-hero--surface" id="hero-centered">
-    <div class="sp-hero__inner">
-      <p class="sp-hero__kicker">
-        <span class="sp-badge sp-badge--soft">Hero • Centered</span>
-        <span style="margin-left: var(--sp-2); color: var(--sp-text-muted);">
-          Surface + type scale + CTA rhythm
-        </span>
-      </p>
+  <div class="demo-afterHeader">
+    <!-- HERO: centered (surface variant) -->
+    <section class="sp-hero sp-hero--surface" id="hero-centered">
+      <div class="sp-hero__inner">
+        <p class="sp-hero__kicker">
+          <span class="sp-badge sp-badge--soft">Hero • Centered</span>
+          <span style="margin-left: var(--sp-2); color: var(--sp-text-muted);">
+            Surface + type scale + CTA rhythm
+          </span>
+        </p>
 
-      <h1 class="sp-hero__title">
-        A cozy hero that proves your type scale, spacing, and buttons.
-      </h1>
+        <h1 class="sp-hero__title">
+          A cozy hero that proves your type scale, spacing, and buttons.
+        </h1>
 
-      <p class="sp-hero__sub">
-        This page is intentionally simple: one header, one centered hero, one split hero,
-        and a card surface to validate contrast, borders, and rhythm.
-      </p>
+        <p class="sp-hero__sub">
+          This page is intentionally simple: one header, one centered hero, one split hero,
+          and a card surface to validate contrast, borders, and rhythm.
+        </p>
 
-      <p class="sp-hero__meta" style="color: var(--sp-text-muted);">
-        Goal: lock the “first impression” layout before we build main/page sections.
-      </p>
+        <p class="sp-hero__meta" style="color: var(--sp-text-muted);">
+          Goal: lock the “first impression” layout before we build main/page sections.
+        </p>
 
-      <div class="sp-hero__actions">
-        <a class="sp-btn sp-btn--primary" href="#hero-split">See split hero</a>
-        <a class="sp-btn" href="#notes">Notes</a>
-        <a class="sp-btn sp-btn--ghost" href="./utilities.demo.html">Utilities (later)</a>
+        <div class="sp-hero__actions">
+          <a class="sp-btn sp-btn--primary" href="#hero-split">See split hero</a>
+          <a class="sp-btn" href="#notes">Notes</a>
+          <a class="sp-btn sp-btn--ghost" href="./utilities.demo.html">Utilities (later)</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <hr class="demo-divider" />
 
