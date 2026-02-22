@@ -21,12 +21,14 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
   <style>
-    /* demo scaffolding (no .sp-* overrides) */
-    .demo-page{ min-height: 100vh; }
-
-    .demo-main{
-      padding: var(--sp-8) 0;
-    }
+   body.demo-page{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main.demo-main{
+  flex: 1;
+}
 
     .demo-divider{
       border: 0;
@@ -35,7 +37,7 @@
     }
 
 .demo-footer{
-  padding: var(--sp-8) 0 var(--sp-10);
+  padding: var(--sp-6) 0 var(--sp-10);
 }
 
     /* minimal footer row */
