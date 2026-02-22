@@ -20,8 +20,29 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
-  <!-- tiny demo-only helpers (token-driven, not custom colors) -->
+  <!-- demo-only helpers (scoped + token-driven) -->
   <style>
+    /* page scaffold so footer sits at bottom on short pages */
+    body.demo-page{
+      display: flex;
+      flex-direction: column;
+      min-height: var(--sp-page-min-h);
+    }
+    .demo-main{
+      flex: 1;
+    }
+
+    /* give the hero breathing room from the header */
+    .demo-hero{
+      margin-top: var(--sp-6);
+    }
+
+    /* spacing between hero and main content */
+    .demo-main{
+      margin-top: var(--sp-8);
+    }
+
+    /* link list helpers (token-driven, no custom colors) */
     .demo-links{
       display: flex;
       flex-direction: column;
@@ -35,27 +56,56 @@
       text-decoration: underline;
       text-decoration-color: var(--sp-link);
     }
+
+    /* divider: prefer token border if present, otherwise fall back to line */
     .demo-divider{
       border: 0;
-      border-top: 1px solid var(--sp-line);
-      margin: 0;
+      border-top: var(--sp-border-1);
+      margin: var(--sp-0);
     }
 
-    .sp-hero {
-  margin-top: var(--sp-6);
-}
+    /* footer spacing + structure */
+    .demo-footer{
+      margin-top: var(--sp-10);
+      padding: var(--sp-6) var(--sp-0) var(--sp-10);
+    }
 
-.demo-main-spacing {
-  margin-top: var(--sp-8);
-}
+    .demo-footer__row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+    }
 
-.demo-footer {
-  margin-top: var(--sp-10);
-}
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
+    }
+
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space: nowrap;
+    }
   </style>
 </head>
 
-<body>
+<body class="demo-page">
 
 <header class="sp-header">
   <div class="sp-header__inner sp-container">
@@ -85,8 +135,8 @@
   </div>
 </header>
 
-<!-- ✅ HERO (framework front-door) -->
-<section class="sp-hero sp-hero--surface" aria-label="Demos hero">
+<!-- HERO -->
+<section class="sp-hero sp-hero--surface demo-hero" aria-label="Demos hero">
   <div class="sp-hero__inner sp-container sp-stack">
     <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
     <h1 class="sp-hero__title">Component Demos</h1>
@@ -94,7 +144,7 @@
       Quick sanity checks for component + token wiring.
     </p>
 
-    <!-- optional: keep actions if/when these pages exist -->
+    <!-- optional actions (wire later) -->
     <nav class="sp-hero__actions" aria-label="Hero actions">
       <a class="sp-btn sp-btn--ghost" href="#">Open Docs</a>
       <a class="sp-btn sp-btn--primary" href="#">Browse Tokens</a>
@@ -102,7 +152,7 @@
   </div>
 </section>
 
-<main class="sp-container sp-content" style="margin-top: var(--sp-6);">
+<main class="sp-container sp-content demo-main">
   <section class="sp-stack">
 
     <div class="sp-card">
@@ -151,17 +201,18 @@
   </section>
 </main>
 
-<!-- ✅ real footer element + Spectra-ish structure -->
 <footer class="demo-footer" aria-label="Site footer">
   <div class="sp-container">
-    <!-- Use a surface so it feels “anchored” like the rest of Spectra -->
     <section class="sp-card sp-card--surface" aria-label="Footer legal">
       <div class="sp-card__body">
         <div class="demo-footer__row">
           <div>
-            ©<span id="y"></span> SpectraPortal. All rights reserved.
+            © <span id="y"></span> SpectraPortal. All rights reserved.
             <span class="demo-footer__credit">
-              · Built by <a class="demo-footer__link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+              · Built by
+              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                Code Crunchers Technologies
+              </a>
             </span>
           </div>
 
