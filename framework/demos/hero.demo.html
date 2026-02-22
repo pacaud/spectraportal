@@ -30,7 +30,7 @@
 
   /* page scaffold */
   .demo-page{
-    min-height: 100vh;
+    min-height: var(--sp-page-min-h);
   }
 
   /* hairline divider between sections */
@@ -40,47 +40,41 @@
     margin: 0;
   }
 
-  /* split hero layout */
+  /* split hero layout (demo-only) */
+.demo-split{
+  display: flex;
+  flex-direction: column;  /* default: stack */
+  gap: var(--sp-6);
+}
+
+/* left/right sizing */
+.demo-split__left{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.demo-split__right{
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-start; /* in column mode */
+}
+
+/* go side-by-side when there's real space */
+@media (min-width: 960px){
   .demo-split{
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-6);
-    align-items: center; /* feels better for hero splits */
+    flex-direction: row;
+    align-items: center;
   }
 
   .demo-split__left{
-    flex: 1 1 520px;   /* give copy room */
-    min-width: 280px;
+    flex: 1 1 0;
   }
 
   .demo-split__right{
-    flex: 0 1 420px;   /* stable “proof” column */
-    min-width: 280px;
-    display: flex;
+    flex: 0 0 420px;          /* stable proof column */
     justify-content: flex-end;
   }
-
-  .demo-hero-card{
-    width: 100%;
-    max-width: 420px;
-  }
-
-  /* list styling for checklists */
-  .demo-hero-list{
-    margin: var(--sp-4) 0 0;
-    padding-left: 1.1em;
-    line-height: var(--sp-lh-2);
-    color: var(--sp-text-muted);
-  }
-
-  .demo-hero-list li + li{
-    margin-top: var(--sp-2);
-  }
-
-  /* optional: soften perceived “squish” without touching .sp-hero */
-  .demo-hero-actions-gap{
-    margin-top: var(--sp-5);
-  }
+}
 </style>
 </head>
 
