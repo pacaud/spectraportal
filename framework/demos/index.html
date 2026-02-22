@@ -106,33 +106,7 @@
       color: var(--sp-text-muted);
       font-size: var(--sp-fs-0);
       margin: 0;
-    }
-    .demo-swatch-grid{
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: var(--sp-2);
-      max-width: 360px;
-    }
-    .demo-swatch{
-      aspect-ratio: 1 / 1;
-      border-radius: var(--sp-r-2, 10px);
-      border: 1px solid var(--sp-line);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,0));
-    }
-    /* token-inspired accents (still subtle) */
-    .demo-swatch:nth-child(1){ box-shadow: 0 0 0 1px rgba(0,210,170,.20) inset; }
-    .demo-swatch:nth-child(2){ box-shadow: 0 0 0 1px rgba(80,160,255,.22) inset; }
-    .demo-swatch:nth-child(3){ box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
-    .demo-swatch:nth-child(4){ box-shadow: 0 0 0 1px rgba(0,210,170,.14) inset; }
-    .demo-swatch:nth-child(5){ box-shadow: 0 0 0 1px rgba(80,160,255,.16) inset; }
-    .demo-swatch:nth-child(6){ box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset; }
-    .demo-swatch:nth-child(7){ box-shadow: 0 0 0 1px rgba(0,210,170,.12) inset; }
-    .demo-swatch:nth-child(8){ box-shadow: 0 0 0 1px rgba(80,160,255,.14) inset; }
-    .demo-swatch:nth-child(9){ box-shadow: 0 0 0 1px rgba(255,255,255,.10) inset; }
-    .demo-swatch:nth-child(10){ box-shadow: 0 0 0 1px rgba(0,210,170,.10) inset; }
-    .demo-swatch:nth-child(11){ box-shadow: 0 0 0 1px rgba(80,160,255,.12) inset; }
-    .demo-swatch:nth-child(12){ box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset; }
+    } 
 
 
     /* token icon row: small, side-by-side, tidy */
@@ -161,6 +135,41 @@
         height: 34px;
       }
     }
+
+    /* 4x4 token grid: fills the right card without the tall placeholder column */
+    .demo-token-grid{
+      display: grid;
+      grid-template-columns: repeat(4, 44px);
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      padding: var(--sp-5);
+      border-radius: var(--sp-r-3, 16px);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
+      width: fit-content;
+    }
+    .demo-token-grid img{
+      width: 44px;
+      height: 44px;
+      display: block;
+      border-radius: var(--sp-r-2, 10px);
+      opacity: .92;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.24));
+    }
+    .demo-token-grid img.is-coin{
+      opacity: .78;
+    }
+    @media (max-width: 520px){
+      .demo-token-grid{
+        grid-template-columns: repeat(4, 38px);
+        padding: var(--sp-4);
+      }
+      .demo-token-grid img{
+        width: 38px;
+        height: 38px;
+      }
+    }
+
     /* footer spacing + structure */
     .demo-footer{
       margin-top: var(--sp-10);
@@ -295,7 +304,6 @@
 
       </div>
     </div>
-
     <!-- Right: visual panel -->
     <aside class="sp-card sp-card--surface demo-visual" aria-label="Spectra visual panel">
       <div class="sp-card__body demo-visual__inner">
@@ -308,6 +316,7 @@
 
         <p class="demo-visual__caption">Tokens → Components → Demos</p>
 
+        <!-- compact token row (quick read) -->
         <div class="demo-token-icons" aria-hidden="true">
           <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
           <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
@@ -316,12 +325,29 @@
           <img class="is-coin" src="/assets/brand/pkw-sparkcoin.svg" alt="" />
         </div>
 
-        <div class="demo-swatch"></div><div class="demo-swatch"></div>
-          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
-          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
-          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+        <!-- 4x4 token grid (visual weight without noise) -->
+        <div class="demo-token-grid" aria-hidden="true">
+          <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
+
+          <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
+
+          <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
+
+          <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
+          <img class="is-coin" src="/assets/brand/pkw-sparkcoin.svg" alt="" />
         </div>
-</div>
+      </div>
     </aside>
 
   </section>
