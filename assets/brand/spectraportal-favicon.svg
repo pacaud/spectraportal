@@ -7,15 +7,16 @@
     ========= -->
     <style>
       :root{
-        --sp-fav-bg: #0b1020;
-        --sp-fav-ring: #2a2fff;
-        --sp-fav-glow: rgba(120,120,255,.45);
-        --sp-fav-bar-1: #eaf3ff;
-        --sp-fav-bar-2: #bfe4ff;
-        --sp-fav-bar-3: #57d7ff;
-        --sp-fav-bar-4: #7c5bff;
-        --sp-fav-dot: #d84dff;
-        --sp-fav-dot-glow: rgba(216,77,255,.75);
+        /* token bridge: prefer Spectra tokens when present */
+        --sp-fav-bg: var(--sp-bg, #0b1020);
+        --sp-fav-ring: var(--sp-accent-3, #2a2fff);
+        --sp-fav-glow: var(--sp-focus-soft, rgba(120,120,255,.45));
+        --sp-fav-bar-1: var(--sp-text, #eaf3ff);
+        --sp-fav-bar-2: color-mix(in srgb, var(--sp-text, #eaf3ff) 70%, var(--sp-accent-2, #60A5FA) 30%);
+        --sp-fav-bar-3: var(--sp-accent-2, #57d7ff);
+        --sp-fav-bar-4: var(--sp-accent-3, #7c5bff);
+        --sp-fav-dot: var(--sp-accent-3, #d84dff);
+        --sp-fav-dot-glow: color-mix(in srgb, var(--sp-accent-3, #d84dff) 80%, transparent 20%);
       }
     </style>
 

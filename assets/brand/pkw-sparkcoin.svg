@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="PKW Sparkcoin Token">
+  <defs>
+    <radialGradient id="discSheen" cx=".35" cy=".28" r=".9">
+      <stop offset="0" stop-color="var(--sp-text, #E6EDF7)" stop-opacity=".12"/>
+      <stop offset=".45" stop-color="var(--sp-accent-2, #60A5FA)" stop-opacity=".12"/>
+      <stop offset="1" stop-color="var(--sp-accent, #2EA043)" stop-opacity=".07"/>
+    </radialGradient>
+
+    <radialGradient id="iceflame" cx=".5" cy=".30" r=".95">
+      <stop offset="0"   stop-color="var(--sp-text, #E6EDF7)" stop-opacity=".62"/>
+      <stop offset=".28" stop-color="color-mix(in srgb, var(--sp-text, #E6EDF7) 60%, var(--sp-accent-2, #60A5FA) 40%)" stop-opacity=".52"/>
+      <stop offset=".58" stop-color="var(--sp-accent-2, #60A5FA)" stop-opacity=".34"/>
+      <stop offset=".82" stop-color="var(--sp-accent, #2EA043)" stop-opacity=".26"/>
+      <stop offset="1"   stop-color="var(--sp-accent, #2EA043)" stop-opacity=".12"/>
+    </radialGradient>
+
+    <filter id="flameGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+  </defs>
+
+  <!-- solid coin face -->
+  <circle cx="128" cy="128" r="92" fill="color-mix(in srgb, var(--sp-bg, #0B0F14) 82%, var(--sp-elev, #172033) 18%)"/>
+
+  <!-- sheen + rim -->
+  <circle cx="128" cy="128" r="92" fill="url(#discSheen)" stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 12%, transparent 88%)" stroke-width="6"/>
+
+  <!-- inner face + rim -->
+  <circle cx="128" cy="128" r="66" fill="color-mix(in srgb, var(--sp-text, #E6EDF7) 3.5%, transparent 96.5%)"
+          stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 7%, transparent 93%)" stroke-width="5"/>
+
+  <!-- constellation -->
+  <g fill="color-mix(in srgb, var(--sp-text, #E6EDF7) 8%, transparent 92%)">
+    <circle cx="70" cy="92" r="4"/>
+    <circle cx="186" cy="94" r="4"/>
+    <circle cx="198" cy="164" r="4"/>
+    <circle cx="88" cy="188" r="4"/>
+  </g>
+  <g stroke="color-mix(in srgb, var(--sp-accent-2, #60A5FA) 18%, transparent 82%)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".85">
+    <path d="M74 92 L182 94"/>
+    <path d="M188 98 L195 158"/>
+    <path d="M194 166 L92 186"/>
+  </g>
+
+  <!-- candle + flame (flush) -->
+  <g filter="url(#soft)" transform="translate(0,-6)">
+    <path d="M128 62
+             C145 86, 154 98, 154 116
+             C154 142, 140 158, 128 158
+             C116 158, 102 142, 102 116
+             C102 98, 111 86, 128 62 Z"
+          fill="url(#iceflame)" opacity="1" filter="url(#flameGlow)"/>
+
+    <path d="M128 78
+             C138 96, 142 104, 142 116
+             C142 132, 134 142, 128 142
+             C122 142, 114 132, 114 116
+             C114 104, 118 96, 128 78 Z"
+          fill="color-mix(in srgb, var(--sp-text, #E6EDF7) 28%, transparent 72%)"/>
+
+    <path d="M128 158 v10"
+          stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 28%, transparent 72%)" stroke-width="3" stroke-linecap="round"/>
+
+    <rect x="94" y="166" width="68" height="60" rx="16"
+          fill="color-mix(in srgb, var(--sp-text, #E6EDF7) 20%, transparent 80%)"
+          stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 18%, transparent 82%)" stroke-width="3"/>
+
+    <path d="M112 176
+             C112 176, 112 210, 112 214"
+          stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 20%, transparent 80%)" stroke-width="4" stroke-linecap="round"/>
+
+    <ellipse cx="128" cy="226" rx="46" ry="10"
+             fill="rgba(0,0,0,.16)"/>
+  </g>
+</svg>
