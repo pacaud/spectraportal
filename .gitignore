@@ -35,3 +35,5 @@ Thumbs.db
 # local deploy config
 scripts/sp_deploy.env
 scripts/*.env.local
+
+framework/cdn/
