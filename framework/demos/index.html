@@ -26,7 +26,7 @@
     body.demo-page{
       display: flex;
       flex-direction: column;
-      min-height: var(--sp-page-min-h, 100vh);
+      min-height: var(--sp-page-min-h);
     }
     .demo-main{
       flex: 1;
@@ -56,7 +56,7 @@
       width: min(420px, 100%);
       height: auto;
       justify-self: end;
-      opacity: .9;
+      opacity: calc(var(--sp-opacity-100) - .1);
       filter: drop-shadow(0 14px 40px rgba(0,0,0,.38));
     }
     @media (max-width: 900px){
@@ -84,7 +84,7 @@
     /* divider: prefer token border if present, otherwise fall back to line */
     .demo-divider{
       border: 0;
-      border-top: var(--sp-border-1, 1px solid var(--sp-line));
+      border-top: var(--sp-border-1);
       margin: var(--sp-0);
     }
 
@@ -115,7 +115,7 @@
         radial-gradient(900px 520px at 25% 10%, rgba(255,255,255,.06), transparent 70%),
         radial-gradient(720px 520px at 80% 25%, rgba(0,210,170,.08), transparent 72%),
         radial-gradient(760px 560px at 55% 85%, rgba(80,160,255,.10), transparent 70%);
-      opacity: .95;
+      opacity: calc(var(--sp-opacity-100) - .05);
     }
     .demo-visual__inner{
       position: relative;
@@ -127,7 +127,7 @@
     .demo-visual__mark{
       width: min(320px, 100%);
       height: auto;
-      opacity: .9;
+      opacity: calc(var(--sp-opacity-100) - .1);
       filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
     }
     .demo-visual__caption{
@@ -136,16 +136,13 @@
       margin: 0;
     } 
 
-
-
-    
     
     /* token grid: base */
     .demo-token-grid{
       display: grid;
       gap: var(--sp-3);
       margin-top: var(--sp-4);
-      padding: 0;
+      padding: var(--sp-0);
       background: transparent;
       box-shadow: none;
       width: fit-content;
@@ -154,8 +151,8 @@
       width: 56px;
       height: 56px;
       display: block;
-      border-radius: var(--sp-r-2, 10px);
-      opacity: .94;
+      border-radius: var(--sp-r-2);
+      opacity: calc(var(--sp-opacity-100) - .06);
       filter: drop-shadow(0 10px 22px rgba(0,0,0,.22));
     }
 
