@@ -4,23 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spectra Demos</title>
-  <!-- Framework first, theme after -->
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css" /> 
-  <link rel="stylesheet" href="/overrides.css" />
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
+  <link rel="icon" href="/framework/favicon.ico" sizes="any">
+
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 </head>
 <body>
-  <header class="sp-hero sp-hero--surface">
-    <div class="sp-hero__inner sp-stack">
-      <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
-      <h1 class="sp-hero__title">Demos</h1>
-      <p class="sp-hero__sub sp-muted">Quick sanity checks for token + component wiring.</p>
-      <nav class="sp-hero__actions" aria-label="Primary">
-        <a class="sp-btn sp-btn--ghost" href="../docs/index.html">Open Docs</a>
-        <a class="sp-btn sp-btn--primary" href="../docs/components.html">Components</a>
-      </nav>
+  
+<header class="sp-header">
+  <div class="sp-header__inner sp-container">
+    <div class="sp-header__left">
+    <a class="sp-brand" href="#">
+       <img
+          class="sp-brand__mark"
+          src="/assets/brand/spectraportal-wave.svg"
+          alt=""
+          aria-hidden="true"
+       />
+       <span class="sp-brand__text">Spectra</span>
+       <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
     </div>
-  </header>
+
+    <nav class="sp-header__center sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="#">Docs</a>
+      <a class="sp-nav__link" href="#">Demos</a>
+      <a class="sp-nav__link" href="#">Tokens</a>
+    </nav>
+
+    <div class="sp-header__right sp-header__actions">
+      <button class="sp-btn sp-btn--ghost">Sign in</button>
+      <button class="sp-btn sp-btn--primary">Get Spectra</button>
+    </div>
+  </div>
+</header>
 
   <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
     <section class="sp-stack">
@@ -28,9 +55,19 @@
       <div class="sp-card">
         <div class="sp-card__body">
           <ul style="margin: 0; padding-left: var(--sp-5);">
-             <li><a href="./header.demo.html" style="color:var(--sp-link);">Header (demo)</a></li>
-             <li><a href="./hero.demo.html" style="color:var(--sp-link);">Hero (demo)</a></li>
-             <li><a href="./footer.demo.html" style="color:var(--sp-link);">Footer (demo)</a></li>
+             <li><a href="./header.demo.html" style="color:var(--sp-link);">Header</a></li>
+             <li><a href="./hero.demo.html" style="color:var(--sp-link);">Hero</a></li>
+             <li><a href="./footer.demo.html" style="color:var(--sp-link);">Footer</a></li>
+          </ul>
+
+          <hr style="margin: var(--sp-5) 0; border: 0; border-top: 1px solid var(--sp-line);" />
+
+          <p class="sp-muted" style="margin: 0 0 var(--sp-2);">Legacy pages</p>
+
+          <ul style="margin: 0; padding-left: var(--sp-5);">
+             <li><a href="./color.html" style="color:var(--sp-link);">Colors</a></li>
+             <li><a href="./buttons.html" style="color:var(--sp-link);">Buttons</a></li>
+             <li><a href="./cards.html" style="color:var(--sp-link);">Cards</a></li>
           </ul>
         </div>
       </div>
@@ -41,5 +78,38 @@
 
     </section>
   </main>
+
+  <!-- ✅ real footer element + Spectra-ish structure -->
+  <footer class="demo-footer" aria-label="Site footer">
+    <div class="sp-container">
+      <!-- Use a surface so it feels “anchored” like the rest of Spectra -->
+      <section class="sp-card sp-card--surface" aria-label="Footer legal">
+        <div class="sp-card__body">
+          <div class="demo-footer__row">
+            <div>
+              © <span id="y"></span> SpectraPortal. All rights reserved.
+              <span class="demo-footer__credit">
+                · Built by
+                <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                  Code Crunchers Technologies
+                </a>
+              </span>
+            </div>
+
+            <nav class="demo-footer__links" aria-label="Legal">
+              <a class="demo-footer__link" href="#">Privacy</a>
+              <a class="demo-footer__link" href="#">Terms</a>
+              <a class="demo-footer__link" href="#">Licenses</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
