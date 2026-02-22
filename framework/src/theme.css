@@ -1,6 +1,6 @@
 .sp-brand__mark{
-  width: 26px;
-  height: 26px;
+  width: var(--sp-6);
+  height: var(--sp-6);
   display: block;
 
   /* brighten + pop */
