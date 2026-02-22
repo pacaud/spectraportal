@@ -38,7 +38,35 @@
       margin-top: var(--sp-6);
     }
 
-    /* link list helpers (token-driven, no custom colors) */
+    
+
+    /* hero split: text + mark */
+    .demo-hero__grid{
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: var(--sp-7);
+      align-items: center;
+    }
+    @media (max-width: 900px){
+      .demo-hero__grid{
+        grid-template-columns: 1fr;
+      }
+    }
+    .demo-hero__mark{
+      width: min(420px, 100%);
+      height: auto;
+      justify-self: end;
+      opacity: .9;
+      filter: drop-shadow(0 14px 40px rgba(0,0,0,.38));
+    }
+    @media (max-width: 900px){
+      .demo-hero__mark{
+        justify-self: start;
+        width: min(360px, 100%);
+      }
+    }
+
+/* link list helpers (token-driven, no custom colors) */
     .demo-links{
       display: flex;
       flex-direction: column;
@@ -111,6 +139,7 @@
 
 
     
+    
     /* token grid: base */
     .demo-token-grid{
       display: grid;
@@ -122,22 +151,20 @@
       width: fit-content;
     }
     .demo-token-grid img{
+      width: 56px;
+      height: 56px;
       display: block;
       border-radius: var(--sp-r-2, 10px);
       opacity: .94;
       filter: drop-shadow(0 10px 22px rgba(0,0,0,.22));
     }
 
-    /* mode A: current (3 across, wraps naturally; perfect while we only have 4 tokens) */
-    .demo-token-grid.demo-token-grid--wrap3{
+    /* default: 3 across (wraps naturally; perfect while we only have 4 tokens) */
+    .demo-token-grid{
       grid-template-columns: repeat(3, 56px);
     }
-    .demo-token-grid.demo-token-grid--wrap3 img{
-      width: 56px;
-      height: 56px;
-    }
 
-    /* mode B: future (4×4); switch on once we have ~8–16 token SVGs */
+    /* future: 4×4 — flip class when you have more SVGs */
     .demo-token-grid.demo-token-grid--grid4{
       grid-template-columns: repeat(4, 48px);
     }
@@ -147,10 +174,10 @@
     }
 
     @media (max-width: 520px){
-      .demo-token-grid.demo-token-grid--wrap3{
+      .demo-token-grid{
         grid-template-columns: repeat(3, 48px);
       }
-      .demo-token-grid.demo-token-grid--wrap3 img{
+      .demo-token-grid img{
         width: 48px;
         height: 48px;
       }
@@ -163,17 +190,19 @@
         height: 42px;
       }
     }
-.demo-token-grid img{
+.demo-token-grid.demo-token-grid--wrap3 img{
         width: 48px;
         height: 48px;
       }
-    }
-.demo-token-grid img{
-        width: 48px;
-        height: 48px;
-      }
-    }
 
+      .demo-token-grid.demo-token-grid--grid4{
+        grid-template-columns: repeat(4, 42px);
+      }
+      .demo-token-grid.demo-token-grid--grid4 img{
+        width: 42px;
+        height: 42px;
+      }
+    }
     /* footer spacing + structure */
     .demo-footer{
       margin-top: var(--sp-10);
@@ -247,18 +276,28 @@
 
 <!-- HERO -->
 <section class="sp-hero sp-hero--surface demo-hero" aria-label="Demos hero">
-  <div class="sp-hero__inner sp-container sp-stack">
-    <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
-    <h1 class="sp-hero__title">Component Demos</h1>
-    <p class="sp-hero__sub sp-muted">
-      Quick sanity checks for component + token wiring.
-    </p>
+  <div class="sp-hero__inner sp-container">
+    <div class="demo-hero__grid">
+      <div class="sp-stack">
+        <p class="sp-hero__kicker sp-muted">Spectra Framework</p>
+        <h1 class="sp-hero__title">Component Demos</h1>
+        <p class="sp-hero__sub sp-muted">
+          Quick sanity checks for component + token wiring.
+        </p>
 
-    <!-- optional actions (wire later) -->
-    <nav class="sp-hero__actions" aria-label="Hero actions">
-      <a class="sp-btn sp-btn--ghost" href="#">Open Docs</a>
-      <a class="sp-btn sp-btn--primary" href="#">Browse Tokens</a>
-    </nav>
+        <nav class="sp-hero__actions" aria-label="Hero actions">
+          <a class="sp-btn sp-btn--ghost" href="#">Open Docs</a>
+          <a class="sp-btn sp-btn--primary" href="#">Browse Tokens</a>
+        </nav>
+      </div>
+
+      <img
+        class="demo-hero__mark"
+        src="/assets/brand/spectraportal-hero_spark.svg"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
   </div>
 </section>
 
@@ -311,12 +350,6 @@
     <!-- Right: visual panel -->
     <aside class="sp-card sp-card--surface demo-visual" aria-label="Spectra visual panel">
       <div class="sp-card__body demo-visual__inner">
-        <img
-          class="demo-visual__mark"
-          src="/assets/brand/spectraportal-hero_spark.svg"
-          alt=""
-          aria-hidden="true"
-        />
 
         <p class="demo-visual__caption">Tokens → Components → Demos</p>
 
@@ -327,7 +360,7 @@
           <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
           <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
         </div>
-</div>
+      </div>
     </aside>
 
   </section>
