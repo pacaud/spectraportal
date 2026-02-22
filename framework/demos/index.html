@@ -137,12 +137,14 @@
     } 
 
     
-    /* token grid: base */
+    
+    /* token grid (3 across now; grows naturally as we add more token SVGs) */
     .demo-token-grid{
       display: grid;
+      grid-template-columns: repeat(3, 56px);
       gap: var(--sp-3);
       margin-top: var(--sp-4);
-      padding: var(--sp-0);
+      padding: 0;
       background: transparent;
       box-shadow: none;
       width: fit-content;
@@ -156,12 +158,7 @@
       filter: drop-shadow(0 10px 22px rgba(0,0,0,.22));
     }
 
-    /* default: 3 across (wraps naturally; perfect while we only have 4 tokens) */
-    .demo-token-grid{
-      grid-template-columns: repeat(3, 56px);
-    }
-
-    /* future: 4×4 — flip class when you have more SVGs */
+    /* future: 4×4 — flip this class on when we have more SVGs */
     .demo-token-grid.demo-token-grid--grid4{
       grid-template-columns: repeat(4, 48px);
     }
@@ -187,26 +184,12 @@
         height: 42px;
       }
     }
-.demo-token-grid.demo-token-grid--wrap3 img{
-        width: 48px;
-        height: 48px;
-      }
-
-      .demo-token-grid.demo-token-grid--grid4{
-        grid-template-columns: repeat(4, 42px);
-      }
-      .demo-token-grid.demo-token-grid--grid4 img{
-        width: 42px;
-        height: 42px;
-      }
-    }
-    /* footer spacing + structure */
+/* footer spacing + structure */
     .demo-footer{
       margin-top: var(--sp-10);
-      padding: var(--sp-6) var(--sp-0) var(--sp-10);
+      padding: var(--sp-8) 0 var(--sp-10);
     }
-
-    .demo-footer__row{
+.demo-footer__row{
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -282,11 +265,13 @@
           Quick sanity checks for component + token wiring.
         </p>
 
-        <nav class="sp-hero__actions" aria-label="Hero actions">
-          <a class="sp-btn sp-btn--ghost" href="#">Open Docs</a>
-          <a class="sp-btn sp-btn--primary" href="#">Browse Tokens</a>
-        </nav>
-      </div>
+        <div class="sp-stack" style="gap: var(--sp-2); margin-top: var(--sp-5);">
+          <p class="sp-h4" style="margin: 0;">Shape the light.</p>
+          <p class="sp-h4" style="margin: 0;">Speak in structure.</p>
+          <p class="sp-muted" style="margin: 0;">Let wonder flow into form.</p>
+        </div>
+
+</div>
 
       <img
         class="demo-hero__mark"
