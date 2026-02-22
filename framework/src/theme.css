@@ -7,3 +7,12 @@
   filter: brightness(1.35) contrast(1.1) drop-shadow(0 0 10px rgba(120,100,255,.25));
   opacity: calc(var(--sp-opacity-100) - .05);
 }
+
+.sp-footer__mark{
+  width: 34px;          /* or var(--sp-9) if you want token-driven */
+  height: 34px;
+  display: block;
+  flex: 0 0 auto;
+  opacity: var(--sp-opacity-100);
+  filter: none;         /* footer usually calmer than header */
+}
