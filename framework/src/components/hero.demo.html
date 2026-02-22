@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra • hero.demo</title>
+
+  <!-- Spectra entry (imports tokens/base/components via relative @import paths) -->
+  <link rel="stylesheet" href="./spectra.css" />
+
+  <style>
+    /* Demo-only helpers (kept tiny on purpose) */
+    .demo-page{
+      background: var(--sp-bg);
+      color: var(--sp-text);
+      min-height: 100vh;
+    }
+
+    .demo-split{
+      display: flex;
+      gap: var(--sp-6);
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .demo-split__left{
+      flex: 1 1 420px;
+      min-width: 280px;
+    }
+
+    .demo-split__right{
+      flex: 0 1 420px;
+      min-width: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .demo-hero-card{
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .demo-hero-list{
+      margin: var(--sp-4) var(--sp-0) var(--sp-0);
+      padding-left: 1.1em;
+      line-height: var(--sp-lh-2);
+      color: var(--sp-text-muted);
+    }
+
+    .demo-divider{
+      border: 0;
+      border-top: var(--sp-border-1);
+      margin: var(--sp-0);
+    }
+  </style>
+</head>
+
+<body class="demo-page">
+  <!-- Minimal header (so hero can prove stacking + spacing rhythm) -->
+  <header class="sp-header">
+    <div class="sp-header__inner sp-hero__inner">
+      <div class="sp-brand">
+        <span class="sp-brand__mark" aria-hidden="true">✦</span>
+        <span class="sp-brand__name">SpectraPortal</span>
+      </div>
+
+      <div class="sp-header__actions">
+        <a class="sp-btn sp-btn--sm sp-btn--ghost" href="./header.demo.html">Header demo</a>
+        <a class="sp-btn sp-btn--sm sp-btn--primary" href="#hero-split">Jump to split hero</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO: centered (surface variant) -->
+  <section class="sp-hero sp-hero--surface" id="hero-centered">
+    <div class="sp-hero__inner">
+      <p class="sp-hero__kicker">
+        <span class="sp-badge sp-badge--soft">v0.0.25</span>
+        <span style="margin-left: var(--sp-2); color: var(--sp-text-muted);">
+          hero.demo.html
+        </span>
+      </p>
+
+      <h1 class="sp-hero__title">
+        A cozy hero that proves your type scale, spacing, and buttons.
+      </h1>
+
+      <p class="sp-hero__sub">
+        This page is intentionally simple: one header, one centered hero, one split hero,
+        and a card surface to validate contrast, borders, and rhythm.
+      </p>
+
+      <p class="sp-hero__meta" style="color: var(--sp-text-muted);">
+        Goal: lock the “first impression” layout before we build main/page sections.
+      </p>
+
+      <div class="sp-hero__actions">
+        <a class="sp-btn sp-btn--primary" href="#hero-split">See split hero</a>
+        <a class="sp-btn" href="#notes">Notes</a>
+        <a class="sp-btn sp-btn--ghost" href="./utilities.demo.html">Utilities (later)</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="demo-divider" />
+
+  <!-- HERO: split (text + card) -->
+  <section class="sp-hero" id="hero-split">
+    <div class="sp-hero__inner demo-split">
+      <div class="demo-split__left">
+        <p class="sp-hero__kicker">
+          <span class="sp-badge">Split layout</span>
+        </p>
+
+        <h2 class="sp-hero__title">
+          Same hero tokens, different structure.
+        </h2>
+
+        <p class="sp-hero__sub">
+          On smaller screens this stacks naturally. On wider screens it reads like a landing page:
+          story on the left, “proof” on the right.
+        </p>
+
+        <div class="sp-hero__actions">
+          <a class="sp-btn sp-btn--primary" href="#notes">Primary CTA</a>
+          <a class="sp-btn sp-btn--ghost" href="#hero-centered">Back to centered</a>
+        </div>
+
+        <ul class="demo-hero-list">
+          <li>Checks button variants: default / primary / ghost</li>
+          <li>Checks card surface + border radius</li>
+          <li>Checks muted text color on body copy</li>
+        </ul>
+      </div>
+
+      <div class="demo-split__right">
+        <article class="sp-card sp-card--elev demo-hero-card" aria-label="Demo card">
+          <div class="sp-card__header">
+            <div style="display:flex; gap: var(--sp-2); align-items:center; flex-wrap:wrap;">
+              <span class="sp-badge sp-badge--soft">Preview</span>
+              <span style="color: var(--sp-text-muted);">Surface + elevation</span>
+            </div>
+          </div>
+
+          <div class="sp-card__body">
+            <p style="margin-top: var(--sp-0); line-height: var(--sp-lh-2);">
+              This card is here to validate the “hero beside something” pattern you’ll use everywhere:
+              screenshots, feature blocks, pricing tiles, etc.
+            </p>
+
+            <div style="display:flex; gap: var(--sp-3); flex-wrap:wrap; margin-top: var(--sp-4);">
+              <a class="sp-btn sp-btn--sm" href="#notes">Secondary</a>
+              <a class="sp-btn sp-btn--sm sp-btn--primary" href="#notes">Confirm</a>
+            </div>
+          </div>
+
+          <div class="sp-card__footer" style="color: var(--sp-text-muted);">
+            Tip: keep demo CSS tiny; move real patterns into Spectra utilities/components.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="demo-divider" />
+
+  <!-- Notes / checklist -->
+  <section class="sp-hero sp-hero--surface" id="notes">
+    <div class="sp-hero__inner">
+      <h2 class="sp-hero__title">Checklist (what this demo should “prove”)</h2>
+      <p class="sp-hero__sub">
+        If any of these feel off, we tweak tokens/components before building main sections.
+      </p>
+
+      <ul class="demo-hero-list">
+        <li>Title line-height + letter-spacing feels “Spectra”</li>
+        <li>Sub text max-width is comfy (no mega paragraphs)</li>
+        <li>Primary button pops; ghost feels calm; default feels neutral</li>
+        <li>Surface hero border + background reads clean (not muddy)</li>
+        <li>Split layout stacks nicely without needing a grid system</li>
+      </ul>
+    </div>
+  </section>
+</body>
+</html>
