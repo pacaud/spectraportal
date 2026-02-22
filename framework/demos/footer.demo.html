@@ -21,67 +21,83 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
   <style>
-.demo-footer{ padding: var(--sp-10) 0 var(--sp-6); }
+    /* demo scaffolding (no .sp-* overrides) */
+    .demo-page{ min-height: 100vh; }
 
-.demo-footer__top{
-  display: grid;
-  gap: var(--sp-8);
-  grid-template-columns: 1fr;
-  align-items: start;
-}
+    .demo-main{
+      padding: var(--sp-8) 0;
+    }
 
-@media (min-width: 720px){
-  .demo-footer__top{ grid-template-columns: 1.2fr 1fr; }
-}
+    .demo-divider{
+      border: 0;
+      border-top: var(--sp-border-1);
+      margin: 0;
+    }
 
-@media (min-width: 1024px){
-  .demo-footer__top{ grid-template-columns: 1.4fr 1fr 1fr 1fr; }
-}
+    .demo-footer{
+      padding: var(--sp-8) 0 var(--sp-7);
+    }
 
-.demo-footer__bottom{
-  margin-top: var(--sp-8);
-  padding-top: var(--sp-5);
-  display: flex;
-  gap: var(--sp-4);
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--sp-text-muted);
-  font-size: var(--sp-fs-0);
-}
+    /* minimal footer row */
+    .demo-footer__row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+    }
 
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
+    }
+
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space: nowrap;
+    }
   </style>
 </head>
 
 <body class="demo-page">
-<!-- header (reuse your current header snippet) -->
-<header class="sp-header">
-  <div class="sp-header__inner sp-container">
-    <div class="sp-header__left">
-    <a class="sp-brand" href="#">
-       <img
-          class="sp-brand__mark"
-          src="/assets/brand/spectraportal-wave.svg"
-          alt=""
-          aria-hidden="true"
-       />
-       <span class="sp-brand__text">Spectra</span>
-       <span class="sp-badge sp-badge--soft">v0.1</span>
-    </a>
-    </div>
+  <!-- header -->
+  <header class="sp-header">
+    <div class="sp-header__inner sp-container">
+      <div class="sp-header__left">
+        <a class="sp-brand" href="#">
+          <img class="sp-brand__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
+          <span class="sp-brand__text">Spectra</span>
+          <span class="sp-badge sp-badge--soft">v0.1</span>
+        </a>
+      </div>
 
-    <nav class="sp-header__center sp-nav" aria-label="Primary">
-      <a class="sp-nav__link is-active" href="#">Docs</a>
-      <a class="sp-nav__link" href="#">Demos</a>
-      <a class="sp-nav__link" href="#">Tokens</a>
-    </nav>
+      <nav class="sp-header__center sp-nav" aria-label="Primary">
+        <a class="sp-nav__link is-active" href="#">Docs</a>
+        <a class="sp-nav__link" href="#">Demos</a>
+        <a class="sp-nav__link" href="#">Tokens</a>
+      </nav>
 
-    <div class="sp-header__right sp-header__actions">
-      <button class="sp-btn sp-btn--ghost">Sign in</button>
-      <button class="sp-btn sp-btn--primary">Get Spectra</button>
+      <div class="sp-header__right sp-header__actions">
+        <button class="sp-btn sp-btn--ghost">Sign in</button>
+        <button class="sp-btn sp-btn--primary">Get Spectra</button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <main class="demo-main">
     <div class="sp-container">
@@ -94,17 +110,36 @@
 
   <hr class="demo-divider" />
 
-      <div>©<span id="y"></span> SpectraPortal. All rights reserved.<span class="sp-footer__credit">· Built by <a href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a></span></div>
+  <!-- ✅ real footer element + Spectra-ish structure -->
+  <footer class="demo-footer" aria-label="Site footer">
+    <div class="sp-container">
+      <!-- Use a surface so it feels “anchored” like the rest of Spectra -->
+      <section class="sp-card sp-card--surface" aria-label="Footer legal">
+        <div class="sp-card__body">
+          <div class="demo-footer__row">
+            <div>
+              © <span id="y"></span> SpectraPortal. All rights reserved.
+              <span class="demo-footer__credit">
+                · Built by
+                <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                  Code Crunchers Technologies
+                </a>
+              </span>
+            </div>
 
-      <nav class="demo-footer__legalLinks" aria-label="Legal">
-        <a class="demo-footer__link" href="#">Privacy</a>
-        <a class="demo-footer__link" href="#">Terms</a>
-        <a class="demo-footer__link" href="#">Licenses</a>
-      </nav>
+            <nav class="demo-footer__links" aria-label="Legal">
+              <a class="demo-footer__link" href="#">Privacy</a>
+              <a class="demo-footer__link" href="#">Terms</a>
+              <a class="demo-footer__link" href="#">Licenses</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-  
 </body>
 </html>
