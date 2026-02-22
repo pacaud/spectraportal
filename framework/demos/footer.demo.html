@@ -50,11 +50,6 @@
   font-size: var(--sp-fs-0);
 }
 
-/* make the surface panel feel centered + consistent */
-.demo-footer .sp-card__body{
-  padding: var(--sp-8);
-}
-
   </style>
 </head>
 
@@ -99,76 +94,17 @@
 
   <hr class="demo-divider" />
 
-  <section class="sp-card sp-card--surface">
-    <div class="sp-card__body">
-       <div class="demo-footer__top">
-        <!-- brand/desc -->
-        <section>
-          <div class="demo-footer__brand">
-            <img class="sp-footer__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
-            <div>
-              <div class="demo-footer__title">Spectra</div>
-              <div style="color: var(--sp-text-muted); font-size: var(--sp-fs-0);">Framework • v0.1</div>
-            </div>
-          </div>
+      <div>©<span id="y"></span> SpectraPortal. All rights reserved.<span class="sp-footer__credit">· Built by <a href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a></span></div>
 
-          <p class="demo-footer__desc">
-            Token-driven UI building blocks for SpectraPortal. Calm defaults, sharp utilities, and
-            demos that prove the system before we scale it.
-          </p>
-
-          <div class="demo-footer__cta">
-            <a class="sp-btn sp-btn--primary" href="#">Get Spectra</a>
-            <a class="sp-btn sp-btn--ghost" href="#">Read the docs</a>
-          </div>
-        </section>
-
-        <!-- columns -->
-        <nav aria-label="Footer">
-          <div class="demo-footer__groupTitle">Framework</div>
-          <ul class="demo-footer__links">
-            <li><a class="demo-footer__link" href="#">Install</a></li>
-            <li><a class="demo-footer__link" href="#">Changelog</a></li>
-            <li><a class="demo-footer__link" href="#">Tokens</a></li>
-            <li><a class="demo-footer__link" href="#">Utilities</a></li>
-          </ul>
-        </nav>
-
-        <nav aria-label="Resources">
-          <div class="demo-footer__groupTitle">Resources</div>
-          <ul class="demo-footer__links">
-            <li><a class="demo-footer__link" href="#">Demos</a></li>
-            <li><a class="demo-footer__link" href="#">Components</a></li>
-            <li><a class="demo-footer__link" href="#">Patterns</a></li>
-            <li><a class="demo-footer__link" href="#">Accessibility</a></li>
-          </ul>
-        </nav>
-
-        <nav aria-label="Company">
-          <div class="demo-footer__groupTitle">Company</div>
-          <ul class="demo-footer__links">
-            <li><a class="demo-footer__link" href="#">About</a></li>
-            <li><a class="demo-footer__link" href="#">Contact</a></li>
-            <li><a class="demo-footer__link" href="#">GitHub</a></li>
-            <li><a class="demo-footer__link" href="#">Status</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="demo-footer__bottom">
-        <div>© <span id="y"></span> SpectraPortal. All rights reserved.</div>
-
-        <div class="demo-footer__legalLinks">
-          <a class="demo-footer__link" href="#">Privacy</a>
-          <a class="demo-footer__link" href="#">Terms</a>
-          <a class="demo-footer__link" href="#">Licenses</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+      <nav class="demo-footer__legalLinks" aria-label="Legal">
+        <a class="demo-footer__link" href="#">Privacy</a>
+        <a class="demo-footer__link" href="#">Terms</a>
+        <a class="demo-footer__link" href="#">Licenses</a>
+      </nav>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+  
 </body>
 </html>
