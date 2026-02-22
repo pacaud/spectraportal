@@ -19,6 +19,67 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
   <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+
+  <style>
+    body.demo-page{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.demo-main{
+  flex: 1;
+}
+
+    .demo-divider{
+      border: 0;
+      border-top: var(--sp-border-1);
+      margin: 0;
+    }
+
+.demo-footer{
+  padding: var(--sp-6) 0 var(--sp-10);
+}
+
+    /* minimal footer row */
+    .demo-footer__row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+    }
+
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
+    }
+
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space: nowrap;
+    }
+
+    .demo-footer .sp-card{
+  margin-top: var(--sp-7);
+}
+    
+  </style>
 </head>
 <body>
 <header class="sp-header">
@@ -48,5 +109,39 @@
     </div>
   </div>
 </header>
+
+  <hr class="demo-divider" />
+
+  <!-- ✅ real footer element + Spectra-ish structure -->
+  <footer class="demo-footer" aria-label="Site footer">
+    <div class="sp-container">
+      <!-- Use a surface so it feels “anchored” like the rest of Spectra -->
+      <section class="sp-card sp-card--surface" aria-label="Footer legal">
+        <div class="sp-card__body">
+          <div class="demo-footer__row">
+            <div>
+              © <span id="y"></span> SpectraPortal. All rights reserved.
+              <span class="demo-footer__credit">
+                · Built by
+                <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                  Code Crunchers Technologies
+                </a>
+              </span>
+            </div>
+
+            <nav class="demo-footer__links" aria-label="Legal">
+              <a class="demo-footer__link" href="#">Privacy</a>
+              <a class="demo-footer__link" href="#">Terms</a>
+              <a class="demo-footer__link" href="#">Licenses</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
