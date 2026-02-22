@@ -70,19 +70,32 @@
 
 <body class="demo-page">
   <!-- Minimal header (so hero can prove stacking + spacing rhythm) -->
-  <header class="sp-header">
-    <div class="sp-header__inner sp-hero__inner">
-      <div class="sp-brand">
-        <span class="sp-brand__mark" aria-hidden="true">✦</span>
-        <span class="sp-brand__name">SpectraPortal</span>
-      </div>
-
-      <div class="sp-header__actions">
-        <a class="sp-btn sp-btn--sm sp-btn--ghost" href="./header.demo.html">Header demo</a>
-        <a class="sp-btn sp-btn--sm sp-btn--primary" href="#hero-split">Jump to split hero</a>
-      </div>
+<header class="sp-header">
+  <div class="sp-header__inner sp-container">
+    <div class="sp-header__left">
+    <a class="sp-brand" href="#">
+       <img
+          class="sp-brand__mark"
+          src="/assets/brand/spectraportal-wave.svg"
+          alt=""
+          aria-hidden="true"
+       />
+       <span class="sp-brand__text">Spectra</span>
+    </a>
     </div>
-  </header>
+
+    <nav class="sp-header__center sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="#">Docs</a>
+      <a class="sp-nav__link" href="#">Demos</a>
+      <a class="sp-nav__link" href="#">Tokens</a>
+    </nav>
+
+    <div class="sp-header__right sp-header__actions">
+      <button class="sp-btn sp-btn--ghost">Sign in</button>
+      <button class="sp-btn sp-btn--primary">Get Spectra</button>
+    </div>
+  </div>
+</header>
 
   <!-- HERO: centered (surface variant) -->
   <section class="sp-hero sp-hero--surface" id="hero-centered">
