@@ -111,15 +111,18 @@
 
 
     /* token grid (3 across); with 4 tokens today, the 4th naturally wraps to a new line */
+    
+    /* token grid (3 across); with 4 tokens today, the 4th naturally wraps to a new line */
     .demo-token-grid{
       display: grid;
       grid-template-columns: repeat(3, 56px);
       gap: var(--sp-3);
       margin-top: var(--sp-4);
-      padding: var(--sp-5);
-      border-radius: var(--sp-r-3, 16px);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
+      /* no background panel — let the card breathe */
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       width: fit-content;
     }
     .demo-token-grid img{
@@ -128,14 +131,18 @@
       display: block;
       border-radius: var(--sp-r-2, 10px);
       opacity: .94;
-      filter: drop-shadow(0 10px 22px rgba(0,0,0,.24));
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.22));
     }
     @media (max-width: 520px){
       .demo-token-grid{
         grid-template-columns: repeat(3, 48px);
-        padding: var(--sp-4);
       }
       .demo-token-grid img{
+        width: 48px;
+        height: 48px;
+      }
+    }
+.demo-token-grid img{
         width: 48px;
         height: 48px;
       }
