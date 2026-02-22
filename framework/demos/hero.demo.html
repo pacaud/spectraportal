@@ -134,6 +134,24 @@
 /* keep the footer pill from feeling too detached */
 .demo-footer .sp-card{
   margin-top: var(--sp-6);
+
+/* section labels (demo-only) */
+.demo-sectionLabel{
+  padding: var(--sp-5) 0;
+}
+
+.demo-sectionLabel__row{
+  display: flex;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.demo-sectionLabel__note{
+  color: var(--sp-text-muted);
+  font-size: var(--sp-fs-0);
+  line-height: var(--sp-lh-1);
+ }
 }
 </style>
 </head>
@@ -168,6 +186,14 @@
   </div>
 </header>
 
+<div class="demo-sectionLabel">
+  <div class="sp-container demo-sectionLabel__row">
+    <span class="sp-badge sp-badge--soft">Hero • Centered</span>
+    <span class="demo-sectionLabel__note">Surface variant + type scale + CTA rhythm</span>
+  </div>
+</div>
+<hr class="demo-divider" />
+
   <!-- HERO: centered (surface variant) -->
   <section class="sp-hero sp-hero--surface" id="hero-centered">
     <div class="sp-hero__inner">
@@ -199,7 +225,13 @@
     </div>
   </section>
 
-  <hr class="demo-divider" />
+<div class="demo-sectionLabel">
+  <div class="sp-container demo-sectionLabel__row">
+    <span class="sp-badge sp-badge--soft">Hero • Split</span>
+    <span class="demo-sectionLabel__note">Stacks on mobile, proof column on desktop</span>
+  </div>
+</div>
+<hr class="demo-divider" />
 
   <!-- HERO: split (text + card) -->
   <section class="sp-hero" id="hero-split">
@@ -259,7 +291,13 @@
     </div>
   </section>
 
-  <hr class="demo-divider" />
+ <div class="demo-sectionLabel">
+  <div class="sp-container demo-sectionLabel__row">
+    <span class="sp-badge sp-badge--soft">Notes • Checklist</span>
+    <span class="demo-sectionLabel__note">What this demo is proving (tune tokens/components if anything feels off)</span>
+  </div>
+</div>
+<hr class="demo-divider" />
 
   <!-- Notes / checklist -->
   <section class="sp-hero sp-hero--surface" id="notes">
