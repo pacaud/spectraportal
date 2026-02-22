@@ -21,33 +21,39 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
   <style>
-  /* ============================
-     hero.demo.html (demo-only)
-     Rules:
-     - ONLY .demo-* classes here
-     - No overrides of .sp-* components
-     ============================ */
+<style>
+/* ============================
+   hero.demo.html (demo-only)
+   Rules:
+   - ONLY .demo-* classes here
+   - No overrides of .sp-* components
+   ============================ */
 
-  /* page scaffold */
-  .demo-page{
-    min-height: var(--sp-page-min-h);
-  }
+/* page scaffold: pushes footer down naturally */
+.demo-page{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  /* hairline divider between sections */
-  .demo-divider{
-    border: 0;
-    border-top: var(--sp-border-1);
-    margin: 0;
-  }
+.demo-main{
+  flex: 1;
+}
 
-  /* split hero layout (demo-only) */
+/* hairline divider between sections */
+.demo-divider{
+  border: 0;
+  border-top: var(--sp-border-1);
+  margin: 0;
+}
+
+/* split hero layout (demo-only) */
 .demo-split{
   display: flex;
-  flex-direction: column;  /* default: stack */
+  flex-direction: column; /* default: stack */
   gap: var(--sp-6);
 }
 
-/* left/right sizing */
 .demo-split__left{
   flex: 1 1 auto;
   min-width: 0;
@@ -59,7 +65,6 @@
   justify-content: flex-start; /* in column mode */
 }
 
-/* go side-by-side when there's real space */
 @media (min-width: 960px){
   .demo-split{
     flex-direction: row;
@@ -76,63 +81,62 @@
   }
 }
 
-body.demo-page{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* list + card helpers used in the split section */
+.demo-hero-card{
+  width: 100%;
+  max-width: 420px;
 }
 
-.demo-main{
-  flex: 1;
+.demo-hero-list{
+  margin: var(--sp-4) 0 0;
+  padding-left: 1.1em;
+  line-height: var(--sp-lh-2);
+  color: var(--sp-text-muted);
 }
 
-    .demo-divider{
-      border: 0;
-      border-top: var(--sp-border-1);
-      margin: 0;
-    }
-
+/* minimal footer (embedded in hero demo) */
 .demo-footer{
   padding: var(--sp-6) 0 var(--sp-10);
 }
 
-    /* minimal footer row */
-    .demo-footer__row{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--sp-4);
-      flex-wrap: wrap;
-      color: var(--sp-text-muted);
-      font-size: var(--sp-fs-0);
-    }
-
-    .demo-footer__links{
-      display: flex;
-      gap: var(--sp-4);
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .demo-footer__link{
-      color: var(--sp-text-muted);
-      text-decoration: none;
-    }
-    .demo-footer__link:hover{
-      color: var(--sp-text);
-      text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,.25);
-    }
-
-    .demo-footer__credit{
-      margin-left: var(--sp-2);
-      color: var(--sp-text-muted);
-      white-space: nowrap;
-    }
-
-    .demo-footer .sp-card{
-  margin-top: var(--sp-7);
+.demo-footer__row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  color: var(--sp-text-muted);
+  font-size: var(--sp-fs-0);
 }
+
+.demo-footer__links{
+  display: flex;
+  gap: var(--sp-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.demo-footer__link{
+  color: var(--sp-text-muted);
+  text-decoration: none;
+}
+.demo-footer__link:hover{
+  color: var(--sp-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.25);
+}
+
+.demo-footer__credit{
+  margin-left: var(--sp-2);
+  color: var(--sp-text-muted);
+  white-space: nowrap;
+}
+
+/* keep the footer pill from feeling too detached */
+.demo-footer .sp-card{
+  margin-top: var(--sp-6);
+}
+</style>
 </style>
 </head>
 

@@ -78,7 +78,7 @@
     .demo-footer .sp-card{
   margin-top: var(--sp-7);
 }
-    
+
   </style>
 </head>
 <body>
@@ -109,39 +109,5 @@
     </div>
   </div>
 </header>
-
-  <hr class="demo-divider" />
-
-  <!-- ✅ real footer element + Spectra-ish structure -->
-  <footer class="demo-footer" aria-label="Site footer">
-    <div class="sp-container">
-      <!-- Use a surface so it feels “anchored” like the rest of Spectra -->
-      <section class="sp-card sp-card--surface" aria-label="Footer legal">
-        <div class="sp-card__body">
-          <div class="demo-footer__row">
-            <div>
-              © <span id="y"></span> SpectraPortal. All rights reserved.
-              <span class="demo-footer__credit">
-                · Built by
-                <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
-                  Code Crunchers Technologies
-                </a>
-              </span>
-            </div>
-
-            <nav class="demo-footer__links" aria-label="Legal">
-              <a class="demo-footer__link" href="#">Privacy</a>
-              <a class="demo-footer__link" href="#">Terms</a>
-              <a class="demo-footer__link" href="#">Licenses</a>
-            </nav>
-          </div>
-        </div>
-      </section>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
