@@ -26,20 +26,16 @@
     body.demo-page{
       display: flex;
       flex-direction: column;
-      min-height: var(--sp-page-min-h);
+      min-height: var(--sp-page-min-h, 100vh);
     }
     .demo-main{
       flex: 1;
+      margin-top: var(--sp-8);
     }
 
     /* give the hero breathing room from the header */
     .demo-hero{
       margin-top: var(--sp-6);
-    }
-
-    /* spacing between hero and main content */
-    .demo-main{
-      margin-top: var(--sp-8);
     }
 
     /* link list helpers (token-driven, no custom colors) */
@@ -60,9 +56,83 @@
     /* divider: prefer token border if present, otherwise fall back to line */
     .demo-divider{
       border: 0;
-      border-top: var(--sp-border-1);
+      border-top: var(--sp-border-1, 1px solid var(--sp-line));
       margin: var(--sp-0);
     }
+
+    /* main layout: card + visual panel */
+    .demo-main-grid{
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      gap: var(--sp-6);
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .demo-main-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* visual panel */
+    .demo-visual{
+      position: relative;
+      overflow: hidden;
+    }
+    .demo-visual::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(900px 520px at 25% 10%, rgba(255,255,255,.06), transparent 70%),
+        radial-gradient(720px 520px at 80% 25%, rgba(0,210,170,.08), transparent 72%),
+        radial-gradient(760px 560px at 55% 85%, rgba(80,160,255,.10), transparent 70%);
+      opacity: .95;
+    }
+    .demo-visual__inner{
+      position: relative;
+      height: 100%;
+      display: grid;
+      gap: var(--sp-5);
+      align-content: start;
+    }
+    .demo-visual__mark{
+      width: min(320px, 100%);
+      height: auto;
+      opacity: .9;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+    }
+    .demo-visual__caption{
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+      margin: 0;
+    }
+    .demo-swatch-grid{
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--sp-2);
+      max-width: 360px;
+    }
+    .demo-swatch{
+      aspect-ratio: 1 / 1;
+      border-radius: var(--sp-r-2, 10px);
+      border: 1px solid var(--sp-line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,0));
+    }
+    /* token-inspired accents (still subtle) */
+    .demo-swatch:nth-child(1){ box-shadow: 0 0 0 1px rgba(0,210,170,.20) inset; }
+    .demo-swatch:nth-child(2){ box-shadow: 0 0 0 1px rgba(80,160,255,.22) inset; }
+    .demo-swatch:nth-child(3){ box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset; }
+    .demo-swatch:nth-child(4){ box-shadow: 0 0 0 1px rgba(0,210,170,.14) inset; }
+    .demo-swatch:nth-child(5){ box-shadow: 0 0 0 1px rgba(80,160,255,.16) inset; }
+    .demo-swatch:nth-child(6){ box-shadow: 0 0 0 1px rgba(255,255,255,.12) inset; }
+    .demo-swatch:nth-child(7){ box-shadow: 0 0 0 1px rgba(0,210,170,.12) inset; }
+    .demo-swatch:nth-child(8){ box-shadow: 0 0 0 1px rgba(80,160,255,.14) inset; }
+    .demo-swatch:nth-child(9){ box-shadow: 0 0 0 1px rgba(255,255,255,.10) inset; }
+    .demo-swatch:nth-child(10){ box-shadow: 0 0 0 1px rgba(0,210,170,.10) inset; }
+    .demo-swatch:nth-child(11){ box-shadow: 0 0 0 1px rgba(80,160,255,.12) inset; }
+    .demo-swatch:nth-child(12){ box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset; }
 
     /* footer spacing + structure */
     .demo-footer{
@@ -153,8 +223,9 @@
 </section>
 
 <main class="sp-container sp-content demo-main">
-  <section class="sp-stack">
+  <section class="demo-main-grid">
 
+    <!-- Left: links card -->
     <div class="sp-card">
       <div class="sp-card__body sp-stack">
 
@@ -197,6 +268,31 @@
 
       </div>
     </div>
+
+    <!-- Right: visual panel -->
+    <aside class="sp-card sp-card--surface demo-visual" aria-label="Spectra visual panel">
+      <div class="sp-card__body demo-visual__inner">
+        <img
+          class="demo-visual__mark"
+          src="/assets/brand/spectraportal-hero_spark.svg"
+          alt=""
+          aria-hidden="true"
+        />
+
+        <p class="demo-visual__caption">Tokens → Components → Demos</p>
+
+        <div class="demo-swatch-grid" aria-hidden="true">
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+        </div>
+
+        <p class="sp-muted" style="margin: 0;">
+          A calm visual anchor for the demo hub.
+        </p>
+      </div>
+    </aside>
 
   </section>
 </main>
