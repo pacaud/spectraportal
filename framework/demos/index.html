@@ -134,6 +134,33 @@
     .demo-swatch:nth-child(11){ box-shadow: 0 0 0 1px rgba(80,160,255,.12) inset; }
     .demo-swatch:nth-child(12){ box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset; }
 
+
+    /* token icon row: small, side-by-side, tidy */
+    .demo-token-icons{
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-top: var(--sp-2);
+      max-width: 420px;
+    }
+    .demo-token-icons img{
+      width: 38px;
+      height: 38px;
+      display: block;
+      border-radius: var(--sp-r-2, 10px);
+      opacity: .92;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.22));
+    }
+    .demo-token-icons img.is-coin{
+      opacity: .78;
+    }
+    @media (max-width: 520px){
+      .demo-token-icons img{
+        width: 34px;
+        height: 34px;
+      }
+    }
     /* footer spacing + structure */
     .demo-footer{
       margin-top: var(--sp-10);
@@ -282,13 +309,19 @@
         <p class="demo-visual__caption">Tokens → Components → Demos</p>
 
         <div class="demo-token-icons" aria-hidden="true">
-           <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
-           <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
-           <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
-           <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
-           <img src="/assets/brand/spectraportal-token_sparkcoin.svg" alt="" />
-       </div>
-      </div>
+          <img src="/assets/brand/spectraportal-token_color.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_type.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_radius.svg" alt="" />
+          <img src="/assets/brand/spectraportal-token_space.svg" alt="" />
+          <img class="is-coin" src="/assets/brand/pkw-sparkcoin.svg" alt="" />
+        </div>
+
+        <div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+          <div class="demo-swatch"></div><div class="demo-swatch"></div><div class="demo-swatch"></div>
+        </div>
+</div>
     </aside>
 
   </section>
