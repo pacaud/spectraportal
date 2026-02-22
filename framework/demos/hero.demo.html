@@ -21,51 +21,67 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
   <style>
-    /* Demo-only helpers (kept tiny on purpose) */
-    .demo-page{
-      background: var(--sp-bg);
-      color: var(--sp-text);
-      min-height: 100vh;
-    }
+  /* ============================
+     hero.demo.html (demo-only)
+     Rules:
+     - ONLY .demo-* classes here
+     - No overrides of .sp-* components
+     ============================ */
 
-    .demo-split{
-      display: flex;
-      gap: var(--sp-6);
-      align-items: stretch;
-      flex-wrap: wrap;
-    }
+  /* page scaffold */
+  .demo-page{
+    min-height: var(--sp-page-min-h);
+  }
 
-    .demo-split__left{
-      flex: 1 1 420px;
-      min-width: 280px;
-    }
+  /* hairline divider between sections */
+  .demo-divider{
+    border: 0;
+    border-top: var(--sp-border-1);
+    margin: 0;
+  }
 
-    .demo-split__right{
-      flex: 0 1 420px;
-      min-width: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
+  /* split hero layout */
+  .demo-split{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-6);
+    align-items: center; /* feels better for hero splits */
+  }
 
-    .demo-hero-card{
-      width: 100%;
-      max-width: 420px;
-    }
+  .demo-split__left{
+    flex: 1 1 520px;   /* give copy room */
+    min-width: 280px;
+  }
 
-    .demo-hero-list{
-      margin: var(--sp-4) var(--sp-0) var(--sp-0);
-      padding-left: 1.1em;
-      line-height: var(--sp-lh-2);
-      color: var(--sp-text-muted);
-    }
+  .demo-split__right{
+    flex: 0 1 420px;   /* stable “proof” column */
+    min-width: 280px;
+    display: flex;
+    justify-content: flex-end;
+  }
 
-    .demo-divider{
-      border: 0;
-      border-top: var(--sp-border-1);
-      margin: var(--sp-0);
-    }
-  </style>
+  .demo-hero-card{
+    width: 100%;
+    max-width: 420px;
+  }
+
+  /* list styling for checklists */
+  .demo-hero-list{
+    margin: var(--sp-4) 0 0;
+    padding-left: 1.1em;
+    line-height: var(--sp-lh-2);
+    color: var(--sp-text-muted);
+  }
+
+  .demo-hero-list li + li{
+    margin-top: var(--sp-2);
+  }
+
+  /* optional: soften perceived “squish” without touching .sp-hero */
+  .demo-hero-actions-gap{
+    margin-top: var(--sp-5);
+  }
+</style>
 </head>
 
 <body class="demo-page">
