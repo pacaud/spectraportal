@@ -33,7 +33,20 @@
       margin-top: var(--sp-8);
     }
 
-    /* give the hero breathing room from the header */
+    
+
+    /* demo portal header: keep primary nav truly centered (even with no right-side buttons) */
+    .sp-header__inner{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--sp-5);
+    }
+    .sp-header__left{ justify-self: start; }
+    .sp-header__center{ justify-self: center; }
+    .demo-header__right{ justify-self: end; }
+
+/* give the hero breathing room from the header */
     .demo-hero{
       margin-top: var(--sp-6);
     }
