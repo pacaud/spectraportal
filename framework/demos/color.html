@@ -80,41 +80,6 @@
     }
 
     /* === Colors page specifics (Spectra-aligned, token-driven) === */
-    .sp-tools{
-      display:flex;
-      flex-wrap:wrap;
-      gap: var(--sp-3);
-      align-items:center;
-    }
-    .sp-input{
-      display:inline-flex;
-      align-items:center;
-      gap: var(--sp-2);
-      padding: var(--sp-2) var(--sp-3);
-      border: var(--sp-border-1);
-      background: var(--sp-surface);
-      border-radius: var(--sp-r-3);
-      color: var(--sp-text);
-      box-shadow: var(--sp-shadow-1);
-    }
-    .sp-input__field{
-      appearance:none;
-      border:0;
-      outline:0;
-      background:transparent;
-      color: inherit;
-      min-width: 16ch;
-    }
-    .sp-kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-      font-size: .85em;
-      padding: 2px 6px;
-      border: var(--sp-border-1);
-      border-radius: var(--sp-r-2);
-      background: var(--sp-elev);
-      color: var(--sp-text-muted);
-    }
-
     .sp-table-wrap{
       width:100%;
       overflow:auto;
@@ -178,8 +143,6 @@
     .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
     .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
     .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
-
-    .is-hidden{ display:none; }
   </style>
 </head>
 
@@ -214,16 +177,6 @@
       <p class="sp-muted" style="margin:0;">
         Reference for <code class="sp-code">--sp-*</code> color + shadow tokens.
       </p>
-    </div>
-
-    <div class="sp-tools">
-      <label class="sp-input" aria-label="Filter tokens">
-        <span class="sp-muted">Filter</span>
-        <input id="filter" class="sp-input__field" type="search" placeholder="bg, accent, shadow…" />
-        <span class="sp-kbd">/</span>
-      </label>
-
-      <button id="clear" class="sp-btn" type="button">Clear</button>
     </div>
   </section>
 
@@ -625,47 +578,10 @@
         "<code class='sp-code'>" + (linkHex || "—") + "</code> &nbsp; <code class='sp-code'>" + linkName + "</code>";
     }
 
-    function wireFilter(){
-      const input = document.getElementById("filter");
-      const clear = document.getElementById("clear");
-
-      function apply(){
-        const q = (input.value || "").trim().toLowerCase();
-        const rows = document.querySelectorAll("tr.sp-token-row");
-        for(const row of rows){
-          const token =
-            (row.getAttribute("data-token") ||
-             row.getAttribute("data-shadow") ||
-             row.getAttribute("data-textshadow") || "").toLowerCase();
-          const name = (row.getAttribute("data-name") || "").toLowerCase();
-          const match = !q || token.includes(q) || name.includes(q);
-          row.classList.toggle("is-hidden", !match);
-        }
-      }
-
-      input.addEventListener("input", apply);
-      clear.addEventListener("click", () => { input.value = ""; apply(); input.focus(); });
-
-      window.addEventListener("keydown", (e) => {
-        if(e.key === "/" && document.activeElement !== input){
-          e.preventDefault();
-          input.focus();
-        }
-        if(e.key === "Escape" && document.activeElement === input){
-          input.value = "";
-          apply();
-          input.blur();
-        }
-      });
-
-      apply();
-    }
-
     hydrateColorRows();
     hydrateShadowRows();
     hydrateTextShadowRows();
     hydrateLinkToken();
-    wireFilter();
   </script>
 
 </main>
