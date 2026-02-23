@@ -56,11 +56,13 @@
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
       gap: var(--sp-5);
-      align-items: center;
+            padding-left: var(--sp-3);
+align-items: center;
     }
     @media (max-width: 900px){
       .demo-hero__grid{
         grid-template-columns: 1fr;
+              padding-left: 0;
       }
     }
     .demo-hero__mark{
