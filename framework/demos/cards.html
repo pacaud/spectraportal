@@ -157,6 +157,17 @@
     .demo-page .sp-container{
       max-width: 1100px;
     }
+
+    /* equal-height cards helper (so short examples don't look broken) */
+    .demo-card-grid > .sp-card{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-card-grid .sp-card__body{
+      flex: 1;
+    }
+
 </style>
 </head>
 <body class="demo-page">
@@ -226,6 +237,10 @@
             Uses <code class="sp-code">.sp-card--elev</code> for a slightly lifted surface.
           </p>
         </div>
+        <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+          <span class="sp-muted">Footer</span>
+          <a href="#" class="sp-link">Action</a>
+        </footer>
       </article>
 
       <article class="sp-card sp-card--compact">
