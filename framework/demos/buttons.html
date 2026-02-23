@@ -6,26 +6,21 @@
   <title>Spectra Demo — Buttons</title>
 
   <!-- match index.html theme boot -->
-  <script>
-  (() => {
+(() => {
     const key = "spectra_theme";
     const t = localStorage.getItem(key) || "dark";
     document.documentElement.setAttribute("data-theme", t);
   })();
-  </script>
 
   <!-- match index.html favicons -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
-  <link rel="icon" href="/framework/favicon.ico" sizes="any">
+
 
   <!-- match index.html local framework paths -->
-  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+
 
   <!-- demo-only helpers (scoped + token-driven) -->
   <style>
-    /* page scaffold so footer sits at bottom on short pages */
+/* page scaffold so footer sits at bottom on short pages */
     body.demo-page{
       display: flex;
       flex-direction: column;
@@ -42,7 +37,7 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: var(--sp-5);
+      gap: var(--sp-6);
     }
 
     .sp-header__left{ justify-self: start; }
@@ -123,6 +118,52 @@
       white-space: nowrap;
     }
 
+    /* cards page specifics */
+    .demo-page-title{ margin: 0; }
+    .demo-page-subtitle{ margin: 0; }
+    .demo-card-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+      align-items: start;
+      justify-items: stretch;
+    }
+    .demo-card-grid > .sp-card{
+      width: 100%;
+      max-width: none;
+    }
+    @media (min-width: 900px){
+      .demo-card-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1200px){
+      .demo-card-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* compact card demo helper (token-driven) */
+    .sp-card--compact .sp-card__header,
+    .sp-card--compact .sp-card__body,
+    .sp-card--compact .sp-card__footer{
+      padding: var(--sp-3) var(--sp-4);
+    }
+    .sp-card--compact .sp-card__header{ padding-bottom: var(--sp-2); }
+    .sp-card--compact .sp-card__footer{ padding-top: var(--sp-2); }
+
+    /* demo pages: a touch wider for component comparison */
+    .demo-page .sp-container{
+      max-width: 1100px;
+    }
+
+    /* equal-height cards helper (so short examples don't look broken) */
+    .demo-card-grid > .sp-card{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .demo-card-grid .sp-card__body{
+      flex: 1;
+    }
+
+
     /* buttons page specifics */
     .demo-page-title{ margin: 0; }
     .demo-page-subtitle{ margin: 0; }
@@ -135,10 +176,12 @@
     }
     .demo-btn-row + .demo-btn-row{ margin-top: var(--sp-3); }
 
-    /* demo pages: a touch wider for component comparison */
-    .demo-page .sp-container{
-      max-width: 1100px;
+    .demo-btn-stack{
+      display:flex;
+      flex-direction: column;
+      gap: var(--sp-4);
     }
+
   </style>
 </head>
 
@@ -171,69 +214,96 @@
     <div class="sp-stack" style="gap: var(--sp-2);">
       <h1 class="sp-h2 demo-page-title">Buttons</h1>
       <p class="sp-muted demo-page-subtitle">
-        Minimal button component: <code class="sp-code">.sp-btn</code> (works on <code class="sp-code">button</code> and <code class="sp-code">a.sp-btn</code>).
+        Minimal button component:
+        <code class="sp-code">.sp-btn</code>
+        <span class="sp-muted">·</span>
+        Variants and sizing helpers in context.
       </p>
     </div>
   </section>
 
   <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
 
-    <section class="sp-card">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Variants</h2>
-        <div class="demo-btn-row">
-          <button class="sp-btn" type="button">Default</button>
-          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
-          <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
-          <button class="sp-btn" type="button" disabled>Disabled</button>
-        </div>
+    <div class="demo-card-grid">
 
-        <div class="demo-btn-row" aria-label="Link buttons">
-          <a class="sp-btn" href="#">Link Button</a>
-          <a class="sp-btn sp-btn--primary" href="#">Primary Link</a>
-          <a class="sp-btn sp-btn--ghost" href="#">Ghost Link</a>
-        </div>
-      </div>
-    </section>
+      <article class="sp-card">
+        <header class="sp-card__header">
+          <strong>Variants</strong>
+        </header>
+        <div class="sp-card__body demo-btn-stack">
+          <p class="sp-muted" style="margin:0;">Core variants (button + link).</p>
 
-    <section class="sp-card">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Sizes</h2>
-        <p class="sp-muted" style="margin:0;">From v0.0.25: <code class="sp-code">.sp-btn--sm</code> and <code class="sp-code">.sp-btn--lg</code>.</p>
+          <div class="demo-btn-row" aria-label="Button variants">
+            <button class="sp-btn" type="button">Default</button>
+            <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+            <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
+            <button class="sp-btn" type="button" disabled>Disabled</button>
+          </div>
 
-        <div class="demo-btn-row">
-          <button class="sp-btn sp-btn--sm" type="button">Small</button>
-          <button class="sp-btn" type="button">Default</button>
-          <button class="sp-btn sp-btn--lg" type="button">Large</button>
-        </div>
-
-        <div class="demo-btn-row">
-          <button class="sp-btn sp-btn--sm sp-btn--primary" type="button">Small Primary</button>
-          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
-          <button class="sp-btn sp-btn--lg sp-btn--primary" type="button">Large Primary</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">In cards</h2>
-        <p class="sp-muted" style="margin:0;">Quick sanity check for spacing inside <code class="sp-code">.sp-card</code>.</p>
-
-        <div class="sp-card sp-card--elev">
-          <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
-            <p style="margin:0;">Buttons should align nicely with token spacing.</p>
-            <div class="demo-btn-row">
-              <button class="sp-btn sp-btn--primary" type="button">Confirm</button>
-              <button class="sp-btn sp-btn--ghost" type="button">Cancel</button>
-            </div>
+          <div class="demo-btn-row" aria-label="Link variants">
+            <a class="sp-btn" href="#">Link</a>
+            <a class="sp-btn sp-btn--primary" href="#">Primary link</a>
+            <a class="sp-btn sp-btn--ghost" href="#">Ghost link</a>
           </div>
         </div>
+        <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+          <span class="sp-muted">Token-driven</span>
+          <a href="#" class="sp-link">Action</a>
+        </footer>
+      </article>
 
-      </div>
-    </section>
+      <article class="sp-card sp-card--elev">
+        <header class="sp-card__header">
+          <strong>Sizes</strong>
+        </header>
+        <div class="sp-card__body demo-btn-stack">
+          <p class="sp-muted" style="margin:0;">
+            Size helpers:
+            <code class="sp-code">.sp-btn--sm</code> and <code class="sp-code">.sp-btn--lg</code>.
+          </p>
 
+          <div class="demo-btn-row" aria-label="Sizes default">
+            <button class="sp-btn sp-btn--sm" type="button">Small</button>
+            <button class="sp-btn" type="button">Default</button>
+            <button class="sp-btn sp-btn--lg" type="button">Large</button>
+          </div>
+
+          <div class="demo-btn-row" aria-label="Sizes primary">
+            <button class="sp-btn sp-btn--sm sp-btn--primary" type="button">Small Primary</button>
+            <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+            <button class="sp-btn sp-btn--lg sp-btn--primary" type="button">Large Primary</button>
+          </div>
+        </div>
+        <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+          <span class="sp-muted">Consistent padding</span>
+          <a href="#" class="sp-link">Docs</a>
+        </footer>
+      </article>
+
+      <article class="sp-card sp-card--compact">
+        <header class="sp-card__header">
+          <strong>Button groups</strong>
+        </header>
+        <div class="sp-card__body demo-btn-stack">
+          <p class="sp-muted" style="margin:0;">Common pairings + wrap behavior.</p>
+
+          <div class="demo-btn-row" aria-label="Common actions">
+            <button class="sp-btn sp-btn--primary" type="button">Confirm</button>
+            <button class="sp-btn sp-btn--ghost" type="button">Cancel</button>
+            <a class="sp-btn" href="#">Secondary</a>
+          </div>
+
+          <p class="sp-muted" style="margin:0;">Tip: shrink the window to confirm wrapping stays clean.</p>
+        </div>
+        <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+          <span class="sp-muted">Layout test</span>
+          <a href="#" class="sp-link">Action</a>
+        </footer>
+      </article>
+
+    </div>
   </section>
+
 </main>
 
 <footer class="demo-footer" aria-label="Site footer">
