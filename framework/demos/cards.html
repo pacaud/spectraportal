@@ -128,8 +128,20 @@
     .demo-page-subtitle{ margin: 0; }
     .demo-card-grid{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      grid-template-columns: 1fr;
       gap: var(--sp-6);
+      align-items: start;
+      justify-items: stretch;
+    }
+    .demo-card-grid > .sp-card{
+      width: 100%;
+      max-width: none;
+    }
+    @media (min-width: 900px){
+      .demo-card-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1200px){
+      .demo-card-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }}
 
     /* compact card demo helper (token-driven) */
