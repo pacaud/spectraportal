@@ -1,1 +1,11 @@
+:root{
+  /* subtle purple shadow tint */
+  --sp-shadow-color: rgba(150, 100, 255, 0.18);
+}
 
+/* example: tint your shadow tokens */
+:root{
+  --sp-shadow-1: 0 8px 20px var(--sp-shadow-color);
+  --sp-shadow-2: 0 14px 34px rgba(150, 100, 255, 0.22);
+  --sp-shadow-3: 0 22px 60px rgba(150, 100, 255, 0.26);
+}
