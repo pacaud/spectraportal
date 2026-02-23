@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spectra — Colors</title>
 
-<script>
+  <!-- match index.html theme boot -->
+  <script>
   (() => {
     const key = "spectra_theme";
     const t = localStorage.getItem(key) || "dark";
@@ -13,300 +14,136 @@
   })();
   </script>
 
-<link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
-<link rel="icon" href="/framework/favicon.ico" sizes="any">
+  <!-- match index.html favicons -->
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
+  <link rel="icon" href="/framework/favicon.ico" sizes="any">
 
-<link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
-<link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
-<link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+  <!-- match index.html local framework paths -->
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
+  <!-- demo-only helpers (scoped + token-driven) -->
   <style>
-/* page scaffold so footer sits at bottom on short pages */
     body.demo-page{
-      display: flex;
-      flex-direction: column;
-      min-height: var(--sp-page-min-h);
+      display:flex;
+      flex-direction:column;
+      min-height:var(--sp-page-min-h);
     }
-
     .demo-main{
-      flex: 1;
-      margin-top: var(--sp-8);
+      flex:1;
+      margin-top:var(--sp-8);
     }
 
-    /* demo portal header: keep primary nav truly centered (even with no right-side buttons) */
+    /* keep primary nav centered */
     .sp-header__inner{
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: var(--sp-6);
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:var(--sp-5);
     }
+    .sp-header__left{ justify-self:start; }
+    .sp-header__center{ justify-self:center; }
+    .demo-header__right{ justify-self:end; }
 
-    .sp-header__left{ justify-self: start; }
-
-    .sp-header__center{ justify-self: center; }
-
-    .demo-header__right{ justify-self: end; }
-
-    /* link list helpers (token-driven, no custom colors) */
-    .demo-links{
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-3);
-    }
-
-    .demo-links a{
-      color: var(--sp-link);
-      text-decoration: none;
-    }
-
-    .demo-links a:hover{
-      text-decoration: underline;
-      text-decoration-color: var(--sp-link);
-    }
-
-    /* divider: prefer token border if present, otherwise fall back to line */
-    .demo-divider{
-      border: 0;
-      border-top: var(--sp-border-1);
-      margin: var(--sp-0);
-    }
-
-    /* main layout: card + visual panel */
-    .demo-main-grid{
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-      gap: var(--sp-6);
-      align-items: stretch;
-    }
-
-    /* footer spacing + structure */
-    .demo-footer{
-      margin-top: var(--sp-10);
-      padding: var(--sp-8) 0 var(--sp-10);
-    }
-
+    /* footer */
+    .demo-footer{ margin-top:var(--sp-10); padding:var(--sp-8) 0 var(--sp-10); }
     .demo-footer__row{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--sp-4);
-      flex-wrap: wrap;
-      color: var(--sp-text-muted);
-      font-size: var(--sp-fs-0);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--sp-4);
+      flex-wrap:wrap;
+      color:var(--sp-text-muted);
+      font-size:var(--sp-fs-0);
     }
-
-    .demo-footer__links{
-      display: flex;
-      gap: var(--sp-4);
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .demo-footer__link{
-      color: var(--sp-text-muted);
-      text-decoration: none;
-    }
-
+    .demo-footer__links{ display:flex; gap:var(--sp-4); align-items:center; flex-wrap:wrap; }
+    .demo-footer__link{ color:var(--sp-text-muted); text-decoration:none; }
     .demo-footer__link:hover{
-      color: var(--sp-text);
-      text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,.25);
+      color:var(--sp-text);
+      text-decoration:underline;
+      text-decoration-color:rgba(255,255,255,.25);
     }
+    .demo-footer__credit{ margin-left:var(--sp-2); color:var(--sp-text-muted); white-space:nowrap; }
 
-    .demo-footer__credit{
-      margin-left: var(--sp-2);
-      color: var(--sp-text-muted);
-      white-space: nowrap;
-    }
-
-    /* cards page specifics */
-    .demo-page-title{ margin: 0; }
-    .demo-page-subtitle{ margin: 0; }
-    .demo-card-grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--sp-6);
-      align-items: start;
-      justify-items: stretch;
-    }
-    .demo-card-grid > .sp-card{
-      width: 100%;
-      max-width: none;
-    }
-    @media (min-width: 900px){
-      .demo-card-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (min-width: 1200px){
-      .demo-card-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    /* compact card demo helper (token-driven) */
-    .sp-card--compact .sp-card__header,
-    .sp-card--compact .sp-card__body,
-    .sp-card--compact .sp-card__footer{
-      padding: var(--sp-3) var(--sp-4);
-    }
-    .sp-card--compact .sp-card__header{ padding-bottom: var(--sp-2); }
-    .sp-card--compact .sp-card__footer{ padding-top: var(--sp-2); }
-
-    /* demo pages: a touch wider for component comparison */
-    .demo-page .sp-container{
-      max-width: 1100px;
-    }
-
-    /* equal-height cards helper (so short examples don't look broken) */
-    .demo-card-grid > .sp-card{
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .demo-card-grid .sp-card__body{
-      flex: 1;
-    }
-
-
-    /* buttons page specifics */
-    .demo-page-title{ margin: 0; }
-    .demo-page-subtitle{ margin: 0; }
-
-    .demo-btn-row{
-      display:flex;
-      gap: var(--sp-3);
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    .demo-btn-row + .demo-btn-row{ margin-top: var(--sp-3); }
-
-    .demo-btn-stack{
-      display:flex;
-      flex-direction: column;
-      gap: var(--sp-4);
-    }
-
-
-    /* colors page layout */
-    .demo-page-title{ margin: 0; }
-    .demo-page-subtitle{ margin: 0; }
-
-    /* allow one card to span full width */
-    .demo-card-grid .demo-span-all{ grid-column: 1 / -1; }
-
-
-/* === Colors page specifics (Spectra-aligned, token-driven) === */
+    /* tables */
     .sp-table-wrap{
       width:100%;
       overflow:auto;
-      border-radius: var(--sp-r-4);
-      border: var(--sp-border-1);
+      border-radius:var(--sp-r-4);
+      border:var(--sp-border-1);
+      background:transparent;
     }
     .sp-token-table{
       width:100%;
-      border-collapse: separate;
-      border-spacing: 0;
+      border-collapse:separate;
+      border-spacing:0;
     }
     .sp-token-table thead th{
-      position: sticky;
-      top: 0;
-      background: var(--sp-elev);
-      z-index: 2;
-      border-bottom: var(--sp-border-1);
+      position:sticky;
+      top:0;
+      z-index:2;
+      background:var(--sp-elev);
+      border-bottom:var(--sp-border-1);
     }
-    .sp-token-row td, .sp-token-row th{ border-bottom: var(--sp-border-1); }
-    .sp-token-row:last-child td{ border-bottom: 0; }
-    .sp-token-row:hover td{
-      background: color-mix(in srgb, var(--sp-elev) 55%, transparent);
-    }
+    .sp-token-row td, .sp-token-row th{ border-bottom:var(--sp-border-1); }
+    .sp-token-row:last-child td{ border-bottom:0; }
+    .sp-token-row:hover td{ background:color-mix(in srgb, var(--sp-elev) 55%, transparent); }
 
+    /* compact preview chips */
     .sp-chip{
-      width: 42px;
-      height: 24px;
-      border-radius: 999px;
-      border: var(--sp-border-1);
-      box-shadow: var(--sp-shadow-1);
-      background: var(--sp-subtle);
-    }
-    .sp-chip__text{
-      display:inline-block;
-      padding-left: 10px;
-      line-height: 24px;
-      color: var(--sp-text);
+      width:42px;
+      height:24px;
+      border-radius:999px;
+      border:var(--sp-border-1);
+      box-shadow:var(--sp-shadow-1);
+      background:var(--sp-subtle);
     }
 
-    .sp-chip--bg{ background: var(--sp-bg); }
-    .sp-chip--surface{ background: var(--sp-surface); }
-    .sp-chip--elev{ background: var(--sp-elev); }
-    .sp-chip--elev-2{ background: var(--sp-elev-2); }
-    .sp-chip--text{ background: var(--sp-text); }
-    .sp-chip--muted{ background: var(--sp-text-muted); }
-    .sp-chip--subtle{ background: var(--sp-subtle); }
-    .sp-chip--border{ background: var(--sp-border); }
-    .sp-chip--border-strong{ background: var(--sp-border-strong); }
-    .sp-chip--accent{ background: var(--sp-accent); }
-    .sp-chip--accent-2{ background: var(--sp-accent-2); }
-    .sp-chip--accent-3{ background: var(--sp-accent-3); }
-    .sp-chip--success{ background: var(--sp-success); }
-    .sp-chip--warning{ background: var(--sp-warning); }
-    .sp-chip--danger{ background: var(--sp-danger); }
-    .sp-chip--info{ background: var(--sp-info); }
-
-    .sp-chip--shadow-1{ background: var(--sp-surface); box-shadow: var(--sp-shadow-1); }
-    .sp-chip--shadow-2{ background: var(--sp-surface); box-shadow: var(--sp-shadow-2); }
-    .sp-chip--shadow-3{ background: var(--sp-surface); box-shadow: var(--sp-shadow-3); }
-
-    .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
-    .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
-    .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
-
-    /* word preview chip (used for shadows/text-shadows) */
-    .sp-chip--word{
-      width: auto;
-      min-width: 110px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
+    .sp-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height:24px;
+      padding:0 var(--sp-3);
+      border-radius:999px;
+      border:var(--sp-border-1);
+      background:var(--sp-surface);
+      font-size:var(--sp-fs-0);
+      line-height:1;
+      color:var(--sp-text);
+      max-width:160px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
-    .sp-chip--word .sp-chip__text{
-      padding-left: 0;
-      font-weight: 600;
-      letter-spacing: .2px;
-      white-space: nowrap;
+    .token-val code{
+      white-space:normal;
+      word-break:break-word;
     }
 
-
-    /* allow long computed values to wrap instead of blowing layout */
-    .sp-token-table td{
-      vertical-align: top;
-    }
-    .sp-token-table td code.sp-code{
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-    /* keep token column readable */
-    .sp-token-table td:nth-child(2) code.sp-code{
-      white-space: nowrap;
+    /* section divider inside the big card */
+    .demo-divider{
+      border:0;
+      border-top:var(--sp-border-1);
+      margin:var(--sp-0);
     }
 
-
-    .sp-token-table .preview-col{ width: 140px; }
-  
-    /* inner grid inside single card */
-    .demo-inner-grid{
+    /* inner grid (Shadows + Text shadows) lives inside the same big card */
+    .inner-grid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap: var(--sp-6);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap:var(--sp-6);
       align-items:start;
     }
-    @media (min-width: 900px){
-      .demo-inner-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 900px){
+      .inner-grid{ grid-template-columns:1fr; }
     }
-
   </style>
 </head>
 
 <body class="demo-page">
+
 <header class="sp-header">
   <div class="sp-header__inner sp-container">
     <div class="sp-header__left">
@@ -328,54 +165,44 @@
 </header>
 
 <main class="sp-container sp-content demo-main">
-<!-- Compact page header (no hero) -->
+
+  <!-- Compact page header (no hero) -->
   <section class="sp-stack" style="gap: var(--sp-4);">
     <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2 demo-page-title" style="margin:0;">Color tokens</h1>
-      <p class="sp-muted demo-page-subtitle" style="margin:0;">
+      <h1 class="sp-h2" style="margin:0;">Color tokens</h1>
+      <p class="sp-muted" style="margin:0;">
         Reference for <code class="sp-code">--sp-*</code> color + shadow tokens.
       </p>
     </div>
   </section>
 
   <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
-    <div class="demo-card-grid">
-  <div class="demo-span-all">
-<section class="sp-card sp-stack">
-  
-  <div class="sp-card__body sp-stack" style="gap: var(--sp-6);">
 
-  <section class="sp-stack" style="gap: var(--sp-2);">
-    
-  </section>
+    <!-- Single card for the whole page (v0.0.25-style) -->
+    <section class="sp-card sp-stack" aria-label="Token reference">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
 
-  <div class="demo-inner-grid">
-    <section class="sp-stack" style="gap: var(--sp-3);">
-      
-      <div class="sp-stack" style="gap: var(--sp-3);">
-        
-      </div>
-    </section>
+        <!-- Colors -->
+        <div class="sp-stack" style="gap: var(--sp-2);">
+          <h2 class="sp-h3" style="margin:0;">Colors</h2>
+          <p class="sp-muted" style="margin:0;">Computed values are read from <code class="sp-code">:root</code>.</p>
+        </div>
 
-    <section class="sp-stack" style="gap: var(--sp-3);">
-      
-      <div class="sp-stack" style="gap: var(--sp-3);">
-        
-      </div>
-    </section>
-  </div>
+        <div class="sp-table-wrap" role="region" aria-label="Color tokens table">
+          <table class="sp-table sp-token-table">
+            <thead>
+              <tr>
+                <th class="sp-th">Preview</th>
+                <th class="sp-th">Token</th>
+                <th class="sp-th">Name</th>
+                <th class="sp-th">Hex</th>
+                <th class="sp-th">Nearest name</th>
+              </tr>
+            </thead>
 
-  <section class="sp-stack" style="gap: var(--sp-2);">
-    
-    <div class="sp-stack" style="gap: var(--sp-2);">
-      
-    </div>
-  </section>
-
-</div>
-</section>
-  </div>
-</div></td>
+            <tbody>
+              <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -383,7 +210,7 @@
               </tr>
 
               <tr data-token="--sp-surface" data-name="Surface" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--surface" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-surface</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -391,7 +218,7 @@
               </tr>
 
               <tr data-token="--sp-elev" data-name="Elevation" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-elev</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -399,7 +226,7 @@
               </tr>
 
               <tr data-token="--sp-elev-2" data-name="Elevation 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev-2" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-elev-2</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -407,7 +234,7 @@
               </tr>
 
               <tr data-token="--sp-text" data-name="Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--text" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-text</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -415,7 +242,7 @@
               </tr>
 
               <tr data-token="--sp-text-muted" data-name="Muted Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--muted" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-text-muted</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -423,7 +250,7 @@
               </tr>
 
               <tr data-token="--sp-subtle" data-name="Subtle" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--subtle" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-subtle</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -431,7 +258,7 @@
               </tr>
 
               <tr data-token="--sp-border" data-name="Border" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-border</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -439,7 +266,7 @@
               </tr>
 
               <tr data-token="--sp-border-strong" data-name="Border Strong" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border-strong" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -447,7 +274,7 @@
               </tr>
 
               <tr data-token="--sp-accent" data-name="Accent (Kevin)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-accent</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -455,7 +282,7 @@
               </tr>
 
               <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-2" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-accent-2</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -463,7 +290,7 @@
               </tr>
 
               <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-3" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -471,7 +298,7 @@
               </tr>
 
               <tr data-token="--sp-success" data-name="Success" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--success" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-success</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -479,7 +306,7 @@
               </tr>
 
               <tr data-token="--sp-warning" data-name="Warning" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--warning" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-warning</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -487,7 +314,7 @@
               </tr>
 
               <tr data-token="--sp-danger" data-name="Danger" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--danger" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-danger</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -495,7 +322,7 @@
               </tr>
 
               <tr data-token="--sp-info" data-name="Info" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--info" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip" data-preview="color" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-info</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
@@ -504,116 +331,114 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-      </div>
 
-      <div>
-<section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Text shadows</h2>
+        <hr class="demo-divider" />
 
-        <div class="sp-table-wrap" role="region" aria-label="Text shadow tokens table">
-          <table class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-1</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
+        <div class="inner-grid">
 
-              <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
+          <!-- Text shadows -->
+          <section class="sp-stack" style="gap: var(--sp-3);" aria-label="Text shadow tokens">
+            <h3 class="sp-h4" style="margin:0;">Text shadows</h3>
 
-              <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
+            <div class="sp-table-wrap" role="region" aria-label="Text shadow tokens table">
+              <table class="sp-table sp-token-table">
+                <thead>
+                  <tr>
+                    <th class="sp-th">Preview</th>
+                    <th class="sp-th">Token</th>
+                    <th class="sp-th">Name</th>
+                    <th class="sp-th">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" class="sp-tr sp-token-row">
+                    <td class="sp-td">
+                      <span class="sp-pill" data-preview="textshadow">Spectra</span>
+                    </td>
+                    <td class="sp-td"><code class="sp-code">--sp-text-shadow-1</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+
+                  <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" class="sp-tr sp-token-row">
+                    <td class="sp-td">
+                      <span class="sp-pill" data-preview="textshadow">Spectra</span>
+                    </td>
+                    <td class="sp-td"><code class="sp-code">--sp-text-shadow-2</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+
+                  <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" class="sp-tr sp-token-row">
+                    <td class="sp-td">
+                      <span class="sp-pill" data-preview="textshadow">Spectra</span>
+                    </td>
+                    <td class="sp-td"><code class="sp-code">--sp-text-shadow-3</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Shadows -->
+          <section class="sp-stack" style="gap: var(--sp-3);" aria-label="Shadow tokens">
+            <h3 class="sp-h4" style="margin:0;">Shadows</h3>
+
+            <div class="sp-table-wrap" role="region" aria-label="Shadow tokens table">
+              <table class="sp-table sp-token-table">
+                <thead>
+                  <tr>
+                    <th class="sp-th">Preview</th>
+                    <th class="sp-th">Token</th>
+                    <th class="sp-th">Name</th>
+                    <th class="sp-th">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
+                    <td class="sp-td"><span class="sp-pill" data-preview="shadow">Spectra</span></td>
+                    <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+
+                  <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
+                    <td class="sp-td"><span class="sp-pill" data-preview="shadow">Spectra</span></td>
+                    <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+
+                  <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
+                    <td class="sp-td"><span class="sp-pill" data-preview="shadow">Spectra</span></td>
+                    <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
+                    <td class="sp-td js-name"></td>
+                    <td class="sp-td token-val js-val"><code class="sp-code">—</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
         </div>
+
+        <hr class="demo-divider" />
+
+        <!-- Link token -->
+        <section class="sp-stack" style="gap: var(--sp-2);" aria-label="Link token">
+          <h3 class="sp-h4" style="margin:0;">Link token</h3>
+          <p class="sp-muted" style="margin:0;">
+            Link sample:
+            <a href="#" id="link-sample" class="sp-link">--sp-link</a>
+            <span id="link-meta"><code class="sp-code">—</code></span>
+          </p>
+        </section>
+
       </div>
     </section>
-      </div>
 
-      <div>
-<section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Shadows</h2>
-
-        <div class="sp-table-wrap" role="region" aria-label="Shadow tokens table">
-          <table class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-      </div>
-
-      <div>
-<section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Link token</h2>
-
-        <p class="sp-muted" style="margin:0;">
-          Link sample:
-          <a href="#" id="link-sample" class="sp-link">--sp-link</a>
-          <span id="link-meta"><code class="sp-code">—</code></span>
-        </p>
-      </div>
-    </section>
-      </div>
-    </div>
   </section>
 
   <script>
@@ -703,7 +528,7 @@
     function hydrateColorRows(){
       for (const row of document.querySelectorAll("tr[data-token]")){
         const token = row.getAttribute("data-token");
-        const semName = row.getAttribute("data-name") || "—";
+        const semName = row.getAttribute("data-name") || token;
 
         const val = getVar(token);
         const hex = toHex(val);
@@ -716,13 +541,18 @@
 
         const colorNameCell = row.querySelector(".js-colorname");
         if(colorNameCell) colorNameCell.innerHTML = "<code class='sp-code'>" + (hex ? nearestName(hex) : "—") + "</code>";
+
+        const chip = row.querySelector("[data-preview='color']");
+        if(chip){
+          chip.style.background = val || "transparent";
+        }
       }
     }
 
     function hydrateShadowRows(){
       for (const row of document.querySelectorAll("tr[data-shadow]")){
         const token = row.getAttribute("data-shadow");
-        const name = row.getAttribute("data-name") || "—";
+        const name = row.getAttribute("data-name") || token;
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
@@ -730,13 +560,18 @@
 
         const valCell = row.querySelector(".js-val");
         if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
+
+        const pill = row.querySelector("[data-preview='shadow']");
+        if(pill && val){
+          pill.style.boxShadow = val;
+        }
       }
     }
 
     function hydrateTextShadowRows(){
       for (const row of document.querySelectorAll("tr[data-textshadow]")){
         const token = row.getAttribute("data-textshadow");
-        const name = row.getAttribute("data-name") || "—";
+        const name = row.getAttribute("data-name") || token;
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
@@ -744,6 +579,11 @@
 
         const valCell = row.querySelector(".js-val");
         if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
+
+        const pill = row.querySelector("[data-preview='textshadow']");
+        if(pill && val){
+          pill.style.textShadow = val;
+        }
       }
     }
 
@@ -792,5 +632,6 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
+
 </body>
 </html>
