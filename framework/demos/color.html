@@ -143,7 +143,43 @@
     .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
     .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
     .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
-  </style>
+
+    /* word preview chip (used for shadows/text-shadows) */
+    .sp-chip--word{
+      width: auto;
+      min-width: 110px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .sp-chip--word .sp-chip__text{
+      padding-left: 0;
+      font-weight: 600;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+
+
+    /* allow long computed values to wrap instead of blowing layout */
+    .sp-token-table td{
+      vertical-align: top;
+    }
+    .sp-token-table td code.sp-code{
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    /* keep token column readable */
+    .sp-token-table td:nth-child(2) code.sp-code{
+      white-space: nowrap;
+    }
+
+
+    .sp-token-table .preview-col{ width: 140px; }
+
+</style>
 </head>
 
 <body class="demo-page">
@@ -192,7 +228,7 @@
           <table id="colors" class="sp-table sp-token-table">
             <thead>
               <tr>
-                <th class="sp-th">Preview</th>
+                <th class="sp-th preview-col">Preview</th>
                 <th class="sp-th">Token</th>
                 <th class="sp-th">Name</th>
                 <th class="sp-th">Hex</th>
@@ -343,7 +379,7 @@
           <table class="sp-table sp-token-table">
             <thead>
               <tr>
-                <th class="sp-th">Preview</th>
+                <th class="sp-th preview-col">Preview</th>
                 <th class="sp-th">Token</th>
                 <th class="sp-th">Name</th>
                 <th class="sp-th">Value</th>
@@ -351,21 +387,21 @@
             </thead>
             <tbody>
               <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
 
               <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
 
               <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3" aria-hidden="true"></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
@@ -385,7 +421,7 @@
           <table class="sp-table sp-token-table">
             <thead>
               <tr>
-                <th class="sp-th">Preview</th>
+                <th class="sp-th preview-col">Preview</th>
                 <th class="sp-th">Token</th>
                 <th class="sp-th">Name</th>
                 <th class="sp-th">Value</th>
@@ -394,7 +430,7 @@
             <tbody>
               <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" class="sp-tr sp-token-row">
                 <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-1" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+                  <div class="sp-chip sp-chip--textshadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
                 </td>
                 <td class="sp-td"><code class="sp-code">--sp-text-shadow-1</code></td>
                 <td class="sp-td js-name"></td>
@@ -403,7 +439,7 @@
 
               <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" class="sp-tr sp-token-row">
                 <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-2" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+                  <div class="sp-chip sp-chip--textshadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
                 </td>
                 <td class="sp-td"><code class="sp-code">--sp-text-shadow-2</code></td>
                 <td class="sp-td js-name"></td>
@@ -412,7 +448,7 @@
 
               <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" class="sp-tr sp-token-row">
                 <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-3" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
+                  <div class="sp-chip sp-chip--textshadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
                 </td>
                 <td class="sp-td"><code class="sp-code">--sp-text-shadow-3</code></td>
                 <td class="sp-td js-name"></td>
@@ -526,7 +562,7 @@
     function hydrateColorRows(){
       for (const row of document.querySelectorAll("tr[data-token]")){
         const token = row.getAttribute("data-token");
-        const semName = row.getAttribute("data-name") || token;
+        const semName = row.getAttribute("data-name") || "—";
 
         const val = getVar(token);
         const hex = toHex(val);
@@ -545,7 +581,7 @@
     function hydrateShadowRows(){
       for (const row of document.querySelectorAll("tr[data-shadow]")){
         const token = row.getAttribute("data-shadow");
-        const name = row.getAttribute("data-name") || token;
+        const name = row.getAttribute("data-name") || "—";
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
@@ -559,7 +595,7 @@
     function hydrateTextShadowRows(){
       for (const row of document.querySelectorAll("tr[data-textshadow]")){
         const token = row.getAttribute("data-textshadow");
-        const name = row.getAttribute("data-name") || token;
+        const name = row.getAttribute("data-name") || "—";
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
