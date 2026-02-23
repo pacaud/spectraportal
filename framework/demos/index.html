@@ -282,49 +282,48 @@
 <main class="sp-container sp-content demo-main">
   <section class="demo-main-grid">
 
-    <!-- Left: links card -->
-    <div class="sp-card">
-      <div class="sp-card__body sp-stack">
+    <!-- Left: links cards -->
+    <div class="sp-stack" style="gap: var(--sp-6);">
 
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--sp-6);">
+      <!-- New demos -->
+      <section class="sp-card" aria-label="New demos">
+        <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+          <p class="sp-muted" style="margin: 0;">Demos</p>
+          <h2 class="sp-h3" style="margin: 0;">New demo pages</h2>
+          <p class="sp-muted" style="margin: 0;">Full build demos: component in context.</p>
 
-          <!-- Demos -->
-          <section class="sp-stack" aria-label="Demos">
-            <p class="sp-muted" style="margin: 0;">Demos</p>
-            <h2 class="sp-h3" style="margin: 0;">New demo pages</h2>
-            <p class="sp-muted" style="margin: 0;">Full build demos: component in context.</p>
-
-            <nav class="demo-links" aria-label="Demo links">
-              <a href="./header.demo.html">Header</a>
-              <a href="./hero.demo.html">Hero</a>
-              <a href="./footer.demo.html">Footer</a>
-            </nav>
-          </section>
-
-          <!-- Legacy -->
-          <section class="sp-stack" aria-label="Legacy pages">
-            <p class="sp-muted" style="margin: 0;">Legacy</p>
-            <h2 class="sp-h3" style="margin: 0;">Older pages</h2>
-            <p class="sp-muted" style="margin: 0;">Still useful while the new set grows.</p>
-
-            <nav class="demo-links" aria-label="Legacy links">
-              <a href="./color.html">Colors</a>
-              <a href="./buttons.html">Buttons</a>
-              <a href="./cards.html">Cards</a>
-            </nav>
-          </section>
-
+          <nav class="demo-links" aria-label="Demo links">
+            <a href="./header.demo.html">Header</a>
+            <a href="./hero.demo.html">Hero</a>
+            <a href="./footer.demo.html">Footer</a>
+          </nav>
         </div>
+      </section>
 
-        <hr class="demo-divider" />
+      <!-- Legacy -->
+      <section class="sp-card" aria-label="Legacy pages">
+        <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+          <p class="sp-muted" style="margin: 0;">Legacy</p>
+          <h2 class="sp-h3" style="margin: 0;">Older pages</h2>
+          <p class="sp-muted" style="margin: 0;">Still useful while the new set grows.</p>
 
-        <p class="sp-muted" style="margin: 0;">
-          Dev references (not linked here):
-          <code>inputs.html</code>, <code>form-controls.html</code>, <code>toggles.html</code>
-        </p>
+          <nav class="demo-links" aria-label="Legacy links">
+            <a href="./color.html">Colors</a>
+            <a href="./buttons.html">Buttons</a>
+            <a href="./cards.html">Cards</a>
+          </nav>
 
-      </div>
+          <hr class="demo-divider" />
+
+          <p class="sp-muted" style="margin: 0;">
+            Dev references (not linked here):
+            <code>inputs.html</code>, <code>form-controls.html</code>, <code>toggles.html</code>
+          </p>
+        </div>
+      </section>
+
     </div>
+
     <!-- Right: visual panel -->
     <aside class="sp-card sp-card--surface demo-visual" aria-label="Spectra visual panel">
       <div class="sp-card__body demo-visual__inner">
