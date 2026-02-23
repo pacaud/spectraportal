@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Forms + Controls</title>
+
+  <!-- match index.html theme boot -->
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+
+  <!-- match index.html favicons -->
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
+  <link rel="icon" href="/framework/favicon.ico" sizes="any">
+
+  <!-- match index.html local framework paths -->
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+
+  <style>
+    /* page scaffold so footer sits at bottom on short pages */
+    body.demo-page{
+      display:flex;
+      flex-direction:column;
+      min-height: var(--sp-page-min-h);
+    }
+    .demo-main{
+      flex:1;
+      margin-top: var(--sp-8);
+    }
+
+    /* demo portal header: keep primary nav truly centered */
+    .sp-header__inner{
+      display:grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items:center;
+      gap: var(--sp-5);
+    }
+    .sp-header__left{ justify-self:start; }
+    .sp-header__center{ justify-self:center; }
+    .demo-header__right{ justify-self:end; }
+
+    /* slightly wider for comparisons (matches v0.0.25 demos) */
+    .demo-page .sp-container{ max-width: 1100px; }
+
+    /* footer spacing + structure */
+    .demo-footer{
+      margin-top: var(--sp-10);
+      padding: var(--sp-8) 0 var(--sp-10);
+    }
+    .demo-footer__row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: var(--sp-4);
+      flex-wrap:wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+    }
+    .demo-footer__links{
+      display:flex;
+      gap: var(--sp-4);
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration:none;
+    }
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
+    }
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space:nowrap;
+    }
+
+    /* page bits */
+    .demo-divider{
+      height: 1px;
+      background: var(--sp-border);
+      opacity: .55;
+      margin: var(--sp-6) 0 var(--sp-3);
+    }
+
+    .demo-preview-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+      align-items:start;
+    }
+    @media (min-width: 900px){
+      .demo-preview-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .demo-preview-card{
+      background: color-mix(in srgb, var(--sp-elev) 70%, transparent);
+      border: var(--sp-border-1);
+      border-radius: var(--sp-r-4);
+      padding: var(--sp-4);
+    }
+
+    .sp-table-wrap{
+      width:100%;
+      overflow:auto;
+      border-radius: var(--sp-r-4);
+      border: var(--sp-border-1);
+    }
+    .sp-token-table{
+      width:100%;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .sp-token-table thead th{
+      position: sticky;
+      top: 0;
+      background: var(--sp-elev);
+      z-index: 2;
+      border-bottom: var(--sp-border-1);
+    }
+    .sp-token-row td, .sp-token-row th{ border-bottom: var(--sp-border-1); }
+    .sp-token-row:last-child td{ border-bottom: 0; }
+    .sp-token-row:hover td{
+      background: color-mix(in srgb, var(--sp-elev) 55%, transparent);
+    }
+
+    .is-hidden{ display:none; }
+  </style>
+</head>
+
+<body class="demo-page">
+
+<header class="sp-header">
+  <div class="sp-header__inner sp-container">
+    <div class="sp-header__left">
+      <a class="sp-brand" href="./index.html">
+        <img class="sp-brand__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
+        <span class="sp-brand__text">Spectra</span>
+        <span class="sp-badge sp-badge--soft">v0.1</span>
+      </a>
+    </div>
+
+    <nav class="sp-header__center sp-nav" aria-label="Primary">
+      <a class="sp-nav__link" href="./index.html">Docs</a>
+      <a class="sp-nav__link" href="./index.html">Demos</a>
+      <a class="sp-nav__link is-active" href="./forms-controls.html">Tokens</a>
+    </nav>
+
+    <div class="demo-header__right"></div>
+  </div>
+</header>
+
+<main class="sp-container sp-content demo-main">
+
+  <!-- Compact page header (no hero) -->
+  <section class="sp-stack" style="gap: var(--sp-4);">
+    <div class="sp-stack" style="gap: var(--sp-2);">
+      <h1 class="sp-h2" style="margin:0;">Forms + controls</h1>
+      <p class="sp-muted" style="margin:0;">
+        Token reference for form controls (inputs, selects, textareas, toggles) — plus a quick visual sanity check.
+      </p>
+    </div>
+  </section>
+
+  <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
+
+    <!-- single card, like colors -->
+    <section class="sp-card sp-stack">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-6);">
+
+        <!-- preview -->
+        <div class="sp-stack" style="gap: var(--sp-3);">
+          <h2 class="sp-h3" style="margin:0;">Preview</h2>
+          <p class="sp-muted" style="margin:0;">
+            These controls use the real <code class="sp-code">.sp-*</code> classes (not custom demo styling).
+          </p>
+
+          <div class="demo-preview-grid">
+            <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
+              <div class="sp-field">
+                <label class="sp-label" for="pv_name">Display name</label>
+                <input class="sp-input" id="pv_name" type="text" placeholder="Kevin" />
+                <div class="sp-help">This shows on your profile.</div>
+              </div>
+
+              <div class="sp-field sp-field--error">
+                <label class="sp-label" for="pv_email">Email (error)</label>
+                <input class="sp-input" id="pv_email" type="email" value="kevin@" />
+                <div class="sp-help">Please enter a valid email.</div>
+              </div>
+
+              <div class="sp-field">
+                <label class="sp-label" for="pv_role">Role</label>
+                <select class="sp-select" id="pv_role">
+                  <option>Developer</option>
+                  <option>Designer</option>
+                  <option>Builder</option>
+                </select>
+                <div class="sp-help sp-subtle">Select styling stays intentionally light.</div>
+              </div>
+            </div>
+
+            <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
+              <div class="sp-field">
+                <label class="sp-label" for="pv_about">About</label>
+                <textarea class="sp-textarea" id="pv_about" placeholder="Write something…"></textarea>
+                <div class="sp-help">Textarea should match input focus + error behavior.</div>
+              </div>
+
+              <div class="sp-field sp-field--error">
+                <label class="sp-label" for="pv_about2">About (error)</label>
+                <textarea class="sp-textarea" id="pv_about2">Too short</textarea>
+                <div class="sp-help">Add a little more detail.</div>
+              </div>
+
+              <div class="sp-stack" style="gap: var(--sp-3);">
+                <div class="sp-control">
+                  <input class="sp-switch" id="pv_sw" type="checkbox" checked />
+                  <label class="sp-label" for="pv_sw">Enable notifications</label>
+                </div>
+
+                <div class="sp-control">
+                  <input class="sp-check" id="pv_cb" type="checkbox" checked />
+                  <label class="sp-label" for="pv_cb">Remember me</label>
+                </div>
+
+                <div class="sp-control">
+                  <input class="sp-radio" id="pv_r1" name="pv_plan" type="radio" checked />
+                  <label class="sp-label" for="pv_r1">Free plan</label>
+                </div>
+
+                <div class="sp-control">
+                  <input class="sp-radio" id="pv_r2" name="pv_plan" type="radio" />
+                  <label class="sp-label" for="pv_r2">Pro plan</label>
+                </div>
+
+                <div class="sp-control">
+                  <input class="sp-check" id="pv_cb2" type="checkbox" disabled checked />
+                  <label class="sp-label sp-muted" for="pv_cb2">Auto-save (disabled)</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-divider" aria-hidden="true"></div>
+
+        <!-- tokens -->
+        <div class="sp-stack" style="gap: var(--sp-3);">
+          <div class="sp-stack" style="gap: var(--sp-2);">
+            <h2 class="sp-h3" style="margin:0;">Tokens used</h2>
+            <p class="sp-muted" style="margin:0;">
+              Computed values read from <code class="sp-code">:root</code>.
+            </p>
+          </div>
+
+          <div class="sp-table-wrap" role="region" aria-label="Forms tokens table">
+            <table class="sp-table sp-token-table" id="tokens">
+              <thead>
+                <tr>
+                  <th class="sp-th">Token</th>
+                  <th class="sp-th">Used for</th>
+                  <th class="sp-th">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- typography -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-font" data-used="Controls font"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-fs-2" data-used="Label/help size"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-fs-3" data-used="Input/select/textarea size"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-lh-1" data-used="Label/help line-height"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-lh-2" data-used="Control line-height"></tr>
+
+                <!-- surfaces + text -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-elev-2" data-used="Control background"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-elev" data-used="Disabled background mix"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-text" data-used="Text color"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-muted" data-used="Help text color"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-subtle" data-used="Placeholder + select arrow"></tr>
+
+                <!-- borders + radii -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-radius-2" data-used="Input/select/textarea radius"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-radius-1" data-used="Checkbox radius"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-radius-round" data-used="Switch/radio radius"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border-1" data-used="Default border"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border-2" data-used="Checkbox checkmark stroke"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border-w-1" data-used="Small border width"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border-w-2" data-used="Focus ring thickness"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border-strong" data-used="Hover border"></tr>
+
+                <!-- state colors -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-accent-3" data-used="Focus/active accent"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-danger" data-used="Error state"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-bg" data-used="Switch knob (checked)"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-border" data-used="Accent+border mixing"></tr>
+
+                <!-- motion + opacity -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-duration-2" data-used="Transitions"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-ease-standard" data-used="Transitions easing"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-opacity-60" data-used="Disabled opacity"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-opacity-80" data-used="Switch knob (unchecked)"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-opacity-100" data-used="Switch knob (checked)"></tr>
+
+                <!-- spacing -->
+                <tr class="sp-tr sp-token-row" data-token="--sp-2" data-used="Control padding / gaps"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-3" data-used="Control gaps / padding / arrow offset"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-4" data-used="Toggle sizing base"></tr>
+                <tr class="sp-tr sp-token-row" data-token="--sp-6" data-used="Select right padding"></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="sp-muted" style="margin:0;">
+            Demos:
+            <a class="sp-link" href="./forms.html">Forms</a>
+            <span aria-hidden="true">•</span>
+            <a class="sp-link" href="./form-controls.html">Form controls</a>
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </section>
+
+  <script>
+    function getVar(name){
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || "—";
+    }
+
+    function hydrate(){
+      for(const row of document.querySelectorAll("tr[data-token]")){
+        const token = row.getAttribute("data-token");
+        const used = row.getAttribute("data-used") || "—";
+        const val = getVar(token);
+
+        row.innerHTML = `
+          <td class="sp-td"><code class="sp-code">${token}</code></td>
+          <td class="sp-td">${used}</td>
+          <td class="sp-td"><code class="sp-code">${val}</code></td>
+        `;
+      }
+    }
+
+    hydrate();
+  </script>
+
+</main>
+
+<footer class="demo-footer" aria-label="Site footer">
+  <div class="sp-container">
+    <section class="sp-card sp-card--surface" aria-label="Footer legal">
+      <div class="sp-card__body">
+        <div class="demo-footer__row">
+          <div>
+            © <span id="y"></span> SpectraPortal. All rights reserved.
+            <span class="demo-footer__credit">
+              · Built by
+              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                Code Crunchers Technologies
+              </a>
+            </span>
+          </div>
+
+          <nav class="demo-footer__links" aria-label="Legal">
+            <a class="demo-footer__link" href="#">Privacy</a>
+            <a class="demo-footer__link" href="#">Terms</a>
+            <a class="demo-footer__link" href="#">Licenses</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
