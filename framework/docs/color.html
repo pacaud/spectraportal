@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra — Colors</title>
+  <title>Spectra — Color</title>
 
   <!-- match index.html theme boot -->
   <script>
@@ -195,6 +195,28 @@
       padding-right: var(--sp-2);
     }
   </style>
+<style>
+    body.demo-page{display:flex;flex-direction:column;min-height:var(--sp-page-min-h);}
+    .demo-main{flex:1;margin-top:var(--sp-8);}
+    .sp-header__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--sp-5);}
+    .sp-header__left{justify-self:start;}
+    .sp-header__center{justify-self:center;}
+    .demo-header__right{justify-self:end;}
+
+    .sp-table-wrap{width:100%;overflow:auto;border-radius:var(--sp-r-4);border:var(--sp-border-1);padding:var(--sp-3);}
+    .sp-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+    .sp-token-table thead th{position:sticky;top:0;background:var(--sp-elev);z-index:2;border-bottom:var(--sp-border-1);}
+    .sp-token-row td,.sp-token-row th{border-bottom:var(--sp-border-1);}
+    .sp-token-row:last-child td{border-bottom:0;}
+    .sp-token-row:hover td{background:color-mix(in srgb,var(--sp-elev) 55%,transparent);}
+    .sp-token-table .sp-td,.sp-token-table .sp-th{padding-top:var(--sp-2);padding-bottom:var(--sp-2);}
+    .sp-token-table td:first-child,.sp-token-table th:first-child{padding-left:var(--sp-3);padding-right:var(--sp-2);}
+
+    .sp-chip{display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:28px;padding:0 var(--sp-3);
+      border-radius:999px;border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);
+      font-size:var(--sp-fs-0);color:var(--sp-text);white-space:nowrap;}
+    .sp-chip--ghost{background:color-mix(in srgb,var(--sp-elev) 60%,transparent);color:var(--sp-text-muted);}
+  </style>
 </head>
 
 <body class="demo-page">
@@ -202,7 +224,7 @@
 <header class="sp-header">
   <div class="sp-header__inner sp-container">
     <div class="sp-header__left">
-      <a class="sp-brand" href="#">
+      <a class="sp-brand" href="./index.html">
         <img class="sp-brand__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
         <span class="sp-brand__text">Spectra</span>
         <span class="sp-badge sp-badge--soft">v0.1</span>
@@ -210,9 +232,9 @@
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-      <a class="sp-nav__link" href="./index.html">Docs</a>
-      <a class="sp-nav__link" href="./index.html">Demos</a>
-      <a class="sp-nav__link is-active" href="./color.html">Tokens</a>
+<a class="sp-nav__link" href="./index.html">Docs</a>
+      <a class="sp-nav__link" href="../demos/index.html">Demos</a>
+      <a class="sp-nav__link is-active" href="./color.html">This page</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -221,17 +243,18 @@
 
 <main class="sp-container sp-content demo-main">
 
-  <!-- Compact page header (no hero) -->
-  <section class="sp-stack" style="gap: var(--sp-4);">
+<section class="sp-stack" style="gap: var(--sp-4);">
     <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2" style="margin:0;">Color tokens</h1>
-      <p class="sp-muted" style="margin:0;">
-        Reference for <code class="sp-code">--sp-*</code> color + shadow tokens.
-      </p>
+      <h1 class="sp-h2" style="margin:0;">Color</h1>
+      <p class="sp-muted" style="margin:0;">Color + shadow tokens (computed from :root).</p>
+    </div>
+    <div class="sp-cluster" style="gap: var(--sp-3); align-items:center;">
+      <a class="sp-btn sp-btn--primary" href="../demos/color.demo.html">View demo</a>
+      <a class="sp-link" href="./index.html">Docs index</a>
     </div>
   </section>
 
-  <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
+<section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
 
     <!-- Colors -->
     <section class="sp-card sp-stack">
@@ -634,6 +657,21 @@
     hydrateTextShadowRows();
     hydrateLinkToken();
   </script>
+
+<script>
+  function getVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+  function hydrateTokenRows(){
+    for (const row of document.querySelectorAll("tr[data-token]")){
+      const token = row.getAttribute("data-token");
+      const val = getVar(token);
+      const valCell = row.querySelector(".js-val");
+      if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
+    }
+  }
+  hydrateTokenRows();
+</script>
 
 </main>
 

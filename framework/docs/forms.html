@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra — Forms (Tokens)</title>
+  <title>Spectra — Forms</title>
 
   <!-- match index.html theme boot -->
   <script>
@@ -23,140 +23,199 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
+  <!-- demo-only helpers (scoped + token-driven) -->
   <style>
-    /* page scaffold so footer sits at bottom on short pages */
     body.demo-page{
-      display:flex;
-      flex-direction:column;
-      min-height:var(--sp-page-min-h);
+      display: flex;
+      flex-direction: column;
+      min-height: var(--sp-page-min-h);
     }
-    .demo-main{ flex:1; margin-top:var(--sp-8); }
+    .demo-main{
+      flex: 1;
+      margin-top: var(--sp-8);
+    }
 
-    /* centered header nav (same pattern as cards/colors) */
     .sp-header__inner{
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      align-items:center;
-      gap:var(--sp-6);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--sp-5);
     }
-    .sp-header__left{ justify-self:start; }
-    .sp-header__center{ justify-self:center; }
-    .demo-header__right{ justify-self:end; }
+    .sp-header__left{ justify-self: start; }
+    .sp-header__center{ justify-self: center; }
+    .demo-header__right{ justify-self: end; }
 
-    /* footer spacing */
-    .demo-footer{ margin-top:var(--sp-10); padding:var(--sp-8) 0 var(--sp-10); }
+    .demo-footer{
+      margin-top: var(--sp-10);
+      padding: var(--sp-8) 0 var(--sp-10);
+    }
     .demo-footer__row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:var(--sp-4);
-      flex-wrap:wrap;
-      color:var(--sp-text-muted);
-      font-size:var(--sp-fs-0);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
     }
-    .demo-footer__links{ display:flex; gap:var(--sp-4); align-items:center; flex-wrap:wrap; }
-    .demo-footer__link{ color:var(--sp-text-muted); text-decoration:none; }
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
     .demo-footer__link:hover{
-      color:var(--sp-text);
-      text-decoration:underline;
-      text-decoration-color:rgba(255,255,255,.25);
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
     }
-    .demo-footer__credit{ margin-left:var(--sp-2); color:var(--sp-text-muted); white-space:nowrap; }
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space: nowrap;
+    }
 
-    /* tables (colors-style) */
+    /* === Colors page specifics (Spectra-aligned, token-driven) === */
     .sp-table-wrap{
       width:100%;
       overflow:auto;
-      border-radius:var(--sp-r-4);
-      border:var(--sp-border-1);
-      padding:var(--sp-3);
+      border-radius: var(--sp-r-4);
+      border: var(--sp-border-1);
     }
     .sp-token-table{
       width:100%;
-      border-collapse:separate;
-      border-spacing:0;
+      border-collapse: separate;
+      border-spacing: 0;
     }
     .sp-token-table thead th{
-      position:sticky;
-      top:0;
-      background:var(--sp-elev);
-      z-index:2;
-      border-bottom:var(--sp-border-1);
+      position: sticky;
+      top: 0;
+      background: var(--sp-elev);
+      z-index: 2;
+      border-bottom: var(--sp-border-1);
     }
-    .sp-token-row td, .sp-token-row th{ border-bottom:var(--sp-border-1); }
-    .sp-token-row:last-child td{ border-bottom:0; }
-    .sp-token-row:hover td{ background:color-mix(in srgb, var(--sp-elev) 55%, transparent); }
-    .sp-token-table .sp-td,
-    .sp-token-table .sp-th{
-      padding-top:var(--sp-2);
-      padding-bottom:var(--sp-2);
-    }
-    .sp-token-table td:first-child,
-    .sp-token-table th:first-child{
-      padding-left:var(--sp-3);
-      padding-right:var(--sp-2);
-    }
-    /* wrap long values so table never explodes */
-    .sp-token-table td code.sp-code{
-      white-space:normal;
-      overflow-wrap:anywhere;
-      word-break:break-word;
-    }
-    /* keep token column readable */
-    .sp-token-table td:nth-child(2) code.sp-code{ white-space:nowrap; }
-
-    .preview-col{ width:260px; }
-
-    /* small previews: keep them compact + consistent */
-    .sp-prev{
-      display:flex;
-      align-items:center;
-      gap:var(--sp-3);
-      flex-wrap:wrap;
-      max-width: 240px;
-    }
-    .sp-prev .sp-input,
-    .sp-prev .sp-select,
-    .sp-prev .sp-textarea{
-      max-width: 220px;
-    }
-    .sp-prev .sp-textarea{ min-height: 3.5rem; }
-    /* demo: show "focused" state without needing actual focus */
-    .sp-is-focus{
-      border-color: var(--sp-accent-3);
-      box-shadow: 0 0 0 var(--sp-border-w-2,2px) rgba(167,139,250,.35);
-      box-shadow: 0 0 0 var(--sp-border-w-2,2px) color-mix(in srgb, var(--sp-accent-3) 40%, transparent);
-    }
-    /* remove native select arrow (we're showing tokens, not browser UI) */
-    .sp-prev .sp-select{
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: none;
-      padding-right: var(--sp-4);
+    .sp-token-row td, .sp-token-row th{ border-bottom: var(--sp-border-1); }
+    .sp-token-row:last-child td{ border-bottom: 0; }
+    .sp-token-row:hover td{
+      background: color-mix(in srgb, var(--sp-elev) 55%, transparent);
     }
 
-    .sp-prev .sp-label{ margin:0; }
-    .sp-prev-word{
-      padding: 6px 10px;
-      border-radius: var(--sp-r-3);
+    .sp-chip{
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
       border: var(--sp-border-1);
-      background: var(--sp-elev-2);
+      box-shadow: var(--sp-shadow-1);
+      background: var(--sp-subtle);
+    }
+    .sp-chip__text{
+      display:inline-block;
+      padding-left: 10px;
+      line-height: 24px;
       color: var(--sp-text);
+    }
+
+    .sp-chip--bg{ background: var(--sp-bg); }
+    .sp-chip--surface{ background: var(--sp-surface); }
+    .sp-chip--elev{ background: var(--sp-elev); }
+    .sp-chip--elev-2{ background: var(--sp-elev-2); }
+    .sp-chip--text{ background: var(--sp-text); }
+    .sp-chip--muted{ background: var(--sp-text-muted); }
+    .sp-chip--subtle{ background: var(--sp-subtle); }
+    .sp-chip--border{ background: var(--sp-border); }
+    .sp-chip--border-strong{ background: var(--sp-border-strong); }
+    .sp-chip--accent{ background: var(--sp-accent); }
+    .sp-chip--accent-2{ background: var(--sp-accent-2); }
+    .sp-chip--accent-3{ background: var(--sp-accent-3); }
+    .sp-chip--success{ background: var(--sp-success); }
+    .sp-chip--warning{ background: var(--sp-warning); }
+    .sp-chip--danger{ background: var(--sp-danger); }
+    .sp-chip--info{ background: var(--sp-info); }
+
+    .sp-chip--shadow-1{ background: var(--sp-surface); box-shadow: var(--sp-shadow-1); }
+    .sp-chip--shadow-2{ background: var(--sp-surface); box-shadow: var(--sp-shadow-2); }
+    .sp-chip--shadow-3{ background: var(--sp-surface); box-shadow: var(--sp-shadow-3); }
+
+    .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
+    .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
+    .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
+
+    /* word preview chip (used for shadows/text-shadows) */
+    .sp-chip--word{
+      width: auto;
+      min-width: 110px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .sp-chip--word .sp-chip__text{
+      padding-left: 0;
       font-weight: 600;
       letter-spacing: .2px;
       white-space: nowrap;
     }
 
-    /* section divider inside the single big card */
-    .demo-subsection + .demo-subsection{
-      margin-top: var(--sp-6);
-      padding-top: var(--sp-6);
-      border-top: var(--sp-border-1);
+
+    /* allow long computed values to wrap instead of blowing layout */
+    .sp-token-table td{
+      vertical-align: top;
+    }
+    .sp-token-table td code.sp-code{
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    /* keep token column readable */
+    .sp-token-table td:nth-child(2) code.sp-code{
+      white-space: nowrap;
     }
 
-    /* demo pages: a touch wider for component tables */
-    .demo-page .sp-container{ max-width:1100px; }
+
+    .sp-token-table .preview-col{ width: 140px; }
+
+
+    /* === Padding polish (Spectra v0.0.25-ish) === */
+    .sp-table-wrap{
+      padding: var(--sp-3);
+    }
+    .sp-token-table .sp-td,
+    .sp-token-table .sp-th{
+      padding-top: var(--sp-2);
+      padding-bottom: var(--sp-2);
+    }
+    .sp-token-table td:first-child,
+    .sp-token-table th:first-child{
+      padding-left: var(--sp-3);
+      padding-right: var(--sp-2);
+    }
+  </style>
+<style>
+    body.demo-page{display:flex;flex-direction:column;min-height:var(--sp-page-min-h);}
+    .demo-main{flex:1;margin-top:var(--sp-8);}
+    .sp-header__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--sp-5);}
+    .sp-header__left{justify-self:start;}
+    .sp-header__center{justify-self:center;}
+    .demo-header__right{justify-self:end;}
+
+    .sp-table-wrap{width:100%;overflow:auto;border-radius:var(--sp-r-4);border:var(--sp-border-1);padding:var(--sp-3);}
+    .sp-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+    .sp-token-table thead th{position:sticky;top:0;background:var(--sp-elev);z-index:2;border-bottom:var(--sp-border-1);}
+    .sp-token-row td,.sp-token-row th{border-bottom:var(--sp-border-1);}
+    .sp-token-row:last-child td{border-bottom:0;}
+    .sp-token-row:hover td{background:color-mix(in srgb,var(--sp-elev) 55%,transparent);}
+    .sp-token-table .sp-td,.sp-token-table .sp-th{padding-top:var(--sp-2);padding-bottom:var(--sp-2);}
+    .sp-token-table td:first-child,.sp-token-table th:first-child{padding-left:var(--sp-3);padding-right:var(--sp-2);}
+
+    .sp-chip{display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:28px;padding:0 var(--sp-3);
+      border-radius:999px;border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);
+      font-size:var(--sp-fs-0);color:var(--sp-text);white-space:nowrap;}
+    .sp-chip--ghost{background:color-mix(in srgb,var(--sp-elev) 60%,transparent);color:var(--sp-text-muted);}
   </style>
 </head>
 
@@ -173,9 +232,9 @@
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-      <a class="sp-nav__link" href="./index.html">Docs</a>
-      <a class="sp-nav__link" href="./index.html">Demos</a>
-      <a class="sp-nav__link is-active" href="./forms_controls_inputs_toggles.html">Tokens</a>
+<a class="sp-nav__link" href="./index.html">Docs</a>
+      <a class="sp-nav__link" href="../demos/index.html">Demos</a>
+      <a class="sp-nav__link is-active" href="./forms.html">This page</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -184,17 +243,18 @@
 
 <main class="sp-container sp-content demo-main">
 
-  <!-- Compact page header (no hero) -->
-  <section class="sp-stack" style="gap: var(--sp-4);">
+<section class="sp-stack" style="gap: var(--sp-4);">
     <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2" style="margin:0;">Forms tokens</h1>
-      <p class="sp-muted" style="margin:0;">
-        Reference for form-related <code class="sp-code">--sp-*</code> tokens (inputs, controls, and toggles).
-      </p>
+      <h1 class="sp-h2" style="margin:0;">Forms</h1>
+      <p class="sp-muted" style="margin:0;">Tokens for inputs, controls, and toggles.</p>
+    </div>
+    <div class="sp-cluster" style="gap: var(--sp-3); align-items:center;">
+      <a class="sp-btn sp-btn--primary" href="../demos/forms.demo.html">View demo</a>
+      <a class="sp-link" href="./index.html">Docs index</a>
     </div>
   </section>
 
-  <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
+<section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
 
     <!-- SINGLE CARD (like Colors) -->
     <section class="sp-card sp-stack">
@@ -476,6 +536,21 @@
     hydrate();
   </script>
 
+<script>
+  function getVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+  function hydrateTokenRows(){
+    for (const row of document.querySelectorAll("tr[data-token]")){
+      const token = row.getAttribute("data-token");
+      const val = getVar(token);
+      const valCell = row.querySelector(".js-val");
+      if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
+    }
+  }
+  hydrateTokenRows();
+</script>
+
 </main>
 
 <footer class="demo-footer" aria-label="Site footer">
@@ -487,7 +562,9 @@
             © <span id="y"></span> SpectraPortal. All rights reserved.
             <span class="demo-footer__credit">
               · Built by
-              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                Code Crunchers Technologies
+              </a>
             </span>
           </div>
 

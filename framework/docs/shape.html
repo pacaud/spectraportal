@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra — Docs</title>
+  <title>Spectra — Shape</title>
 
   <!-- match index.html theme boot -->
   <script>
@@ -232,9 +232,9 @@
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-<a class="sp-nav__link is-active" href="./index.html">Docs</a>
+<a class="sp-nav__link" href="./index.html">Docs</a>
       <a class="sp-nav__link" href="../demos/index.html">Demos</a>
-      <a class="sp-nav__link" href="./index.html">This page</a>
+      <a class="sp-nav__link is-active" href="./shape.html">This page</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -243,78 +243,160 @@
 
 <main class="sp-container sp-content demo-main">
 
-<section class="sp-stack" style="gap: var(--sp-6);">
+<section class="sp-stack" style="gap: var(--sp-4);">
     <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2" style="margin:0;">Docs</h1>
-      <p class="sp-muted" style="margin:0;">Token references + guidance. Each page links to a matching demo.</p>
+      <h1 class="sp-h2" style="margin:0;">Shape</h1>
+      <p class="sp-muted" style="margin:0;">Spacing, radius, and border tokens.</p>
     </div>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Fundamentals</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./color.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Color</div>
-              <p class="sp-muted" style="margin:0;">Color + shadow tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./shape.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Shape</div>
-              <p class="sp-muted" style="margin:0;">Spacing, radius, borders.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./type.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Type</div>
-              <p class="sp-muted" style="margin:0;">Typography tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./motion.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Motion</div>
-              <p class="sp-muted" style="margin:0;">Durations + easing.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Primitives</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./forms.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Forms</div>
-              <p class="sp-muted" style="margin:0;">Inputs, controls, toggles tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./buttons.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Buttons</div>
-              <p class="sp-muted" style="margin:0;">Button tokens + states.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-card--surface sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
-        <h2 class="sp-h3" style="margin:0;">Need the visuals?</h2>
-        <p class="sp-muted" style="margin:0;">Open the demo hub for interactive previews and full examples.</p>
-        <div><a class="sp-btn sp-btn--primary" href="../demos/index.html">Open demos</a></div>
-      </div>
-    </section>
+    <div class="sp-cluster" style="gap: var(--sp-3); align-items:center;">
+      <a class="sp-btn sp-btn--primary" href="../demos/shape.demo.html">View demo</a>
+      <a class="sp-link" href="./index.html">Docs index</a>
+    </div>
   </section>
+
+<section class="sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Spacing</h2>
+        <p class="sp-muted" style="margin:0;">Core spacing steps used for layout and components.</p>
+        <div class="sp-table-wrap" role="region" aria-label="Spacing tokens table">
+          <table class="sp-table sp-token-table">
+            <thead>
+              <tr>
+                <th class="sp-th">Preview</th>
+                <th class="sp-th">Token</th>
+                <th class="sp-th">Used for</th>
+                <th class="sp-th">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="sp-tr sp-token-row" data-token="--sp-1">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-1</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-1</code></td>
+                <td class="sp-td">Space step 1</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-2">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-2</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-2</code></td>
+                <td class="sp-td">Space step 2</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-3">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-3</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-3</code></td>
+                <td class="sp-td">Space step 3</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-4">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-4</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-4</code></td>
+                <td class="sp-td">Space step 4</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-6">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-6</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-6</code></td>
+                <td class="sp-td">Common section gap</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-8">
+                <td class="sp-td"><span class="sp-chip sp-chip--ghost">sp-8</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-8</code></td>
+                <td class="sp-td">Common page gap</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+<section class="sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Radius</h2>
+        <p class="sp-muted" style="margin:0;">Corner radius tokens used across cards, inputs, chips, etc.</p>
+        <div class="sp-table-wrap" role="region" aria-label="Radius tokens table">
+          <table class="sp-table sp-token-table">
+            <thead>
+              <tr>
+                <th class="sp-th">Preview</th>
+                <th class="sp-th">Token</th>
+                <th class="sp-th">Used for</th>
+                <th class="sp-th">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="sp-tr sp-token-row" data-token="--sp-r-2">
+                <td class="sp-td"><span class="sp-chip">r-2</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-r-2</code></td>
+                <td class="sp-td">Radius small</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-r-3">
+                <td class="sp-td"><span class="sp-chip">r-3</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-r-3</code></td>
+                <td class="sp-td">Radius default</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-r-4">
+                <td class="sp-td"><span class="sp-chip">r-4</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-r-4</code></td>
+                <td class="sp-td">Radius card/table</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-r-5">
+                <td class="sp-td"><span class="sp-chip">r-5</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-r-5</code></td>
+                <td class="sp-td">Radius large</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+<section class="sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Borders</h2>
+        <p class="sp-muted" style="margin:0;">Border colors (and optional widths) used for outlines and separators.</p>
+        <div class="sp-table-wrap" role="region" aria-label="Borders tokens table">
+          <table class="sp-table sp-token-table">
+            <thead>
+              <tr>
+                <th class="sp-th">Preview</th>
+                <th class="sp-th">Token</th>
+                <th class="sp-th">Used for</th>
+                <th class="sp-th">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="sp-tr sp-token-row" data-token="--sp-border">
+                <td class="sp-td"><span class="sp-chip">border</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-border</code></td>
+                <td class="sp-td">Border color</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-border-strong">
+                <td class="sp-td"><span class="sp-chip">strong</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
+                <td class="sp-td">Strong border color</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-border-w-1">
+                <td class="sp-td"><span class="sp-chip">w-1</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-border-w-1</code></td>
+                <td class="sp-td">Border width 1 (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-border-w-2">
+                <td class="sp-td"><span class="sp-chip">w-2</span></td>
+                <td class="sp-td"><code class="sp-code">--sp-border-w-2</code></td>
+                <td class="sp-td">Border width 2 (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
 <script>
   function getVar(name){

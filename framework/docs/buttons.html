@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra — Docs</title>
+  <title>Spectra — Buttons</title>
 
   <!-- match index.html theme boot -->
   <script>
@@ -232,9 +232,9 @@
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-<a class="sp-nav__link is-active" href="./index.html">Docs</a>
+<a class="sp-nav__link" href="./index.html">Docs</a>
       <a class="sp-nav__link" href="../demos/index.html">Demos</a>
-      <a class="sp-nav__link" href="./index.html">This page</a>
+      <a class="sp-nav__link is-active" href="./buttons.html">This page</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -243,78 +243,72 @@
 
 <main class="sp-container sp-content demo-main">
 
-<section class="sp-stack" style="gap: var(--sp-6);">
+<section class="sp-stack" style="gap: var(--sp-4);">
     <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2" style="margin:0;">Docs</h1>
-      <p class="sp-muted" style="margin:0;">Token references + guidance. Each page links to a matching demo.</p>
+      <h1 class="sp-h2" style="margin:0;">Buttons</h1>
+      <p class="sp-muted" style="margin:0;">Button tokens + state helpers. See the demo for interactions.</p>
     </div>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Fundamentals</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./color.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Color</div>
-              <p class="sp-muted" style="margin:0;">Color + shadow tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./shape.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Shape</div>
-              <p class="sp-muted" style="margin:0;">Spacing, radius, borders.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./type.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Type</div>
-              <p class="sp-muted" style="margin:0;">Typography tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./motion.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Motion</div>
-              <p class="sp-muted" style="margin:0;">Durations + easing.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Primitives</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./forms.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Forms</div>
-              <p class="sp-muted" style="margin:0;">Inputs, controls, toggles tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./buttons.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Buttons</div>
-              <p class="sp-muted" style="margin:0;">Button tokens + states.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-card--surface sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
-        <h2 class="sp-h3" style="margin:0;">Need the visuals?</h2>
-        <p class="sp-muted" style="margin:0;">Open the demo hub for interactive previews and full examples.</p>
-        <div><a class="sp-btn sp-btn--primary" href="../demos/index.html">Open demos</a></div>
-      </div>
-    </section>
+    <div class="sp-cluster" style="gap: var(--sp-3); align-items:center;">
+      <a class="sp-btn sp-btn--primary" href="../demos/buttons.demo.html">View demo</a>
+      <a class="sp-link" href="./index.html">Docs index</a>
+    </div>
   </section>
+
+<section class="sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Button tokens</h2>
+        <p class="sp-muted" style="margin:0;">Token names vary by build; missing tokens show “—”.</p>
+        <div class="sp-table-wrap" role="region" aria-label="Button tokens tokens table">
+          <table class="sp-table sp-token-table">
+            <thead>
+              <tr>
+                <th class="sp-th">Preview</th>
+                <th class="sp-th">Token</th>
+                <th class="sp-th">Used for</th>
+                <th class="sp-th">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr class="sp-tr sp-token-row" data-token="--sp-btn-bg">
+                <td class="sp-td"><button class="sp-btn sp-btn--primary" type="button">Spectra</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-btn-bg</code></td>
+                <td class="sp-td">Primary button background (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-btn-fg">
+                <td class="sp-td"><button class="sp-btn sp-btn--primary" type="button">Spectra</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-btn-fg</code></td>
+                <td class="sp-td">Primary button text color (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-btn-soft-bg">
+                <td class="sp-td"><button class="sp-btn sp-btn--soft" type="button">Spectra</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-btn-soft-bg</code></td>
+                <td class="sp-td">Soft button background (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-btn-ghost-bg">
+                <td class="sp-td"><button class="sp-btn sp-btn--ghost" type="button">Spectra</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-btn-ghost-bg</code></td>
+                <td class="sp-td">Ghost button background (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-focus">
+                <td class="sp-td"><button class="sp-btn sp-btn--primary" type="button">Focus</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-focus</code></td>
+                <td class="sp-td">Focus ring color (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-btn-radius">
+                <td class="sp-td"><button class="sp-btn sp-btn--primary" type="button">Radius</button></td>
+                <td class="sp-td"><code class="sp-code">--sp-btn-radius</code></td>
+                <td class="sp-td">Button radius (if defined)</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
 <script>
   function getVar(name){
