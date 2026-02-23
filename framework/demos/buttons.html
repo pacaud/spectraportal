@@ -4,35 +4,267 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spectra Demo — Buttons</title>
-  <!-- Framework first, theme after -->
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="https://spectraportal.dev/framework/cdn/v0.1/theme.min.css" /> 
-  <link rel="stylesheet" href="/overrides.css" />
-</head>
-<body>
-  <main class="sp-container sp-content" style="margin-top: var(--sp-6);">
-    <section class="sp-stack">
-      <h1 style="font-family: var(--sp-font-display); margin: 0;">Buttons</h1>
-      <p style="margin: 0;">
-        Minimal button component: <code style="font-family: var(--sp-font-mono);">.sp-btn</code>.
-        Links can be styled as buttons intentionally (use <code style="font-family: var(--sp-font-mono);">a.sp-btn</code>).
-      </p>
 
-      <div class="sp-stack" style="margin-top: var(--sp-4);">
-        <div style="display:flex; gap: var(--sp-3); flex-wrap: wrap;">
+  <!-- match index.html theme boot -->
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+
+  <!-- match index.html favicons -->
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
+  <link rel="icon" href="/framework/favicon.ico" sizes="any">
+
+  <!-- match index.html local framework paths -->
+  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
+  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+
+  <!-- demo-only helpers (scoped + token-driven) -->
+  <style>
+    /* page scaffold so footer sits at bottom on short pages */
+    body.demo-page{
+      display: flex;
+      flex-direction: column;
+      min-height: var(--sp-page-min-h);
+    }
+
+    .demo-main{
+      flex: 1;
+      margin-top: var(--sp-8);
+    }
+
+    /* demo portal header: keep primary nav truly centered (even with no right-side buttons) */
+    .sp-header__inner{
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: var(--sp-5);
+    }
+
+    .sp-header__left{ justify-self: start; }
+
+    .sp-header__center{ justify-self: center; }
+
+    .demo-header__right{ justify-self: end; }
+
+    /* link list helpers (token-driven, no custom colors) */
+    .demo-links{
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+
+    .demo-links a{
+      color: var(--sp-link);
+      text-decoration: none;
+    }
+
+    .demo-links a:hover{
+      text-decoration: underline;
+      text-decoration-color: var(--sp-link);
+    }
+
+    /* divider: prefer token border if present, otherwise fall back to line */
+    .demo-divider{
+      border: 0;
+      border-top: var(--sp-border-1);
+      margin: var(--sp-0);
+    }
+
+    /* main layout: card + visual panel */
+    .demo-main-grid{
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+      gap: var(--sp-6);
+      align-items: stretch;
+    }
+
+    /* footer spacing + structure */
+    .demo-footer{
+      margin-top: var(--sp-10);
+      padding: var(--sp-8) 0 var(--sp-10);
+    }
+
+    .demo-footer__row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-0);
+    }
+
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
+
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,.25);
+    }
+
+    .demo-footer__credit{
+      margin-left: var(--sp-2);
+      color: var(--sp-text-muted);
+      white-space: nowrap;
+    }
+
+    /* buttons page specifics */
+    .demo-page-title{ margin: 0; }
+    .demo-page-subtitle{ margin: 0; }
+
+    .demo-btn-row{
+      display:flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .demo-btn-row + .demo-btn-row{ margin-top: var(--sp-3); }
+
+    /* demo pages: a touch wider for component comparison */
+    .demo-page .sp-container{
+      max-width: 1100px;
+    }
+  </style>
+</head>
+
+<body class="demo-page">
+
+<header class="sp-header">
+  <div class="sp-header__inner sp-container">
+    <div class="sp-header__left">
+      <a class="sp-brand" href="./index.html">
+        <img class="sp-brand__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
+        <span class="sp-brand__text">Spectra</span>
+        <span class="sp-badge sp-badge--soft">v0.1</span>
+      </a>
+    </div>
+
+    <nav class="sp-header__center sp-nav" aria-label="Primary">
+      <a class="sp-nav__link" href="./index.html">Docs</a>
+      <a class="sp-nav__link" href="./index.html">Demos</a>
+      <a class="sp-nav__link is-active" href="./buttons.html">Components</a>
+    </nav>
+
+    <div class="demo-header__right"></div>
+  </div>
+</header>
+
+<main class="sp-container sp-content demo-main">
+
+  <!-- Compact page header (no hero) -->
+  <section class="sp-stack" style="gap: var(--sp-4);">
+    <div class="sp-stack" style="gap: var(--sp-2);">
+      <h1 class="sp-h2 demo-page-title">Buttons</h1>
+      <p class="sp-muted demo-page-subtitle">
+        Minimal button component: <code class="sp-code">.sp-btn</code> (works on <code class="sp-code">button</code> and <code class="sp-code">a.sp-btn</code>).
+      </p>
+    </div>
+  </section>
+
+  <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
+
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Variants</h2>
+        <div class="demo-btn-row">
           <button class="sp-btn" type="button">Default</button>
           <button class="sp-btn sp-btn--primary" type="button">Primary</button>
           <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
           <button class="sp-btn" type="button" disabled>Disabled</button>
         </div>
 
-        <div style="display:flex; gap: var(--sp-3); flex-wrap: wrap;">
+        <div class="demo-btn-row" aria-label="Link buttons">
           <a class="sp-btn" href="#">Link Button</a>
           <a class="sp-btn sp-btn--primary" href="#">Primary Link</a>
           <a class="sp-btn sp-btn--ghost" href="#">Ghost Link</a>
         </div>
       </div>
     </section>
-  </main>
+
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Sizes</h2>
+        <p class="sp-muted" style="margin:0;">From v0.0.25: <code class="sp-code">.sp-btn--sm</code> and <code class="sp-code">.sp-btn--lg</code>.</p>
+
+        <div class="demo-btn-row">
+          <button class="sp-btn sp-btn--sm" type="button">Small</button>
+          <button class="sp-btn" type="button">Default</button>
+          <button class="sp-btn sp-btn--lg" type="button">Large</button>
+        </div>
+
+        <div class="demo-btn-row">
+          <button class="sp-btn sp-btn--sm sp-btn--primary" type="button">Small Primary</button>
+          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+          <button class="sp-btn sp-btn--lg sp-btn--primary" type="button">Large Primary</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">In cards</h2>
+        <p class="sp-muted" style="margin:0;">Quick sanity check for spacing inside <code class="sp-code">.sp-card</code>.</p>
+
+        <div class="sp-card sp-card--elev">
+          <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+            <p style="margin:0;">Buttons should align nicely with token spacing.</p>
+            <div class="demo-btn-row">
+              <button class="sp-btn sp-btn--primary" type="button">Confirm</button>
+              <button class="sp-btn sp-btn--ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </section>
+</main>
+
+<footer class="demo-footer" aria-label="Site footer">
+  <div class="sp-container">
+    <section class="sp-card sp-card--surface" aria-label="Footer legal">
+      <div class="sp-card__body">
+        <div class="demo-footer__row">
+          <div>
+            © <span id="y"></span> SpectraPortal. All rights reserved.
+            <span class="demo-footer__credit">
+              · Built by
+              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
+                Code Crunchers Technologies
+              </a>
+            </span>
+          </div>
+
+          <nav class="demo-footer__links" aria-label="Legal">
+            <a class="demo-footer__link" href="#">Privacy</a>
+            <a class="demo-footer__link" href="#">Terms</a>
+            <a class="demo-footer__link" href="#">Licenses</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
