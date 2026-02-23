@@ -135,7 +135,27 @@
       background: color-mix(in srgb, var(--sp-elev) 55%, transparent);
     }
 
+
+    /* padding polish (match colors token tables) */
+    .sp-table-wrap{
+      padding: var(--sp-3);
+    }
+    .sp-token-table .sp-td,
+    .sp-token-table .sp-th{
+      padding-top: var(--sp-2);
+      padding-bottom: var(--sp-2);
+    }
+    .sp-token-table td:first-child,
+    .sp-token-table th:first-child{
+      padding-left: var(--sp-3);
+      padding-right: var(--sp-2);
+    }
+
     .is-hidden{ display:none; }
+
+
+    /* details summary marker (cross-browser) */
+    details > summary::-webkit-details-marker{ display:none; }
   </style>
 </head>
 
@@ -154,7 +174,7 @@
     <nav class="sp-header__center sp-nav" aria-label="Primary">
       <a class="sp-nav__link" href="./index.html">Docs</a>
       <a class="sp-nav__link" href="./index.html">Demos</a>
-      <a class="sp-nav__link is-active" href="./forms-controls.html">Tokens</a>
+      <a class="sp-nav__link is-active" href="./forms_controls.html">Tokens</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -179,82 +199,74 @@
     <section class="sp-card sp-stack">
       <div class="sp-card__body sp-stack" style="gap: var(--sp-6);">
 
-        <!-- preview -->
-        <div class="sp-stack" style="gap: var(--sp-3);">
-          <h2 class="sp-h3" style="margin:0;">Preview</h2>
-          <p class="sp-muted" style="margin:0;">
-            These controls use the real <code class="sp-code">.sp-*</code> classes (not custom demo styling).
-          </p>
+                <!-- preview (collapsed, sanity check) -->
+        <details class="sp-accordion" style="border:0; padding:0; margin:0;">
+          <summary class="sp-h3" style="list-style:none; cursor:pointer; display:flex; align-items:center; gap: var(--sp-3); margin:0;">
+            <span>Preview</span>
+            <span class="sp-badge sp-badge--soft">sanity check</span>
+            <span class="sp-muted" style="font-size: var(--sp-fs-0);">click to expand</span>
+          </summary>
 
-          <div class="demo-preview-grid">
-            <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
-              <div class="sp-field">
-                <label class="sp-label" for="pv_name">Display name</label>
-                <input class="sp-input" id="pv_name" type="text" placeholder="Kevin" />
-                <div class="sp-help">This shows on your profile.</div>
+          <div class="sp-stack" style="gap: var(--sp-3); margin-top: var(--sp-3);">
+            <p class="sp-muted" style="margin:0;">
+              Minimal set of real <code class="sp-code">.sp-*</code> controls for verifying theme + paths.
+            </p>
+
+            <div class="demo-preview-grid">
+              <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
+                <div class="sp-field">
+                  <label class="sp-label" for="pv_name">Input</label>
+                  <input class="sp-input" id="pv_name" type="text" placeholder="Spectra input" />
+                  <div class="sp-help">Default state.</div>
+                </div>
+
+                <div class="sp-field sp-field--error">
+                  <label class="sp-label" for="pv_email">Input (error)</label>
+                  <input class="sp-input" id="pv_email" type="text" value="Bad input" />
+                  <div class="sp-help">Error message example.</div>
+                </div>
+
+                <div class="sp-field">
+                  <label class="sp-label" for="pv_role">Select</label>
+                  <select class="sp-select" id="pv_role">
+                    <option>Option one</option>
+                    <option>Option two</option>
+                    <option>Option three</option>
+                  </select>
+                </div>
+
+                <div class="sp-field">
+                  <label class="sp-label" for="pv_about">Textarea</label>
+                  <textarea class="sp-textarea" id="pv_about" rows="3" placeholder="Spectra textarea"></textarea>
+                </div>
               </div>
 
-              <div class="sp-field sp-field--error">
-                <label class="sp-label" for="pv_email">Email (error)</label>
-                <input class="sp-input" id="pv_email" type="email" value="kevin@" />
-                <div class="sp-help">Please enter a valid email.</div>
-              </div>
-
-              <div class="sp-field">
-                <label class="sp-label" for="pv_role">Role</label>
-                <select class="sp-select" id="pv_role">
-                  <option>Developer</option>
-                  <option>Designer</option>
-                  <option>Builder</option>
-                </select>
-                <div class="sp-help sp-subtle">Select styling stays intentionally light.</div>
-              </div>
-            </div>
-
-            <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
-              <div class="sp-field">
-                <label class="sp-label" for="pv_about">About</label>
-                <textarea class="sp-textarea" id="pv_about" placeholder="Write something…"></textarea>
-                <div class="sp-help">Textarea should match input focus + error behavior.</div>
-              </div>
-
-              <div class="sp-field sp-field--error">
-                <label class="sp-label" for="pv_about2">About (error)</label>
-                <textarea class="sp-textarea" id="pv_about2">Too short</textarea>
-                <div class="sp-help">Add a little more detail.</div>
-              </div>
-
-              <div class="sp-stack" style="gap: var(--sp-3);">
+              <div class="demo-preview-card sp-stack" style="gap: var(--sp-4);">
                 <div class="sp-control">
                   <input class="sp-switch" id="pv_sw" type="checkbox" checked />
-                  <label class="sp-label" for="pv_sw">Enable notifications</label>
+                  <label class="sp-label" for="pv_sw">Switch (on)</label>
                 </div>
 
                 <div class="sp-control">
                   <input class="sp-check" id="pv_cb" type="checkbox" checked />
-                  <label class="sp-label" for="pv_cb">Remember me</label>
+                  <label class="sp-label" for="pv_cb">Checkbox</label>
                 </div>
 
                 <div class="sp-control">
                   <input class="sp-radio" id="pv_r1" name="pv_plan" type="radio" checked />
-                  <label class="sp-label" for="pv_r1">Free plan</label>
-                </div>
-
-                <div class="sp-control">
-                  <input class="sp-radio" id="pv_r2" name="pv_plan" type="radio" />
-                  <label class="sp-label" for="pv_r2">Pro plan</label>
+                  <label class="sp-label" for="pv_r1">Radio</label>
                 </div>
 
                 <div class="sp-control">
                   <input class="sp-check" id="pv_cb2" type="checkbox" disabled checked />
-                  <label class="sp-label sp-muted" for="pv_cb2">Auto-save (disabled)</label>
+                  <label class="sp-label sp-muted" for="pv_cb2">Disabled</label>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </details>
 
-        <div class="demo-divider" aria-hidden="true"></div>
+        <div class="demo-divider" aria-hidden="true"></div> aria-hidden="true"></div>
 
         <!-- tokens -->
         <div class="sp-stack" style="gap: var(--sp-3);">
