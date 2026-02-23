@@ -121,6 +121,21 @@
       max-width: 220px;
     }
     .sp-prev .sp-textarea{ min-height: 3.5rem; }
+    /* demo: show "focused" state without needing actual focus */
+    .sp-is-focus{
+      border-color: var(--sp-accent-3);
+      box-shadow: 0 0 0 var(--sp-border-w-2,2px) rgba(167,139,250,.35);
+      box-shadow: 0 0 0 var(--sp-border-w-2,2px) color-mix(in srgb, var(--sp-accent-3) 40%, transparent);
+    }
+    /* remove native select arrow (we're showing tokens, not browser UI) */
+    .sp-prev .sp-select{
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: none;
+      padding-right: var(--sp-4);
+    }
+
     .sp-prev .sp-label{ margin:0; }
     .sp-prev-word{
       padding: 6px 10px;
@@ -263,13 +278,6 @@
                   <td class="sp-td">Transitions (inputs)</td>
                   <td class="sp-td js-val"><code class="sp-code">—</code></td>
                 </tr>
-+                
-+                <tr data-var="--sp-text" class="sp-tr sp-token-row">
-+                  <td class="sp-td"><div class="sp-prev"><span class="sp-prev-word">Text</span></div></td>
-+                  <td class="sp-td"><code class="sp-code">--sp-text</code></td>
-+                  <td class="sp-td">Text color (inputs)</td>
-+                  <td class="sp-td js-val"><code class="sp-code">—</code></td>
-+                </tr>
               </tbody>
             </table>
           </div>
@@ -296,11 +304,11 @@
                 <tr data-var="--sp-accent-3" class="sp-tr sp-token-row">
                   <td class="sp-td">
                     <div class="sp-prev">
-                      <select class="sp-select" aria-label="Preview select">
+                      <select class="sp-select sp-is-focus" aria-label="Preview select">
                         <option>Focus me</option>
                         <option>Spectra</option>
                       </select>
-                      <textarea class="sp-textarea" aria-label="Preview textarea">Spectra textarea</textarea>
+                      <textarea class="sp-textarea sp-is-focus" aria-label="Preview textarea">Spectra textarea</textarea>
                     </div>
                   </td>
                   <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
