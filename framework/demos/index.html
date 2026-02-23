@@ -55,13 +55,16 @@
       height: auto;
       justify-self: end;
       opacity: calc(var(--sp-opacity-100) - .1);
+      margin-left: calc(var(--sp-5) * -1);
       filter: drop-shadow(0 14px 40px rgba(0,0,0,.38));
+      transform: translateY(var(--sp-2));
     }
     @media (max-width: 900px){
       .demo-hero__mark{
         justify-self: start;
         width: min(360px, 100%);
         margin-left: 0;
+        transform: none;
       }
     }
 
@@ -256,14 +259,15 @@
   <div class="sp-hero__inner sp-container">
     <div class="demo-hero__grid">
       <div class="sp-stack">
-<h1 class="sp-hero__title">Spectra Component Demos</h1>
-<div class="sp-stack" style="gap: var(--sp-2); margin-top: var(--sp-5);">
+        <h1 class="sp-hero__title">Spectra Component Demos</h1>
+
+        <div class="sp-stack" style="gap: var(--sp-2); margin-top: var(--sp-5);">
           <p class="sp-h4" style="margin: 0;">Shape the light.</p>
           <p class="sp-h4" style="margin: 0;">Speak in structure.</p>
           <p class="sp-muted" style="margin: 0;">Let wonder flow into form.</p>
         </div>
+      </div>
 
-    </div>
 
       <img
         class="demo-hero__mark"
