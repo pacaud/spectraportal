@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
 <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
 
-  <!-- demo-only helpers (scoped + token-driven) -->
   <style>
 /* page scaffold so footer sits at bottom on short pages */
     body.demo-page{
@@ -184,14 +183,14 @@
       gap: var(--sp-4);
     }
 
-/* colors page layout */
+
+    /* colors page layout */
     .demo-page-title{ margin: 0; }
     .demo-page-subtitle{ margin: 0; }
 
-    /* allow one card to span full width when using the demo-card-grid */
-    .demo-card-grid .demo-span-all{
-      grid-column: 1 / -1;
-    }
+    /* allow one card to span full width */
+    .demo-card-grid .demo-span-all{ grid-column: 1 / -1; }
+
 
 /* === Colors page specifics (Spectra-aligned, token-driven) === */
     .sp-table-wrap{
@@ -296,7 +295,6 @@
 </head>
 
 <body class="demo-page">
-
 <header class="sp-header">
   <div class="sp-header__inner sp-container">
     <div class="sp-header__left">
@@ -329,7 +327,6 @@
   </section>
 
   <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
-
     <div class="demo-card-grid">
       <div class="demo-span-all">
 <section class="sp-card sp-stack">
@@ -487,200 +484,6 @@
       <div>
 <section class="sp-card sp-stack">
       <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Colors</h2>
-        <p class="sp-muted" style="margin:0;">Computed values are read from <code class="sp-code">:root</code>.</p>
-
-        <div class="sp-table-wrap" role="region" aria-label="Color tokens table">
-          <table id="colors" class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Hex</th>
-                <th class="sp-th">Nearest name</th>
-              </tr>
-            </thead>
-
-            <tbody id="color-rows">
-              <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--bg" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-surface" data-name="Surface" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--surface" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-surface</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev" data-name="Elevation" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev-2" data-name="Elevation 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text" data-name="Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--text" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text-muted" data-name="Muted Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--muted" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text-muted</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-subtle" data-name="Subtle" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--subtle" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-subtle</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border" data-name="Border" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border-strong" data-name="Border Strong" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border-strong" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent" data-name="Accent (Kevin)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-3" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-success" data-name="Success" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--success" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-success</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-warning" data-name="Warning" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--warning" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-warning</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-danger" data-name="Danger" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--danger" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-danger</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-info" data-name="Info" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--info" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-info</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Shadows -->
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Shadows</h2>
-
-        <div class="sp-table-wrap" role="region" aria-label="Shadow tokens table">
-          <table class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Text shadows -->
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
         <h2 class="sp-h3" style="margin:0;">Text shadows</h2>
 
         <div class="sp-table-wrap" role="region" aria-label="Text shadow tokens table">
@@ -730,158 +533,6 @@
       <div>
 <section class="sp-card sp-stack">
       <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Colors</h2>
-        <p class="sp-muted" style="margin:0;">Computed values are read from <code class="sp-code">:root</code>.</p>
-
-        <div class="sp-table-wrap" role="region" aria-label="Color tokens table">
-          <table id="colors" class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Hex</th>
-                <th class="sp-th">Nearest name</th>
-              </tr>
-            </thead>
-
-            <tbody id="color-rows">
-              <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--bg" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-surface" data-name="Surface" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--surface" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-surface</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev" data-name="Elevation" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev-2" data-name="Elevation 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text" data-name="Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--text" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text-muted" data-name="Muted Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--muted" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text-muted</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-subtle" data-name="Subtle" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--subtle" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-subtle</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border" data-name="Border" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border-strong" data-name="Border Strong" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border-strong" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent" data-name="Accent (Kevin)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-3" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-success" data-name="Success" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--success" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-success</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-warning" data-name="Warning" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--warning" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-warning</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-danger" data-name="Danger" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--danger" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-danger</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-info" data-name="Info" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--info" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-info</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Shadows -->
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
         <h2 class="sp-h3" style="margin:0;">Shadows</h2>
 
         <div class="sp-table-wrap" role="region" aria-label="Shadow tokens table">
@@ -924,248 +575,6 @@
 
       <div>
 <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Colors</h2>
-        <p class="sp-muted" style="margin:0;">Computed values are read from <code class="sp-code">:root</code>.</p>
-
-        <div class="sp-table-wrap" role="region" aria-label="Color tokens table">
-          <table id="colors" class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Hex</th>
-                <th class="sp-th">Nearest name</th>
-              </tr>
-            </thead>
-
-            <tbody id="color-rows">
-              <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--bg" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-surface" data-name="Surface" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--surface" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-surface</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev" data-name="Elevation" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-elev-2" data-name="Elevation 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--elev-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-elev-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text" data-name="Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--text" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-text-muted" data-name="Muted Text" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--muted" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-text-muted</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-subtle" data-name="Subtle" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--subtle" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-subtle</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border" data-name="Border" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-border-strong" data-name="Border Strong" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--border-strong" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-border-strong</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent" data-name="Accent (Kevin)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-2" data-name="Accent 2 (Vivi)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-2" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-accent-3" data-name="Accent 3 (Voxia)" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--accent-3" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-accent-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-success" data-name="Success" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--success" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-success</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-warning" data-name="Warning" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--warning" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-warning</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-danger" data-name="Danger" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--danger" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-danger</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-token="--sp-info" data-name="Info" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--info" aria-hidden="true"></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-info</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-hex"><code class="sp-code">—</code></td>
-                <td class="sp-td js-colorname"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Shadows -->
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Shadows</h2>
-
-        <div class="sp-table-wrap" role="region" aria-label="Shadow tokens table">
-          <table class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
-                <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Text shadows -->
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Text shadows</h2>
-
-        <div class="sp-table-wrap" role="region" aria-label="Text shadow tokens table">
-          <table class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-textshadow="--sp-text-shadow-1" data-name="Text Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-1</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-textshadow="--sp-text-shadow-2" data-name="Text Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-2</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-
-              <tr data-textshadow="--sp-text-shadow-3" data-name="Text Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td">
-                  <div class="sp-chip sp-chip--textshadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div>
-                </td>
-                <td class="sp-td"><code class="sp-code">--sp-text-shadow-3</code></td>
-                <td class="sp-td js-name"></td>
-                <td class="sp-td js-val"><code class="sp-code">—</code></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Link token -->
-    <section class="sp-card sp-stack">
       <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
         <h2 class="sp-h3" style="margin:0;">Link token</h2>
 
@@ -1178,7 +587,6 @@
     </section>
       </div>
     </div>
-
   </section>
 
 <script>
@@ -1825,6 +1233,5 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
