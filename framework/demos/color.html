@@ -179,7 +179,22 @@
 
     .sp-token-table .preview-col{ width: 140px; }
 
-</style>
+
+    /* === Padding polish (Spectra v0.0.25-ish) === */
+    .sp-table-wrap{
+      padding: var(--sp-3);
+    }
+    .sp-token-table .sp-td,
+    .sp-token-table .sp-th{
+      padding-top: var(--sp-2);
+      padding-bottom: var(--sp-2);
+    }
+    .sp-token-table td:first-child,
+    .sp-token-table th:first-child{
+      padding-left: var(--sp-3);
+      padding-right: var(--sp-2);
+    }
+  </style>
 </head>
 
 <body class="demo-page">
