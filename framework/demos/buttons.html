@@ -139,30 +139,7 @@
     .demo-page .sp-container{
       max-width: 1100px;
     }
-    /* layout: same grid stack behavior as cards demo */
-    .demo-card-grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--sp-6);
-      align-items: start;
-      justify-items: stretch;
-    }
-    .demo-card-grid > .sp-card{
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .demo-card-grid > .sp-card .sp-card__body{
-      flex: 1;
-    }
-    @media (min-width: 900px){
-      .demo-card-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (min-width: 1200px){
-      .demo-card-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-</style>
+  </style>
 </head>
 
 <body class="demo-page">
@@ -201,14 +178,62 @@
 
   <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
 
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Variants</h2>
+        <div class="demo-btn-row">
+          <button class="sp-btn" type="button">Default</button>
+          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+          <button class="sp-btn sp-btn--ghost" type="button">Ghost</button>
+          <button class="sp-btn" type="button" disabled>Disabled</button>
+        </div>
 
-    <div class="demo-card-grid">
+        <div class="demo-btn-row" aria-label="Link buttons">
+          <a class="sp-btn" href="#">Link Button</a>
+          <a class="sp-btn sp-btn--primary" href="#">Primary Link</a>
+          <a class="sp-btn sp-btn--ghost" href="#">Ghost Link</a>
+        </div>
+      </div>
+    </section>
 
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">Sizes</h2>
+        <p class="sp-muted" style="margin:0;">From v0.0.25: <code class="sp-code">.sp-btn--sm</code> and <code class="sp-code">.sp-btn--lg</code>.</p>
 
+        <div class="demo-btn-row">
+          <button class="sp-btn sp-btn--sm" type="button">Small</button>
+          <button class="sp-btn" type="button">Default</button>
+          <button class="sp-btn sp-btn--lg" type="button">Large</button>
+        </div>
 
-    </div>
+        <div class="demo-btn-row">
+          <button class="sp-btn sp-btn--sm sp-btn--primary" type="button">Small Primary</button>
+          <button class="sp-btn sp-btn--primary" type="button">Primary</button>
+          <button class="sp-btn sp-btn--lg sp-btn--primary" type="button">Large Primary</button>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section class="sp-card">
+      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
+        <h2 class="sp-h3" style="margin:0;">In cards</h2>
+        <p class="sp-muted" style="margin:0;">Quick sanity check for spacing inside <code class="sp-code">.sp-card</code>.</p>
+
+        <div class="sp-card sp-card--elev">
+          <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+            <p style="margin:0;">Buttons should align nicely with token spacing.</p>
+            <div class="demo-btn-row">
+              <button class="sp-btn sp-btn--primary" type="button">Confirm</button>
+              <button class="sp-btn sp-btn--ghost" type="button">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </section>
 </main>
 
 <footer class="demo-footer" aria-label="Site footer">
