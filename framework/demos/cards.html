@@ -128,13 +128,20 @@
     .demo-page-subtitle{ margin: 0; }
     .demo-card-grid{
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--sp-5);
+    }}
+
+    /* compact card demo helper (token-driven) */
+    .sp-card--compact .sp-card__header,
+    .sp-card--compact .sp-card__body,
+    .sp-card--compact .sp-card__footer{
+      padding: var(--sp-3) var(--sp-4);
     }
-    @media (max-width: 900px){
-      .demo-card-grid{ grid-template-columns: 1fr; }
-    }
-  </style>
+    .sp-card--compact .sp-card__header{ padding-bottom: var(--sp-2); }
+    .sp-card--compact .sp-card__footer{ padding-top: var(--sp-2); }
+
+</style>
 </head>
 <body class="demo-page">
 
@@ -151,7 +158,7 @@
     <nav class="sp-header__center sp-nav" aria-label="Primary">
       <a class="sp-nav__link" href="./index.html">Docs</a>
       <a class="sp-nav__link" href="./index.html">Demos</a>
-      <a class="sp-nav__link is-active" href="./cards.html">Tokens</a>
+      <a class="sp-nav__link is-active" href="./cards.html">Demos</a>
     </nav>
 
     <div class="demo-header__right"></div>
@@ -209,12 +216,15 @@
         <header class="sp-card__header">
           <strong>Compact Card</strong>
         </header>
-        <div class="sp-card__body">
-          <p style="margin: 0;">
-            Uses <code class="sp-code">.sp-card--compact</code> for tighter padding.
-          </p>
+        <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
+          <p style="margin:0;">Short content.</p>
+          <p class="sp-muted" style="margin:0;">Less padding, smaller gaps.</p>
         </div>
-      </article>
+        <footer class="sp-card__footer" style="display:flex; justify-content: space-between; align-items: center; gap: var(--sp-3); flex-wrap: wrap;">
+          <span class="sp-muted">Footer</span>
+          <a href="#" class="sp-link">Action</a>
+        </footer>
+</article>
 
     </div>
   </section>
