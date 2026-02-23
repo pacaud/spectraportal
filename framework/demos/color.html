@@ -25,7 +25,6 @@
 
   <!-- demo-only helpers (scoped + token-driven) -->
   <style>
-    /* page scaffold so footer sits at bottom on short pages (from index.html) */
     body.demo-page{
       display: flex;
       flex-direction: column;
@@ -36,7 +35,6 @@
       margin-top: var(--sp-8);
     }
 
-    /* portal header: keep primary nav centered (from index.html) */
     .sp-header__inner{
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -47,10 +45,6 @@
     .sp-header__center{ justify-self: center; }
     .demo-header__right{ justify-self: end; }
 
-    /* hero breathing room */
-    .demo-hero{ margin-top: var(--sp-6); }
-
-    /* footer spacing + structure (from index.html) */
     .demo-footer{
       margin-top: var(--sp-10);
       padding: var(--sp-8) 0 var(--sp-10);
@@ -86,41 +80,6 @@
     }
 
     /* === Colors page specifics (Spectra-aligned, token-driven) === */
-    .sp-tools{
-      display:flex;
-      flex-wrap:wrap;
-      gap: var(--sp-3);
-      align-items:center;
-    }
-    .sp-input{
-      display:inline-flex;
-      align-items:center;
-      gap: var(--sp-2);
-      padding: var(--sp-2) var(--sp-3);
-      border: var(--sp-border-1);
-      background: var(--sp-surface);
-      border-radius: var(--sp-r-3);
-      color: var(--sp-text);
-      box-shadow: var(--sp-shadow-1);
-    }
-    .sp-input__field{
-      appearance:none;
-      border:0;
-      outline:0;
-      background:transparent;
-      color: inherit;
-      min-width: 16ch;
-    }
-    .sp-kbd{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-      font-size: .85em;
-      padding: 2px 6px;
-      border: var(--sp-border-1);
-      border-radius: var(--sp-r-2);
-      background: var(--sp-elev);
-      color: var(--sp-text-muted);
-    }
-
     .sp-table-wrap{
       width:100%;
       overflow:auto;
@@ -160,18 +119,7 @@
       color: var(--sp-text);
     }
 
-    
-
-    /* word preview chip (used for shadows/text-shadows) */
-    .sp-chip--word{
-      width: auto;
-      min-width: 110px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-.sp-chip--bg{ background: var(--sp-bg); }
+    .sp-chip--bg{ background: var(--sp-bg); }
     .sp-chip--surface{ background: var(--sp-surface); }
     .sp-chip--elev{ background: var(--sp-elev); }
     .sp-chip--elev-2{ background: var(--sp-elev-2); }
@@ -195,8 +143,6 @@
     .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
     .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
     .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
-
-    .is-hidden{ display:none; }
   </style>
 </head>
 
@@ -222,31 +168,19 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="sp-hero sp-hero--surface demo-hero" aria-label="Colors hero">
-  <div class="sp-hero__inner sp-container">
-    <div class="sp-stack">
-      <h1 class="sp-hero__title">Color tokens</h1>
-      <p class="sp-muted" style="margin:0;">
-        Reference page for <code class="sp-code">--sp-*</code> color + shadow tokens.
-      </p>
-
-      <div class="sp-tools" style="margin-top: var(--sp-5);">
-        <label class="sp-input" aria-label="Filter tokens">
-          <span class="sp-muted">Filter</span>
-          <input id="filter" class="sp-input__field" type="search" placeholder="bg, accent, shadow…" />
-          <span class="sp-kbd">/</span>
-        </label>
-
-        <button id="clear" class="sp-btn" type="button">Clear</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <main class="sp-container sp-content demo-main">
 
-  <section class="sp-stack" style="gap: var(--sp-6);">
+  <!-- Compact page header (no hero) -->
+  <section class="sp-stack" style="gap: var(--sp-4);">
+    <div class="sp-stack" style="gap: var(--sp-2);">
+      <h1 class="sp-h2" style="margin:0;">Color tokens</h1>
+      <p class="sp-muted" style="margin:0;">
+        Reference for <code class="sp-code">--sp-*</code> color + shadow tokens.
+      </p>
+    </div>
+  </section>
+
+  <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
 
     <!-- Colors -->
     <section class="sp-card sp-stack">
@@ -417,21 +351,21 @@
             </thead>
             <tbody>
               <tr data-shadow="--sp-shadow-1" data-name="Shadow 1" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-1" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-1</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
 
               <tr data-shadow="--sp-shadow-2" data-name="Shadow 2" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-2" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-2</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
 
               <tr data-shadow="--sp-shadow-3" data-name="Shadow 3" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3 sp-chip--word" aria-hidden="true"><span class="sp-chip__text">Spectra</span></div></td>
+                <td class="sp-td"><div class="sp-chip sp-chip--shadow-3" aria-hidden="true"></div></td>
                 <td class="sp-td"><code class="sp-code">--sp-shadow-3</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
@@ -550,7 +484,7 @@
     function hexToRgb(hex){
       const h = normalizeHex(hex);
       if(!h) return null;
-      const hh = h.length === 9 ? h.slice(0,7) : h; // ignore alpha for naming
+      const hh = h.length === 9 ? h.slice(0,7) : h;
       return {
         r: parseInt(hh.slice(1,3), 16),
         g: parseInt(hh.slice(3,5), 16),
@@ -592,7 +526,7 @@
     function hydrateColorRows(){
       for (const row of document.querySelectorAll("tr[data-token]")){
         const token = row.getAttribute("data-token");
-        const semName = row.getAttribute("data-name") || "—";
+        const semName = row.getAttribute("data-name") || token;
 
         const val = getVar(token);
         const hex = toHex(val);
@@ -611,7 +545,7 @@
     function hydrateShadowRows(){
       for (const row of document.querySelectorAll("tr[data-shadow]")){
         const token = row.getAttribute("data-shadow");
-        const name = row.getAttribute("data-name") || "—";
+        const name = row.getAttribute("data-name") || token;
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
@@ -625,7 +559,7 @@
     function hydrateTextShadowRows(){
       for (const row of document.querySelectorAll("tr[data-textshadow]")){
         const token = row.getAttribute("data-textshadow");
-        const name = row.getAttribute("data-name") || "—";
+        const name = row.getAttribute("data-name") || token;
         const val = getVar(token);
 
         const nameCell = row.querySelector(".js-name");
@@ -644,15 +578,10 @@
         "<code class='sp-code'>" + (linkHex || "—") + "</code> &nbsp; <code class='sp-code'>" + linkName + "</code>";
     }
 
-    function wireFilter(){
-      const input = document.getElementById("filter");
-      const clear = document.getElementById("clear");
-
     hydrateColorRows();
     hydrateShadowRows();
     hydrateTextShadowRows();
     hydrateLinkToken();
-    wireFilter();
   </script>
 
 </main>
