@@ -291,6 +291,18 @@
 
 
     .sp-token-table .preview-col{ width: 140px; }
+  
+    /* inner grid inside single card */
+    .demo-inner-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+      align-items:start;
+    }
+    @media (min-width: 900px){
+      .demo-inner-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
   </style>
 </head>
 
@@ -328,27 +340,42 @@
 
   <section class="sp-stack" style="gap: var(--sp-6); margin-top: var(--sp-6);">
     <div class="demo-card-grid">
-      <div class="demo-span-all">
+  <div class="demo-span-all">
 <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-4);">
-        <h2 class="sp-h3" style="margin:0;">Colors</h2>
-        <p class="sp-muted" style="margin:0;">Computed values are read from <code class="sp-code">:root</code>.</p>
+  
+  <div class="sp-card__body sp-stack" style="gap: var(--sp-6);">
 
-        <div class="sp-table-wrap" role="region" aria-label="Color tokens table">
-          <table id="colors" class="sp-table sp-token-table">
-            <thead>
-              <tr>
-                <th class="sp-th preview-col">Preview</th>
-                <th class="sp-th">Token</th>
-                <th class="sp-th">Name</th>
-                <th class="sp-th">Hex</th>
-                <th class="sp-th">Nearest name</th>
-              </tr>
-            </thead>
+  <section class="sp-stack" style="gap: var(--sp-2);">
+    
+  </section>
 
-            <tbody id="color-rows">
-              <tr data-token="--sp-bg" data-name="Background" class="sp-tr sp-token-row">
-                <td class="sp-td"><div class="sp-chip sp-chip--bg" aria-hidden="true"></div></td>
+  <div class="demo-inner-grid">
+    <section class="sp-stack" style="gap: var(--sp-3);">
+      
+      <div class="sp-stack" style="gap: var(--sp-3);">
+        
+      </div>
+    </section>
+
+    <section class="sp-stack" style="gap: var(--sp-3);">
+      
+      <div class="sp-stack" style="gap: var(--sp-3);">
+        
+      </div>
+    </section>
+  </div>
+
+  <section class="sp-stack" style="gap: var(--sp-2);">
+    
+    <div class="sp-stack" style="gap: var(--sp-2);">
+      
+    </div>
+  </section>
+
+</div>
+</section>
+  </div>
+</div></td>
                 <td class="sp-td"><code class="sp-code">--sp-bg</code></td>
                 <td class="sp-td js-name"></td>
                 <td class="sp-td js-hex"><code class="sp-code">—</code></td>
