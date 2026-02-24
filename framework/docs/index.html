@@ -2,220 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spectra — Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spectra • Docs</title>
 
-  <!-- match index.html theme boot -->
-  <script>
-  (() => {
-    const key = "spectra_theme";
-    const t = localStorage.getItem(key) || "dark";
-    document.documentElement.setAttribute("data-theme", t);
-  })();
-  </script>
+  <!-- Spectra core -->
+  <link rel="stylesheet" href="../cdn/v0.1/spectra.css" />
 
-  <!-- match index.html favicons -->
-  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
-  <link rel="icon" href="/framework/favicon.ico" sizes="any">
-
-  <!-- match index.html local framework paths -->
-  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
-
-  <!-- demo-only helpers (scoped + token-driven) -->
   <style>
-    body.demo-page{
+    /* Keep docs feeling like the demos, but a touch calmer */
+    .docs-main{ padding-top: var(--sp-8); padding-bottom: var(--sp-10); }
+
+    .docs-hero{ max-width: 820px; }
+    .docs-hero h1{ margin: 0; }
+    .docs-hero p{ margin: 0; }
+
+    .docs-sections{ margin-top: var(--sp-7); }
+
+    .docs-section{ margin-top: var(--sp-7); }
+    .docs-section:first-child{ margin-top: 0; }
+
+    .docs-grid{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--sp-4);
+    }
+    @media (max-width: 840px){
+      .docs-grid{ grid-template-columns: 1fr; }
+    }
+
+    .doc-link{ text-decoration: none; }
+
+    .doc-card{
+      height: 100%;
       display: flex;
       flex-direction: column;
-      min-height: var(--sp-page-min-h);
-    }
-    .demo-main{
-      flex: 1;
-      margin-top: var(--sp-8);
+      gap: var(--sp-3);
     }
 
-    .sp-header__inner{
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: var(--sp-5);
-    }
-    .sp-header__left{ justify-self: start; }
-    .sp-header__center{ justify-self: center; }
-    .demo-header__right{ justify-self: end; }
-
-    .demo-footer{
-      margin-top: var(--sp-10);
-      padding: var(--sp-8) 0 var(--sp-10);
-    }
-    .demo-footer__row{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--sp-4);
-      flex-wrap: wrap;
-      color: var(--sp-text-muted);
-      font-size: var(--sp-fs-0);
-    }
-    .demo-footer__links{
-      display: flex;
-      gap: var(--sp-4);
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .demo-footer__link{
-      color: var(--sp-text-muted);
-      text-decoration: none;
-    }
-    .demo-footer__link:hover{
-      color: var(--sp-text);
-      text-decoration: underline;
-      text-decoration-color: rgba(255,255,255,.25);
-    }
-    .demo-footer__credit{
-      margin-left: var(--sp-2);
-      color: var(--sp-text-muted);
-      white-space: nowrap;
+    .doc-card__top{
+      display:flex;
+      align-items:center;
+      gap: var(--sp-3);
     }
 
-    /* === Colors page specifics (Spectra-aligned, token-driven) === */
-    .sp-table-wrap{
-      width:100%;
-      overflow:auto;
-      border-radius: var(--sp-r-4);
-      border: var(--sp-border-1);
+    .doc-icon{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
     }
-    .sp-token-table{
-      width:100%;
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-    .sp-token-table thead th{
-      position: sticky;
-      top: 0;
-      background: var(--sp-elev);
-      z-index: 2;
-      border-bottom: var(--sp-border-1);
-    }
-    .sp-token-row td, .sp-token-row th{ border-bottom: var(--sp-border-1); }
-    .sp-token-row:last-child td{ border-bottom: 0; }
-    .sp-token-row:hover td{
-      background: color-mix(in srgb, var(--sp-elev) 55%, transparent);
-    }
+    .doc-icon svg{ width: 22px; height: 22px; display:block; }
 
-    .sp-chip{
-      width: 42px;
-      height: 24px;
-      border-radius: 999px;
-      border: var(--sp-border-1);
-      box-shadow: var(--sp-shadow-1);
-      background: var(--sp-subtle);
-    }
-    .sp-chip__text{
-      display:inline-block;
-      padding-left: 10px;
-      line-height: 24px;
-      color: var(--sp-text);
-    }
-
-    .sp-chip--bg{ background: var(--sp-bg); }
-    .sp-chip--surface{ background: var(--sp-surface); }
-    .sp-chip--elev{ background: var(--sp-elev); }
-    .sp-chip--elev-2{ background: var(--sp-elev-2); }
-    .sp-chip--text{ background: var(--sp-text); }
-    .sp-chip--muted{ background: var(--sp-text-muted); }
-    .sp-chip--subtle{ background: var(--sp-subtle); }
-    .sp-chip--border{ background: var(--sp-border); }
-    .sp-chip--border-strong{ background: var(--sp-border-strong); }
-    .sp-chip--accent{ background: var(--sp-accent); }
-    .sp-chip--accent-2{ background: var(--sp-accent-2); }
-    .sp-chip--accent-3{ background: var(--sp-accent-3); }
-    .sp-chip--success{ background: var(--sp-success); }
-    .sp-chip--warning{ background: var(--sp-warning); }
-    .sp-chip--danger{ background: var(--sp-danger); }
-    .sp-chip--info{ background: var(--sp-info); }
-
-    .sp-chip--shadow-1{ background: var(--sp-surface); box-shadow: var(--sp-shadow-1); }
-    .sp-chip--shadow-2{ background: var(--sp-surface); box-shadow: var(--sp-shadow-2); }
-    .sp-chip--shadow-3{ background: var(--sp-surface); box-shadow: var(--sp-shadow-3); }
-
-    .sp-chip--textshadow-1{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-1); }
-    .sp-chip--textshadow-2{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-2); }
-    .sp-chip--textshadow-3{ background: var(--sp-surface); text-shadow: var(--sp-text-shadow-3); }
-
-    /* word preview chip (used for shadows/text-shadows) */
-    .sp-chip--word{
-      width: auto;
-      min-width: 110px;
-      padding: 0 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-    }
-    .sp-chip--word .sp-chip__text{
-      padding-left: 0;
+    /* Make “View docs” feel like a small action, not a random underlined line */
+    .doc-cta{
+      margin-top: auto;
+      display:flex;
+      align-items:center;
+      gap: var(--sp-2);
+      color: var(--sp-link);
       font-weight: 600;
-      letter-spacing: .2px;
-      white-space: nowrap;
+    }
+    .doc-cta .arrow{ transform: translateY(1px); }
+
+    /* Hover: lift slightly like the demos */
+    a.doc-link:hover .sp-card{
+      transform: translateY(-1px);
+      box-shadow: var(--sp-shadow-2);
+      transition: transform var(--sp-duration-2) var(--sp-ease-standard), box-shadow var(--sp-duration-2) var(--sp-ease-standard);
     }
 
+    /* Subtle separators so it doesn't feel "floaty" */
+    .docs-divider{ height: 1px; background: rgba(255,255,255,.06); margin: var(--sp-6) 0 0; }
 
-    /* allow long computed values to wrap instead of blowing layout */
-    .sp-token-table td{
-      vertical-align: top;
-    }
-    .sp-token-table td code.sp-code{
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-word;
-    }
-    /* keep token column readable */
-    .sp-token-table td:nth-child(2) code.sp-code{
-      white-space: nowrap;
-    }
-
-
-    .sp-token-table .preview-col{ width: 140px; }
-
-
-    /* === Padding polish (Spectra v0.0.25-ish) === */
-    .sp-table-wrap{
-      padding: var(--sp-3);
-    }
-    .sp-token-table .sp-td,
-    .sp-token-table .sp-th{
-      padding-top: var(--sp-2);
-      padding-bottom: var(--sp-2);
-    }
-    .sp-token-table td:first-child,
-    .sp-token-table th:first-child{
-      padding-left: var(--sp-3);
-      padding-right: var(--sp-2);
-    }
-  </style>
-<style>
-    body.demo-page{display:flex;flex-direction:column;min-height:var(--sp-page-min-h);}
-    .demo-main{flex:1;margin-top:var(--sp-8);}
-    .sp-header__inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--sp-5);}
-    .sp-header__left{justify-self:start;}
-    .sp-header__center{justify-self:center;}
-    .demo-header__right{justify-self:end;}
-
-    .sp-table-wrap{width:100%;overflow:auto;border-radius:var(--sp-r-4);border:var(--sp-border-1);padding:var(--sp-3);}
-    .sp-token-table{width:100%;border-collapse:separate;border-spacing:0;}
-    .sp-token-table thead th{position:sticky;top:0;background:var(--sp-elev);z-index:2;border-bottom:var(--sp-border-1);}
-    .sp-token-row td,.sp-token-row th{border-bottom:var(--sp-border-1);}
-    .sp-token-row:last-child td{border-bottom:0;}
-    .sp-token-row:hover td{background:color-mix(in srgb,var(--sp-elev) 55%,transparent);}
-    .sp-token-table .sp-td,.sp-token-table .sp-th{padding-top:var(--sp-2);padding-bottom:var(--sp-2);}
-    .sp-token-table td:first-child,.sp-token-table th:first-child{padding-left:var(--sp-3);padding-right:var(--sp-2);}
-
-    .sp-chip{display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:28px;padding:0 var(--sp-3);
-      border-radius:999px;border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);
-      font-size:var(--sp-fs-0);color:var(--sp-text);white-space:nowrap;}
-    .sp-chip--ghost{background:color-mix(in srgb,var(--sp-elev) 60%,transparent);color:var(--sp-text-muted);}
+    /* Footer card spacing parity with demos */
+    .demo-footer{ margin-top: var(--sp-8); }
   </style>
 </head>
 
@@ -232,7 +95,7 @@
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-<a class="sp-nav__link is-active" href="./index.html">Docs</a>
+      <a class="sp-nav__link is-active" href="./index.html">Docs</a>
       <a class="sp-nav__link" href="../demos/index.html">Demos</a>
       <a class="sp-nav__link" href="./index.html">This page</a>
     </nav>
@@ -241,95 +104,173 @@
   </div>
 </header>
 
-<main class="sp-container sp-content demo-main">
+<main class="sp-container sp-content demo-main docs-main">
 
-<section class="sp-stack" style="gap: var(--sp-6);">
-    <div class="sp-stack" style="gap: var(--sp-2);">
-      <h1 class="sp-h2" style="margin:0;">Docs</h1>
-      <p class="sp-muted" style="margin:0;">Token references + guidance. Each page links to a matching demo.</p>
-    </div>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Fundamentals</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./color.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Color</div>
-              <p class="sp-muted" style="margin:0;">Color + shadow tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./shape.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Shape</div>
-              <p class="sp-muted" style="margin:0;">Spacing, radius, borders.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./type.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Type</div>
-              <p class="sp-muted" style="margin:0;">Typography tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./motion.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Motion</div>
-              <p class="sp-muted" style="margin:0;">Durations + easing.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-5);">
-        <h2 class="sp-h3" style="margin:0;">Primitives</h2>
-        <div class="sp-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--sp-4);">
-          <a class="sp-card sp-card--surface sp-card--link" href="./forms.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Forms</div>
-              <p class="sp-muted" style="margin:0;">Inputs, controls, toggles tokens.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-          <a class="sp-card sp-card--surface sp-card--link" href="./buttons.html" style="text-decoration:none;">
-            <div class="sp-card__body sp-stack" style="gap: var(--sp-2);">
-              <div class="sp-h4" style="margin:0;">Buttons</div>
-              <p class="sp-muted" style="margin:0;">Button tokens + states.</p>
-              <span class="sp-link">View docs →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="sp-card sp-card--surface sp-stack">
-      <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
-        <h2 class="sp-h3" style="margin:0;">Need the visuals?</h2>
-        <p class="sp-muted" style="margin:0;">Open the demo hub for interactive previews and full examples.</p>
-        <div><a class="sp-btn sp-btn--primary" href="../demos/index.html">Open demos</a></div>
-      </div>
-    </section>
+  <section class="docs-hero sp-stack" style="gap: var(--sp-3);">
+    <h1 class="sp-h2">Docs</h1>
+    <p class="sp-muted">Token references + guidance. Each page links to a matching demo.</p>
   </section>
 
-<script>
-  function getVar(name){
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-  function hydrateTokenRows(){
-    for (const row of document.querySelectorAll("tr[data-token]")){
-      const token = row.getAttribute("data-token");
-      const val = getVar(token);
-      const valCell = row.querySelector(".js-val");
-      if(valCell) valCell.innerHTML = "<code class='sp-code'>" + (val || "—") + "</code>";
-    }
-  }
-  hydrateTokenRows();
-</script>
+  <div class="docs-sections">
+
+    <section class="docs-section">
+      <h2 class="sp-h3" style="margin:0 0 var(--sp-4);">Fundamentals</h2>
+      <div class="docs-grid">
+
+        <a class="doc-link" href="./color.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <!-- token_color -->
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3.5C7.58 3.5 4 7.08 4 11.5c0 3.66 2.46 6.74 5.83 7.69.55.15 1.17.31 1.85.31h.82c.83 0 1.5-.67 1.5-1.5 0-.48-.23-.9-.58-1.17-.31-.23-.51-.6-.51-1.02 0-.69.56-1.25 1.25-1.25h1.58c2.42 0 4.39-1.97 4.39-4.39C21.5 6.45 17.37 3.5 12 3.5Z" fill="var(--sp-accent-2)" opacity=".95"/>
+                    <path d="M7.5 11.3c.8 0 1.45-.65 1.45-1.45S8.3 8.4 7.5 8.4s-1.45.65-1.45 1.45.65 1.45 1.45 1.45Zm3.1-3.55c.8 0 1.45-.65 1.45-1.45S11.4 4.85 10.6 4.85s-1.45.65-1.45 1.45S9.8 7.75 10.6 7.75Zm5.25 0c.8 0 1.45-.65 1.45-1.45S16.65 4.85 15.85 4.85s-1.45.65-1.45 1.45.65 1.45 1.45 1.45Zm2.8 3.55c.8 0 1.45-.65 1.45-1.45S19.45 8.4 18.65 8.4s-1.45.65-1.45 1.45.65 1.45 1.45 1.45Z" fill="var(--sp-text)" opacity=".92"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Color</div>
+                  <p class="sp-muted" style="margin:0;">Color + shadow tokens.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+        <a class="doc-link" href="./shape.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <!-- token_radius -->
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="16" height="16" rx="5" fill="var(--sp-accent-3)" opacity=".95"/>
+                    <path d="M8.5 15.5h7" stroke="var(--sp-text)" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
+                    <path d="M8.5 12h7" stroke="var(--sp-text)" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Shape</div>
+                  <p class="sp-muted" style="margin:0;">Spacing, radius, borders.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+        <a class="doc-link" href="./type.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <!-- token_type -->
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.25 7.25h11.5" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+                    <path d="M9 7.25v10.5" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+                    <path d="M15 7.25v10.5" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+                    <path d="M7.5 17.75h9" stroke="var(--sp-accent-2)" stroke-width="1.8" stroke-linecap="round" opacity=".95"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Type</div>
+                  <p class="sp-muted" style="margin:0;">Typography tokens.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+        <a class="doc-link" href="./motion.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <!-- motion -->
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 15c3.2-7 6.8-7 14-2" stroke="var(--sp-accent-2)" stroke-width="2" stroke-linecap="round" opacity=".95"/>
+                    <path d="M7 16.5h10" stroke="var(--sp-text)" stroke-width="1.7" stroke-linecap="round" opacity=".65"/>
+                    <path d="M9 18h6" stroke="var(--sp-text)" stroke-width="1.7" stroke-linecap="round" opacity=".45"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Motion</div>
+                  <p class="sp-muted" style="margin:0;">Durations + easing.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="docs-divider" aria-hidden="true"></div>
+
+    <section class="docs-section">
+      <h2 class="sp-h3" style="margin:0 0 var(--sp-4);">Primitives</h2>
+      <div class="docs-grid">
+
+        <a class="doc-link" href="./forms_controls_inputs_toggles.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 8.5h10" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+                    <rect x="6" y="10" width="12" height="8" rx="3" fill="var(--sp-accent-3)" opacity=".25"/>
+                    <path d="M9 14h6" stroke="var(--sp-text)" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Forms</div>
+                  <p class="sp-muted" style="margin:0;">Inputs, controls, toggles tokens.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+        <a class="doc-link" href="./buttons.html">
+          <section class="sp-card sp-card--surface doc-card">
+            <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+              <div class="doc-card__top">
+                <div class="doc-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="8" width="14" height="8" rx="4" fill="var(--sp-accent)" opacity=".35"/>
+                    <path d="M9 12h6" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".9"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="sp-h4" style="margin:0;">Buttons</div>
+                  <p class="sp-muted" style="margin:0;">Button tokens + states.</p>
+                </div>
+              </div>
+              <div class="doc-cta">View docs <span class="arrow">→</span></div>
+            </div>
+          </section>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="docs-section">
+      <section class="sp-card sp-card--surface">
+        <div class="sp-card__body sp-stack" style="gap: var(--sp-3);">
+          <h2 class="sp-h3" style="margin:0;">Need the visuals?</h2>
+          <p class="sp-muted" style="margin:0;">Open the demo hub for interactive previews and full examples.</p>
+          <div>
+            <a class="sp-btn sp-btn--primary" href="../demos/index.html">Open demos</a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </div>
 
 </main>
 
@@ -342,9 +283,7 @@
             © <span id="y"></span> SpectraPortal. All rights reserved.
             <span class="demo-footer__credit">
               · Built by
-              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
-                Code Crunchers Technologies
-              </a>
+              <a class="demo-footer__link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
             </span>
           </div>
 
@@ -360,7 +299,7 @@
 </footer>
 
 <script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+  document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 
 </body>
