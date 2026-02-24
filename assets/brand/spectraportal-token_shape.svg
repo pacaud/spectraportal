@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Spectra token (shape)">
+  <defs>
+    <style>
+      .bg   { fill: #070C18; }
+      .out  { stroke: #1F2A44; }
+      .in   { stroke: #F1F5FF; opacity: .90; }
+      .soft { fill: #0B1224; opacity: .55; }
+    </style>
+  </defs>
+
+  <!-- Outer frame -->
+  <rect x="6" y="6" width="52" height="52" rx="12"
+        class="bg out" stroke-width="2"/>
+
+  <!-- Inner frame -->
+  <rect x="11" y="11" width="42" height="42" rx="7"
+        fill="none" class="in" stroke-width="1.75"/>
+
+  <!-- Soft plate -->
+  <rect x="15" y="15" width="34" height="34" rx="6" class="soft"/>
+
+  <!-- Center badge (quiet anchor) -->
+  <rect x="26" y="28" width="12" height="8" rx="2"
+        fill="none" stroke="#F1F5FF" stroke-width="1.2" opacity=".28"/>
+  <rect x="27.4" y="29.4" width="9.2" height="5.2" rx="1.4"
+        fill="none" stroke="#F1F5FF" stroke-width=".7" opacity=".16"/>
+
+  <!-- Corner dot: MATCHES spectraportal-token_color.svg -->
+  <circle cx="55" cy="9" r="4" fill="#16A34A"/>
+</svg>
