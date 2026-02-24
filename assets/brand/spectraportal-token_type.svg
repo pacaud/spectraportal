@@ -6,4 +6,6 @@
   <path d="M18 44h20" stroke="#22C55E" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
   <path d="M18 50h14" stroke="#9AA7B6" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
 
+
+  <circle cx="55" cy="9" r="4" fill="#16A34A"/>
 </svg>
