@@ -1,5 +1,11 @@
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 8.5h10" stroke="var(--sp-text)" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
-                    <rect x="6" y="10" width="12" height="8" rx="3" fill="var(--sp-accent-3)" opacity=".25"/>
-                    <path d="M9 14h6" stroke="var(--sp-text)" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
-                  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Spectra Token: Forms">
+  <rect x="6" y="6" width="52" height="52" rx="12" fill="#111827" stroke="#223044" stroke-width="2"/>
+
+  <rect x="14" y="16" width="36" height="12" rx="6" fill="none" stroke="#E6EDF7" stroke-width="3" opacity="0.8"/>
+  <path d="M20 22h16" stroke="#9AA7B6" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <rect x="16" y="34" width="10" height="10" rx="2" fill="none" stroke="#60A5FA" stroke-width="3"/>
+  <path d="M18.5 39l2 2.2 4.5-5" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="42" cy="39" r="6" fill="none" stroke="#22C55E" stroke-width="3"/>
+  <circle cx="42" cy="39" r="2.5" fill="#22C55E"/>
+
+</svg>

@@ -1,23 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Spectra Token: Type">
-  <defs>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="6" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Spectra Token: Type">
+  <rect x="6" y="6" width="52" height="52" rx="12" fill="#111827" stroke="#223044" stroke-width="2"/>
 
-  <!-- tile -->
-  <rect x="18" y="18" width="220" height="220" rx="28"
-        fill="color-mix(in srgb, var(--sp-surface, #111827) 70%, transparent 30%)"
-        stroke="var(--sp-border, #223044)"/>
-
-  
-  <g filter="url(#glow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M72 92h112" stroke="var(--sp-accent-2, #60A5FA)" stroke-opacity=".75" stroke-width="10"/>
-    <path d="M96 92v92" stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 22%, transparent 78%)" stroke-width="10"/>
-    <path d="M160 92v92" stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 14%, transparent 86%)" stroke-width="10"/>
-    <path d="M78 150h100" stroke="var(--sp-accent, #2EA043)" stroke-opacity=".55" stroke-width="10"/>
-    <path d="M78 176h72" stroke="color-mix(in srgb, var(--sp-text, #E6EDF7) 16%, transparent 84%)" stroke-width="10"/>
-  </g>
+  <path d="M18 20h28" stroke="#60A5FA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M32 20v24" stroke="#E6EDF7" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M18 44h20" stroke="#22C55E" stroke-width="4" stroke-linecap="round" opacity="0.8"/>
+  <path d="M18 50h14" stroke="#9AA7B6" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
 
 </svg>
