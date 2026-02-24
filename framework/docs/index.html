@@ -25,7 +25,20 @@
   
 
   <style>
-    body.demo-page{
+    footer.sp-footer{
+  margin-top: var(--sp-8);
+}
+footer.sp-footer > .sp-container{
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+footer.sp-footer .sp-card{
+  border-radius: 0;
+}
+
+body.demo-page{
       display:flex;
       flex-direction:column;
       min-height:100vh;
@@ -36,8 +49,7 @@
     }
 
     
-    footer.sp-footer{ margin-top: var(--sp-8); margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; }
-.docs-grid{
+    .docs-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:var(--sp-5);
