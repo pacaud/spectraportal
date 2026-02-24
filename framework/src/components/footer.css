@@ -1,3 +1,8 @@
+
+.sp-footer {
+   margin-top: var(--sp-8);
+}
+
 .sp-footer__brand{
   display: flex;
   gap: var(--sp-3);
