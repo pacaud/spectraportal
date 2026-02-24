@@ -1,11 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Spectra Token: Forms">
-  <rect x="6" y="6" width="52" height="52" rx="12" fill="#111827" stroke="#223044" stroke-width="2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Spectra Token: Forms">
+  <defs>
+    <style>
+      .bg   { fill: #070C18; }
+      .out  { stroke: #1F2A44; }
+      .in   { stroke: #F1F5FF; opacity: .90; }
+      .soft { fill: #0B1224; opacity: .55; }
+    </style>
+  </defs>
 
-  <rect x="14" y="16" width="36" height="12" rx="6" fill="none" stroke="#E6EDF7" stroke-width="3" opacity="0.8"/>
-  <path d="M20 22h16" stroke="#9AA7B6" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
-  <rect x="16" y="34" width="10" height="10" rx="2" fill="none" stroke="#60A5FA" stroke-width="3"/>
-  <path d="M18.5 39l2 2.2 4.5-5" stroke="#60A5FA" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="42" cy="39" r="6" fill="none" stroke="#22C55E" stroke-width="3"/>
-  <circle cx="42" cy="39" r="2.5" fill="#22C55E"/>
+  <!-- Outer frame -->
+  <rect x="6" y="6" width="52" height="52" rx="12"
+        class="bg out" stroke-width="2"/>
 
+  <!-- Inner frame -->
+  <rect x="11" y="11" width="42" height="42" rx="7"
+        fill="none" class="in" stroke-width="1.75"/>
+
+  <!-- Soft plate -->
+  <rect x="15" y="15" width="34" height="34" rx="6" class="soft"/>
+
+  <!-- Forms glyph (structural / neutral) -->
+  <!-- input field -->
+  <rect x="18" y="18.5" width="28" height="9" rx="4.5"
+        fill="none" stroke="#B8C2CF" stroke-width="2.2" opacity=".55"/>
+  <!-- input text line -->
+  <path d="M23 23h13"
+        fill="none" stroke="#9AA7B6" stroke-width="2.2"
+        stroke-linecap="round" opacity=".45"/>
+
+  <!-- checkbox (neutral) -->
+  <rect x="20" y="32" width="9" height="9" rx="2"
+        fill="none" stroke="#9AA7B6" stroke-width="2.2" opacity=".45"/>
+
+  <!-- radio (outline only) -->
+  <circle cx="41.5" cy="36.5" r="5.2"
+          fill="none" stroke="#9AA7B6" stroke-width="2.2" opacity=".45"/>
+
+  <!-- Corner dot -->
+  <circle cx="55" cy="9" r="4" fill="#16A34A"/>
 </svg>
