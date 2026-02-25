@@ -46,36 +46,48 @@
   </div>
 </header>
 
-    <!-- HERO: centered (surface variant) -->
-    <section class="sp-hero sp-hero--surface">
-      <div class="sp-hero__inner">
+  <!-- HERO: split (text + card) -->
+  <section class="sp-hero">
+    <div class="sp-hero__inner">
+      <div>
         <p class="sp-hero__kicker">
-          <span class="sp-badge sp-badge--soft">Hero • Centered</span>
-          <span style="margin-left: var(--sp-2); color: var(--sp-text-muted);">
-            Surface + type scale + CTA rhythm
-          </span>
-        </p>
 
-        <h1 class="sp-hero__title">
-          A cozy hero that proves your type scale, spacing, and buttons.
-        </h1>
+        <h2 class="sp-hero__title">
+          Same hero tokens, different structure.
+        </h2>
 
         <p class="sp-hero__sub">
-          This page is intentionally simple: one header, one centered hero, one split hero,
-          and a card surface to validate contrast, borders, and rhythm.
-        </p>
-
-        <p class="sp-hero__meta" style="color: var(--sp-text-muted);">
-          Goal: lock the “first impression” layout before we build main/page sections.
+          On smaller screens this stacks naturally. On wider screens it reads like a landing page:
+          story on the left, “proof” on the right.
         </p>
 
         <div class="sp-hero__actions">
-          <a class="sp-btn sp-btn--primary" href="#hero-split">See split hero</a>
-          <a class="sp-btn" href="#notes">Notes</a>
-          <a class="sp-btn sp-btn--ghost" href="./utilities.demo.html">Utilities (later)</a>
+          <a class="sp-btn sp-btn--primary" href="#notes">Primary CTA</a>
+          <a class="sp-btn sp-btn--ghost" href="#hero-centered">Back to centered</a>
         </div>
+
+        <ul>
+          <li>Checks button variants: default / primary / ghost</li>
+          <li>Checks card surface + border radius</li>
+          <li>Checks muted text color on body copy</li>
+        </ul>
       </div>
-    </section>
+
+      <div class="demo-split__right">
+        <article class="sp-card sp-card--elev demo-hero-card" aria-label="Demo card">
+          <div class="sp-card__header">
+          </div>
+
+          <div class="sp-card__body">
+            <img class="sp-brand__logo" src="/assets/brand/spectraportal-favicon.svg" alt="" aria-hidden="true" />
+          </div>
+
+          <div class="sp-card__footer">
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
 <main class="sp-container sp-content demo-main">
 
