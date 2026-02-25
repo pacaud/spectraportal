@@ -44,7 +44,36 @@
   .demo-footer__row{
     flex-wrap: wrap;
   }
-  .demo-footer__row > *{
+  
+
+/* Footer links: right aligned with dot separators */
+.demo-footer__row nav{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-4);
+}
+
+.demo-footer__row nav a{
+  white-space: nowrap;
+}
+
+.demo-footer__row nav a + a{
+  position: relative;
+  padding-left: var(--sp-4);
+}
+
+.demo-footer__row nav a + a::before{
+  content: "·";
+  position: absolute;
+  left: calc(var(--sp-4) * 0.5);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .65;
+}
+
+.demo-footer__row > *{
     white-space: normal;
   }
 }
