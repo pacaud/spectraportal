@@ -1,61 +1,67 @@
-/* Docs footer styles (docs-only).
-   Keeps the legal nav on the far right near the scrollbar. */
 
 .sp-footer {
-  margin-top: var(--sp-8);
+   margin-top: var(--sp-8);
 }
 
-/* Let the footer reach closer to the scrollbar */
-.sp-footer .sp-container{
-  max-width: none;
-  width: 100%;
-  padding-right: 8px;
+.sp-footer__brand{
+  display: flex;
+  gap: var(--sp-3);
+  align-items: center;
 }
 
-/* legal row */
-.demo-footer__row{
-  display:flex;
-  align-items:center;
-  gap: var(--sp-4);
+.sp-footer__mark{
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+}
+
+.sp-footer__title{
+  font-weight: var(--sp-fw-6);
+  letter-spacing: var(--sp-ls-1);
+}
+
+.sp-footer__desc{
+  margin: var(--sp-3) 0 0;
+  color: var(--sp-text-muted);
+  line-height: var(--sp-lh-2);
+  max-width: 56ch;
+}
+
+.sp-footer__cta{
+  margin-top: var(--sp-5);
+  display: flex;
+  gap: var(--sp-3);
   flex-wrap: wrap;
+  align-items: center;
 }
 
-.demo-footer__links{
-  margin-left:auto;
-  display:flex;
-  gap: var(--sp-4);
-  flex-wrap: wrap;
-  align-items:center;
-  justify-content:flex-end;
-
-  /* nudge a hair closer to the right edge */
-  margin-right: -4px;
+.sp-footer__groupTitle{
+  font-weight: var(--sp-fw-6);
+  margin: 0 0 var(--sp-3);
 }
 
-.demo-footer__links a{
-  white-space: nowrap;
-  display:inline-flex;
-  align-items:center;
+.sp-footer__links{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--sp-2);
 }
 
-.demo-footer__link{
+.sp-footer__link{
   color: var(--sp-text-muted);
   text-decoration: none;
 }
-.demo-footer__link:hover{
+.sp-footer__link:hover{
   color: var(--sp-text);
   text-decoration: underline;
   text-decoration-color: rgba(255,255,255,.25);
 }
 
-@media (max-width: 720px){
-  .demo-footer__links{
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    justify-content:flex-start;
-  }
-  .demo-footer__links a{
-    white-space: normal;
-  }
+.sp-footer__legalLinks{
+  display: flex;
+  margin-left: auto;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  align-items: center;
 }
