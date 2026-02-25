@@ -23,58 +23,9 @@
   <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
   <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
   <link rel="stylesheet" href="footer.css" />
-  
-
-  <style>
-
-body.demo-page{
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
-    }
-    .demo-main{
-      flex:1;
-      margin-top:var(--sp-8);
-    }
-
-    
-    .docs-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:var(--sp-5);
-    }
-
-    .docs-card{
-      display:flex;
-      flex-direction:column;
-      gap:var(--sp-3);
-      padding:var(--sp-5);
-      border-radius:var(--sp-r-4);
-      border:var(--sp-border-1);
-      background:var(--sp-surface);
-      text-decoration:none;
-      transition:transform .15s ease, box-shadow .15s ease;
-    }
-
-    .docs-card:hover{
-      transform:translateY(-2px);
-      box-shadow:var(--sp-shadow-2);
-    }
-
-    .docs-card__icon{
-      width:32px;
-      height:32px;
-    }
-
-    .docs-section{
-      display:flex;
-      flex-direction:column;
-      gap:var(--sp-6);
-    }
-  </style>
 </head>
 
-<body class="demo-page">
+<body>
 
 <header class="sp-header">
   <div class="sp-header__inner sp-container">
@@ -95,6 +46,37 @@ body.demo-page{
     <div class="demo-header__right"></div>
   </div>
 </header>
+
+    <!-- HERO: centered (surface variant) -->
+    <section class="sp-hero sp-hero--surface" id="hero-centered">
+      <div class="sp-hero__inner">
+        <p class="sp-hero__kicker">
+          <span class="sp-badge sp-badge--soft">Hero • Centered</span>
+          <span style="margin-left: var(--sp-2); color: var(--sp-text-muted);">
+            Surface + type scale + CTA rhythm
+          </span>
+        </p>
+
+        <h1 class="sp-hero__title">
+          A cozy hero that proves your type scale, spacing, and buttons.
+        </h1>
+
+        <p class="sp-hero__sub">
+          This page is intentionally simple: one header, one centered hero, one split hero,
+          and a card surface to validate contrast, borders, and rhythm.
+        </p>
+
+        <p class="sp-hero__meta" style="color: var(--sp-text-muted);">
+          Goal: lock the “first impression” layout before we build main/page sections.
+        </p>
+
+        <div class="sp-hero__actions">
+          <a class="sp-btn sp-btn--primary" href="#hero-split">See split hero</a>
+          <a class="sp-btn" href="#notes">Notes</a>
+          <a class="sp-btn sp-btn--ghost" href="./utilities.demo.html">Utilities (later)</a>
+        </div>
+      </div>
+    </section>
 
 <main class="sp-container sp-content demo-main">
 
