@@ -60,7 +60,56 @@
 
 .sp-footer__legalLinks{
   display: flex;
+  margin-left: auto;
   gap: var(--sp-4);
   flex-wrap: wrap;
   align-items: center;
+}
+
+/* --- Docs/Demos legal row (keeps links on the right, wraps cleanly) --- */
+.demo-footer__row{
+  display:flex;
+  align-items:center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.demo-footer__links{
+  margin-left:auto;
+  display:flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.demo-footer__links a{
+  white-space: nowrap;
+  display:inline-flex;
+  align-items:center;
+}
+
+/* optional dot separators between legal links */
+.demo-footer__links a + a{
+  position:relative;
+  padding-left: var(--sp-3);
+}
+.demo-footer__links a + a::before{
+  content:"·";
+  position:absolute;
+  left: calc(var(--sp-3) * 0.5);
+  top:50%;
+  transform: translate(-50%, -50%);
+  opacity:.65;
+}
+
+@media (max-width: 720px){
+  .demo-footer__links{
+    width: 100%;
+    margin-left: 0;
+    justify-content:flex-start;
+  }
+  .demo-footer__links a{
+    white-space: normal;
+  }
 }
