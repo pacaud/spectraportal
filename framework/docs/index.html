@@ -25,7 +25,37 @@
   
 
   <style>
-    footer.sp-footer{
+    
+/* Footer single-line layout */
+footer.sp-footer .sp-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+footer.sp-footer .sp-card p{
+  margin: 0;
+  white-space: nowrap;
+}
+
+footer.sp-footer .sp-card nav{
+  display: flex;
+  gap: var(--sp-4);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px){
+  footer.sp-footer .sp-card{
+    flex-wrap: wrap;
+  }
+  footer.sp-footer .sp-card p,
+  footer.sp-footer .sp-card nav{
+    white-space: normal;
+  }
+}
+
+footer.sp-footer{
   margin-top: var(--sp-8);
 }
 footer.sp-footer > .sp-container{
