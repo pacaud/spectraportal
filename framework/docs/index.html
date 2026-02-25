@@ -27,8 +27,8 @@
   <style>
     
 
-/* Demo footer row layout */
-.demo-footer-row{
+/* Footer row: single line on desktop, wraps on small screens */
+.demo-footer__row{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,20 +36,43 @@
   flex-wrap: nowrap;
 }
 
-.demo-footer-row > *{
+.demo-footer__row > *{
   white-space: nowrap;
 }
 
 @media (max-width: 720px){
-  .demo-footer-row{
+  .demo-footer__row{
     flex-wrap: wrap;
   }
-  .demo-footer-row > *{
+  .demo-footer__row > *{
     white-space: normal;
   }
 }
 
-footer.sp-footer .sp-card p,
+/* Footer single-line layout */
+footer.sp-footer .sp-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+footer.sp-footer .sp-card p{
+  margin: 0;
+  white-space: nowrap;
+}
+
+footer.sp-footer .sp-card nav{
+  display: flex;
+  gap: var(--sp-4);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px){
+  footer.sp-footer .sp-card{
+    flex-wrap: wrap;
+  }
+  footer.sp-footer .sp-card p,
   footer.sp-footer .sp-card nav{
     white-space: normal;
   }
@@ -236,7 +259,7 @@ body.demo-page{
       <div class="sp-card__body">
         <div class="demo-footer__row">
           <div>
-            © <span id="y"></span> SpectraPortal. All rights reserved.
+            © <span id="y"></span> Spectra Portal. All rights reserved.
             <span class="demo-footer__credit">
               · Built by
               <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
@@ -244,7 +267,6 @@ body.demo-page{
               </a>
             </span>
           </div>
-
           <nav class="demo-footer__links" aria-label="Legal">
             <a class="demo-footer__link" href="#">Privacy</a>
             <a class="demo-footer__link" href="#">Terms</a>
