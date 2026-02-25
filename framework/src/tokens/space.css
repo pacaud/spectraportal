@@ -21,11 +21,7 @@
   --sp-9: calc((var(--sp-8) + var(--sp-10)) / 2);
   --sp-10: 2.5rem; /* 40px */
 
-  /* Optional helpers (enable later if needed) */
-  /* --sp-container-max: 72rem; */
-  /* --sp-content-max: 60rem; */
   /* Layout max widths */
   --sp-container-max: 72rem;
-  --sp-container-narrow: 68.75rem;;
   --sp-content-max: 60rem;
 }
