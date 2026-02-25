@@ -10,19 +10,19 @@
 }
 
 .sp-footer__mark{
-  width: 34px;
-  height: 34px;
+  width: var(--sp-8);
+  height: var(--sp-8);
   display: inline-block;
 }
 
 .sp-footer__title{
-  font-weight: var(--sp-fw-6);
+  font-weight: var(--sp-fw-semibold);
   letter-spacing: var(--sp-ls-1);
 }
 
 .sp-footer__desc{
-  margin: var(--sp-3) 0 0;
-  color: var(--sp-text-muted);
+  margin: var(--sp-3) var(--sp-0) var(--sp-0);
+  color: var(--sp-muted);
   line-height: var(--sp-lh-2);
   max-width: 56ch;
 }
@@ -36,20 +36,20 @@
 }
 
 .sp-footer__groupTitle{
-  font-weight: var(--sp-fw-6);
-  margin: 0 0 var(--sp-3);
+  font-weight: var(--sp-fw-semibold);
+  margin: var(--sp-0) var(--sp-0) var(--sp-3);
 }
 
 .sp-footer__links{
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: var(--sp-0);
+  margin: var(--sp-0);
   display: grid;
   gap: var(--sp-2);
 }
 
 .sp-footer__link{
-  color: var(--sp-text-muted);
+  color: var(--sp-muted);
   text-decoration: none;
 }
 .sp-footer__link:hover{
