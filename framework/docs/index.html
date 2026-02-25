@@ -27,6 +27,18 @@
   <style>
     
 
+
+/* Push footer links to the absolute right edge */
+footer.sp-footer .sp-card{
+  padding-right: 0 !important; /* keep left padding, remove right inset */
+  width: 100%;
+}
+
+.demo-footer__links{
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Footer links: right aligned with dot separators (scoped) */
 .demo-footer__row{ display:flex; align-items:center; gap: var(--sp-4); }
 .demo-footer__links{ margin-left:auto; display:flex; align-items:center; justify-content:flex-end; gap: var(--sp-3); }
