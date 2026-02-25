@@ -31,6 +31,14 @@ if [[ -d assets ]]; then
     "$REMOTE:$WEBROOT/assets/"
 fi
 
+# 0.5) Site root files (keep this list tight)
+ROOT_FILES=(index.html robots.txt favicon.ico site.webmanifest)
+for f in "${ROOT_FILES[@]}"; do
+  if [[ -f "$f" ]]; then
+    rsync -av "$f" "$REMOTE:$WEBROOT/$f"
+  fi
+done
+
 # 1) CDN CSS
 rsync -av --delete \
   framework/cdn/v0.1/ \
