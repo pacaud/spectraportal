@@ -47,7 +47,7 @@
 }
 
 .sp-btn:active{
-  transform: translateY(1px);
+  transform: translateY(var(--sp-hairline));
 }
 
 .sp-btn:disabled,

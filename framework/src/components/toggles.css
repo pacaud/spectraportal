@@ -14,7 +14,7 @@
 
 :where(.sp-switch, .sp-check, .sp-radio):focus-visible{
   outline: none;
-  box-shadow: 0 0 0 var(--sp-border-w-2) color-mix(in srgb, var(--sp-accent-3), transparent 70%);
+  box-shadow: var(--sp-focus-shadow);
 }
 
 :where(.sp-switch, .sp-check, .sp-radio):focus:not(:focus-visible){
@@ -32,8 +32,8 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: calc(var(--sp-4) * 2.75);  /* 2.75rem */
-  height: calc(var(--sp-4) * 1.55); /* 1.55rem */
+  width: var(--sp-switch-w);
+  height: var(--sp-switch-h);
 
   border-radius: var(--sp-radius-round);
   border: var(--sp-border-1);
@@ -53,8 +53,8 @@
 
 .sp-switch::before{
   content: "";
-  width: calc(var(--sp-4) * 1.15);  /* 1.15rem */
-  height: calc(var(--sp-4) * 1.15); /* 1.15rem */
+  width: var(--sp-switch-knob);
+  height: var(--sp-switch-knob);
   border-radius: var(--sp-radius-round);
 
   background: var(--sp-text);
@@ -81,7 +81,7 @@
 }
 
 .sp-switch:checked::before{
-  transform: translateY(-50%) translateX(calc(var(--sp-4) * 1.15)); /* knob travel */
+  transform: translateY(-50%) translateX(var(--sp-switch-travel));
   background: var(--sp-bg);
   opacity: var(--sp-opacity-100);
 }
@@ -91,8 +91,8 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: calc(var(--sp-4) * 1.1);   /* 1.1rem */
-  height: calc(var(--sp-4) * 1.1);  /* 1.1rem */
+  width: var(--sp-check-size);
+  height: var(--sp-check-size);
 
   border-radius: var(--sp-radius-1);
   border: var(--sp-border-1);
@@ -120,12 +120,12 @@
 
 .sp-check:checked::after{
   content: "";
-  width: calc(var(--sp-4) * 0.55);  /* 0.55rem */
-  height: calc(var(--sp-4) * 0.30); /* 0.30rem */
+  width: var(--sp-checkmark-dot-w);
+  height: var(--sp-checkmark-dot-h);
   border-left: var(--sp-border-2);
   border-bottom: var(--sp-border-2);
   transform: rotate(-45deg);
-  margin-top: calc(var(--sp-border-w-1) * -1);
+  margin-top: var(--sp-border-w-1-neg);
 }
 
 /* Radio (input type=radio) */
@@ -133,8 +133,8 @@
   appearance: none;
   -webkit-appearance: none;
 
-  width: calc(var(--sp-4) * 1.1);   /* 1.1rem */
-  height: calc(var(--sp-4) * 1.1);  /* 1.1rem */
+  width: var(--sp-check-size);
+  height: var(--sp-check-size);
 
   border-radius: var(--sp-radius-round);
   border: var(--sp-border-1);
@@ -161,8 +161,8 @@
 
 .sp-radio:checked::after{
   content: "";
-  width: calc(var(--sp-4) * 0.55);  /* 0.55rem */
-  height: calc(var(--sp-4) * 0.55); /* 0.55rem */
+  width: var(--sp-radio-dot);
+  height: var(--sp-radio-dot);
   border-radius: var(--sp-radius-round);
   background: var(--sp-accent-3);
 }

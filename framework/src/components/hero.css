@@ -13,13 +13,13 @@
 
 .sp-hero__kicker{
   margin: var(--sp-0) var(--sp-0) var(--sp-3);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--sp-ls-loose);
 }
 
 .sp-hero__title{
   margin: var(--sp-0) var(--sp-0) var(--sp-3);
   font-family: var(--sp-font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--sp-ls-tight);
   line-height: var(--sp-lh-1);
 }
 

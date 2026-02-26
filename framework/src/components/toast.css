@@ -8,9 +8,8 @@
 
 .sp-toast{
   /* component-scoped config */
-  --sp-toast-w: calc(var(--sp-4) * 22.5); /* ~360px if --sp-4=1rem */
   --sp-toast-gap: var(--sp-2);
-  --sp-toast-max-w: calc(100vw - (var(--sp-4) * 2));
+  --sp-toast-max-w: calc(100vw - (var(--sp-4) + var(--sp-4)));
 
   width: min(var(--sp-toast-w), var(--sp-toast-max-w));
   display: grid;
@@ -27,7 +26,7 @@
 
 .sp-toast__title{
   font-weight: var(--sp-fw-semibold);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--sp-ls-tight-2);
   line-height: var(--sp-lh-1);
 }
 
@@ -42,9 +41,8 @@
 /* For stacks of multiple toasts */
 .sp-toast-stack{
   /* reuse the same component-scoped config */
-  --sp-toast-w: calc(var(--sp-4) * 22.5);
   --sp-toast-gap: var(--sp-2);
-  --sp-toast-max-w: calc(100vw - (var(--sp-4) * 2));
+  --sp-toast-max-w: calc(100vw - (var(--sp-4) + var(--sp-4)));
 
   display: grid;
   gap: var(--sp-toast-gap);

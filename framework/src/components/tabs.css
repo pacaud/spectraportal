@@ -4,11 +4,7 @@
    - Demo uses tiny JS to swap aria-selected + panels
 */
 
-:root{
-  --sp-tab-h: calc(var(--sp-4) * 2.375); /* 38px approx (2.375rem if --sp-4=1rem) */
-  --sp-tab-pad-x: var(--sp-3);
-  --sp-tab-radius: var(--sp-radius-2);
-}
+/* Tab sizing lives in tokens (core.css): --sp-tab-h */
 
 .sp-tabs{
   width: 100%;

@@ -28,7 +28,7 @@
 .sp-link{
   color: var(--sp-link);
   text-decoration: underline;
-  text-underline-offset: 0.18em;
+  text-underline-offset: var(--sp-underline-offset);
 }
 
 .sp-link:hover{
@@ -102,7 +102,7 @@
   background: transparent;
   border: 0;
   padding: var(--sp-0);
-  flex: 0 0 220px;
+  flex: 0 0 var(--sp-util-rail);
   max-width: 100%;
 }
 
@@ -116,10 +116,10 @@
 */
 /* Safe-area aware offsets (notches / iOS browser UI) */
 :root{
-  --sp-float-safe-top:    calc(var(--sp-float-gap) + env(safe-area-inset-top, 0px));
-  --sp-float-safe-right:  calc(var(--sp-float-gap) + env(safe-area-inset-right, 0px));
-  --sp-float-safe-bottom: calc(var(--sp-float-gap) + env(safe-area-inset-bottom, 0px));
-  --sp-float-safe-left:   calc(var(--sp-float-gap) + env(safe-area-inset-left, 0px));
+  --sp-float-safe-top:    calc(var(--sp-float-gap) + env(safe-area-inset-top, var(--sp-0)));
+  --sp-float-safe-right:  calc(var(--sp-float-gap) + env(safe-area-inset-right, var(--sp-0)));
+  --sp-float-safe-bottom: calc(var(--sp-float-gap) + env(safe-area-inset-bottom, var(--sp-0)));
+  --sp-float-safe-left:   calc(var(--sp-float-gap) + env(safe-area-inset-left, var(--sp-0)));
 }
 
 .sp-float{ position: fixed; z-index: var(--sp-layer-panel); }
@@ -141,7 +141,7 @@
 
 /* Code block helper (docs/demos) */
 .sp-codeblock{
-  max-height: 180px;
+  max-height: var(--sp-util-max-h-sm);
   overflow: auto;
 }
 

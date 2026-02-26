@@ -34,6 +34,16 @@
   --sp-fw-semibold: 600;
   --sp-fw-bold: 700;
 
-  /*Letter Spacing*/
-  --sp-ls-1: 0.02em;
+  /* Letter spacing (keep tiny + tokenized) */
+  --sp-ls-tight: -0.02em;
+  --sp-ls-tight-2: -0.01em;
+  --sp-ls-normal: 0;
+  --sp-ls-loose: 0.02em;
+
+  /* Underline tuning */
+  --sp-underline-offset: 0.18em;
+
+  /* Compatibility aliases (used by components) */
+  --sp-fw-6: var(--sp-fw-semibold);
+  --sp-ls-1: var(--sp-ls-loose);
 }

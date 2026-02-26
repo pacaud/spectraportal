@@ -92,7 +92,7 @@ body.sp-scroll-lock{
 /* Optional modifier: remove the footer divider (useful when you want the action row to
    feel like part of the same section). */
 .sp-drawer__footer--flat{
-  border-top: 0;
+  border-top: var(--sp-0);
   padding-top: var(--sp-0);
 }
 
@@ -171,25 +171,25 @@ body.sp-scroll-lock{
 .sp-drawer--right .sp-drawer__header,
 .sp-drawer--right .sp-drawer__body,
 .sp-drawer--right .sp-drawer__footer{
-  padding-right: calc(var(--sp-4) + env(safe-area-inset-right, 0px));
+  padding-right: calc(var(--sp-4) + env(safe-area-inset-right, var(--sp-0)));
 }
 
 .sp-drawer--left .sp-drawer__header,
 .sp-drawer--left .sp-drawer__body,
 .sp-drawer--left .sp-drawer__footer{
-  padding-left: calc(var(--sp-4) + env(safe-area-inset-left, 0px));
+  padding-left: calc(var(--sp-4) + env(safe-area-inset-left, var(--sp-0)));
 }
 
 .sp-drawer--top .sp-drawer__header,
 .sp-drawer--top .sp-drawer__body,
 .sp-drawer--top .sp-drawer__footer{
-  padding-top: calc(var(--sp-4) + env(safe-area-inset-top, 0px));
+  padding-top: calc(var(--sp-4) + env(safe-area-inset-top, var(--sp-0)));
 }
 
 .sp-drawer--bottom .sp-drawer__header,
 .sp-drawer--bottom .sp-drawer__body,
 .sp-drawer--bottom .sp-drawer__footer{
-  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom, var(--sp-0)));
 }
 
 /* Reduced motion */
