@@ -31,3 +31,25 @@
 .sp-stack > * + *{
   margin-top: var(--sp-3);
 }
+
+/* Docs layout helpers (used in docs/index.html)
+   - Still token-only, still stable, just docs-specific.
+*/
+:root{
+  --sp-doc-card-min: 16rem;
+}
+
+.docs-grid{
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: repeat(auto-fit, minmax(var(--sp-doc-card-min), 1fr));
+}
+
+.docs-card__body{
+  height: 100%;
+}
+
+.docs-card__icon{
+  width: var(--sp-8);
+  height: auto;
+}

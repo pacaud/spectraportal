@@ -46,4 +46,5 @@
   /* Compatibility aliases (used by components) */
   --sp-fw-6: var(--sp-fw-semibold);
   --sp-ls-1: var(--sp-ls-loose);
+  --sp-ls-0: var(--sp-ls-normal);
 }
