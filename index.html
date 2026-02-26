@@ -41,52 +41,53 @@
       <a class="sp-nav__link" href="/framework/demos/index.html">Demos</a>
     </nav>
 
-    <div class="demo-header__right"></div>
+    <!-- FIX: correct component slot -->
+    <div class="sp-header__right"></div>
   </div>
 </header>
 
-  <!-- HERO: split (text + card) -->
-  <section class="sp-hero">
-    <div class="sp-hero__inner">
-      <div>
-        <p class="sp-hero__kicker">
+<!-- HERO: split (text + card) -->
+<section class="sp-hero">
+  <!-- FIX: align hero inner with standard container usage -->
+  <div class="sp-hero__inner sp-container">
+    <div>
+      <!-- FIX: properly closed kicker (or remove entirely) -->
+      <p class="sp-hero__kicker">Docs hub</p>
 
-        <h2 class="sp-hero__title">
-          Same hero tokens, different structure.
-        </h2>
+      <h2 class="sp-hero__title">
+        Same hero tokens, different structure.
+      </h2>
 
-        <p class="sp-hero__sub">
-          On smaller screens this stacks naturally. On wider screens it reads like a landing page:
-          story on the left, “proof” on the right.
-        </p>
+      <p class="sp-hero__sub">
+        On smaller screens this stacks naturally. On wider screens it reads like a landing page:
+        story on the left, “proof” on the right.
+      </p>
 
-        <div class="sp-hero__actions">
-          <a class="sp-btn sp-btn--primary" href="#notes">Primary CTA</a>
-          <a class="sp-btn sp-btn--ghost" href="#hero-centered">Back to centered</a>
+      <div class="sp-hero__actions">
+        <a class="sp-btn sp-btn--primary" href="#notes">Primary CTA</a>
+        <a class="sp-btn sp-btn--ghost" href="#hero-centered">Back to centered</a>
+      </div>
+
+      <ul>
+        <li>Checks button variants: default / primary / ghost</li>
+        <li>Checks card surface + border radius</li>
+        <li>Checks muted text color on body copy</li>
+      </ul>
+    </div>
+
+    <div class="demo-split__right">
+      <article class="sp-card sp-card--elev demo-hero-card" aria-label="Demo card">
+        <div class="sp-card__header"></div>
+
+        <div class="sp-card__body">
+          <img class="sp-brand__logo" src="/assets/brand/spectraportal-favicon.svg" alt="" aria-hidden="true" />
         </div>
 
-        <ul>
-          <li>Checks button variants: default / primary / ghost</li>
-          <li>Checks card surface + border radius</li>
-          <li>Checks muted text color on body copy</li>
-        </ul>
-      </div>
-
-      <div class="demo-split__right">
-        <article class="sp-card sp-card--elev demo-hero-card" aria-label="Demo card">
-          <div class="sp-card__header">
-          </div>
-
-          <div class="sp-card__body">
-            <img class="sp-brand__logo" src="/assets/brand/spectraportal-favicon.svg" alt="" aria-hidden="true" />
-          </div>
-
-          <div class="sp-card__footer">
-          </div>
-        </article>
-      </div>
+        <div class="sp-card__footer"></div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
 <main class="sp-container sp-content demo-main">
 
@@ -105,7 +106,7 @@
       <div class="docs-grid">
 
         <a class="docs-card" href="./color.html">
-          <img src="/assets/brand/spectraportal-token_color.svg" 
+          <img src="/assets/brand/spectraportal-token_color.svg"
                alt="Color token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Color</div>
@@ -113,7 +114,7 @@
         </a>
 
         <a class="docs-card" href="./shape.html">
-          <img src="/assets/brand/spectraportal-token_shape.svg" 
+          <img src="/assets/brand/spectraportal-token_shape.svg"
                alt="Shape token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Shape</div>
@@ -121,7 +122,7 @@
         </a>
 
         <a class="docs-card" href="./type.html">
-          <img src="/assets/brand/spectraportal-token_type.svg" 
+          <img src="/assets/brand/spectraportal-token_type.svg"
                alt="Typography token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Type</div>
@@ -129,7 +130,7 @@
         </a>
 
         <a class="docs-card" href="./motion.html">
-          <img src="/assets/brand/spectraportal-wave.svg" 
+          <img src="/assets/brand/spectraportal-wave.svg"
                alt="Motion token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Motion</div>
@@ -146,7 +147,7 @@
       <div class="docs-grid">
 
         <a class="docs-card" href="./forms.html">
-          <img src="/assets/brand/spectraportal-token_forms.svg" 
+          <img src="/assets/brand/spectraportal-token_forms.svg"
                alt="Forms token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Forms</div>
@@ -154,7 +155,7 @@
         </a>
 
         <a class="docs-card" href="./buttons.html">
-          <img src="/assets/brand/spectraportal-token_buttons.svg" 
+          <img src="/assets/brand/spectraportal-token_buttons.svg"
                alt="Buttons token icon"
                class="docs-card__icon" />
           <div class="sp-h4">Buttons</div>
