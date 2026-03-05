@@ -13,5 +13,5 @@ TARGET="${1:-devhub}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-"$SCRIPT_DIR/sp_build_updated.sh" "$TARGET"
-"$SCRIPT_DIR/sp_deploy_updated.sh" "$TARGET"
+"$SCRIPT_DIR/sp_build.sh" "$TARGET"
+"$SCRIPT_DIR/sp_deploy.sh" "$TARGET"
