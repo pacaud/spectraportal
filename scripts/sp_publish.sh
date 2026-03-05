@@ -7,6 +7,9 @@ set -euo pipefail
 #   scripts/sp_publish.sh framework
 #   scripts/sp_publish.sh devhub
 #   scripts/sp_publish.sh cdn
+#   scripts/sp_publish.sh portal
+#   scripts/sp_publish.sh lab
+#   scripts/sp_publish.sh gate
 
 TARGET="${1:-devhub}"
 
