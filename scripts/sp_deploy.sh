@@ -5,10 +5,11 @@ set -euo pipefail
 # SpectraPortal Publish: deploy different "sites" (targets)
 #
 # Targets:
-#   portal    -> spectraportal.com           (front door)
-#   devhub    -> spectraportal.dev           (docs + demos hub)
-#   framework -> framework.spectraportal.dev (pure framework surface)
-#   lab       -> spectraportal.online        (experiments)
+#   portal    -> spectraportal.com
+#   devhub    -> spectraportal.dev
+#   framework -> framework.spectraportal.dev
+#   lab       -> spectraportal.online
+#   cdn       -> cdn.spectraportal.dev
 #
 # Usage:
 #   scripts/sp_deploy.sh [target]
@@ -16,11 +17,11 @@ set -euo pipefail
 # Config:
 #   scripts/sp_deploy.env may define:
 #     REMOTE="root@server"
-#     # Optional overrides per target:
 #     WEBROOT_PORTAL="/var/www/spectraportal.com"
 #     WEBROOT_DEVHUB="/var/www/spectraportal.dev"
 #     WEBROOT_FRAMEWORK="/var/www/framework.spectraportal.dev"
 #     WEBROOT_LAB="/var/www/spectraportal.online"
+#     WEBROOT_CDN="/var/www/cdn.spectraportal.dev"
 #     # Back-compat (if set, overrides all targets):
 #     WEBROOT="/var/www/spectraportal.dev"
 # ============================================================
@@ -44,21 +45,14 @@ if [[ -n "${WEBROOT:-}" ]]; then
   RESOLVED_WEBROOT="$WEBROOT"
 else
   case "$TARGET" in
-    portal)
-      RESOLVED_WEBROOT="${WEBROOT_PORTAL:-/var/www/spectraportal.com}"
-      ;;
-    devhub)
-      RESOLVED_WEBROOT="${WEBROOT_DEVHUB:-/var/www/spectraportal.dev}"
-      ;;
-    framework)
-      RESOLVED_WEBROOT="${WEBROOT_FRAMEWORK:-/var/www/framework.spectraportal.dev}"
-      ;;
-    lab)
-      RESOLVED_WEBROOT="${WEBROOT_LAB:-/var/www/spectraportal.online}"
-      ;;
+    portal)    RESOLVED_WEBROOT="${WEBROOT_PORTAL:-/var/www/spectraportal.com}" ;;
+    devhub)    RESOLVED_WEBROOT="${WEBROOT_DEVHUB:-/var/www/spectraportal.dev}" ;;
+    framework) RESOLVED_WEBROOT="${WEBROOT_FRAMEWORK:-/var/www/framework.spectraportal.dev}" ;;
+    lab)       RESOLVED_WEBROOT="${WEBROOT_LAB:-/var/www/spectraportal.online}" ;;
+    cdn)       RESOLVED_WEBROOT="${WEBROOT_CDN:-/var/www/cdn.spectraportal.dev}" ;;
     *)
       echo "[deploy] ERROR: unknown target: $TARGET" >&2
-      echo "[deploy] Valid targets: portal | devhub | framework | lab" >&2
+      echo "[deploy] Valid targets: portal | devhub | framework | lab | cdn" >&2
       exit 1
       ;;
   esac
@@ -76,6 +70,8 @@ rsync_dir() {
   local dst="$2"
   if [[ -d "$src" ]]; then
     rsync -av --delete "$src/" "$dst/"
+  else
+    echo "[deploy] WARN: missing dir (skip): $src" >&2
   fi
 }
 
@@ -88,7 +84,6 @@ rsync_file_if_exists() {
 }
 
 # ---- Determine source root for "site root files" ----
-# If you later create per-target folders (portal/, devhub/, lab/, framework_site/), this will just work.
 SITE_SRC="$REPO_ROOT"
 case "$TARGET" in
   portal)     [[ -d "$REPO_ROOT/portal" ]] && SITE_SRC="$REPO_ROOT/portal" ;;
@@ -98,20 +93,36 @@ case "$TARGET" in
 esac
 
 # ---- Ensure destination folders exist ----
-# Everyone gets /assets, but only some targets get framework subtrees.
 if [[ "$TARGET" == "devhub" ]]; then
-  ssh "$REMOTE" "mkdir -p     '$WEBROOT/assets/brand'     '$WEBROOT/framework/cdn/v0.1'     '$WEBROOT/framework/demos'     '$WEBROOT/framework/docs'   "
+  ssh "$REMOTE" "mkdir -p \
+    '$WEBROOT/assets/brand' \
+    '$WEBROOT/framework/cdn/v0.1' \
+    '$WEBROOT/framework/demos' \
+    '$WEBROOT/framework/docs' \
+  "
 elif [[ "$TARGET" == "framework" ]]; then
-  ssh "$REMOTE" "mkdir -p     '$WEBROOT/assets/brand'     '$WEBROOT/cdn/v0.1'     '$WEBROOT/demos'     '$WEBROOT/docs'   "
+  ssh "$REMOTE" "mkdir -p \
+    '$WEBROOT/assets/brand' \
+    '$WEBROOT/cdn/v0.1' \
+    '$WEBROOT/demos' \
+    '$WEBROOT/docs' \
+  "
+elif [[ "$TARGET" == "cdn" ]]; then
+  ssh "$REMOTE" "mkdir -p \
+    '$WEBROOT/assets/brand' \
+    '$WEBROOT/v0.1/css' \
+    '$WEBROOT/v0.1/themes' \
+    '$WEBROOT/v0.1/js' \
+  "
 else
   ssh "$REMOTE" "mkdir -p '$WEBROOT/assets/brand'"
 fi
 
 # ---- Assets (shared) ----
-# We sync repo-level /assets by default.
 rsync_dir "$REPO_ROOT/assets" "$REMOTE:$WEBROOT/assets"
 
 # ---- Root files (per-site) ----
+# (CDN typically doesn't need these; harmless if absent)
 ROOT_FILES=(index.html robots.txt favicon.ico site.webmanifest)
 for f in "${ROOT_FILES[@]}"; do
   rsync_file_if_exists "$SITE_SRC/$f" "$REMOTE:$WEBROOT/$f"
@@ -120,28 +131,28 @@ done
 # ---- Target-specific payloads ----
 case "$TARGET" in
   portal)
-    # Front door. Keep it simple; add portal-only folders here later if you want.
     ;;
   lab)
-    # Experiments. Add lab-only bundles here later.
     ;;
   devhub)
-    # Dev hub hosts framework under /framework/...
     rsync_dir "$REPO_ROOT/framework/cdn/v0.1" "$REMOTE:$WEBROOT/framework/cdn/v0.1"
-    rsync_dir "$REPO_ROOT/framework/demos" "$REMOTE:$WEBROOT/framework/demos"
-    rsync_dir "$REPO_ROOT/framework/docs"  "$REMOTE:$WEBROOT/framework/docs"
+    rsync_dir "$REPO_ROOT/framework/demos"    "$REMOTE:$WEBROOT/framework/demos"
+    rsync_dir "$REPO_ROOT/framework/docs"     "$REMOTE:$WEBROOT/framework/docs"
     ;;
   framework)
-    # Pure framework domain: no extra /framework prefix.
     rsync_dir "$REPO_ROOT/framework/cdn/v0.1" "$REMOTE:$WEBROOT/cdn/v0.1"
-    rsync_dir "$REPO_ROOT/framework/demos"   "$REMOTE:$WEBROOT/demos"
-    rsync_dir "$REPO_ROOT/framework/docs"    "$REMOTE:$WEBROOT/docs"
+    rsync_dir "$REPO_ROOT/framework/demos"    "$REMOTE:$WEBROOT/demos"
+    rsync_dir "$REPO_ROOT/framework/docs"     "$REMOTE:$WEBROOT/docs"
 
-    # Optional: if you keep a framework landing page in framework/index.html
-    # and you DIDN'T create a separate framework_site/ folder, copy it to root.
     if [[ -f "$REPO_ROOT/framework/index.html" && ! -f "$SITE_SRC/index.html" ]]; then
       rsync_file_if_exists "$REPO_ROOT/framework/index.html" "$REMOTE:$WEBROOT/index.html"
     fi
+    ;;
+  cdn)
+    # CDN publishes from repo-local ./cdn/v0.1/* created by sp_build.sh cdn
+    rsync_dir "$REPO_ROOT/cdn/v0.1/css"    "$REMOTE:$WEBROOT/v0.1/css"
+    rsync_dir "$REPO_ROOT/cdn/v0.1/themes" "$REMOTE:$WEBROOT/v0.1/themes"
+    rsync_dir "$REPO_ROOT/cdn/v0.1/js"     "$REMOTE:$WEBROOT/v0.1/js"
     ;;
 esac
 
