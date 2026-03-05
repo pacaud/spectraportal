@@ -41,6 +41,8 @@ fi
 
 : "${REMOTE:?Set REMOTE in scripts/sp_deploy.env (e.g. root@server)}"
 
+: "${SP_CDN_VERSION:=v0.1}"
+
 # ---- Resolve WEBROOT (target-aware) ----
 if [[ -n "${WEBROOT:-}" ]]; then
   RESOLVED_WEBROOT="$WEBROOT"
@@ -99,7 +101,6 @@ case "$TARGET" in
   devhub)
     ssh "$REMOTE" "mkdir -p \
       '$WEBROOT/assets/brand' \
-      '$WEBROOT/framework/cdn/v0.1' \
       '$WEBROOT/framework/demos' \
       '$WEBROOT/framework/docs' \
     "
@@ -113,9 +114,9 @@ case "$TARGET" in
     ;;
   cdn)
     ssh "$REMOTE" "mkdir -p \
-      '$WEBROOT/v0.1/css' \
-      '$WEBROOT/v0.1/themes' \
-      '$WEBROOT/v0.1/js' \
+      '$WEBROOT/$SP_CDN_VERSION/css' \
+      '$WEBROOT/$SP_CDN_VERSION/themes' \
+      '$WEBROOT/$SP_CDN_VERSION/js' \
     "
     ;;
   gate)
@@ -149,8 +150,8 @@ case "$TARGET" in
     ;;
 
   devhub)
-    # Dev hub hosts framework under /framework/...
-    rsync_dir "$REPO_ROOT/framework/cdn/v0.1" "$REMOTE:$WEBROOT/framework/cdn/v0.1"
+    # Dev hub hosts docs/demos for the framework.
+    # (CSS should be pulled from cdn.spectraportal.dev)
     rsync_dir "$REPO_ROOT/framework/demos"   "$REMOTE:$WEBROOT/framework/demos"
     rsync_dir "$REPO_ROOT/framework/docs"    "$REMOTE:$WEBROOT/framework/docs"
     ;;
@@ -168,10 +169,10 @@ case "$TARGET" in
 
   cdn)
     # CDN is versioned artifacts ONLY.
-    # Expect ./cdn/v0.1/{css,themes,js} from sp_build.sh (target=cdn).
-    rsync_dir "$REPO_ROOT/cdn/v0.1/css"    "$REMOTE:$WEBROOT/v0.1/css"
-    rsync_dir "$REPO_ROOT/cdn/v0.1/themes" "$REMOTE:$WEBROOT/v0.1/themes"
-    rsync_dir "$REPO_ROOT/cdn/v0.1/js"     "$REMOTE:$WEBROOT/v0.1/js"
+    # Expect ./cdn/$SP_CDN_VERSION/{css,themes,js} from sp_build.sh (target=cdn).
+    rsync_dir "$REPO_ROOT/cdn/$SP_CDN_VERSION/css"    "$REMOTE:$WEBROOT/$SP_CDN_VERSION/css"
+    rsync_dir "$REPO_ROOT/cdn/$SP_CDN_VERSION/themes" "$REMOTE:$WEBROOT/$SP_CDN_VERSION/themes"
+    rsync_dir "$REPO_ROOT/cdn/$SP_CDN_VERSION/js"     "$REMOTE:$WEBROOT/$SP_CDN_VERSION/js"
     ;;
 
   gate)
