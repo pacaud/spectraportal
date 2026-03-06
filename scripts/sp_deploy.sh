@@ -7,15 +7,14 @@ set -euo pipefail
 # Targets:
 # - cdn:       deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
-#              (excluding raw source folders)
-# - docs:      deploy ./docs -> $WEBROOT_PORTAL
-# - demos:     deploy ./demos -> $WEBROOT_LAB
+#              and shared ./assets -> $WEBROOT_FRAMEWORK/assets
+# - docs:      deploy ./docs -> $WEBROOT_DOCS
+#              and shared ./assets -> $WEBROOT_DOCS/assets
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
 #   scripts/sp_deploy.sh framework
 #   scripts/sp_deploy.sh docs
-#   scripts/sp_deploy.sh demos
 # ============================================================
 
 TARGET="${1:-cdn}"
@@ -71,36 +70,32 @@ if [[ "$TARGET" == "framework" ]]; then
   echo "[deploy] framework"
 
   rsync -av --delete \
-    --exclude "src/" \
     "$REPO_ROOT/framework/" \
     "$REMOTE:$WEBROOT_FRAMEWORK/"
+
+  rsync -av --delete \
+    "$REPO_ROOT/assets/" \
+    "$REMOTE:$WEBROOT_FRAMEWORK/assets/"
 
   echo "[deploy] framework done"
   exit 0
 fi
 
 if [[ "$TARGET" == "docs" ]]; then
-echo "[deploy] docs -> spectraportal.dev"
+  echo "[deploy] docs -> spectraportal.dev"
 
-rsync -av --delete \
-  "$REPO_ROOT/docs/" \
-  "$REMOTE:$WEBROOT_DOCS/"
+  rsync -av --delete \
+    "$REPO_ROOT/docs/" \
+    "$REMOTE:$WEBROOT_DOCS/"
+
+  rsync -av --delete \
+    "$REPO_ROOT/assets/" \
+    "$REMOTE:$WEBROOT_DOCS/assets/"
 
   echo "[deploy] docs done"
   exit 0
 fi
 
-if [[ "$TARGET" == "demos" ]]; then
-  echo "[deploy] demos -> lab"
-
-  rsync -av --delete \
-    "$REPO_ROOT/demos/" \
-    "$REMOTE:$WEBROOT_LAB/"
-
-  echo "[deploy] demos done"
-  exit 0
-fi
-
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | framework | docs | demos" >&2
+echo "[deploy] Valid targets: cdn | framework | docs" >&2
 exit 1
