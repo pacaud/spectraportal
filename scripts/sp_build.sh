@@ -54,6 +54,96 @@ minify_css () {
     fi
   fi
 
+  if command -v python3 >/dev/null 2>&1; then
+    python3 - "$IN" "$OUT" <<'PY'
+from pathlib import Path
+import sys
+
+src = Path(sys.argv[1]).read_text(encoding="utf-8")
+out_path = Path(sys.argv[2])
+
+result = []
+in_comment = False
+in_string = False
+quote = ""
+escape = False
+pending_space = False
+i = 0
+n = len(src)
+
+while i < n:
+    ch = src[i]
+
+    if in_comment:
+        if ch == "*" and i + 1 < n and src[i + 1] == "/":
+            in_comment = False
+            i += 2
+            continue
+        i += 1
+        continue
+
+    if in_string:
+        result.append(ch)
+        if escape:
+            escape = False
+        elif ch == "\\":
+            escape = True
+        elif ch == quote:
+            in_string = False
+            quote = ""
+        i += 1
+        continue
+
+    if ch == "/" and i + 1 < n and src[i + 1] == "*":
+        in_comment = True
+        i += 2
+        continue
+
+    if ch in ('"', "'"):
+        if pending_space and result and result[-1] not in "{(:,;>+~/":
+            result.append(" ")
+        pending_space = False
+        result.append(ch)
+        in_string = True
+        quote = ch
+        i += 1
+        continue
+
+    if ch in " \t\r\n\f":
+        pending_space = True
+        i += 1
+        continue
+
+    if ch in "{}:;,>+~=)":
+        while result and result[-1] == " ":
+            result.pop()
+        result.append(ch)
+        pending_space = False
+        i += 1
+        continue
+
+    if ch == "(":
+        while result and result[-1] == " ":
+            result.pop()
+        result.append(ch)
+        pending_space = False
+        i += 1
+        continue
+
+    if pending_space and result and result[-1] not in "{(:,;>+~/":
+        result.append(" ")
+    pending_space = False
+    result.append(ch)
+    i += 1
+
+minified = ''.join(result).strip()
+out_path.write_text(minified + ("\n" if minified else ""), encoding="utf-8")
+PY
+    return 0
+  fi
+
+  # Last-resort fallback: not as compact as css minifiers, but still strips
+  # blank lines and trailing whitespace so deployment continues.
   sed -E 's/[[:space:]]+$//' "$IN" | awk 'NF{p=1} p{print}' > "$OUT"
 }
 
@@ -104,8 +194,6 @@ elif [[ -f "$SRC/themes/spectra-midnight/theme.css" ]]; then
 elif [[ -f "$SRC/theme.css" ]]; then
   DEFAULT_THEME_FILES+=("$SRC/theme.css")
 else
-  # Fall back to the first theme directory that has either theme.css
-  # and/or theme-bits/*.css. Prefer spectra-midnight if present.
   for DIR in "$SRC/themes/spectra-midnight" "$SRC/themes/"*/; do
     [[ -d "$DIR" ]] || continue
 
