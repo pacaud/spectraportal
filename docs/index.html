@@ -5,12 +5,47 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Spectra — Docs</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg" />
 
   <!-- Load order: base then theme then overrides -->
   <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/css/spectra.min.css" />
-  <link rel="stylesheet" href="https://framework.spectraportal.dev/latest/themes/theme.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/themes/theme.min.css" />
 
+  <style>
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      gap: 1rem;
+    }
+
+    .docs-card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .docs-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .docs-card__head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .docs-card__icon {
+      width: 2rem;
+      height: 2rem;
+      flex: 0 0 auto;
+    }
+
+    .docs-card__title,
+    .docs-card__text {
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -19,15 +54,15 @@
   <div class="sp-header__inner sp-container">
     <div class="sp-header__left">
       <a class="sp-brand" href="./index.html">
-        <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+        <img class="sp-brand__logo" src="/assets/brand/spectraportal-favicon.svg" alt="" aria-hidden="true">
         <span class="sp-brand__text">Spectra</span>
         <span class="sp-badge sp-badge--soft">v0.1</span>
       </a>
     </div>
 
     <nav class="sp-header__center sp-nav" aria-label="Primary">
-      <a class="sp-nav__link" href="./index.html">Docs</a>
-      <a class="sp-nav__link" href="./demos/index.html">Demos</a>
+      <a class="sp-nav__link" href="/framework/index.html">Docs</a>
+      <a class="sp-nav__link" href="/framework/demos/index.html">Demos</a>
     </nav>
 
     <div class="sp-header__right"></div>
@@ -44,12 +79,12 @@
       </p>
     </div>
 
-    <article class="sp-card sp-card--elev">
-      <div class="sp-card__body docs-card__body sp-stack">
+    <article class="sp-card sp-card--surface sp-card--elev">
+      <div class="sp-card__body sp-stack">
         <h2 class="sp-h3">Quick start</h2>
         <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
-        <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css"&gt;
-&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css"&gt;</code></pre>
+        <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/css/spectra.min.cssspectra.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/themes/theme.min.css"&gt;</code></pre>
       </div>
     </article>
   </div>
@@ -62,34 +97,42 @@
 
     <div class="docs-grid">
       <a class="sp-card docs-card" href="./color.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_color.svg" alt="Color token icon" class="docs-card__icon">
-          <div class="sp-h4">Color</div>
-          <p class="sp-muted">Color and shadow tokens.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-token_color.svg" alt="Color token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Color</div>
+          </div>
+          <p class="sp-muted docs-card__text">Color and shadow tokens.</p>
         </div>
       </a>
 
       <a class="sp-card docs-card" href="./shape.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon">
-          <div class="sp-h4">Shape</div>
-          <p class="sp-muted">Spacing, radius, borders.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Shape</div>
+          </div>
+          <p class="sp-muted docs-card__text">Spacing, radius, borders.</p>
         </div>
       </a>
 
       <a class="sp-card docs-card" href="./type.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_type.svg" alt="Typography token icon" class="docs-card__icon">
-          <div class="sp-h4">Type</div>
-          <p class="sp-muted">Typography scale and font tokens.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-token_type.svg" alt="Typography token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Type</div>
+          </div>
+          <p class="sp-muted docs-card__text">Typography scale and font tokens.</p>
         </div>
       </a>
 
       <a class="sp-card docs-card" href="./motion.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Motion token icon" class="docs-card__icon">
-          <div class="sp-h4">Motion</div>
-          <p class="sp-muted">Duration and easing tokens.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-wave.svg" alt="Motion token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Motion</div>
+          </div>
+          <p class="sp-muted docs-card__text">Duration and easing tokens.</p>
         </div>
       </a>
     </div>
@@ -100,28 +143,32 @@
 
     <div class="docs-grid">
       <a class="sp-card docs-card" href="./forms.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_forms.svg" alt="Forms token icon" class="docs-card__icon">
-          <div class="sp-h4">Forms</div>
-          <p class="sp-muted">Inputs, controls, toggles.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-token_forms.svg" alt="Forms token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Forms</div>
+          </div>
+          <p class="sp-muted docs-card__text">Inputs, controls, toggles.</p>
         </div>
       </a>
 
       <a class="sp-card docs-card" href="./buttons.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_buttons.svg" alt="Buttons token icon" class="docs-card__icon">
-          <div class="sp-h4">Buttons</div>
-          <p class="sp-muted">Button states and helpers.</p>
+        <div class="sp-card__body docs-card__body">
+          <div class="docs-card__head">
+            <img src="/assets/brand/spectraportal-token_buttons.svg" alt="Buttons token icon" class="docs-card__icon">
+            <div class="sp-h4 docs-card__title">Buttons</div>
+          </div>
+          <p class="sp-muted docs-card__text">Button states and helpers.</p>
         </div>
       </a>
     </div>
   </section>
 
-  <section class="sp-card sp-card--elev">
-    <div class="sp-card__body docs-card__body sp-stack">
+  <section class="sp-card sp-card--surface sp-card--elev">
+    <div class="sp-card__body sp-stack">
       <h2 class="sp-h2">Need visuals?</h2>
       <p class="sp-muted">Open the demo hub for interactive previews and real component examples.</p>
-      <a class="sp-btn sp-btn--primary" href="./demos/index.html">Open demos</a>
+      <a class="sp-btn sp-btn--primary" href="/framework/demos/index.html">Open demos</a>
     </div>
   </section>
 
