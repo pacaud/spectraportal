@@ -5,7 +5,7 @@ set -euo pipefail
 # SpectraPortal Build
 #
 # Current build target:
-# - cdn: builds versioned + latest CDN bundles from framework/src
+# - cdn: builds versioned + latest CDN bundles from framework
 #
 # Writes:
 #   ./cdn/<version>/css/spectra.min.css
@@ -30,7 +30,7 @@ if [[ "$TARGET" != "cdn" ]]; then
 fi
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SRC="$REPO_ROOT/framework/src"
+SRC="$REPO_ROOT/framework"
 
 CDN_OUT="$REPO_ROOT/cdn/$SP_CDN_VERSION"
 LATEST_OUT="$REPO_ROOT/cdn/latest"
@@ -61,7 +61,14 @@ echo "[build] building version $SP_CDN_VERSION"
 TMP="$(mktemp)"
 trap 'rm -f "$TMP"' EXIT
 
-cat "$SRC/base/"*.css "$SRC/tokens/"*.css "$SRC/components/"*.css "$SRC/spectra.css" 2>/dev/null > "$TMP" || true
+cat \
+  "$SRC/base/"*.css \
+  "$SRC/tokens/"*.css \
+  "$SRC/patterns/"*.css \
+  "$SRC/components/"*.css \
+  "$SRC/utilities/"*.css \
+  "$SRC/spectra.css" 2>/dev/null > "$TMP" || true
+
 minify_css "$TMP" "$CDN_OUT/css/spectra.min.css"
 
 if [[ -f "$SRC/themes/themes.css" ]]; then
