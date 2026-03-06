@@ -15,8 +15,9 @@ set -euo pipefail
 #   ./cdn/latest/... (mirror of the version)
 #
 # Notes:
-# - docs/, assets/, and framework/ are source sites and do not currently
-#   require a build step.
+# - dev/ (from ./docs), assets/, and framework/ are source sites and do not
+#   currently require a build step.
+# - The target name is `dev`, but it deploys the local ./docs source tree.
 # - This script does NOT require npm/package.json.
 # - Raw framework sources are not deployed to the CDN host.
 # ============================================================

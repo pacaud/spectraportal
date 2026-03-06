@@ -8,13 +8,15 @@ set -euo pipefail
 # - cdn:       deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
 # - assets:    deploy ./assets -> $WEBROOT_ASSETS
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
-# - docs:      deploy ./docs -> $WEBROOT_DOCS
+# - dev:       deploy ./docs -> $WEBROOT_DEV
+# - docs:      compatibility alias for dev
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
 #   scripts/sp_deploy.sh assets
 #   scripts/sp_deploy.sh framework
-#   scripts/sp_deploy.sh docs
+#   scripts/sp_deploy.sh dev
+#   scripts/sp_deploy.sh docs   # compatibility alias
 # ============================================================
 
 TARGET="${1:-cdn}"
@@ -28,7 +30,8 @@ if [[ -f "$SCRIPT_DIR/sp_deploy.env" ]]; then
 fi
 
 : "${REMOTE:=root@100.121.30.60}"
-: "${WEBROOT_DOCS:=/var/www/spectraportal.dev}"
+: "${WEBROOT_DEV:=/var/www/spectraportal.dev}"
+: "${WEBROOT_DOCS:=$WEBROOT_DEV}"
 : "${WEBROOT_FRAMEWORK:=/var/www/framework.spectraportal.dev}"
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
 : "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
@@ -41,6 +44,12 @@ CDN_SRC_LATEST="$REPO_ROOT/cdn/latest"
 ASSETS_SRC="$REPO_ROOT/assets"
 FRAMEWORK_SRC="$REPO_ROOT/framework"
 DOCS_SRC="$REPO_ROOT/docs"
+
+# Normalize old target name.
+if [[ "$TARGET" == "docs" ]]; then
+  echo "[deploy] alias: docs -> dev"
+  TARGET="dev"
+fi
 
 rsync_push() {
   local SRC="$1"
@@ -108,21 +117,22 @@ if [[ "$TARGET" == "framework" ]]; then
   exit 0
 fi
 
-if [[ "$TARGET" == "docs" ]]; then
-  echo "[deploy] docs -> spectraportal.dev"
+if [[ "$TARGET" == "dev" ]]; then
+  echo "[deploy] dev -> spectraportal.dev"
 
   if [[ ! -d "$DOCS_SRC" ]]; then
     echo "[deploy] ERROR: missing docs source: $DOCS_SRC" >&2
     exit 1
   fi
 
-  remote_mkdir "$WEBROOT_DOCS"
-  rsync_push "$DOCS_SRC/" "$REMOTE:$WEBROOT_DOCS/"
+  remote_mkdir "$WEBROOT_DEV"
+  rsync_push "$DOCS_SRC/" "$REMOTE:$WEBROOT_DEV/"
 
-  echo "[deploy] docs done"
+  echo "[deploy] dev done"
   exit 0
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | docs" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev" >&2
+echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1
