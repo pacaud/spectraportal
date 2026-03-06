@@ -6,13 +6,13 @@ set -euo pipefail
 #
 # Targets:
 # - cdn:       deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
+# - assets:    deploy ./assets -> $WEBROOT_ASSETS
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
-#              and shared ./assets -> $WEBROOT_FRAMEWORK/assets
 # - docs:      deploy ./docs -> $WEBROOT_DOCS
-#              and shared ./assets -> $WEBROOT_DOCS/assets
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
+#   scripts/sp_deploy.sh assets
 #   scripts/sp_deploy.sh framework
 #   scripts/sp_deploy.sh docs
 # ============================================================
@@ -31,17 +31,26 @@ fi
 : "${WEBROOT_DOCS:=/var/www/spectraportal.dev}"
 : "${WEBROOT_FRAMEWORK:=/var/www/framework.spectraportal.dev}"
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
+: "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
 : "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
 
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 CDN_SRC_VERSION="$REPO_ROOT/cdn/$SP_CDN_VERSION"
 CDN_SRC_LATEST="$REPO_ROOT/cdn/latest"
+ASSETS_SRC="$REPO_ROOT/assets"
+FRAMEWORK_SRC="$REPO_ROOT/framework"
+DOCS_SRC="$REPO_ROOT/docs"
 
 rsync_push() {
   local SRC="$1"
   local DST="$2"
   rsync -av --delete "$SRC" "$DST"
+}
+
+remote_mkdir() {
+  local DST="$1"
+  ssh "$REMOTE" "mkdir -p '$DST'"
 }
 
 if [[ "$TARGET" == "cdn" ]]; then
@@ -59,6 +68,9 @@ if [[ "$TARGET" == "cdn" ]]; then
     exit 1
   fi
 
+  remote_mkdir "$WEBROOT_CDN/$SP_CDN_VERSION"
+  remote_mkdir "$WEBROOT_CDN/latest"
+
   rsync_push "$CDN_SRC_VERSION/" "$REMOTE:$WEBROOT_CDN/$SP_CDN_VERSION/"
   rsync_push "$CDN_SRC_LATEST/"  "$REMOTE:$WEBROOT_CDN/latest/"
 
@@ -66,16 +78,31 @@ if [[ "$TARGET" == "cdn" ]]; then
   exit 0
 fi
 
+if [[ "$TARGET" == "assets" ]]; then
+  echo "[deploy] assets -> assets.spectraportal.dev"
+
+  if [[ ! -d "$ASSETS_SRC" ]]; then
+    echo "[deploy] ERROR: missing assets source: $ASSETS_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$WEBROOT_ASSETS"
+  rsync_push "$ASSETS_SRC/" "$REMOTE:$WEBROOT_ASSETS/"
+
+  echo "[deploy] assets done"
+  exit 0
+fi
+
 if [[ "$TARGET" == "framework" ]]; then
   echo "[deploy] framework"
 
-  rsync -av --delete \
-    "$REPO_ROOT/framework/" \
-    "$REMOTE:$WEBROOT_FRAMEWORK/"
+  if [[ ! -d "$FRAMEWORK_SRC" ]]; then
+    echo "[deploy] ERROR: missing framework source: $FRAMEWORK_SRC" >&2
+    exit 1
+  fi
 
-  rsync -av --delete \
-    "$REPO_ROOT/assets/" \
-    "$REMOTE:$WEBROOT_FRAMEWORK/assets/"
+  remote_mkdir "$WEBROOT_FRAMEWORK"
+  rsync_push "$FRAMEWORK_SRC/" "$REMOTE:$WEBROOT_FRAMEWORK/"
 
   echo "[deploy] framework done"
   exit 0
@@ -84,18 +111,18 @@ fi
 if [[ "$TARGET" == "docs" ]]; then
   echo "[deploy] docs -> spectraportal.dev"
 
-  rsync -av --delete \
-    "$REPO_ROOT/docs/" \
-    "$REMOTE:$WEBROOT_DOCS/"
+  if [[ ! -d "$DOCS_SRC" ]]; then
+    echo "[deploy] ERROR: missing docs source: $DOCS_SRC" >&2
+    exit 1
+  fi
 
-  rsync -av --delete \
-    "$REPO_ROOT/assets/" \
-    "$REMOTE:$WEBROOT_DOCS/assets/"
+  remote_mkdir "$WEBROOT_DOCS"
+  rsync_push "$DOCS_SRC/" "$REMOTE:$WEBROOT_DOCS/"
 
   echo "[deploy] docs done"
   exit 0
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | framework | docs" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | docs" >&2
 exit 1

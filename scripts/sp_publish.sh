@@ -4,9 +4,9 @@ set -euo pipefail
 # Publish = build + deploy
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_publish.sh cdn
+#   scripts/sp_publish.sh assets
 #   scripts/sp_publish.sh framework
 #   scripts/sp_publish.sh docs
-#   scripts/sp_publish.sh demos
 
 TARGET="${1:-cdn}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
