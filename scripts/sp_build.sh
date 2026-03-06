@@ -57,6 +57,24 @@ minify_css () {
   sed -E 's/[[:space:]]+$//' "$IN" | awk 'NF{p=1} p{print}' > "$OUT"
 }
 
+bundle_and_minify () {
+  local OUT="$1"
+  shift || true
+  local FILES=("$@")
+
+  if [[ ${#FILES[@]} -eq 0 ]]; then
+    : > "$OUT"
+    return 1
+  fi
+
+  local TMP_FILE
+  TMP_FILE="$(mktemp)"
+  cat "${FILES[@]}" > "$TMP_FILE"
+  minify_css "$TMP_FILE" "$OUT"
+  rm -f "$TMP_FILE"
+  return 0
+}
+
 echo "[build] building version $SP_CDN_VERSION"
 
 TMP="$(mktemp)"
@@ -72,89 +90,71 @@ cat \
 
 minify_css "$TMP" "$CDN_OUT/css/spectra.min.css"
 
-append_css_files() {
-  local OUT_TMP="$1"
-  shift
-
-  local wrote=0
-  local FILE
-  for FILE in "$@"; do
-    [[ -f "$FILE" ]] || continue
-    cat "$FILE" >> "$OUT_TMP"
-    printf '\n' >> "$OUT_TMP"
-    wrote=1
-  done
-
-  return $wrote
-}
-
-collect_theme_bits() {
-  local DIR="$1"
-  if [[ -d "$DIR/theme-bits" ]]; then
-    find "$DIR/theme-bits" -maxdepth 1 -type f -name '*.css' | sort
-  fi
-}
-
-build_theme_bundle() {
-  local OUT="$1"
-  shift
-
-  local THEME_TMP
-  THEME_TMP="$(mktemp)"
-
-  if append_css_files "$THEME_TMP" "$@"; then
-    minify_css "$THEME_TMP" "$OUT"
-    rm -f "$THEME_TMP"
-    return 0
-  fi
-
-  rm -f "$THEME_TMP"
-  return 1
-}
-
-DEFAULT_THEME_SOURCES=()
+# Build default theme.min.css
+shopt -s nullglob
+DEFAULT_THEME_FILES=()
 
 if [[ -f "$SRC/themes/themes.css" ]]; then
-  DEFAULT_THEME_SOURCES+=("$SRC/themes/themes.css")
-  while IFS= read -r FILE; do
-    DEFAULT_THEME_SOURCES+=("$FILE")
-  done < <(collect_theme_bits "$SRC/themes")
+  DEFAULT_THEME_FILES+=("$SRC/themes/themes.css")
 elif [[ -f "$SRC/themes/spectra-midnight/theme.css" ]]; then
-  DEFAULT_THEME_SOURCES+=("$SRC/themes/spectra-midnight/theme.css")
-  while IFS= read -r FILE; do
-    DEFAULT_THEME_SOURCES+=("$FILE")
-  done < <(collect_theme_bits "$SRC/themes/spectra-midnight")
-elif [[ -f "$SRC/theme.css" ]]; then
-  DEFAULT_THEME_SOURCES+=("$SRC/theme.css")
-  while IFS= read -r FILE; do
-    DEFAULT_THEME_SOURCES+=("$FILE")
-  done < <(collect_theme_bits "$SRC")
-else
-  echo "[build] ERROR: no default theme source found" >&2
-  echo "[build] Looked for:" >&2
-  echo "  - $SRC/themes/themes.css" >&2
-  echo "  - $SRC/themes/spectra-midnight/theme.css" >&2
-  echo "  - $SRC/theme.css" >&2
-  exit 1
-fi
-
-build_theme_bundle "$CDN_OUT/themes/theme.min.css" "${DEFAULT_THEME_SOURCES[@]}"
-
-if [[ -d "$SRC/themes" ]]; then
-  shopt -s nullglob
-  for T in "$SRC/themes/"*/theme.css; do
-    [[ -f "$T" ]] || continue
-    NAME="$(basename "$(dirname "$T")")"
-
-    THEME_SOURCES=("$T")
-    while IFS= read -r FILE; do
-      THEME_SOURCES+=("$FILE")
-    done < <(collect_theme_bits "$(dirname "$T")")
-
-    build_theme_bundle "$CDN_OUT/themes/$NAME.min.css" "${THEME_SOURCES[@]}"
+  DEFAULT_THEME_FILES+=("$SRC/themes/spectra-midnight/theme.css")
+  for F in "$SRC/themes/spectra-midnight/theme-bits/"*.css; do
+    DEFAULT_THEME_FILES+=("$F")
   done
-  shopt -u nullglob
+elif [[ -f "$SRC/theme.css" ]]; then
+  DEFAULT_THEME_FILES+=("$SRC/theme.css")
+else
+  # Fall back to the first theme directory that has either theme.css
+  # and/or theme-bits/*.css. Prefer spectra-midnight if present.
+  for DIR in "$SRC/themes/spectra-midnight" "$SRC/themes/"*/; do
+    [[ -d "$DIR" ]] || continue
+
+    CANDIDATES=()
+    if [[ -f "$DIR/theme.css" ]]; then
+      CANDIDATES+=("$DIR/theme.css")
+    fi
+    for F in "$DIR/theme-bits/"*.css; do
+      CANDIDATES+=("$F")
+    done
+
+    if [[ ${#CANDIDATES[@]} -gt 0 ]]; then
+      DEFAULT_THEME_FILES+=("${CANDIDATES[@]}")
+      break
+    fi
+  done
 fi
+
+if [[ ${#DEFAULT_THEME_FILES[@]} -gt 0 ]]; then
+  echo "[build] default theme -> ${DEFAULT_THEME_FILES[*]#$REPO_ROOT/}"
+  bundle_and_minify "$CDN_OUT/themes/theme.min.css" "${DEFAULT_THEME_FILES[@]}"
+else
+  echo "[build] WARN: no default theme source found; writing empty theme.min.css"
+  : > "$CDN_OUT/themes/theme.min.css"
+fi
+
+# Build each named theme from theme.css + theme-bits/*.css when present.
+if [[ -d "$SRC/themes" ]]; then
+  for DIR in "$SRC/themes/"*/; do
+    [[ -d "$DIR" ]] || continue
+    NAME="$(basename "$DIR")"
+
+    THEME_FILES=()
+    if [[ -f "$DIR/theme.css" ]]; then
+      THEME_FILES+=("$DIR/theme.css")
+    fi
+    for F in "$DIR/theme-bits/"*.css; do
+      THEME_FILES+=("$F")
+    done
+
+    if [[ ${#THEME_FILES[@]} -eq 0 ]]; then
+      continue
+    fi
+
+    echo "[build] theme $NAME -> ${THEME_FILES[*]#$REPO_ROOT/}"
+    bundle_and_minify "$CDN_OUT/themes/$NAME.min.css" "${THEME_FILES[@]}"
+  done
+fi
+shopt -u nullglob
 
 if [[ -f "$SRC/overrides.css" ]]; then
   minify_css "$SRC/overrides.css" "$CDN_OUT/css/overrides.min.css"
