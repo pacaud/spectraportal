@@ -1,0 +1,141 @@
+/* Spectra Components: Textarea + Select (minimal)
+   File: src/components/form-controls.css
+
+   Rules:
+   - Token-driven only.
+   - Mirror .sp-input sizing/feel.
+   - Keep styling minimal; no custom JS behaviors.
+*/
+
+/* Textarea */
+.sp-textarea{
+  width: 100%;
+  display: block;
+
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--sp-radius-2);
+  border: var(--sp-border-1);
+
+  background: var(--sp-elev-2);
+  color: var(--sp-text);
+
+  font-family: var(--sp-font);
+  font-size: var(--sp-fs-3);
+  line-height: var(--sp-lh-2);
+
+  min-height: var(--sp-control-min-h);
+  resize: vertical;
+
+  transition:
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard),
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    opacity var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-textarea::placeholder{
+  color: var(--sp-subtle);
+}
+
+.sp-textarea:hover{
+  border-color: var(--sp-border-strong);
+}
+
+/* Focus (keyboard-first) */
+.sp-textarea:focus{
+  outline: none;
+}
+
+.sp-textarea:focus-visible{
+  outline: none;
+  border-color: var(--sp-accent-3);
+  box-shadow: var(--sp-focus-shadow);
+}
+
+.sp-textarea:focus:not(:focus-visible){
+  box-shadow: none;
+}
+
+.sp-textarea:disabled{
+  opacity: var(--sp-opacity-60);
+  cursor: not-allowed;
+  background: var(--sp-elev);
+  border-color: var(--sp-border);
+}
+
+/* Select */
+.sp-select{
+  width: 100%;
+  display: block;
+
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--sp-radius-2);
+  border: var(--sp-border-1);
+
+  background: var(--sp-elev-2);
+  color: var(--sp-text);
+
+  font-family: var(--sp-font);
+  font-size: var(--sp-fs-3);
+  line-height: var(--sp-lh-2);
+
+  transition:
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard),
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    opacity var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-select:hover{
+  border-color: var(--sp-border-strong);
+}
+
+/* Focus (keyboard-first) */
+.sp-select:focus{
+  outline: none;
+}
+
+.sp-select:focus-visible{
+  outline: none;
+  border-color: var(--sp-accent-3);
+  box-shadow: var(--sp-focus-shadow);
+}
+
+.sp-select:focus:not(:focus-visible){
+  box-shadow: none;
+}
+
+.sp-select:disabled{
+  opacity: var(--sp-opacity-60);
+  cursor: not-allowed;
+  background: var(--sp-elev);
+  border-color: var(--sp-border);
+}
+
+/* Error state hook (apply to .sp-field) */
+.sp-field--error .sp-help{
+  color: var(--sp-danger);
+}
+
+.sp-field--error :where(.sp-textarea, .sp-select){
+  border-color: var(--sp-danger);
+}
+
+.sp-field--error :where(.sp-textarea, .sp-select):focus-visible{
+  border-color: var(--sp-danger);
+  box-shadow: var(--sp-focus-shadow-danger);
+}
+
+.sp-field--error :where(.sp-textarea, .sp-select):focus:not(:focus-visible){
+  box-shadow: none;
+}
+
+/* Optional: consistent arrow affordance without heavy styling */
+.sp-select{
+  appearance: none;
+  background-image: var(--sp-select-arrow-img);
+  background-position: var(--sp-select-arrow-pos);
+  background-size: var(--sp-select-arrow-size);
+  background-repeat: no-repeat;
+  padding-right: var(--sp-6);
+}

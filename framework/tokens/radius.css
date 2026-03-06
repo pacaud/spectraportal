@@ -1,0 +1,15 @@
+/* Spectra Tokens: Radius
+   File: src/tokens/radius.css
+
+   Rules:
+   - Tokens only (no selectors).
+   - Keep a small, consistent set.
+*/
+
+:root{
+  --sp-radius-1: 0.375rem; /* 6px  */
+  --sp-radius-2: 0.5rem;   /* 8px  (default) */
+  --sp-radius-3: 0.75rem;  /* 12px */
+  --sp-radius-4: 1rem;     /* 16px */
+  --sp-radius-round: 9999px;
+}

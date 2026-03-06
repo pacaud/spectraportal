@@ -1,0 +1,47 @@
+/* ===================== */
+/* Hero (v0.1)           */
+/* ===================== */
+
+.sp-hero{
+  padding: var(--sp-10) var(--sp-6);
+}
+
+.sp-hero__inner{
+  margin-inline: auto;
+  max-width: var(--sp-container-max);
+}
+
+.sp-hero__kicker{
+  margin: var(--sp-0) var(--sp-0) var(--sp-3);
+  letter-spacing: var(--sp-ls-loose);
+}
+
+.sp-hero__title{
+  margin: var(--sp-0) var(--sp-0) var(--sp-3);
+  font-family: var(--sp-font-display);
+  letter-spacing: var(--sp-ls-tight);
+  line-height: var(--sp-lh-1);
+}
+
+.sp-hero__sub{
+  margin: var(--sp-0) var(--sp-0) var(--sp-5);
+  max-width: var(--sp-content-max);
+  line-height: var(--sp-lh-2);
+}
+
+.sp-hero__meta{
+  margin: var(--sp-0) var(--sp-0) var(--sp-6);
+}
+
+.sp-hero__actions{
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Optional "surface" variant */
+.sp-hero--surface{
+  background: var(--sp-surface);
+  border-bottom: var(--sp-border-1);
+}

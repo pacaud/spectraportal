@@ -1,0 +1,93 @@
+/* Spectra Components: Button
+   File: src/components/button.css
+
+   Goals:
+   - Token-driven sizing, radius, borders, motion
+   - Minimal variants: default, primary, ghost
+   - Works with <button> and <a class="sp-btn">
+*/
+
+.sp-btn{
+  /* layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+
+  /* sizing */
+  padding: var(--sp-2) var(--sp-3);
+  min-height: calc(var(--sp-4) * 2.5);
+
+  /* type */
+  font-weight: var(--sp-fw-semibold);
+  font-size: var(--sp-fs-2);
+  line-height: var(--sp-lh-2);
+  text-decoration: none;
+
+  /* shape + border */
+  border-radius: var(--sp-radius-3);
+  border: var(--sp-border-1);
+  cursor: pointer;
+  user-select: none;
+
+  /* colors (default button) */
+  background: var(--sp-elev);
+  color: var(--sp-text);
+
+  /* motion */
+  transition:
+    background var(--sp-duration-2) var(--sp-ease-standard),
+    border-color var(--sp-duration-2) var(--sp-ease-standard),
+    transform var(--sp-duration-2) var(--sp-ease-standard),
+    box-shadow var(--sp-duration-2) var(--sp-ease-standard);
+}
+
+.sp-btn:hover{
+  background: var(--sp-elev-2);
+}
+
+.sp-btn:active{
+  transform: translateY(var(--sp-hairline));
+}
+
+.sp-btn:disabled,
+.sp-btn[aria-disabled="true"]{
+  opacity: var(--sp-opacity-60);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary */
+.sp-btn--primary{
+  background: var(--sp-accent);
+  color: var(--sp-bg);
+  border-color: color-mix(in oklab, var(--sp-accent) 65%, var(--sp-border));
+}
+
+.sp-btn--primary:hover{
+  background: color-mix(in oklab, var(--sp-accent) 88%, black);
+}
+
+/* Ghost */
+.sp-btn--ghost{
+  background: transparent;
+  border-color: transparent;
+}
+
+.sp-btn--ghost:hover{
+  background: color-mix(in oklab, var(--sp-border) 35%, transparent);
+}
+
+/* Small / Large */
+.sp-btn--sm{
+  padding: var(--sp-1) var(--sp-2);
+  min-height: calc(var(--sp-4) * 2);
+  border-radius: var(--sp-radius-2);
+  font-weight: var(--sp-fw-semibold);
+}
+
+.sp-btn--lg{
+  padding: var(--sp-3) var(--sp-4);
+  min-height: calc(var(--sp-4) * 3);
+  border-radius: var(--sp-radius-4);
+}

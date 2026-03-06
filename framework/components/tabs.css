@@ -1,0 +1,24 @@
+/* Tabs
+   Minimal tab set.
+   - CSS handles visuals
+   - Demo uses tiny JS to swap aria-selected + panels
+*/
+
+/* Tab sizing lives in tokens (core.css): --sp-tab-h */
+
+.sp-tabs{
+  width: 100%;
+}
+
+.sp-tablist{
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+
+  border: var(--sp-border-1);
+  border-radius: var(--sp-radius-3);
+
+  background: var(--sp-elev);
+}

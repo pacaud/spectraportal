@@ -1,0 +1,42 @@
+/* Spectra Base: A11y (focus)
+   File: src/base/a11y.css
+
+   Goals:
+   - Provide a consistent, visible focus treatment across the framework.
+   - Token-driven: sizing uses --sp-ring-1 / --sp-outline-1, colors use existing color tokens.
+   - Minimal: no component styling, no animations required.
+*/
+
+/* Default: remove ugly focus outlines only when focus-visible is supported */
+:focus{
+   outline: none;
+}
+
+/* Only show focus ring for keyboard navigation */
+:focus-visible{
+  outline: var(--sp-outline-1) solid var(--sp-focus);
+  outline-offset: var(--sp-1);
+  /* Optional soft halo; safe even on dark themes */
+  box-shadow: 0 0 0 var(--sp-ring-1) var(--sp-focus-soft);
+}
+
+/* Only remove default outlines when :focus-visible is supported */
+@supports selector(:focus-visible){
+  :focus{ outline: none; }
+}
+
+/* Keyboard focus ring (token-driven) */
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [role="button"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible{
+  outline: var(--sp-outline-1) solid var(--sp-focus);
+  outline-offset: var(--sp-1);
+  box-shadow: 0 0 0 var(--sp-ring-1) var(--sp-focus-soft);
+}
