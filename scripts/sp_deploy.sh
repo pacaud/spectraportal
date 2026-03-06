@@ -29,11 +29,10 @@ if [[ -f "$SCRIPT_DIR/sp_deploy.env" ]]; then
 fi
 
 : "${REMOTE:=root@100.121.30.60}"
-: "${WEBROOT_PORTAL:=/var/www/spectraportal.com}"
-: "${WEBROOT_DEVHUB:=/var/www/spectraportal.dev}"
+: "${WEBROOT_DOCS:=/var/www/spectraportal.dev}"
 : "${WEBROOT_FRAMEWORK:=/var/www/framework.spectraportal.dev}"
-: "${WEBROOT_LAB:=/var/www/spectraportal.online}"
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
+: "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
 
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
@@ -81,11 +80,11 @@ if [[ "$TARGET" == "framework" ]]; then
 fi
 
 if [[ "$TARGET" == "docs" ]]; then
-  echo "[deploy] docs -> portal"
+echo "[deploy] docs -> spectraportal.dev"
 
-  rsync -av --delete \
-    "$REPO_ROOT/docs/" \
-    "$REMOTE:$WEBROOT_PORTAL/"
+rsync -av --delete \
+  "$REPO_ROOT/docs/" \
+  "$REMOTE:$WEBROOT_DOCS/"
 
   echo "[deploy] docs done"
   exit 0
