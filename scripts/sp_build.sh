@@ -2,28 +2,30 @@
 set -euo pipefail
 
 # ============================================================
-# SpectraPortal Build (CDN-only)
+# SpectraPortal Build
 #
-# Builds versioned + latest CDN bundles from framework/src and writes:
+# Current build target:
+# - cdn: builds versioned + latest CDN bundles from framework/src
+#
+# Writes:
 #   ./cdn/<version>/css/spectra.min.css
 #   ./cdn/<version>/css/overrides.min.css
 #   ./cdn/<version>/themes/theme.min.css
 #   ./cdn/<version>/themes/<theme>.min.css
 #   ./cdn/latest/... (mirror of the version)
 #
-# Usage:
-#   SP_CDN_VERSION=v0.1 scripts/sp_build.sh cdn
-#
 # Notes:
-# - Intentionally does NOT require npm/package.json.
-# - Servers should NOT receive raw sources (framework/src).
+# - docs/, demos/, and framework/ are source sites and do not currently
+#   require a build step.
+# - This script does NOT require npm/package.json.
+# - Raw framework sources are not deployed to the CDN host.
 # ============================================================
 
 TARGET="${1:-cdn}"
 : "${SP_CDN_VERSION:=v0.1}"
 
 if [[ "$TARGET" != "cdn" ]]; then
-  echo "[build] target: $TARGET (no-op; only 'cdn' produces build artifacts)"
+  echo "[build] target: $TARGET (no build step required)"
   exit 0
 fi
 
@@ -39,13 +41,11 @@ minify_css () {
   local IN="$1"
   local OUT="$2"
 
-  # Prefer project-local install (deterministic)
   if [[ -x "$REPO_ROOT/node_modules/.bin/csso" ]]; then
     "$REPO_ROOT/node_modules/.bin/csso" "$IN" --output "$OUT"
     return 0
   fi
 
-  # Next best: npx csso (if available)
   if command -v npx >/dev/null 2>&1; then
     if npx --yes csso "$IN" --output "$OUT" >/dev/null 2>&1; then
       npx --yes csso "$IN" --output "$OUT"
@@ -53,7 +53,6 @@ minify_css () {
     fi
   fi
 
-  # Fallback: "safe-min" (portable, stable)
   sed -E 's/[[:space:]]+$//' "$IN" | awk 'NF{p=1} p{print}' > "$OUT"
 }
 
@@ -62,13 +61,9 @@ echo "[build] building version $SP_CDN_VERSION"
 TMP="$(mktemp)"
 trap 'rm -f "$TMP"' EXIT
 
-# Base bundle: base -> tokens -> components -> spectra.css
 cat "$SRC/base/"*.css "$SRC/tokens/"*.css "$SRC/components/"*.css "$SRC/spectra.css" 2>/dev/null > "$TMP" || true
 minify_css "$TMP" "$CDN_OUT/css/spectra.min.css"
 
-# Default theme bundle:
-# - Prefer themes/themes.css (aggregator)
-# - Else fallback to spectra-midnight/theme.css
 if [[ -f "$SRC/themes/themes.css" ]]; then
   minify_css "$SRC/themes/themes.css" "$CDN_OUT/themes/theme.min.css"
 elif [[ -f "$SRC/themes/spectra-midnight/theme.css" ]]; then
@@ -77,7 +72,6 @@ else
   : > "$CDN_OUT/themes/theme.min.css"
 fi
 
-# Named themes: themes/<name>.min.css
 if [[ -d "$SRC/themes" ]]; then
   for T in "$SRC/themes/"*/theme.css; do
     [[ -f "$T" ]] || continue
@@ -86,7 +80,6 @@ if [[ -d "$SRC/themes" ]]; then
   done
 fi
 
-# Overrides
 if [[ -f "$SRC/overrides.css" ]]; then
   minify_css "$SRC/overrides.css" "$CDN_OUT/css/overrides.min.css"
 else
