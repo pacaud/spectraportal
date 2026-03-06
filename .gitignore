@@ -37,3 +37,4 @@ scripts/sp_deploy.env
 scripts/*.env.local
 
 framework/cdn/
+cdn/
