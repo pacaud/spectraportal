@@ -9,7 +9,7 @@
 
 .sp-footer__brand{
   display: flex;
-  gap: var(--sp-3);
+  gap: var(--sp-2);
   align-items: center;
 }
 
