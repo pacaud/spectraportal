@@ -11,42 +11,83 @@
   <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/css/spectra.min.css" />
   <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/themes/theme.min.css" />
 
-<style>
-  .sp-docs-main{
-    display: grid;
-    gap: var(--sp-6);
-  }
-
-  .sp-hero__split{
-    display: grid;
-    gap: var(--sp-6);
-    align-items: center;
-  }
-
-  .sp-hero__content{
-    display: grid;
-    gap: var(--sp-4);
-  }
-
-  .sp-hero__visual{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .sp-hero__visual img{
-    width: 100%;
-    max-width: 24rem;
-    height: auto;
-  }
-
-  @media (min-width: 64rem){
-    .sp-hero__split{
-      grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+  <style>
+    .sp-docs-main{
+      display: grid;
+      gap: var(--sp-6);
     }
-  }
-</style>
 
+    .sp-hero__inner{
+      display: grid;
+      gap: var(--sp-6);
+    }
+
+    .sp-hero__intro{
+      display: grid;
+      gap: var(--sp-3);
+    }
+
+    .sp-heroCard__split{
+      display: grid;
+      gap: var(--sp-5);
+      align-items: center;
+    }
+
+    .sp-heroCard__content{
+      min-width: 0;
+      display: grid;
+      gap: var(--sp-4);
+    }
+
+    .sp-heroCard__heading{
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      flex-wrap: nowrap;
+    }
+
+    .sp-heroCard__actions{
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+
+    .sp-heroCard__code{
+      margin: var(--sp-0);
+    }
+
+    .sp-heroCard__code{
+      overflow-x: auto;
+    }
+
+    .sp-heroCard__code code{
+      white-space: pre-wrap;
+      overflow-wrap: normal;
+      word-break: normal;
+      font-size: var(--sp-fs-2);
+      line-height: var(--sp-lh-3);
+    }
+
+    .sp-heroCard__visual{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .sp-heroCard__visual img{
+      width: 100%;
+      max-width: 20rem;
+      height: auto;
+      display: block;
+    }
+
+    @media (min-width: 56rem){
+      .sp-heroCard__split{
+        grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.75fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -67,27 +108,38 @@
 </header>
 
 <section class="sp-hero">
-  <div class="sp-hero__inner sp-container sp-hero__split">
-    <div class="sp-hero__content">
+  <div class="sp-hero__inner sp-container sp-content">
+    <div class="sp-hero__intro">
       <p class="sp-muted">Docs hub</p>
       <h1 class="sp-hero__title">Build with tokens. Compose with components.</h1>
       <p class="sp-hero__sub">
         Spectra’s docs focus on the rules: tokens first, components second, themes last.
       </p>
+    </div>
 
-      <article class="sp-card sp-card--elev">
-        <div class="sp-card__body sp-stack">
-          <h2 class="sp-h3">Quick start</h2>
-          <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
-          <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css"&gt;
-&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css"&gt;</code></pre>
+    <article class="sp-card sp-card--elev sp-heroCard">
+      <div class="sp-card__body">
+        <div class="sp-heroCard__split">
+          <div class="sp-heroCard__content">
+            <div class="sp-row sp-heroCard__heading">
+              <h2 class="sp-h3">Quick start</h2>
+              <div class="sp-heroCard__actions">
+                <button class="sp-btn sp-btn--soft" id="copy-quickstart" type="button">Copy</button>
+              </div>
+            </div>
+
+            <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
+
+            <pre class="sp-code sp-heroCard__code"><code id="quickstart-code-display">&lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>css/<wbr>spectra.min.css"&gt;
+&lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>themes/<wbr>theme.min.css"&gt;</code></pre>
+          </div>
+
+          <div class="sp-heroCard__visual" aria-hidden="true">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="">
+          </div>
         </div>
-      </article>
-    </div>
-
-    <div class="sp-hero__visual">
-      <img src="./spectraportal-hero_spark.svg" alt="" aria-hidden="true">
-    </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -198,6 +250,27 @@
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
+
+  const copyButton = document.getElementById("copy-quickstart");
+  const quickstartCode = `<link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css">
+<link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css">`;
+
+  if (copyButton) {
+    copyButton.addEventListener("click", async () => {
+      const originalLabel = copyButton.textContent;
+
+      try {
+        await navigator.clipboard.writeText(quickstartCode);
+        copyButton.textContent = "Copied";
+      } catch (error) {
+        copyButton.textContent = "Failed";
+      }
+
+      window.setTimeout(() => {
+        copyButton.textContent = originalLabel;
+      }, 1500);
+    });
+  }
 </script>
 
 </body>
