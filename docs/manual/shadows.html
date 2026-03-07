@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Shadows</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+  <style>
+    body.docs-page{
+      display:flex;
+      flex-direction:column;
+      min-height:var(--sp-page-min-h);
+      background:var(--sp-bg);
+      color:var(--sp-text);
+    }
+    .docs-main{
+      flex:1;
+      display:grid;
+      gap:var(--sp-8);
+      padding-block:var(--sp-8) var(--sp-10);
+    }
+    .docs-intro{display:grid;gap:var(--sp-4);}
+    .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+    .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+    .docs-section{display:grid;gap:var(--sp-4);}
+    .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+    .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+    .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+    .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+    .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+    .docs-token-table tr:last-child td{border-bottom:0;}
+    .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+    .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+    .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+    .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+    .docs-footer{padding-bottom:var(--sp-10);}
+    .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+    .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+    .docs-bar{height:0.875rem;border-radius:var(--sp-radius-round);background:linear-gradient(90deg,var(--sp-accent-2),var(--sp-accent-3));min-width:0.875rem;box-shadow:var(--sp-shadow-1);}
+    .docs-bar--surface{background:linear-gradient(90deg,var(--sp-surface-2),var(--sp-elev-2));border:var(--sp-border-1);}
+    .docs-shadow-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);}
+    .docs-layer-stage{position:relative;min-height:13rem;border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));overflow:hidden;}
+    .docs-layer-item{position:absolute;display:grid;place-items:center;min-width:7rem;min-height:3rem;padding:var(--sp-3);border-radius:var(--sp-radius-3);border:var(--sp-border-1);box-shadow:var(--sp-shadow-2);font-size:var(--sp-fs-2);font-weight:var(--sp-fw-semibold);}
+    .docs-shell-demo{display:grid;gap:var(--sp-4);}
+    .docs-shell-footer{display:grid;gap:var(--sp-5);}
+    .docs-shell-footer__top{display:grid;gap:var(--sp-4);}
+    .docs-card-stack{display:grid;gap:var(--sp-3);}
+    .docs-muted{color:var(--sp-muted);}
+    @media (min-width: 52rem){
+      .docs-shell-footer{grid-template-columns:minmax(0,1fr) auto;align-items:start;}
+      .docs-shell-footer__top{max-width:40rem;}
+    }
+    
+  </style>
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Fundamentals / elevation</p>
+      <span class="sp-badge sp-badge--soft">Priority 1</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Shadows</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">Spectra uses a small elevation ladder: three surface shadows and three text shadows. Keep the scale tight so raised UI still feels related.</p>
+  </section>
+  
+<section class="docs-section">
+  <h2 class="sp-h3">Shadow tokens</h2>
+  <div class="docs-table-wrap" role="region" aria-label="Shadow tokens table">
+    <table class="docs-token-table">
+      <thead><tr><th>Preview</th><th>Token</th><th>Type</th><th>Used for</th><th>Value</th></tr></thead>
+      <tbody><tr data-token="--sp-shadow-1"><td><div class='docs-shadow-card sp-shadow-1'>Spectra</div></td><td><code>--sp-shadow-1</code></td><td>Surface shadow</td><td>Default cards and grounded surfaces</td><td class='js-token-value'>—</td></tr><tr data-token="--sp-shadow-2"><td><div class='docs-shadow-card sp-shadow-2'>Spectra</div></td><td><code>--sp-shadow-2</code></td><td>Raised shadow</td><td>Elevated cards, stronger shells</td><td class='js-token-value'>—</td></tr><tr data-token="--sp-shadow-3"><td><div class='docs-shadow-card sp-shadow-3'>Spectra</div></td><td><code>--sp-shadow-3</code></td><td>Deep shadow</td><td>Hero moments or heavy overlays</td><td class='js-token-value'>—</td></tr><tr data-token="--sp-text-shadow-1"><td><div class='docs-shadow-card '><span class='sp-h4 sp-text-shadow-1'>Spectra</span></div></td><td><code>--sp-text-shadow-1</code></td><td>Text shadow 1</td><td>Readable glow on dense backgrounds</td><td class='js-token-value'>—</td></tr><tr data-token="--sp-text-shadow-2"><td><div class='docs-shadow-card '><span class='sp-h4 sp-text-shadow-2'>Spectra</span></div></td><td><code>--sp-text-shadow-2</code></td><td>Text shadow 2</td><td>Stronger display text lift</td><td class='js-token-value'>—</td></tr><tr data-token="--sp-text-shadow-3"><td><div class='docs-shadow-card '><span class='sp-h4 sp-text-shadow-3'>Spectra</span></div></td><td><code>--sp-text-shadow-3</code></td><td>Text shadow 3</td><td>Dramatic headlines only</td><td class='js-token-value'>—</td></tr></tbody>
+    </table>
+  </div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">How to use the scale</h2>
+  <div class="docs-preview-grid">
+    <article class="sp-card"><div class="sp-card__body sp-stack"><h3 class="sp-h4">Default</h3><p class="sp-muted">Use <code class="sp-code">--sp-shadow-1</code> for regular cards and shells.</p></div></article>
+    <article class="sp-card sp-card--elev"><div class="sp-card__body sp-stack"><h3 class="sp-h4">Raised</h3><p class="sp-muted">Use <code class="sp-code">--sp-shadow-2</code> when a surface needs to step above the page.</p></div></article>
+    <article class="sp-card" style="box-shadow:var(--sp-shadow-3);"><div class="sp-card__body sp-stack"><h3 class="sp-h4">Deep</h3><p class="sp-muted">Reserve <code class="sp-code">--sp-shadow-3</code> for special moments.</p></div></article>
+  </div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+  const getVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  document.querySelectorAll('[data-token]').forEach((row) => {
+    const token = row.getAttribute('data-token');
+    const out = row.querySelector('.js-token-value');
+    if (out) out.textContent = getVar(token) || '—';
+  });
+</script>
+</body>
+</html>

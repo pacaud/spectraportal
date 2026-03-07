@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Shell</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+  <style>
+    body.docs-page{
+      display:flex;
+      flex-direction:column;
+      min-height:var(--sp-page-min-h);
+      background:var(--sp-bg);
+      color:var(--sp-text);
+    }
+    .docs-main{
+      flex:1;
+      display:grid;
+      gap:var(--sp-8);
+      padding-block:var(--sp-8) var(--sp-10);
+    }
+    .docs-intro{display:grid;gap:var(--sp-4);}
+    .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+    .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+    .docs-section{display:grid;gap:var(--sp-4);}
+    .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+    .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+    .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+    .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+    .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+    .docs-token-table tr:last-child td{border-bottom:0;}
+    .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+    .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+    .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+    .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+    .docs-footer{padding-bottom:var(--sp-10);}
+    .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+    .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+    .docs-bar{height:0.875rem;border-radius:var(--sp-radius-round);background:linear-gradient(90deg,var(--sp-accent-2),var(--sp-accent-3));min-width:0.875rem;box-shadow:var(--sp-shadow-1);}
+    .docs-bar--surface{background:linear-gradient(90deg,var(--sp-surface-2),var(--sp-elev-2));border:var(--sp-border-1);}
+    .docs-shadow-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);}
+    .docs-layer-stage{position:relative;min-height:13rem;border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));overflow:hidden;}
+    .docs-layer-item{position:absolute;display:grid;place-items:center;min-width:7rem;min-height:3rem;padding:var(--sp-3);border-radius:var(--sp-radius-3);border:var(--sp-border-1);box-shadow:var(--sp-shadow-2);font-size:var(--sp-fs-2);font-weight:var(--sp-fw-semibold);}
+    .docs-shell-demo{display:grid;gap:var(--sp-4);}
+    .docs-shell-footer{display:grid;gap:var(--sp-5);}
+    .docs-shell-footer__top{display:grid;gap:var(--sp-4);}
+    .docs-card-stack{display:grid;gap:var(--sp-3);}
+    .docs-muted{color:var(--sp-muted);}
+    @media (min-width: 52rem){
+      .docs-shell-footer{grid-template-columns:minmax(0,1fr) auto;align-items:start;}
+      .docs-shell-footer__top{max-width:40rem;}
+    }
+    
+  </style>
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Components / shell</p>
+      <span class="sp-badge sp-badge--soft">Priority 1</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Shell & navigation</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">Spectra shell pieces stay intentionally small: brand, nav, header, hero, and footer. Compose them into a frame instead of treating them like one giant layout component.</p>
+  </section>
+  
+<section class="docs-section">
+  <h2 class="sp-h3">Shell API</h2>
+  <div class="docs-table-wrap" role="region" aria-label="Shell API table">
+    <table class="docs-token-table">
+      <thead><tr><th>Class</th><th>Used for</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>.sp-brand</code></td><td>Brand lockup</td><td>Inline-flex row for logo, text, and optional badge.</td></tr>
+        <tr><td><code>.sp-brand__logo</code></td><td>Brand mark</td><td>Sizes the logo with token-driven dimensions.</td></tr>
+        <tr><td><code>.sp-brand__text</code></td><td>Brand name</td><td>Uses the type scale and semibold weight.</td></tr>
+        <tr><td><code>.sp-nav</code></td><td>Primary navigation row</td><td>Wraps nav links with consistent gaps.</td></tr>
+        <tr><td><code>.sp-nav__link</code></td><td>Nav item</td><td>Rounded link with hover, active, and focus-visible behavior.</td></tr>
+        <tr><td><code>.sp-header</code></td><td>Top shell bar</td><td>Surface background with bottom border.</td></tr>
+        <tr><td><code>.sp-header__inner</code></td><td>Header layout</td><td>Flex row that spaces brand, nav, and optional actions.</td></tr>
+        <tr><td><code>.sp-header__actions</code></td><td>Header actions slot</td><td>Inline action row on the right side.</td></tr>
+        <tr><td><code>.sp-hero</code></td><td>Page hero section</td><td>Large top spacing using the hero token rhythm.</td></tr>
+        <tr><td><code>.sp-hero__inner</code></td><td>Hero width wrapper</td><td>Centers hero content inside container max width.</td></tr>
+        <tr><td><code>.sp-hero__title</code></td><td>Hero headline</td><td>Display-sized title using the typography tokens.</td></tr>
+        <tr><td><code>.sp-hero__sub</code></td><td>Hero supporting copy</td><td>Readable line length inside the hero.</td></tr>
+        <tr><td><code>.sp-hero__actions</code></td><td>Hero action row</td><td>Wrap-friendly action row for primary controls.</td></tr>
+        <tr><td><code>.sp-hero--surface</code></td><td>Surface hero variant</td><td>Adds a surface background and bottom border.</td></tr>
+        <tr><td><code>.sp-footer</code></td><td>Footer region</td><td>Outer footer wrapper with top margin rhythm.</td></tr>
+        <tr><td><code>.sp-footer__brand</code></td><td>Footer brand row</td><td>Aligns mark + text in the footer block.</td></tr>
+        <tr><td><code>.sp-footer__title</code></td><td>Footer title</td><td>Semibold footer heading.</td></tr>
+        <tr><td><code>.sp-footer__desc</code></td><td>Footer supporting copy</td><td>Muted text with readable max width.</td></tr>
+        <tr><td><code>.sp-footer__cta</code></td><td>Footer action group</td><td>Flexible row for CTA links or buttons.</td></tr>
+        <tr><td><code>.sp-footer__links</code></td><td>Footer link list</td><td>Grid list for grouped footer links.</td></tr>
+        <tr><td><code>.sp-footer__link</code></td><td>Footer text link</td><td>Muted by default, brightens on hover.</td></tr>
+        <tr><td><code>.sp-footer__legalLinks</code></td><td>Legal/meta links</td><td>Inline row for bottom legal links.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Preview</h2>
+  <div class="sp-card sp-card--elev docs-shell-demo">
+    <div class="sp-card__body sp-stack">
+      <div class="sp-inline">
+        <span class="sp-badge sp-badge--soft">Header</span>
+      </div>
+    </div>
+    <header class="sp-header">
+      <div class="sp-header__inner sp-container sp-content">
+        <a class="sp-brand" href="#">
+          <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+          <span class="sp-brand__text">Spectra</span>
+        </a>
+        <nav class="sp-nav" aria-label="Example navigation">
+          <a class="sp-nav__link is-active" href="#">Docs</a>
+          <a class="sp-nav__link" href="#">Components</a>
+        </nav>
+      </div>
+    </header>
+    <section class="sp-hero sp-hero--surface">
+      <div class="sp-hero__inner">
+        <p class="sp-muted">Hero</p>
+        <h3 class="sp-hero__title">Build the frame, then fill it.</h3>
+        <p class="sp-hero__sub">Brand, navigation, hero, and footer should feel related because they all pull from the same token system.</p>
+        <div class="sp-hero__actions">
+          <a class="sp-btn sp-btn--primary" href="#">Primary action</a>
+          <a class="sp-btn sp-btn--ghost" href="#">Secondary</a>
+        </div>
+      </div>
+    </section>
+    <footer class="sp-footer">
+      <div class="sp-container sp-content">
+        <div class="sp-card">
+          <div class="sp-card__body docs-shell-footer">
+            <div class="docs-shell-footer__top">
+              <div class="sp-footer__brand">
+                <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+                <div>
+                  <p class="sp-footer__title">Spectra Portal</p>
+                  <p class="sp-footer__desc">Small shell pieces that stay token-driven and composable.</p>
+                </div>
+              </div>
+              <div class="sp-footer__cta">
+                <a class="sp-btn" href="#">Read docs</a>
+                <a class="sp-btn sp-btn--ghost" href="#">View demos</a>
+              </div>
+            </div>
+            <nav class="sp-footer__legalLinks" aria-label="Example legal links">
+              <a class="sp-footer__link" href="#">Privacy</a>
+              <a class="sp-footer__link" href="#">Terms</a>
+              <a class="sp-footer__link" href="#">Licenses</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+  const getVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  document.querySelectorAll('[data-token]').forEach((row) => {
+    const token = row.getAttribute('data-token');
+    const out = row.querySelector('.js-token-value');
+    if (out) out.textContent = getVar(token) || '—';
+  });
+</script>
+</body>
+</html>
