@@ -16,12 +16,10 @@
 
   <!-- match index.html favicons -->
   <link rel="icon" type="image/svg+xml" href="/assets/brand/spectraportal-favicon.svg">
-  <link rel="icon" href="/framework/favicon.ico" sizes="any">
 
   <!-- match index.html local framework paths -->
-  <link rel="stylesheet" href="/framework/cdn/v0.1/spectra.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/theme.min.css" />
-  <link rel="stylesheet" href="/framework/cdn/v0.1/overrides.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css">
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css">
 
   <!-- demo-only helpers (scoped + token-driven) -->
   <style>
@@ -222,22 +220,17 @@
 <body class="demo-page">
 
 <header class="sp-header">
-  <div class="sp-header__inner sp-container">
-    <div class="sp-header__left">
-      <a class="sp-brand" href="./index.html">
-        <img class="sp-brand__mark" src="/assets/brand/spectraportal-wave.svg" alt="" aria-hidden="true" />
-        <span class="sp-brand__text">Spectra</span>
-        <span class="sp-badge sp-badge--soft">v0.1</span>
-      </a>
-    </div>
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="./index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
 
-    <nav class="sp-header__center sp-nav" aria-label="Primary">
-<a class="sp-nav__link" href="./index.html">Docs</a>
-      <a class="sp-nav__link" href="../demos/index.html">Demos</a>
-      <a class="sp-nav__link is-active" href="./shape.html">This page</a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="./index.html">Docs</a>
+      <a class="sp-nav__link" href="./demos/index.html">Demos</a>
     </nav>
-
-    <div class="demo-header__right"></div>
   </div>
 </header>
 
