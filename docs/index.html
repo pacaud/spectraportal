@@ -33,6 +33,10 @@
       align-items: center;
     }
 
+    .sp-heroCard .sp-card__body{
+      padding-block: var(--sp-5);
+    }
+
     .sp-heroCard__content{
       min-width: 0;
       display: grid;
@@ -41,22 +45,24 @@
 
     .sp-heroCard__heading{
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: var(--sp-3);
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+    }
+
+    .sp-heroCard__heading > *{
+      margin: var(--sp-0);
     }
 
     .sp-heroCard__actions{
       display: flex;
       align-items: center;
       gap: var(--sp-2);
+      flex: 0 0 auto;
     }
 
     .sp-heroCard__code{
       margin: var(--sp-0);
-    }
-
-    .sp-heroCard__code{
       overflow-x: auto;
     }
 
@@ -77,7 +83,7 @@
 
     .sp-heroCard__visual img{
       width: 100%;
-      max-width: 20rem;
+      max-width: 19rem;
       height: auto;
       display: block;
     }
