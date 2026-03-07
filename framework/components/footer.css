@@ -13,6 +13,12 @@
   align-items: center;
 }
 
+.sp-footer__brand .sp-footer__desc{
+  margin: var(--sp-0);
+  max-width: none;
+  color: var(--sp-subtle);
+}
+
 .sp-footer__mark{
   width: var(--sp-footer-mark);
   height: var(--sp-footer-mark);
