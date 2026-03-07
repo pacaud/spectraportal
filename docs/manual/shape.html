@@ -54,7 +54,7 @@
       gap: var(--sp-4);
       flex-wrap: wrap;
       color: var(--sp-text-muted);
-      font-size: var(--sp-fs-0);
+      font-size: var(--sp-fs-1);
     }
     .demo-footer__links{
       display: flex;
@@ -81,7 +81,7 @@
     .sp-table-wrap{
       width:100%;
       overflow:auto;
-      border-radius: var(--sp-r-4);
+      border-radius: var(--sp-radius-3);
       border: var(--sp-border-1);
     }
     .sp-token-table{
@@ -201,7 +201,7 @@
     .sp-header__center{justify-self:center;}
     .demo-header__right{justify-self:end;}
 
-    .sp-table-wrap{width:100%;overflow:auto;border-radius:var(--sp-r-4);border:var(--sp-border-1);padding:var(--sp-3);}
+    .sp-table-wrap{width:100%;overflow:auto;border-radius:var(--sp-radius-3);border:var(--sp-border-1);padding:var(--sp-3);}
     .sp-token-table{width:100%;border-collapse:separate;border-spacing:0;}
     .sp-token-table thead th{position:sticky;top:0;background:var(--sp-elev);z-index:2;border-bottom:var(--sp-border-1);}
     .sp-token-row td,.sp-token-row th{border-bottom:var(--sp-border-1);}
@@ -212,8 +212,16 @@
 
     .sp-chip{display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:28px;padding:0 var(--sp-3);
       border-radius:999px;border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);
-      font-size:var(--sp-fs-0);color:var(--sp-text);white-space:nowrap;}
+      font-size:var(--sp-fs-1);color:var(--sp-text);white-space:nowrap;}
     .sp-chip--ghost{background:color-mix(in srgb,var(--sp-elev) 60%,transparent);color:var(--sp-text-muted);}
+    .sp-radius-preview{
+      display:inline-block;
+      width:64px;
+      height:32px;
+      border:var(--sp-border-1);
+      background:var(--sp-surface);
+      box-shadow:var(--sp-shadow-1);
+    }
   </style>
 </head>
 
@@ -305,7 +313,7 @@
 
 <section class="sp-stack" style="gap: var(--sp-4);">
         <h2 class="sp-h3" style="margin:0;">Radius</h2>
-        <p class="sp-muted" style="margin:0;">Corner radius tokens used across cards, inputs, chips, etc.</p>
+        <p class="sp-muted" style="margin:0;">Corner radius tokens used across controls, cards, buttons, pills, and larger emphasis surfaces.</p>
         <div class="sp-table-wrap" role="region" aria-label="Radius tokens table">
           <table class="sp-table sp-token-table">
             <thead>
@@ -318,28 +326,34 @@
             </thead>
             <tbody>
 
-              <tr class="sp-tr sp-token-row" data-token="--sp-r-2">
-                <td class="sp-td"><span class="sp-chip">r-2</span></td>
-                <td class="sp-td"><code class="sp-code">--sp-r-2</code></td>
-                <td class="sp-td">Radius small</td>
+              <tr class="sp-tr sp-token-row" data-token="--sp-radius-1">
+                <td class="sp-td"><span class="sp-radius-preview" style="border-radius: var(--sp-radius-1);"></span></td>
+                <td class="sp-td"><code class="sp-code">--sp-radius-1</code></td>
+                <td class="sp-td">Tight corners for compact checks and radios.</td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
-              <tr class="sp-tr sp-token-row" data-token="--sp-r-3">
-                <td class="sp-td"><span class="sp-chip">r-3</span></td>
-                <td class="sp-td"><code class="sp-code">--sp-r-3</code></td>
-                <td class="sp-td">Radius default</td>
+              <tr class="sp-tr sp-token-row" data-token="--sp-radius-2">
+                <td class="sp-td"><span class="sp-radius-preview" style="border-radius: var(--sp-radius-2);"></span></td>
+                <td class="sp-td"><code class="sp-code">--sp-radius-2</code></td>
+                <td class="sp-td">Default field and control corners: inputs, nav items, swatches, and small controls.</td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
-              <tr class="sp-tr sp-token-row" data-token="--sp-r-4">
-                <td class="sp-td"><span class="sp-chip">r-4</span></td>
-                <td class="sp-td"><code class="sp-code">--sp-r-4</code></td>
-                <td class="sp-td">Radius card/table</td>
+              <tr class="sp-tr sp-token-row" data-token="--sp-radius-3">
+                <td class="sp-td"><span class="sp-radius-preview" style="border-radius: var(--sp-radius-3);"></span></td>
+                <td class="sp-td"><code class="sp-code">--sp-radius-3</code></td>
+                <td class="sp-td">Primary component corners: cards, buttons, badges, tabs, and drawers.</td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
-              <tr class="sp-tr sp-token-row" data-token="--sp-r-5">
-                <td class="sp-td"><span class="sp-chip">r-5</span></td>
-                <td class="sp-td"><code class="sp-code">--sp-r-5</code></td>
-                <td class="sp-td">Radius large</td>
+              <tr class="sp-tr sp-token-row" data-token="--sp-radius-4">
+                <td class="sp-td"><span class="sp-radius-preview" style="border-radius: var(--sp-radius-4);"></span></td>
+                <td class="sp-td"><code class="sp-code">--sp-radius-4</code></td>
+                <td class="sp-td">Larger emphasis corners, such as large button sizing.</td>
+                <td class="sp-td js-val"><code class="sp-code">—</code></td>
+              </tr>
+              <tr class="sp-tr sp-token-row" data-token="--sp-radius-round">
+                <td class="sp-td"><span class="sp-radius-preview" style="border-radius: var(--sp-radius-round);"></span></td>
+                <td class="sp-td"><code class="sp-code">--sp-radius-round</code></td>
+                <td class="sp-td">Fully rounded pills and switches.</td>
                 <td class="sp-td js-val"><code class="sp-code">—</code></td>
               </tr>
             </tbody>
@@ -408,13 +422,13 @@
 
 </main>
 
-<footer class="demo-footer" aria-label="Site footer">
+<footer class="sp-footer" aria-label="Site footer">
   <div class="sp-container">
     <section class="sp-card sp-card--surface" aria-label="Footer legal">
       <div class="sp-card__body">
         <div class="demo-footer__row">
           <div>
-            © <span id="y"></span> SpectraPortal. All rights reserved.
+            © <span id="y"></span> Spectra Portal. All rights reserved.
             <span class="demo-footer__credit">
               · Built by
               <a class="demo-footer__link" href="https://codecruncherstechnologies.com">
@@ -422,7 +436,6 @@
               </a>
             </span>
           </div>
-
           <nav class="demo-footer__links" aria-label="Legal">
             <a class="demo-footer__link" href="#">Privacy</a>
             <a class="demo-footer__link" href="#">Terms</a>
