@@ -17,22 +17,34 @@
     gap: var(--sp-6);
   }
 
-.sp-hero__split{
-  display: grid;
-  gap: var(--sp-6);
-  align-items: center;
-}
+  .sp-hero__split{
+    display: grid;
+    gap: var(--sp-6);
+    align-items: center;
+  }
 
-.sp-hero__visual{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .sp-hero__content{
+    display: grid;
+    gap: var(--sp-4);
+  }
 
-.sp-hero__visual img{
-  max-width: 100%;
-  height: auto;
-}
+  .sp-hero__visual{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sp-hero__visual img{
+    width: 100%;
+    max-width: 24rem;
+    height: auto;
+  }
+
+  @media (min-width: 64rem){
+    .sp-hero__split{
+      grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+    }
+  }
 </style>
 
 </head>
@@ -55,21 +67,27 @@
 </header>
 
 <section class="sp-hero">
-  <div class="sp-hero__inner sp-container sp-stack">
-    <p class="sp-muted">Docs hub</p>
-    <h1 class="sp-hero__title">Build with tokens. Compose with components.</h1>
-    <p class="sp-hero__sub">
-      Spectra’s docs focus on the rules: tokens first, components second, themes last.
-    </p>
+  <div class="sp-hero__inner sp-container sp-hero__split">
+    <div class="sp-hero__content">
+      <p class="sp-muted">Docs hub</p>
+      <h1 class="sp-hero__title">Build with tokens. Compose with components.</h1>
+      <p class="sp-hero__sub">
+        Spectra’s docs focus on the rules: tokens first, components second, themes last.
+      </p>
 
-    <article class="sp-card sp-card--elev">
-      <div class="sp-card__body sp-stack">
-        <h2 class="sp-h3">Quick start</h2>
-        <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
-        <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css"&gt;
+      <article class="sp-card sp-card--elev">
+        <div class="sp-card__body sp-stack">
+          <h2 class="sp-h3">Quick start</h2>
+          <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
+          <pre class="sp-code"><code>&lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css"&gt;
 &lt;link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css"&gt;</code></pre>
-      </div>
-    </article>
+        </div>
+      </article>
+    </div>
+
+    <div class="sp-hero__visual">
+      <img src="./spectraportal-hero_spark.svg" alt="" aria-hidden="true">
+    </div>
   </div>
 </section>
 
