@@ -119,7 +119,7 @@
       <p class="sp-muted">Docs hub</p>
       <h1 class="sp-hero__title">Build with tokens. Compose with components.</h1>
       <p class="sp-hero__sub">
-        Spectra’s docs focus on the rules: tokens first, components second, themes last.
+        Spectra’s manual now covers core tokens, responsive rules, layout patterns, shell structure, and essential components.
       </p>
     </div>
 
@@ -130,11 +130,11 @@
             <div class="sp-row sp-heroCard__heading">
               <h2 class="sp-h3">Quick start</h2>
               <div class="sp-heroCard__actions">
-                <button class="sp-btn sp-btn--soft" id="copy-quickstart" type="button">Copy</button>
+                <button class="sp-btn sp-btn--ghost" id="copy-quickstart" type="button">Copy</button>
               </div>
             </div>
 
-            <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles.</p>
+            <p class="sp-muted">Load Spectra base first, then a theme. Keep layout and component styling token-driven.</p>
 
             <pre class="sp-code sp-heroCard__code"><code id="quickstart-code-display">&lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>css/<wbr>spectra.min.css"&gt;
 &lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>themes/<wbr>theme.min.css"&gt;</code></pre>
@@ -161,17 +161,7 @@
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_color.svg" alt="Color token icon" class="docs-card__icon">
             <h3 class="sp-h4">Color</h3>
           </div>
-          <p class="sp-muted">Color and shadow tokens.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/shape.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Shape</h3>
-          </div>
-          <p class="sp-muted">Spacing, radius, borders.</p>
+          <p class="sp-muted">Semantic color, surfaces, text, borders, and status roles.</p>
         </div>
       </a>
 
@@ -181,7 +171,27 @@
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_type.svg" alt="Typography token icon" class="docs-card__icon">
             <h3 class="sp-h4">Type</h3>
           </div>
-          <p class="sp-muted">Typography scale and font tokens.</p>
+          <p class="sp-muted">Typography scale, readable defaults, and text roles.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/shape.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon">
+            <h3 class="sp-h4">Shape</h3>
+          </div>
+          <p class="sp-muted">Radius and border foundations for controls, cards, and surfaces.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/spacing.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Spacing token icon" class="docs-card__icon">
+            <h3 class="sp-h4">Spacing</h3>
+          </div>
+          <p class="sp-muted">Rhythm, gaps, padding, and the spacing scale.</p>
         </div>
       </a>
 
@@ -191,14 +201,70 @@
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Motion token icon" class="docs-card__icon">
             <h3 class="sp-h4">Motion</h3>
           </div>
-          <p class="sp-muted">Duration and easing tokens.</p>
+          <p class="sp-muted">Duration, easing, and calm system motion.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/shadows.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Shadow token icon" class="docs-card__icon">
+            <h3 class="sp-h4">Shadows</h3>
+          </div>
+          <p class="sp-muted">Elevation tokens for depth, layering, and surface separation.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/breakpoints.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Breakpoint icon" class="docs-card__icon">
+            <h3 class="sp-h4">Breakpoints</h3>
+          </div>
+          <p class="sp-muted">Responsive thresholds and how layouts shift across screens.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/layers.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Layers icon" class="docs-card__icon">
+            <h3 class="sp-h4">Layers</h3>
+          </div>
+          <p class="sp-muted">Z-index tokens for sticky UI, overlays, drawers, and toasts.</p>
         </div>
       </a>
     </div>
   </section>
 
   <section class="sp-stack">
-    <h2 class="sp-h2">Primitives</h2>
+    <h2 class="sp-h2">Patterns &amp; shell</h2>
+
+    <div class="docs-grid">
+      <a class="sp-card" href="./manual/layout.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Layout icon" class="docs-card__icon">
+            <h3 class="sp-h4">Layout</h3>
+          </div>
+          <p class="sp-muted">Containers, stacks, grids, and page-level rhythm.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/shell.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Shell icon" class="docs-card__icon">
+            <h3 class="sp-h4">Shell</h3>
+          </div>
+          <p class="sp-muted">Brand, header, nav, hero, and footer structure.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="sp-stack">
+    <h2 class="sp-h2">Components</h2>
 
     <div class="docs-grid">
       <a class="sp-card" href="./manual/forms.html">
@@ -207,7 +273,7 @@
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_forms.svg" alt="Forms token icon" class="docs-card__icon">
             <h3 class="sp-h4">Forms</h3>
           </div>
-          <p class="sp-muted">Inputs, controls, toggles.</p>
+          <p class="sp-muted">Inputs, controls, toggles, labels, and field states.</p>
         </div>
       </a>
 
@@ -217,7 +283,17 @@
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_buttons.svg" alt="Buttons token icon" class="docs-card__icon">
             <h3 class="sp-h4">Buttons</h3>
           </div>
-          <p class="sp-muted">Button states and helpers.</p>
+          <p class="sp-muted">Button variants, states, and inline action rules.</p>
+        </div>
+      </a>
+
+      <a class="sp-card" href="./manual/cards.html">
+        <div class="sp-card__body docs-card__body sp-stack">
+          <div class="sp-inline">
+            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Cards icon" class="docs-card__icon">
+            <h3 class="sp-h4">Cards</h3>
+          </div>
+          <p class="sp-muted">Surface containers, elevation, and content grouping.</p>
         </div>
       </a>
     </div>
@@ -225,9 +301,8 @@
 
   <section class="sp-card sp-card--elev">
     <div class="sp-card__body sp-stack">
-      <h2 class="sp-h2">Need visuals?</h2>
-      <p class="sp-muted">Open the demo hub for interactive previews and real component examples.</p>
-      <a class="sp-btn sp-btn--primary" href="./demos/index.html">Open demos</a>
+      <h2 class="sp-h2">What v0.1 covers</h2>
+      <p class="sp-muted">The manual now covers tokens, responsive behavior, layout patterns, shell structure, and the first essential components. Demos can layer on after the docs contract is stable.</p>
     </div>
   </section>
 
