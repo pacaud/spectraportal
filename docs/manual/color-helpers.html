@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Color helpers</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+
+<style>
+  body.docs-page{
+    display:flex;
+    flex-direction:column;
+    min-height:var(--sp-page-min-h);
+    background:var(--sp-bg);
+    color:var(--sp-text);
+  }
+  .docs-main{
+    flex:1;
+    display:grid;
+    gap:var(--sp-8);
+    padding-block:var(--sp-8) var(--sp-10);
+  }
+  .docs-intro{display:grid;gap:var(--sp-4);}
+  .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-section{display:grid;gap:var(--sp-4);}
+  .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+  .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+  .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+  .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+  .docs-token-table tr:last-child td{border-bottom:0;}
+  .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+  .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+  .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+  .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+  .docs-footer{padding-bottom:var(--sp-10);}
+  .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+  .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+  .docs-muted{color:var(--sp-muted);}
+  .docs-demo-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-demo-stack{display:grid;gap:var(--sp-4);}
+  .docs-chip-row{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-swatch-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));}
+  .docs-inline-list{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;}
+  .docs-stage{position:relative;overflow:hidden;min-height:18rem;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));padding:var(--sp-4);}
+  .docs-stage--compact{min-height:12rem;}
+  .docs-kbd{padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-elev);font-family:var(--sp-font-mono);font-size:var(--sp-fs-1);}
+  .docs-pill{display:inline-flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-round);background:var(--sp-elev);border:var(--sp-border-1);font-size:var(--sp-fs-1);}
+  @media (min-width: 52rem){
+    .docs-two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(16rem,0.9fr);gap:var(--sp-4);align-items:start;}
+  }
+</style>
+
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Helpers / color helpers</p>
+      <span class="sp-badge sp-badge--soft">Priority 2</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Color helpers</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">These classes are helper components for docs and demos. They preview color and shadow tokens without inline styles, but they are not a replacement for the semantic color docs.</p>
+  </section>
+  <section class="docs-section">
+  <h2 class="sp-h3">Helper API</h2>
+  
+<div class="docs-table-wrap" role="region" aria-label="Color helpers API table">
+  <table class="docs-token-table">
+    <thead><tr><th>Class</th><th>Used for</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>.sp-color-grid</code></td><td>Responsive preview grid</td><td>Auto-fit layout for swatches or token examples.</td></tr>
+      <tr><td><code>.sp-color-swatch</code></td><td>One preview item</td><td>Vertical stack for chip + label text.</td></tr>
+      <tr><td><code>.sp-color-meta</code></td><td>Label row</td><td>Pairs token name and supporting info.</td></tr>
+      <tr><td><code>.sp-color-chip</code></td><td>Base color chip</td><td>Bordered chip shell used with token modifiers.</td></tr>
+      <tr><td><code>.sp-color-chip--*</code></td><td>Token-backed fill</td><td>Includes background, surface, text, border, accent, and status helpers.</td></tr>
+      <tr><td><code>.sp-shadow-chip</code></td><td>Shadow preview shell</td><td>Neutral surfaced chip for shadow examples.</td></tr>
+      <tr><td><code>.sp-shadow-chip--1..3</code></td><td>Shadow previews</td><td>Applies the shipped shadow tokens to the shell.</td></tr>
+      <tr><td><code>.sp-color-link</code></td><td>Link-color preview</td><td>Uses the semantic link token and hover color.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Preview</h2>
+  
+<div class="sp-color-grid">
+  <div class="sp-color-swatch">
+    <div class="sp-color-chip sp-color-chip--bg"></div>
+    <div class="sp-color-meta"><code>--sp-bg</code><span class="sp-muted">page background</span></div>
+  </div>
+  <div class="sp-color-swatch">
+    <div class="sp-color-chip sp-color-chip--surface"></div>
+    <div class="sp-color-meta"><code>--sp-surface</code><span class="sp-muted">base surface</span></div>
+  </div>
+  <div class="sp-color-swatch">
+    <div class="sp-color-chip sp-color-chip--accent"></div>
+    <div class="sp-color-meta"><code>--sp-accent</code><span class="sp-muted">primary accent</span></div>
+  </div>
+  <div class="sp-color-swatch">
+    <div class="sp-color-chip sp-color-chip--success"></div>
+    <div class="sp-color-meta"><code>--sp-success</code><span class="sp-muted">success state</span></div>
+  </div>
+  <div class="sp-color-swatch">
+    <div class="sp-shadow-chip sp-shadow-chip--1"></div>
+    <div class="sp-color-meta"><code>--sp-shadow-1</code><span class="sp-muted">light elevation</span></div>
+  </div>
+  <div class="sp-color-swatch">
+    <div class="sp-shadow-chip sp-shadow-chip--3"></div>
+    <div class="sp-color-meta"><code>--sp-shadow-3</code><span class="sp-muted">strong elevation</span></div>
+  </div>
+</div>
+<p><a class="sp-color-link" href="#">Example link preview</a></p>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Typical markup</h2>
+  <pre class="docs-code"><code>&lt;div class="sp-color-swatch"&gt;
+  &lt;div class="sp-color-chip sp-color-chip--accent-2"&gt;&lt;/div&gt;
+  &lt;div class="sp-color-meta"&gt;
+    &lt;code&gt;--sp-accent-2&lt;/code&gt;
+    &lt;span class="sp-muted"&gt;secondary accent&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Guidance</h2>
+  <div class="docs-note"><p class="sp-muted">Use these in docs and demos to preview the system visually. Use the Color and Shadows docs for the token meanings and when-to-use guidance.</p></div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+
+</script>
+</body>
+</html>

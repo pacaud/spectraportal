@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Tabs</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+
+<style>
+  body.docs-page{
+    display:flex;
+    flex-direction:column;
+    min-height:var(--sp-page-min-h);
+    background:var(--sp-bg);
+    color:var(--sp-text);
+  }
+  .docs-main{
+    flex:1;
+    display:grid;
+    gap:var(--sp-8);
+    padding-block:var(--sp-8) var(--sp-10);
+  }
+  .docs-intro{display:grid;gap:var(--sp-4);}
+  .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-section{display:grid;gap:var(--sp-4);}
+  .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+  .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+  .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+  .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+  .docs-token-table tr:last-child td{border-bottom:0;}
+  .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+  .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+  .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+  .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+  .docs-footer{padding-bottom:var(--sp-10);}
+  .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+  .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+  .docs-muted{color:var(--sp-muted);}
+  .docs-demo-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-demo-stack{display:grid;gap:var(--sp-4);}
+  .docs-chip-row{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-swatch-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));}
+  .docs-inline-list{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;}
+  .docs-stage{position:relative;overflow:hidden;min-height:18rem;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));padding:var(--sp-4);}
+  .docs-stage--compact{min-height:12rem;}
+  .docs-kbd{padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-elev);font-family:var(--sp-font-mono);font-size:var(--sp-fs-1);}
+  .docs-pill{display:inline-flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-round);background:var(--sp-elev);border:var(--sp-border-1);font-size:var(--sp-fs-1);}
+  @media (min-width: 52rem){
+    .docs-two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(16rem,0.9fr);gap:var(--sp-4);align-items:start;}
+  }
+</style>
+
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Components / tabs</p>
+      <span class="sp-badge sp-badge--soft">Priority 2</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Tabs</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">Tabs are intentionally minimal in v0.1. Spectra ships the tab container and group shell; apps provide trigger styling, selected-state logic, and panel swapping.</p>
+  </section>
+  <section class="docs-section">
+  <h2 class="sp-h3">Tabs API</h2>
+  
+<div class="docs-table-wrap" role="region" aria-label="Tabs API table">
+  <table class="docs-token-table">
+    <thead><tr><th>Class / role</th><th>Used for</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>.sp-tabs</code></td><td>Tabs root</td><td>Simple width wrapper for a tab set.</td></tr>
+      <tr><td><code>.sp-tablist</code></td><td>Trigger group shell</td><td>Provides the surfaced row, padding, border, and radius around your tab triggers.</td></tr>
+      <tr><td><code>role=&quot;tablist&quot;</code></td><td>ARIA semantics</td><td>Apply to the trigger container.</td></tr>
+      <tr><td><code>role=&quot;tab&quot;</code></td><td>Each trigger</td><td>Use native buttons or links. In this demo, button variants show selected state.</td></tr>
+      <tr><td><code>role=&quot;tabpanel&quot;</code></td><td>Each panel</td><td>Hide inactive panels in app code.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Interactive preview</h2>
+  
+<div class="sp-card" data-tabs>
+  <div class="sp-card__body docs-demo-stack">
+    <div class="sp-tabs">
+      <div class="sp-tablist" role="tablist" aria-label="Example tabs">
+        <button class="sp-btn sp-btn--primary sp-btn--sm" type="button" role="tab" aria-selected="true" aria-controls="panel-foundation">Foundation</button>
+        <button class="sp-btn sp-btn--ghost sp-btn--sm" type="button" role="tab" aria-selected="false" aria-controls="panel-components">Components</button>
+        <button class="sp-btn sp-btn--ghost sp-btn--sm" type="button" role="tab" aria-selected="false" aria-controls="panel-guidance">Guidance</button>
+      </div>
+    </div>
+    <section class="sp-card sp-card--elev" id="panel-foundation" role="tabpanel">
+      <div class="sp-card__body docs-demo-stack">
+        <p class="sp-h4">Foundation</p>
+        <p class="sp-muted">The framework shell stays minimal so product teams can adapt tab triggers to their own density and interaction needs.</p>
+      </div>
+    </section>
+    <section class="sp-card sp-card--elev" id="panel-components" role="tabpanel" hidden>
+      <div class="sp-card__body docs-demo-stack">
+        <p class="sp-h4">Components</p>
+        <p class="sp-muted">Use tabs for sibling content that shares one context, not for major navigation between unrelated routes.</p>
+      </div>
+    </section>
+    <section class="sp-card sp-card--elev" id="panel-guidance" role="tabpanel" hidden>
+      <div class="sp-card__body docs-demo-stack">
+        <p class="sp-h4">Guidance</p>
+        <p class="sp-muted">If triggers need heavy visual treatment, own that at the app layer instead of forcing more states into the base tab shell too early.</p>
+      </div>
+    </section>
+  </div>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Typical markup</h2>
+  <pre class="docs-code"><code>&lt;div class="sp-tabs"&gt;
+  &lt;div class="sp-tablist" role="tablist" aria-label="Sections"&gt;
+    &lt;button class="sp-btn sp-btn--ghost sp-btn--sm" role="tab" aria-selected="true" aria-controls="panel-a"&gt;A&lt;/button&gt;
+    &lt;button class="sp-btn sp-btn--ghost sp-btn--sm" role="tab" aria-selected="false" aria-controls="panel-b"&gt;B&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Guidance</h2>
+  <div class="docs-note"><p class="sp-muted">Tabs are a light framework hook right now, not a full app-state component. That keeps the contract honest and leaves room to grow the trigger styling later without breaking consumers.</p></div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+
+document.querySelectorAll('[data-tabs]').forEach((tabsRoot) => {
+  const triggers = tabsRoot.querySelectorAll('[role="tab"]');
+  const panels = tabsRoot.querySelectorAll('[role="tabpanel"]');
+  const activate = (id) => {
+    triggers.forEach((trigger) => {
+      const selected = trigger.getAttribute('aria-controls') === id;
+      trigger.setAttribute('aria-selected', String(selected));
+      trigger.classList.toggle('sp-btn--primary', selected);
+      trigger.classList.toggle('sp-btn--ghost', !selected);
+    });
+    panels.forEach((panel) => {
+      panel.hidden = panel.id !== id;
+    });
+  };
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => activate(trigger.getAttribute('aria-controls')));
+  });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Toast</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+
+<style>
+  body.docs-page{
+    display:flex;
+    flex-direction:column;
+    min-height:var(--sp-page-min-h);
+    background:var(--sp-bg);
+    color:var(--sp-text);
+  }
+  .docs-main{
+    flex:1;
+    display:grid;
+    gap:var(--sp-8);
+    padding-block:var(--sp-8) var(--sp-10);
+  }
+  .docs-intro{display:grid;gap:var(--sp-4);}
+  .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-section{display:grid;gap:var(--sp-4);}
+  .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+  .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+  .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+  .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+  .docs-token-table tr:last-child td{border-bottom:0;}
+  .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+  .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+  .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+  .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+  .docs-footer{padding-bottom:var(--sp-10);}
+  .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+  .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+  .docs-muted{color:var(--sp-muted);}
+  .docs-demo-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-demo-stack{display:grid;gap:var(--sp-4);}
+  .docs-chip-row{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-swatch-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));}
+  .docs-inline-list{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;}
+  .docs-stage{position:relative;overflow:hidden;min-height:18rem;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));padding:var(--sp-4);}
+  .docs-stage--compact{min-height:12rem;}
+  .docs-kbd{padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-elev);font-family:var(--sp-font-mono);font-size:var(--sp-fs-1);}
+  .docs-pill{display:inline-flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-round);background:var(--sp-elev);border:var(--sp-border-1);font-size:var(--sp-fs-1);}
+  @media (min-width: 52rem){
+    .docs-two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(16rem,0.9fr);gap:var(--sp-4);align-items:start;}
+  }
+</style>
+
+<style>
+  .docs-toast-stage{position:relative;min-height:16rem;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));padding:var(--sp-4);overflow:hidden;}
+  .docs-toast-stage .sp-pos-bottom-right{position:absolute;bottom:var(--sp-4);right:var(--sp-4);}
+</style>
+
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Components / toast</p>
+      <span class="sp-badge sp-badge--soft">Priority 2</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Toast</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">Toasts are lightweight feedback surfaces. Spectra provides the toast content structure; pair it with cards and position helpers to pin messages where you need them.</p>
+  </section>
+  <section class="docs-section">
+  <h2 class="sp-h3">Toast API</h2>
+  
+<div class="docs-table-wrap" role="region" aria-label="Toast API table">
+  <table class="docs-token-table">
+    <thead><tr><th>Class</th><th>Used for</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>.sp-toast</code></td><td>Single toast body</td><td>Grid wrapper with max width and internal gap tokens.</td></tr>
+      <tr><td><code>.sp-toast-stack</code></td><td>Stack of toasts</td><td>Use when multiple messages can appear together.</td></tr>
+      <tr><td><code>.sp-toast__row</code></td><td>Top row layout</td><td>Spaces the title area and close action.</td></tr>
+      <tr><td><code>.sp-toast__title</code></td><td>Heading</td><td>Semibold title with tighter tracking.</td></tr>
+      <tr><td><code>.sp-toast__body</code></td><td>Message copy</td><td>Body text block for the main feedback.</td></tr>
+      <tr><td><code>.sp-toast__close</code></td><td>Dismiss action</td><td>Usually paired with a small ghost button.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Preview</h2>
+  
+<div class="docs-preview-grid">
+  <article class="sp-card">
+    <div class="sp-card__body docs-demo-stack">
+      <p class="sp-h4">Inline stack</p>
+      <div class="sp-toast-stack">
+        <article class="sp-card sp-card--elev sp-toast">
+          <div class="sp-card__body docs-demo-stack">
+            <div class="sp-toast__row">
+              <div class="docs-demo-stack">
+                <p class="sp-toast__title">Saved</p>
+                <p class="sp-toast__body sp-muted">Your theme preference was stored locally.</p>
+              </div>
+              <button class="sp-btn sp-btn--ghost sp-btn--sm sp-toast__close" type="button">Close</button>
+            </div>
+          </div>
+        </article>
+        <article class="sp-card sp-toast">
+          <div class="sp-card__body docs-demo-stack">
+            <p class="sp-toast__title">Build queued</p>
+            <p class="sp-toast__body sp-muted">Spectra will finish packaging after the current task ends.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </article>
+  <article class="sp-card">
+    <div class="sp-card__body docs-demo-stack">
+      <p class="sp-h4">Position helper pairing</p>
+      <div class="docs-toast-stage">
+        <div class="sp-pos-bottom-right">
+          <article class="sp-card sp-card--elev sp-toast">
+            <div class="sp-card__body docs-demo-stack">
+              <div class="sp-toast__row">
+                <div class="docs-demo-stack">
+                  <p class="sp-toast__title">Published</p>
+                  <p class="sp-toast__body sp-muted">Your docs bundle is ready to deploy.</p>
+                </div>
+                <button class="sp-btn sp-btn--ghost sp-btn--sm sp-toast__close" type="button">×</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Typical markup</h2>
+  <pre class="docs-code"><code>&lt;div class="sp-pos-bottom-right"&gt;
+  &lt;article class="sp-card sp-card--elev sp-toast"&gt;
+    &lt;div class="sp-card__body"&gt;
+      &lt;div class="sp-toast__row"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Guidance</h2>
+  <div class="docs-note"><p class="sp-muted">Keep toast copy brief and actionable. If the message needs paragraphs, decisions, or deep form content, it probably wants a drawer or modal instead.</p></div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+
+</script>
+</body>
+</html>

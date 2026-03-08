@@ -6,98 +6,31 @@
   <title>Spectra — Docs</title>
 
   <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
-
-  <!-- Load order: base then theme -->
   <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/css/spectra.min.css" />
   <link rel="stylesheet" href="https://cdn.spectraportal.dev/latest/themes/theme.min.css" />
 
   <style>
-    .sp-docs-main{
-      display: grid;
-      gap: var(--sp-6);
-    }
-
-    .sp-hero__inner{
-      display: grid;
-      gap: var(--sp-6);
-    }
-
-    .sp-hero__intro{
-      display: grid;
-      gap: var(--sp-3);
-    }
-
-    .sp-heroCard__split{
-      display: grid;
-      gap: var(--sp-5);
-      align-items: center;
-    }
-
-    .sp-heroCard .sp-card__body{
-      padding-block: var(--sp-5);
-    }
-
-    .sp-heroCard__content{
-      min-width: 0;
-      display: grid;
-      gap: var(--sp-4);
-    }
-
-    .sp-heroCard__heading{
-      align-items: center;
-      justify-content: flex-start;
-      gap: var(--sp-3);
-      flex-wrap: wrap;
-    }
-
-    .sp-heroCard__heading > *{
-      margin: var(--sp-0);
-    }
-
-    .sp-heroCard__actions{
-      display: flex;
-      align-items: center;
-      gap: var(--sp-2);
-      flex: 0 0 auto;
-    }
-
-    .sp-heroCard__code{
-      margin: var(--sp-0);
-      overflow-x: auto;
-    }
-
-    .sp-heroCard__code code{
-      white-space: pre-wrap;
-      overflow-wrap: normal;
-      word-break: normal;
-      font-size: var(--sp-fs-2);
-      line-height: var(--sp-lh-3);
-    }
-
-    .sp-heroCard__visual{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 0;
-    }
-
-    .sp-heroCard__visual img{
-      width: 100%;
-      max-width: 19rem;
-      height: auto;
-      display: block;
-    }
-
+    .sp-docs-main{display:grid;gap:var(--sp-8);}
+    .sp-hero__inner{display:grid;gap:var(--sp-6);}
+    .sp-hero__intro{display:grid;gap:var(--sp-3);}
+    .sp-heroCard__split{display:grid;gap:var(--sp-5);align-items:center;}
+    .sp-heroCard .sp-card__body{padding-block:var(--sp-5);}
+    .sp-heroCard__content{min-width:0;display:grid;gap:var(--sp-4);}
+    .sp-heroCard__heading{align-items:center;justify-content:flex-start;gap:var(--sp-3);flex-wrap:wrap;}
+    .sp-heroCard__heading > *{margin:var(--sp-0);}
+    .sp-heroCard__actions{display:flex;align-items:center;gap:var(--sp-2);flex:0 0 auto;}
+    .sp-heroCard__code{margin:var(--sp-0);overflow-x:auto;}
+    .sp-heroCard__code code{white-space:pre-wrap;overflow-wrap:normal;word-break:normal;font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+    .sp-heroCard__visual{display:flex;justify-content:center;align-items:center;min-width:0;}
+    .sp-heroCard__visual img{width:100%;max-width:19rem;height:auto;display:block;}
+    .docs-section-head{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:baseline;justify-content:space-between;}
+    .docs-section-head p{margin:var(--sp-0);}
     @media (min-width: 56rem){
-      .sp-heroCard__split{
-        grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.75fr);
-      }
+      .sp-heroCard__split{grid-template-columns:minmax(0, 1.45fr) minmax(16rem, 0.75fr);}
     }
   </style>
 </head>
-
 <body>
-
 <header class="sp-header">
   <div class="sp-header__inner sp-container sp-content">
     <a class="sp-brand" href="./index.html">
@@ -105,24 +38,18 @@
       <span class="sp-brand__text">Spectra</span>
       <span class="sp-badge sp-badge--soft">v0.1</span>
     </a>
-
     <nav class="sp-nav" aria-label="Primary">
       <a class="sp-nav__link is-active" href="./index.html">Docs</a>
-      <!--<a class="sp-nav__link" href="./demos/index.html">Demos</a>-->
     </nav>
   </div>
 </header>
-
 <section class="sp-hero">
   <div class="sp-hero__inner sp-container sp-content">
     <div class="sp-hero__intro">
       <p class="sp-muted">Docs hub</p>
       <h1 class="sp-hero__title">Build with tokens. Compose with components.</h1>
-      <p class="sp-hero__sub">
-        Spectra’s manual now covers core tokens, responsive rules, layout patterns, shell structure, and essential components.
-      </p>
+      <p class="sp-hero__sub">Spectra’s docs stay framework-first: tokens first, components second, themes last. v0.1 now covers the core fundamentals, shell patterns, and the first helper/component set.</p>
     </div>
-
     <article class="sp-card sp-card--elev sp-heroCard">
       <div class="sp-card__body">
         <div class="sp-heroCard__split">
@@ -133,13 +60,10 @@
                 <button class="sp-btn sp-btn--ghost" id="copy-quickstart" type="button">Copy</button>
               </div>
             </div>
-
-            <p class="sp-muted">Load Spectra base first, then a theme. Keep layout and component styling token-driven.</p>
-
+            <p class="sp-muted">Load Spectra base first, then a theme. Don’t hardcode styles in the page layer.</p>
             <pre class="sp-code sp-heroCard__code"><code id="quickstart-code-display">&lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>css/<wbr>spectra.min.css"&gt;
 &lt;link rel="stylesheet" href="https://cdn.<wbr>spectraportal.<wbr>dev/<wbr>v0.1/<wbr>themes/<wbr>theme.min.css"&gt;</code></pre>
           </div>
-
           <div class="sp-heroCard__visual" aria-hidden="true">
             <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="">
           </div>
@@ -148,166 +72,66 @@
     </article>
   </div>
 </section>
-
 <main id="docs" class="sp-container sp-content sp-docs-main">
-
   <section class="sp-stack">
-    <h2 class="sp-h2">Fundamentals</h2>
-
+    <div class="docs-section-head">
+      <h2 class="sp-h2">Fundamentals</h2>
+      <p class="sp-muted">Priority 1 foundation docs</p>
+    </div>
     <div class="docs-grid">
-      <a class="sp-card" href="./manual/color.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_color.svg" alt="Color token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Color</h3>
-          </div>
-          <p class="sp-muted">Semantic color, surfaces, text, borders, and status roles.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/type.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_type.svg" alt="Typography token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Type</h3>
-          </div>
-          <p class="sp-muted">Typography scale, readable defaults, and text roles.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/shape.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Shape</h3>
-          </div>
-          <p class="sp-muted">Radius and border foundations for controls, cards, and surfaces.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/spacing.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Spacing token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Spacing</h3>
-          </div>
-          <p class="sp-muted">Rhythm, gaps, padding, and the spacing scale.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/motion.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Motion token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Motion</h3>
-          </div>
-          <p class="sp-muted">Duration, easing, and calm system motion.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/shadows.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Shadow token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Shadows</h3>
-          </div>
-          <p class="sp-muted">Elevation tokens for depth, layering, and surface separation.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/breakpoints.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Breakpoint icon" class="docs-card__icon">
-            <h3 class="sp-h4">Breakpoints</h3>
-          </div>
-          <p class="sp-muted">Responsive thresholds and how layouts shift across screens.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/layers.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Layers icon" class="docs-card__icon">
-            <h3 class="sp-h4">Layers</h3>
-          </div>
-          <p class="sp-muted">Z-index tokens for sticky UI, overlays, drawers, and toasts.</p>
-        </div>
-      </a>
+      <a class="sp-card" href="./manual/color.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_color.svg" alt="Color token icon" class="docs-card__icon"><h3 class="sp-h4">Color</h3></div><p class="sp-muted">Semantic color tokens and surface roles.</p></div></a>
+      <a class="sp-card" href="./manual/type.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_type.svg" alt="Typography token icon" class="docs-card__icon"><h3 class="sp-h4">Type</h3></div><p class="sp-muted">Type scale, families, and readable rhythm.</p></div></a>
+      <a class="sp-card" href="./manual/shape.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Shape token icon" class="docs-card__icon"><h3 class="sp-h4">Shape</h3></div><p class="sp-muted">Radius and border rules.</p></div></a>
+      <a class="sp-card" href="./manual/spacing.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_shape.svg" alt="Spacing token icon" class="docs-card__icon"><h3 class="sp-h4">Spacing</h3></div><p class="sp-muted">Space scale and component rhythm.</p></div></a>
+      <a class="sp-card" href="./manual/motion.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Motion token icon" class="docs-card__icon"><h3 class="sp-h4">Motion</h3></div><p class="sp-muted">Duration and easing tokens.</p></div></a>
+      <a class="sp-card" href="./manual/shadows.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Shadows icon" class="docs-card__icon"><h3 class="sp-h4">Shadows</h3></div><p class="sp-muted">Elevation tokens and when to use them.</p></div></a>
+      <a class="sp-card" href="./manual/breakpoints.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Breakpoints icon" class="docs-card__icon"><h3 class="sp-h4">Breakpoints</h3></div><p class="sp-muted">Responsive thresholds and layout shifts.</p></div></a>
+      <a class="sp-card" href="./manual/layers.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Layers icon" class="docs-card__icon"><h3 class="sp-h4">Layers</h3></div><p class="sp-muted">Overlay stacking and z-index guidance.</p></div></a>
     </div>
   </section>
-
   <section class="sp-stack">
-    <h2 class="sp-h2">Patterns &amp; shell</h2>
-
+    <div class="docs-section-head">
+      <h2 class="sp-h2">Patterns &amp; shell</h2>
+      <p class="sp-muted">Layout contracts and app frame pieces</p>
+    </div>
     <div class="docs-grid">
-      <a class="sp-card" href="./manual/layout.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Layout icon" class="docs-card__icon">
-            <h3 class="sp-h4">Layout</h3>
-          </div>
-          <p class="sp-muted">Containers, stacks, grids, and page-level rhythm.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/shell.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Shell icon" class="docs-card__icon">
-            <h3 class="sp-h4">Shell</h3>
-          </div>
-          <p class="sp-muted">Brand, header, nav, hero, and footer structure.</p>
-        </div>
-      </a>
+      <a class="sp-card" href="./manual/layout.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Layout icon" class="docs-card__icon"><h3 class="sp-h4">Layout</h3></div><p class="sp-muted">Containers, reading widths, and stack rhythm.</p></div></a>
+      <a class="sp-card" href="./manual/shell.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Shell icon" class="docs-card__icon"><h3 class="sp-h4">Shell</h3></div><p class="sp-muted">Brand, nav, header, hero, and footer pieces.</p></div></a>
     </div>
   </section>
-
   <section class="sp-stack">
-    <h2 class="sp-h2">Components</h2>
-
+    <div class="docs-section-head">
+      <h2 class="sp-h2">Components</h2>
+      <p class="sp-muted">Priority 1 and Priority 2 component docs</p>
+    </div>
     <div class="docs-grid">
-      <a class="sp-card" href="./manual/forms.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_forms.svg" alt="Forms token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Forms</h3>
-          </div>
-          <p class="sp-muted">Inputs, controls, toggles, labels, and field states.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/buttons.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_buttons.svg" alt="Buttons token icon" class="docs-card__icon">
-            <h3 class="sp-h4">Buttons</h3>
-          </div>
-          <p class="sp-muted">Button variants, states, and inline action rules.</p>
-        </div>
-      </a>
-
-      <a class="sp-card" href="./manual/cards.html">
-        <div class="sp-card__body docs-card__body sp-stack">
-          <div class="sp-inline">
-            <img src="https://assets.spectraportal.dev/spectraportal/spectraportal-hero_spark.svg" alt="Cards icon" class="docs-card__icon">
-            <h3 class="sp-h4">Cards</h3>
-          </div>
-          <p class="sp-muted">Surface containers, elevation, and content grouping.</p>
-        </div>
-      </a>
+      <a class="sp-card" href="./manual/forms.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_forms.svg" alt="Forms icon" class="docs-card__icon"><h3 class="sp-h4">Forms</h3></div><p class="sp-muted">Inputs, controls, and toggles.</p></div></a>
+      <a class="sp-card" href="./manual/buttons.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_buttons.svg" alt="Buttons icon" class="docs-card__icon"><h3 class="sp-h4">Buttons</h3></div><p class="sp-muted">Button variants and state behavior.</p></div></a>
+      <a class="sp-card" href="./manual/cards.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Cards icon" class="docs-card__icon"><h3 class="sp-h4">Cards</h3></div><p class="sp-muted">Surface containers for grouped content.</p></div></a>
+      <a class="sp-card" href="./manual/badge.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Badge icon" class="docs-card__icon"><h3 class="sp-h4">Badge</h3></div><p class="sp-muted">Tiny inline state and version markers.</p></div></a>
+      <a class="sp-card" href="./manual/drawer.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Drawer icon" class="docs-card__icon"><h3 class="sp-h4">Drawer</h3></div><p class="sp-muted">Overlay panels with placement and backdrop.</p></div></a>
+      <a class="sp-card" href="./manual/tabs.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-wave.svg" alt="Tabs icon" class="docs-card__icon"><h3 class="sp-h4">Tabs</h3></div><p class="sp-muted">Minimal tab shell with app-owned state.</p></div></a>
+      <a class="sp-card" href="./manual/toast.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Toast icon" class="docs-card__icon"><h3 class="sp-h4">Toast</h3></div><p class="sp-muted">Lightweight feedback surfaces for transient messages.</p></div></a>
     </div>
   </section>
-
+  <section class="sp-stack">
+    <div class="docs-section-head">
+      <h2 class="sp-h2">Helpers &amp; utilities</h2>
+      <p class="sp-muted">Docs-facing helpers and tiny escape hatches</p>
+    </div>
+    <div class="docs-grid">
+      <a class="sp-card" href="./manual/color-helpers.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-token_color.svg" alt="Color helpers icon" class="docs-card__icon"><h3 class="sp-h4">Color helpers</h3></div><p class="sp-muted">Swatches, shadow chips, and link previews for docs/demo use.</p></div></a>
+      <a class="sp-card" href="./manual/utilities.html"><div class="sp-card__body docs-card__body sp-stack"><div class="sp-inline"><img src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="Utilities icon" class="docs-card__icon"><h3 class="sp-h4">Utilities overview</h3></div><p class="sp-muted">Visibility, text, spacing, layout, code, position, and helper classes.</p></div></a>
+    </div>
+  </section>
   <section class="sp-card sp-card--elev">
     <div class="sp-card__body sp-stack">
-      <h2 class="sp-h2">What v0.1 covers</h2>
-      <p class="sp-muted">The manual now covers tokens, responsive behavior, layout patterns, shell structure, and the first essential components. Demos can layer on after the docs contract is stable.</p>
+      <h2 class="sp-h2">Current coverage</h2>
+      <p class="sp-muted">This docs pass is now covering the core foundation, shell patterns, and the first helper-heavy component set. The next sync pass can trim overlap, tighten naming, and add deeper demos.</p>
+      <p class="sp-muted">A few pages still need cleanup where older wording overlaps newer docs, but the map now matches the site much more closely.</p>
     </div>
   </section>
-
 </main>
-
 <footer class="sp-footer" aria-label="Site footer">
   <div class="sp-footer__inner sp-container sp-content">
     <section class="sp-card">
@@ -328,31 +152,22 @@
     </section>
   </div>
 </footer>
-
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
-
   const copyButton = document.getElementById("copy-quickstart");
-  const quickstartCode = `<link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css">
+  const quickstartText = `<link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css">
 <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css">`;
-
-  if (copyButton) {
-    copyButton.addEventListener("click", async () => {
-      const originalLabel = copyButton.textContent;
-
-      try {
-        await navigator.clipboard.writeText(quickstartCode);
-        copyButton.textContent = "Copied";
-      } catch (error) {
-        copyButton.textContent = "Failed";
-      }
-
-      window.setTimeout(() => {
-        copyButton.textContent = originalLabel;
-      }, 1500);
-    });
-  }
+  copyButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(quickstartText);
+      const original = copyButton.textContent;
+      copyButton.textContent = "Copied";
+      setTimeout(() => { copyButton.textContent = original; }, 1200);
+    } catch (error) {
+      copyButton.textContent = "Copy failed";
+      setTimeout(() => { copyButton.textContent = "Copy"; }, 1200);
+    }
+  });
 </script>
-
 </body>
 </html>

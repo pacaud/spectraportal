@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra — Drawer</title>
+  <script>
+  (() => {
+    const key = "spectra_theme";
+    const t = localStorage.getItem(key) || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css" />
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css" />
+
+<style>
+  body.docs-page{
+    display:flex;
+    flex-direction:column;
+    min-height:var(--sp-page-min-h);
+    background:var(--sp-bg);
+    color:var(--sp-text);
+  }
+  .docs-main{
+    flex:1;
+    display:grid;
+    gap:var(--sp-8);
+    padding-block:var(--sp-8) var(--sp-10);
+  }
+  .docs-intro{display:grid;gap:var(--sp-4);}
+  .docs-intro__meta{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-intro__actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-section{display:grid;gap:var(--sp-4);}
+  .docs-preview-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));}
+  .docs-table-wrap{width:100%;overflow:auto;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-token-table{width:100%;border-collapse:separate;border-spacing:0;}
+  .docs-token-table th,.docs-token-table td{padding:var(--sp-3);text-align:left;vertical-align:top;border-bottom:var(--sp-border-1);}
+  .docs-token-table th{background:var(--sp-elev);position:sticky;top:0;z-index:var(--sp-z-sticky);}
+  .docs-token-table tr:last-child td{border-bottom:0;}
+  .docs-token-table code{font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);overflow-wrap:anywhere;word-break:break-word;}
+  .docs-preview-chip{display:inline-flex;align-items:center;justify-content:center;min-height:2rem;padding-inline:var(--sp-3);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-surface-2);min-width:5rem;}
+  .docs-note{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:color-mix(in srgb, var(--sp-elev) 75%, transparent);}
+  .docs-code{margin:0;padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface-2);overflow:auto;font-family:var(--sp-font-mono);font-size:var(--sp-fs-2);line-height:var(--sp-lh-3);}
+  .docs-footer{padding-bottom:var(--sp-10);}
+  .docs-footer__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--sp-4);align-items:center;}
+  .docs-footer__links{display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;}
+  .docs-muted{color:var(--sp-muted);}
+  .docs-demo-card{padding:var(--sp-4);border-radius:var(--sp-radius-3);border:var(--sp-border-1);background:var(--sp-surface);box-shadow:var(--sp-shadow-1);}
+  .docs-demo-stack{display:grid;gap:var(--sp-4);}
+  .docs-chip-row{display:flex;flex-wrap:wrap;gap:var(--sp-3);align-items:center;}
+  .docs-swatch-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));}
+  .docs-inline-list{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;}
+  .docs-stage{position:relative;overflow:hidden;min-height:18rem;border:var(--sp-border-1);border-radius:var(--sp-radius-3);background:linear-gradient(180deg,var(--sp-surface),var(--sp-bg));padding:var(--sp-4);}
+  .docs-stage--compact{min-height:12rem;}
+  .docs-kbd{padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-2);border:var(--sp-border-1);background:var(--sp-elev);font-family:var(--sp-font-mono);font-size:var(--sp-fs-1);}
+  .docs-pill{display:inline-flex;align-items:center;gap:var(--sp-1);padding:var(--sp-1) var(--sp-2);border-radius:var(--sp-radius-round);background:var(--sp-elev);border:var(--sp-border-1);font-size:var(--sp-fs-1);}
+  @media (min-width: 52rem){
+    .docs-two-col{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(16rem,0.9fr);gap:var(--sp-4);align-items:start;}
+  }
+</style>
+
+<style>
+  .docs-drawer-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3);}
+  .docs-drawer-copy{max-width:34rem;}
+</style>
+
+</head>
+<body class="docs-page">
+<header class="sp-header">
+  <div class="sp-header__inner sp-container sp-content">
+    <a class="sp-brand" href="../index.html">
+      <img class="sp-brand__logo" src="https://assets.spectraportal.dev/spectraportal/spectraportal-favicon.svg" alt="" aria-hidden="true">
+      <span class="sp-brand__text">Spectra</span>
+      <span class="sp-badge sp-badge--soft">v0.1</span>
+    </a>
+    <nav class="sp-nav" aria-label="Primary">
+      <a class="sp-nav__link is-active" href="../index.html">Docs</a>
+    </nav>
+  </div>
+</header>
+<main class="sp-container sp-content docs-main">
+  <section class="docs-intro">
+    <div class="docs-intro__meta">
+      <p class="sp-muted">Components / drawer</p>
+      <span class="sp-badge sp-badge--soft">Priority 2</span>
+    </div>
+    <div class="docs-intro__actions">
+      <h1 class="sp-h2">Drawer</h1>
+      <a class="sp-link" href="../index.html">Back to docs</a>
+    </div>
+    <p class="sp-muted">Drawers are token-driven overlay panels. Spectra ships the shell, placements, motion, and backdrop. App code handles open state and focus flow.</p>
+  </section>
+  <section class="docs-section">
+  <h2 class="sp-h3">Drawer API</h2>
+  
+<div class="docs-table-wrap" role="region" aria-label="Drawer API table">
+  <table class="docs-token-table">
+    <thead><tr><th>Class / hook</th><th>Used for</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>.sp-drawer-wrap</code></td><td>Overlay wrapper</td><td>Fixed viewport layer. Toggle <code>data-open=&quot;true&quot;</code> to enable interaction.</td></tr>
+      <tr><td><code>.sp-drawer-backdrop</code></td><td>Dismiss layer</td><td>Uses <code>--sp-backdrop</code> and motion tokens for fade in/out.</td></tr>
+      <tr><td><code>.sp-drawer</code></td><td>Drawer panel</td><td>Provides surfaced container, border, radius, and slide transition.</td></tr>
+      <tr><td><code>.sp-drawer--right</code> / <code>--left</code> / <code>--top</code> / <code>--bottom</code></td><td>Placement</td><td>Choose one placement modifier per drawer instance.</td></tr>
+      <tr><td><code>.sp-drawer__header</code></td><td>Top bar</td><td>Standard header spacing and divider.</td></tr>
+      <tr><td><code>.sp-drawer__title</code></td><td>Heading</td><td>Bold title inside the header row.</td></tr>
+      <tr><td><code>.sp-drawer__body</code></td><td>Scrollable content</td><td>Main content area. Safe-area padding is applied per placement.</td></tr>
+      <tr><td><code>.sp-drawer__footer</code></td><td>Action area</td><td>Bottom action row with divider.</td></tr>
+      <tr><td><code>.sp-drawer__footer--flat</code></td><td>Flat footer</td><td>Removes the divider when the footer should feel merged into the body.</td></tr>
+      <tr><td><code>body.sp-scroll-lock</code></td><td>Scroll lock</td><td>Optional helper class to keep the page from moving behind an open drawer.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Interactive preview</h2>
+  
+<div class="docs-two-col">
+  <article class="sp-card">
+    <div class="sp-card__body docs-demo-stack">
+      <p class="sp-h4">Open the demo drawer</p>
+      <div class="docs-drawer-actions">
+        <button class="sp-btn" type="button" data-open-drawer="right">Right</button>
+        <button class="sp-btn" type="button" data-open-drawer="left">Left</button>
+        <button class="sp-btn" type="button" data-open-drawer="top">Top</button>
+        <button class="sp-btn" type="button" data-open-drawer="bottom">Bottom</button>
+      </div>
+      <p class="sp-muted docs-drawer-copy">The demo uses one drawer shell and swaps the placement modifier. Production apps should also manage focus return and keyboard dismissal.</p>
+    </div>
+  </article>
+  <div class="docs-note">
+    <p class="sp-h4">Contract</p>
+    <p class="sp-muted">Spectra owns the shell, placement, motion, and safe-area padding. Your app owns state, focus management, and what content lives inside the drawer.</p>
+  </div>
+</div>
+<div class="sp-drawer-wrap" data-docs-drawer-wrap data-open="false" aria-hidden="true">
+  <button class="sp-drawer-backdrop" type="button" data-close-drawer aria-label="Close drawer"></button>
+  <aside class="sp-drawer sp-drawer--right" role="dialog" aria-modal="true" aria-labelledby="docs-drawer-title">
+    <div class="sp-drawer__header">
+      <h3 class="sp-drawer__title" id="docs-drawer-title">Right drawer</h3>
+      <button class="sp-btn sp-btn--ghost sp-btn--sm" type="button" data-close-drawer>Close</button>
+    </div>
+    <div class="sp-drawer__body docs-demo-stack">
+      <p class="sp-muted">Use drawers for secondary flows: filters, settings, compact navigation, or task details that should not replace the page.</p>
+      <ul class="sp-code-list">
+        <li><code>.sp-drawer-wrap</code><span>viewport overlay wrapper</span></li>
+        <li><code>.sp-drawer-backdrop</code><span>dismiss layer</span></li>
+        <li><code>.sp-drawer__body</code><span>scrollable content region</span></li>
+      </ul>
+    </div>
+    <div class="sp-drawer__footer">
+      <div class="sp-row">
+        <button class="sp-btn sp-btn--primary" type="button">Apply</button>
+        <button class="sp-btn" type="button" data-close-drawer>Cancel</button>
+      </div>
+    </div>
+  </aside>
+</div>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Typical markup</h2>
+  <pre class="docs-code"><code>&lt;div class="sp-drawer-wrap" data-open="false"&gt;
+  &lt;button class="sp-drawer-backdrop" type="button" aria-label="Close drawer"&gt;&lt;/button&gt;
+  &lt;aside class="sp-drawer sp-drawer--right" role="dialog" aria-modal="true"&gt;
+    &lt;div class="sp-drawer__header"&gt;...&lt;/div&gt;
+    &lt;div class="sp-drawer__body"&gt;...&lt;/div&gt;
+    &lt;div class="sp-drawer__footer"&gt;...&lt;/div&gt;
+  &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section class="docs-section">
+  <h2 class="sp-h3">Guidance</h2>
+  <div class="docs-note"><p class="sp-muted">Keep only one active drawer per viewport. If the content becomes a full page workflow, move it to a route or modal instead of nesting more overlay layers.</p></div>
+</section>
+
+</main>
+<footer class="docs-footer">
+  <div class="sp-container sp-content">
+    <section class="sp-card">
+      <div class="sp-card__body docs-footer__row">
+        <p class="sp-muted">© <span class="js-year"></span> Spectra Portal. All rights reserved.</p>
+        <nav class="docs-footer__links" aria-label="Footer links">
+          <a class="sp-link" href="../index.html">Docs index</a>
+          <a class="sp-link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+        </nav>
+      </div>
+    </section>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.js-year').forEach((node) => node.textContent = new Date().getFullYear());
+
+const drawerWrap = document.querySelector('[data-docs-drawer-wrap]');
+const drawerPanel = drawerWrap?.querySelector('.sp-drawer');
+const drawerTitle = drawerWrap?.querySelector('.sp-drawer__title');
+const openDrawer = (placement) => {
+  if (!drawerWrap || !drawerPanel) return;
+  drawerPanel.className = `sp-drawer sp-drawer--${placement}`;
+  if (drawerTitle) drawerTitle.textContent = `${placement[0].toUpperCase()}${placement.slice(1)} drawer`;
+  drawerWrap.setAttribute('data-open', 'true');
+  document.body.classList.add('sp-scroll-lock');
+};
+const closeDrawer = () => {
+  if (!drawerWrap) return;
+  drawerWrap.setAttribute('data-open', 'false');
+  document.body.classList.remove('sp-scroll-lock');
+};
+document.querySelectorAll('[data-open-drawer]').forEach((btn) => {
+  btn.addEventListener('click', () => openDrawer(btn.getAttribute('data-open-drawer')));
+});
+drawerWrap?.querySelectorAll('[data-close-drawer]').forEach((node) => {
+  node.addEventListener('click', closeDrawer);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeDrawer();
+});
+
+</script>
+</body>
+</html>
