@@ -9,13 +9,16 @@ set -euo pipefail
 # - assets:    deploy ./assets -> $WEBROOT_ASSETS
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
 # - dev:       deploy ./docs -> $WEBROOT_DEV
-# - gate:      deploy ./gate -> $WEBROOT_GATE
-# - docs:      compatibility alias for dev
+# - gate:       deploy ./gate -> $WEBROOT_GATE
+# - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
+# - docs:       compatibility alias for dev
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
 #   scripts/sp_deploy.sh gate --repo /path/to/repo
 #   scripts/sp_deploy.sh gate --repo /path/to/repo --src gate
+#   scripts/sp_deploy.sh gate-draft --repo /path/to/repo
+#   scripts/sp_deploy.sh gate-draft --repo /path/to/repo --src gate/drafts
 #   scripts/sp_deploy.sh dev --repo /path/to/repo --src docs
 # ============================================================
 
@@ -30,11 +33,12 @@ Targets:
   framework   Deploy repo/framework by default
   dev         Deploy repo/docs by default
   gate        Deploy repo/gate by default
-  docs        Alias of dev
+  gate-draft   Deploy repo/gate/drafts by default
+  docs         Alias of dev
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
-  --src PATH  Source folder override for assets/framework/dev/gate
+  --src PATH  Source folder override for assets/framework/dev/gate/gate-draft
               Absolute paths are allowed; relative paths are resolved under --repo
 EOF
 }
@@ -94,6 +98,8 @@ fi
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
 : "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
 : "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
+: "${WORKSPACE_ROOT:=/srv/spectraportal/workspace/site}"
+: "${WORKSPACE_GATE_DRAFTS:=$WORKSPACE_ROOT/gate/drafts}"
 
 if [[ -n "$REPO_OVERRIDE" ]]; then
   REPO_ROOT="$(cd "$REPO_OVERRIDE" && pwd)"
@@ -213,6 +219,25 @@ if [[ "$TARGET" == "gate" ]]; then
   exit 0
 fi
 
+if [[ "$TARGET" == "gate-draft" ]]; then
+  GATE_DRAFT_SRC="$(resolve_src gate/drafts)"
+  echo "[deploy] gate-draft -> workspace gate drafts"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $GATE_DRAFT_SRC"
+  echo "[deploy] dst:  $WORKSPACE_GATE_DRAFTS"
+
+  if [[ ! -d "$GATE_DRAFT_SRC" ]]; then
+    echo "[deploy] ERROR: missing gate draft source: $GATE_DRAFT_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$WORKSPACE_GATE_DRAFTS"
+  rsync_push "$GATE_DRAFT_SRC/" "$REMOTE:$WORKSPACE_GATE_DRAFTS/"
+
+  echo "[deploy] gate-draft done"
+  exit 0
+fi
+
 if [[ "$TARGET" == "dev" ]]; then
   DOCS_SRC="$(resolve_src docs)"
   echo "[deploy] dev -> spectraportal.dev"
@@ -232,6 +257,6 @@ if [[ "$TARGET" == "dev" ]]; then
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | dev | gate" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | gate-draft" >&2
 echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1
