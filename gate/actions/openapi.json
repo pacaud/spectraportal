@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Spectra Gate API",
-    "description": "Read-only access to Spectra Gate health checks, workspaces, workspace file listings, and file reads.",
+    "description": "Read access to Spectra Gate health checks, workspaces, workspace file listings, and file reads, plus drafts-only write access.",
     "version": "1.0.0"
   },
   "servers": [
@@ -108,13 +108,17 @@
                       }
                     }
                   },
-                  "required": ["workspaces"],
+                  "required": [
+                    "workspaces"
+                  ],
                   "additionalProperties": true
                 },
                 "examples": {
                   "default": {
                     "value": {
-                      "workspaces": ["gate"]
+                      "workspaces": [
+                        "gate"
+                      ]
                     }
                   }
                 }
@@ -237,7 +241,11 @@
                       "type": "string"
                     }
                   },
-                  "required": ["content", "path", "ws"],
+                  "required": [
+                    "content",
+                    "path",
+                    "ws"
+                  ],
                   "additionalProperties": true
                 },
                 "examples": {
@@ -251,6 +259,97 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/workspace/drafts/write": {
+      "post": {
+        "operationId": "writeWorkspaceDraft",
+        "summary": "Create or overwrite a file in the workspace drafts directory",
+        "description": "Writes a file only inside the drafts directory for a workspace. The backend must enforce drafts-only path restrictions.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "ws",
+                  "path",
+                  "content"
+                ],
+                "properties": {
+                  "ws": {
+                    "type": "string",
+                    "description": "Workspace name, for example gate."
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "Relative path inside drafts, for example hello.md or notes/test.md."
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "Full file contents to write."
+                  }
+                },
+                "additionalProperties": false
+              },
+              "examples": {
+                "hello": {
+                  "value": {
+                    "ws": "gate",
+                    "path": "hello.md",
+                    "content": "# Hello\nUpdated from drafts-only write route.\n"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Draft file written successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "description": "Boolean success flag."
+                    },
+                    "ws": {
+                      "type": "string",
+                      "description": "Workspace name."
+                    },
+                    "path": {
+                      "type": "string",
+                      "description": "Resolved workspace-relative path, for example drafts/hello.md."
+                    },
+                    "bytes": {
+                      "type": "integer",
+                      "description": "Number of bytes written, if returned by the API."
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "path"
+                  ],
+                  "additionalProperties": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "403": {
+            "description": "Write outside drafts is not allowed"
+          },
+          "404": {
+            "description": "Workspace not found"
           }
         }
       }
