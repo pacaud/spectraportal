@@ -1,1 +1,315 @@
-https://gate.spectraportal.dev/actions/openapi.json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Spectra Gate API",
+    "description": "Entry-point API for gate.spectraportal.dev. Provides gate health, upstream API health, and a controlled workspace surface for listing, reading, creating, updating, and deleting files.",
+    "version": "0.2.0"
+  },
+  "servers": [
+    {
+      "url": "https://gate.spectraportal.dev"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "getGateHealth",
+        "summary": "Check gate front-door health",
+        "description": "Returns the health status of the public gate/front-door layer served by nginx.",
+        "responses": {
+          "200": {
+            "description": "Gate is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "operationId": "getApiHealth",
+        "summary": "Check upstream API health",
+        "description": "Returns the health status of the upstream workspace/API behind the gate.",
+        "responses": {
+          "200": {
+            "description": "API is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workspace/files": {
+      "get": {
+        "operationId": "listWorkspaceFiles",
+        "summary": "List workspace files",
+        "description": "Returns files and folders inside the workspace. Use dir to scope the listing.",
+        "parameters": [
+          {
+            "name": "dir",
+            "in": "query",
+            "required": false,
+            "description": "Relative workspace directory to list. Leave empty for the workspace root.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace listing returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/workspace/file": {
+      "get": {
+        "operationId": "readWorkspaceFile",
+        "summary": "Read a workspace file",
+        "description": "Reads a single text file from the workspace by relative path.",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "description": "Relative file path inside the workspace.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace file returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createWorkspaceFile",
+        "summary": "Create a workspace file",
+        "description": "Creates a new text file in the workspace. Use this when a file does not already exist or when you want explicit create behavior.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WriteFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Workspace file created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WriteFileResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateWorkspaceFile",
+        "summary": "Overwrite or update a workspace file",
+        "description": "Writes full text content to a workspace file, replacing the previous contents.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WriteFileRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Workspace file updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WriteFileResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteWorkspaceFile",
+        "summary": "Delete a workspace file",
+        "description": "Deletes a single file from the workspace by relative path.",
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "description": "Relative file path inside the workspace.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace file deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "Whether the service is healthy."
+          },
+          "service": {
+            "type": "string",
+            "description": "Service name."
+          }
+        }
+      },
+      "FileListItem": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Relative path inside the workspace."
+          },
+          "name": {
+            "type": "string",
+            "description": "File or folder name."
+          },
+          "type": {
+            "type": "string",
+            "description": "Entry type.",
+            "enum": ["file", "directory"]
+          },
+          "size": {
+            "type": "integer",
+            "description": "Size in bytes when known."
+          }
+        }
+      },
+      "FileListResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "dir": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileListItem"
+            }
+          }
+        }
+      },
+      "FileResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string",
+            "description": "Text contents of the file."
+          }
+        }
+      },
+      "WriteFileRequest": {
+        "type": "object",
+        "required": ["path", "content"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Relative file path inside the workspace."
+          },
+          "content": {
+            "type": "string",
+            "description": "Full text contents to write."
+          }
+        }
+      },
+      "WriteFileResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "path": {
+            "type": "string"
+          },
+          "written": {
+            "type": "boolean"
+          }
+        }
+      },
+      "DeleteResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ok": {
+            "type": "boolean"
+          },
+          "path": {
+            "type": "string"
+          },
+          "deleted": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
