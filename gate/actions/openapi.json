@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Spectra Gate API",
-    "description": "Entry-point API for gate.spectraportal.dev. Provides gate health, upstream API health, and a controlled workspace surface for listing, reading, creating, updating, and deleting files.",
+    "description": "Entry-point API for gate.spectraportal.dev. Provides gate health and workspace actions for listing, reading, creating, updating, and deleting files.",
     "version": "0.2.0"
   },
   "servers": [
@@ -14,8 +14,8 @@
     "/health": {
       "get": {
         "operationId": "getGateHealth",
-        "summary": "Check gate front-door health",
-        "description": "Returns the health status of the public gate/front-door layer served by nginx.",
+        "summary": "Check gate health",
+        "description": "Returns the health status of the public gate/front-door layer.",
         "responses": {
           "200": {
             "description": "Gate is healthy",
@@ -30,14 +30,14 @@
         }
       }
     },
-    "/api/health": {
+    "/workspace/health": {
       "get": {
-        "operationId": "getApiHealth",
-        "summary": "Check upstream API health",
-        "description": "Returns the health status of the upstream workspace/API behind the gate.",
+        "operationId": "getWorkspaceHealth",
+        "summary": "Check workspace health",
+        "description": "Returns the health status of the workspace service behind the gate.",
         "responses": {
           "200": {
-            "description": "API is healthy",
+            "description": "Workspace is healthy",
             "content": {
               "application/json": {
                 "schema": {
@@ -49,7 +49,7 @@
         }
       }
     },
-    "/api/workspace/files": {
+    "/workspace/files": {
       "get": {
         "operationId": "listWorkspaceFiles",
         "summary": "List workspace files",
@@ -79,7 +79,7 @@
         }
       }
     },
-    "/api/workspace/file": {
+    "/workspace/file": {
       "get": {
         "operationId": "readWorkspaceFile",
         "summary": "Read a workspace file",
@@ -111,7 +111,7 @@
       "post": {
         "operationId": "createWorkspaceFile",
         "summary": "Create a workspace file",
-        "description": "Creates a new text file in the workspace. Use this when a file does not already exist or when you want explicit create behavior.",
+        "description": "Creates a new text file in the workspace.",
         "requestBody": {
           "required": true,
           "content": {
@@ -137,7 +137,7 @@
       },
       "put": {
         "operationId": "updateWorkspaceFile",
-        "summary": "Overwrite or update a workspace file",
+        "summary": "Update a workspace file",
         "description": "Writes full text content to a workspace file, replacing the previous contents.",
         "requestBody": {
           "required": true,
@@ -222,8 +222,8 @@
           },
           "type": {
             "type": "string",
-            "description": "Entry type.",
-            "enum": ["file", "directory"]
+            "enum": ["file", "directory"],
+            "description": "Entry type."
           },
           "size": {
             "type": "integer",
