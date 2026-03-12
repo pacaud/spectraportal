@@ -7,31 +7,105 @@ set -euo pipefail
 # Current build target:
 # - cdn: builds versioned + latest CDN bundles from framework
 #
-# Writes:
-#   ./cdn/<version>/css/spectra.min.css
-#   ./cdn/<version>/css/overrides.min.css
-#   ./cdn/<version>/themes/theme.min.css
-#   ./cdn/<version>/themes/<theme>.min.css
-#   ./cdn/latest/... (mirror of the version)
+# Usage:
+#   SP_CDN_VERSION=v0.1 scripts/sp_build.sh cdn
+#   SP_CDN_VERSION=v0.1 scripts/sp_build.sh cdn --repo /path/to/repo
+#   SP_CDN_VERSION=v0.1 scripts/sp_build.sh cdn --repo /path/to/repo --src framework
 #
 # Notes:
-# - dev/ (from ./docs), assets/, and framework/ are source sites and do not
+# - dev/ (from ./docs), assets/, framework/, and gate/ are source sites and do not
 #   currently require a build step.
-# - The target name is `dev`, but it deploys the local ./docs source tree.
+# - The target name is `dev`, but it deploys the local ./docs source tree by default.
 # - This script does NOT require npm/package.json.
 # - Raw framework sources are not deployed to the CDN host.
 # ============================================================
 
-TARGET="${1:-cdn}"
+usage() {
+  cat <<'EOF'
+Usage:
+  sp_build.sh <target> [--repo PATH] [--src PATH]
+
+Targets:
+  cdn         Build versioned + latest CDN bundles from framework
+  assets      No build step required
+  framework   No build step required
+  dev         No build step required
+  gate        No build step required
+  docs        Alias of dev (no build step required)
+
+Options:
+  --repo PATH Repo root to use instead of the parent of this script
+  --src PATH  Source folder for cdn builds (default: framework)
+              Absolute paths are allowed; relative paths are resolved under --repo
+EOF
+}
+
+TARGET=""
+REPO_OVERRIDE=""
+SRC_OVERRIDE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --repo)
+      [[ $# -ge 2 ]] || { echo "[build] ERROR: --repo requires a path" >&2; exit 1; }
+      REPO_OVERRIDE="$2"
+      shift 2
+      ;;
+    --src)
+      [[ $# -ge 2 ]] || { echo "[build] ERROR: --src requires a path" >&2; exit 1; }
+      SRC_OVERRIDE="$2"
+      shift 2
+      ;;
+    --*)
+      echo "[build] ERROR: unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+    *)
+      if [[ -z "$TARGET" ]]; then
+        TARGET="$1"
+      else
+        echo "[build] ERROR: unexpected argument: $1" >&2
+        usage >&2
+        exit 1
+      fi
+      shift
+      ;;
+  esac
+done
+
+TARGET="${TARGET:-cdn}"
 : "${SP_CDN_VERSION:=v0.1}"
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -n "$REPO_OVERRIDE" ]]; then
+  REPO_ROOT="$(cd "$REPO_OVERRIDE" && pwd)"
+else
+  REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
+
+if [[ "$TARGET" == "docs" ]]; then
+  TARGET="dev"
+fi
 
 if [[ "$TARGET" != "cdn" ]]; then
   echo "[build] target: $TARGET (no build step required)"
   exit 0
 fi
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SRC="$REPO_ROOT/framework"
+if [[ -n "$SRC_OVERRIDE" ]]; then
+  if [[ "$SRC_OVERRIDE" = /* ]]; then
+    SRC="$SRC_OVERRIDE"
+  else
+    SRC="$REPO_ROOT/$SRC_OVERRIDE"
+  fi
+else
+  SRC="$REPO_ROOT/framework"
+fi
 
 CDN_OUT="$REPO_ROOT/cdn/$SP_CDN_VERSION"
 LATEST_OUT="$REPO_ROOT/cdn/latest"
@@ -142,8 +216,6 @@ PY
     return 0
   fi
 
-  # Last-resort fallback: not as compact as css minifiers, but still strips
-  # blank lines and trailing whitespace so deployment continues.
   sed -E 's/[[:space:]]+$//' "$IN" | awk 'NF{p=1} p{print}' > "$OUT"
 }
 
@@ -166,6 +238,8 @@ bundle_and_minify () {
 }
 
 echo "[build] building version $SP_CDN_VERSION"
+echo "[build] repo: $REPO_ROOT"
+echo "[build] src:  $SRC"
 
 TMP="$(mktemp)"
 trap 'rm -f "$TMP"' EXIT
@@ -180,7 +254,6 @@ cat \
 
 minify_css "$TMP" "$CDN_OUT/css/spectra.min.css"
 
-# Build default theme.min.css
 shopt -s nullglob
 DEFAULT_THEME_FILES=()
 
@@ -220,7 +293,6 @@ else
   : > "$CDN_OUT/themes/theme.min.css"
 fi
 
-# Build each named theme from theme.css + theme-bits/*.css when present.
 if [[ -d "$SRC/themes" ]]; then
   for DIR in "$SRC/themes/"*/; do
     [[ -d "$DIR" ]] || continue
@@ -242,7 +314,6 @@ if [[ -d "$SRC/themes" ]]; then
     bundle_and_minify "$CDN_OUT/themes/$NAME.min.css" "${THEME_FILES[@]}"
   done
 fi
-shopt -u nullglob
 
 if [[ -f "$SRC/overrides.css" ]]; then
   minify_css "$SRC/overrides.css" "$CDN_OUT/css/overrides.min.css"
@@ -250,10 +321,8 @@ else
   : > "$CDN_OUT/css/overrides.min.css"
 fi
 
-echo "[build] updating latest"
-
 rm -rf "$LATEST_OUT"
 mkdir -p "$LATEST_OUT"
-cp -r "$CDN_OUT/"* "$LATEST_OUT/"
+cp -a "$CDN_OUT/." "$LATEST_OUT/"
 
 echo "[build] done"

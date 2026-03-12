@@ -1,40 +1,33 @@
-# --- Secrets / local env ---
+# env / secrets
 .env
 .env.*
-!.env.example
+*.local
 
-# --- Node / JS ---
-node_modules/
-dist/
-build/
-.cache/
-.next/
-out/
-coverage/
-.nyc_output/
-
-# --- Python ---
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.envrc
-.pytest_cache/
-
-# --- Logs ---
+# logs
 logs/
 *.log
 
-# --- Editors / OS ---
+# build junk
+dist/
+build/
+tmp/
+out/
+
+# editor / OS
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-*.swp
 
-# local deploy config
-scripts/sp_deploy.env
-scripts/*.env.local
+# python / node
+__pycache__/
+*.pyc
+node_modules/
 
-framework/cdn/
-cdn/
+# backups / temp
+*.bak
+*.tmp
+
+gate/.tmp/
+gate/.generated/
+gate/*.zip

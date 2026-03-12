@@ -9,17 +9,75 @@ set -euo pipefail
 # - assets:    deploy ./assets -> $WEBROOT_ASSETS
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
 # - dev:       deploy ./docs -> $WEBROOT_DEV
+# - gate:      deploy ./gate -> $WEBROOT_GATE
 # - docs:      compatibility alias for dev
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
-#   scripts/sp_deploy.sh assets
-#   scripts/sp_deploy.sh framework
-#   scripts/sp_deploy.sh dev
-#   scripts/sp_deploy.sh docs   # compatibility alias
+#   scripts/sp_deploy.sh gate --repo /path/to/repo
+#   scripts/sp_deploy.sh gate --repo /path/to/repo --src gate
+#   scripts/sp_deploy.sh dev --repo /path/to/repo --src docs
 # ============================================================
 
-TARGET="${1:-cdn}"
+usage() {
+  cat <<'EOF'
+Usage:
+  sp_deploy.sh <target> [--repo PATH] [--src PATH]
+
+Targets:
+  cdn         Deploy repo/cdn/<version> and repo/cdn/latest
+  assets      Deploy repo/assets by default
+  framework   Deploy repo/framework by default
+  dev         Deploy repo/docs by default
+  gate        Deploy repo/gate by default
+  docs        Alias of dev
+
+Options:
+  --repo PATH Repo root to use instead of the parent of this script
+  --src PATH  Source folder override for assets/framework/dev/gate
+              Absolute paths are allowed; relative paths are resolved under --repo
+EOF
+}
+
+TARGET=""
+REPO_OVERRIDE=""
+SRC_OVERRIDE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --repo)
+      [[ $# -ge 2 ]] || { echo "[deploy] ERROR: --repo requires a path" >&2; exit 1; }
+      REPO_OVERRIDE="$2"
+      shift 2
+      ;;
+    --src)
+      [[ $# -ge 2 ]] || { echo "[deploy] ERROR: --src requires a path" >&2; exit 1; }
+      SRC_OVERRIDE="$2"
+      shift 2
+      ;;
+    --*)
+      echo "[deploy] ERROR: unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+    *)
+      if [[ -z "$TARGET" ]]; then
+        TARGET="$1"
+      else
+        echo "[deploy] ERROR: unexpected argument: $1" >&2
+        usage >&2
+        exit 1
+      fi
+      shift
+      ;;
+  esac
+done
+
+TARGET="${TARGET:-cdn}"
 : "${SP_CDN_VERSION:=v0.1}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -37,15 +95,28 @@ fi
 : "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
 : "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
 
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+if [[ -n "$REPO_OVERRIDE" ]]; then
+  REPO_ROOT="$(cd "$REPO_OVERRIDE" && pwd)"
+else
+  REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+fi
+
+resolve_src() {
+  local default_rel="$1"
+  if [[ -n "$SRC_OVERRIDE" ]]; then
+    if [[ "$SRC_OVERRIDE" = /* ]]; then
+      printf '%s\n' "$SRC_OVERRIDE"
+    else
+      printf '%s\n' "$REPO_ROOT/$SRC_OVERRIDE"
+    fi
+  else
+    printf '%s\n' "$REPO_ROOT/$default_rel"
+  fi
+}
 
 CDN_SRC_VERSION="$REPO_ROOT/cdn/$SP_CDN_VERSION"
 CDN_SRC_LATEST="$REPO_ROOT/cdn/latest"
-ASSETS_SRC="$REPO_ROOT/assets"
-FRAMEWORK_SRC="$REPO_ROOT/framework"
-DOCS_SRC="$REPO_ROOT/docs"
 
-# Normalize old target name.
 if [[ "$TARGET" == "docs" ]]; then
   echo "[deploy] alias: docs -> dev"
   TARGET="dev"
@@ -64,16 +135,17 @@ remote_mkdir() {
 
 if [[ "$TARGET" == "cdn" ]]; then
   echo "[deploy] cdn: pushing version + latest"
+  echo "[deploy] repo: $REPO_ROOT"
 
   if [[ ! -d "$CDN_SRC_VERSION" ]]; then
     echo "[deploy] ERROR: missing build output: $CDN_SRC_VERSION" >&2
-    echo "  Run: SP_CDN_VERSION=$SP_CDN_VERSION scripts/sp_build.sh cdn" >&2
+    echo "  Run: SP_CDN_VERSION=$SP_CDN_VERSION scripts/sp_build.sh cdn --repo '$REPO_ROOT'" >&2
     exit 1
   fi
 
   if [[ ! -d "$CDN_SRC_LATEST" ]]; then
     echo "[deploy] ERROR: missing latest build output: $CDN_SRC_LATEST" >&2
-    echo "  Run: SP_CDN_VERSION=$SP_CDN_VERSION scripts/sp_build.sh cdn" >&2
+    echo "  Run: SP_CDN_VERSION=$SP_CDN_VERSION scripts/sp_build.sh cdn --repo '$REPO_ROOT'" >&2
     exit 1
   fi
 
@@ -88,7 +160,10 @@ if [[ "$TARGET" == "cdn" ]]; then
 fi
 
 if [[ "$TARGET" == "assets" ]]; then
+  ASSETS_SRC="$(resolve_src assets)"
   echo "[deploy] assets -> assets.spectraportal.dev"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $ASSETS_SRC"
 
   if [[ ! -d "$ASSETS_SRC" ]]; then
     echo "[deploy] ERROR: missing assets source: $ASSETS_SRC" >&2
@@ -103,7 +178,10 @@ if [[ "$TARGET" == "assets" ]]; then
 fi
 
 if [[ "$TARGET" == "framework" ]]; then
+  FRAMEWORK_SRC="$(resolve_src framework)"
   echo "[deploy] framework"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $FRAMEWORK_SRC"
 
   if [[ ! -d "$FRAMEWORK_SRC" ]]; then
     echo "[deploy] ERROR: missing framework source: $FRAMEWORK_SRC" >&2
@@ -117,8 +195,29 @@ if [[ "$TARGET" == "framework" ]]; then
   exit 0
 fi
 
+if [[ "$TARGET" == "gate" ]]; then
+  GATE_SRC="$(resolve_src gate)"
+  echo "[deploy] gate -> gate.spectraportal.dev"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $GATE_SRC"
+
+  if [[ ! -d "$GATE_SRC" ]]; then
+    echo "[deploy] ERROR: missing gate source: $GATE_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$WEBROOT_GATE"
+  rsync_push "$GATE_SRC/" "$REMOTE:$WEBROOT_GATE/"
+
+  echo "[deploy] gate done"
+  exit 0
+fi
+
 if [[ "$TARGET" == "dev" ]]; then
+  DOCS_SRC="$(resolve_src docs)"
   echo "[deploy] dev -> spectraportal.dev"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $DOCS_SRC"
 
   if [[ ! -d "$DOCS_SRC" ]]; then
     echo "[deploy] ERROR: missing docs source: $DOCS_SRC" >&2
@@ -133,6 +232,6 @@ if [[ "$TARGET" == "dev" ]]; then
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | dev" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev | gate" >&2
 echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1
