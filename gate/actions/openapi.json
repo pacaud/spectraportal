@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Spectra Gate API",
-    "description": "Entry-point API for gate.spectraportal.dev. Provides gate health and workspace actions for listing, reading, creating, updating, and deleting files.",
-    "version": "0.2.0"
+    "description": "Entry-point API for gate.spectraportal.dev. Provides Gate health and Workspace health.",
+    "version": "0.1.1"
   },
   "servers": [
     {
@@ -14,7 +14,7 @@
     "/health": {
       "get": {
         "operationId": "getGateHealth",
-        "summary": "Check gate health",
+        "summary": "Check Gate health",
         "description": "Returns the health status of the public gate/front-door layer.",
         "responses": {
           "200": {
@@ -33,7 +33,7 @@
     "/workspace/health": {
       "get": {
         "operationId": "getWorkspaceHealth",
-        "summary": "Check workspace health",
+        "summary": "Check Workspace health",
         "description": "Returns the health status of the workspace service behind the gate.",
         "responses": {
           "200": {
@@ -42,148 +42,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HealthResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/workspace/files": {
-      "get": {
-        "operationId": "listWorkspaceFiles",
-        "summary": "List workspace files",
-        "description": "Returns files and folders inside the workspace. Use dir to scope the listing.",
-        "parameters": [
-          {
-            "name": "dir",
-            "in": "query",
-            "required": false,
-            "description": "Relative workspace directory to list. Leave empty for the workspace root.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Workspace listing returned",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FileListResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/workspace/file": {
-      "get": {
-        "operationId": "readWorkspaceFile",
-        "summary": "Read a workspace file",
-        "description": "Reads a single text file from the workspace by relative path.",
-        "parameters": [
-          {
-            "name": "path",
-            "in": "query",
-            "required": true,
-            "description": "Relative file path inside the workspace.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Workspace file returned",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FileResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "operationId": "createWorkspaceFile",
-        "summary": "Create a workspace file",
-        "description": "Creates a new text file in the workspace.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/WriteFileRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Workspace file created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WriteFileResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "operationId": "updateWorkspaceFile",
-        "summary": "Update a workspace file",
-        "description": "Writes full text content to a workspace file, replacing the previous contents.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/WriteFileRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Workspace file updated",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/WriteFileResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "operationId": "deleteWorkspaceFile",
-        "summary": "Delete a workspace file",
-        "description": "Deletes a single file from the workspace by relative path.",
-        "parameters": [
-          {
-            "name": "path",
-            "in": "query",
-            "required": true,
-            "description": "Relative file path inside the workspace.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Workspace file deleted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DeleteResponse"
                 }
               }
             }
@@ -205,108 +63,6 @@
           "service": {
             "type": "string",
             "description": "Service name."
-          }
-        }
-      },
-      "FileListItem": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "path": {
-            "type": "string",
-            "description": "Relative path inside the workspace."
-          },
-          "name": {
-            "type": "string",
-            "description": "File or folder name."
-          },
-          "type": {
-            "type": "string",
-            "enum": ["file", "directory"],
-            "description": "Entry type."
-          },
-          "size": {
-            "type": "integer",
-            "description": "Size in bytes when known."
-          }
-        }
-      },
-      "FileListResponse": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "dir": {
-            "type": "string"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FileListItem"
-            }
-          }
-        }
-      },
-      "FileResponse": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "path": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string",
-            "description": "Text contents of the file."
-          }
-        }
-      },
-      "WriteFileRequest": {
-        "type": "object",
-        "required": ["path", "content"],
-        "additionalProperties": false,
-        "properties": {
-          "path": {
-            "type": "string",
-            "description": "Relative file path inside the workspace."
-          },
-          "content": {
-            "type": "string",
-            "description": "Full text contents to write."
-          }
-        }
-      },
-      "WriteFileResponse": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "path": {
-            "type": "string"
-          },
-          "written": {
-            "type": "boolean"
-          }
-        }
-      },
-      "DeleteResponse": {
-        "type": "object",
-        "additionalProperties": true,
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "path": {
-            "type": "string"
-          },
-          "deleted": {
-            "type": "boolean"
           }
         }
       }
