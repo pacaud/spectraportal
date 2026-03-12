@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Spectra Gate API",
-    "description": "Entry-point API for gate.spectraportal.dev. Provides Gate health and Workspace health.",
-    "version": "0.1.1"
+    "description": "Entry-point API for gate.spectraportal.dev. Provides Gate health, Workspace health, workspace listing, and file read access.",
+    "version": "0.2.0"
   },
   "servers": [
     {
@@ -48,6 +48,103 @@
           }
         }
       }
+    },
+    "/api/workspaces": {
+      "get": {
+        "operationId": "listWorkspaces",
+        "summary": "List workspaces",
+        "description": "Returns the available workspace names.",
+        "responses": {
+          "200": {
+            "description": "Workspace list returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkspaceListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/files": {
+      "get": {
+        "operationId": "listWorkspaceFiles",
+        "summary": "List files in a workspace",
+        "description": "Returns files and folders inside a workspace. Requires ws. Optional path scopes the listing.",
+        "parameters": [
+          {
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "description": "Workspace name, for example gate.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "description": "Relative path inside the workspace to list.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace files returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/file": {
+      "get": {
+        "operationId": "readWorkspaceFile",
+        "summary": "Read a workspace file",
+        "description": "Reads a single text file from a workspace.",
+        "parameters": [
+          {
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "description": "Workspace name, for example gate.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "description": "Relative file path inside the workspace, for example drafts/hello.md.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workspace file returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -62,7 +159,71 @@
           },
           "service": {
             "type": "string",
-            "description": "Service name."
+            "description": "Service name when provided."
+          }
+        }
+      },
+      "WorkspaceListResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "workspaces": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "FileListItem": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["dir", "file"]
+          },
+          "size": {
+            "type": "integer"
+          },
+          "modified": {
+            "type": "string"
+          }
+        }
+      },
+      "FileListResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ws": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileListItem"
+            }
+          }
+        }
+      },
+      "FileResponse": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "ws": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
           }
         }
       }
