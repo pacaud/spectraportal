@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: Wii
+range: 2006-2012
+scope: Nintendo-platform games (includes third-party released on Wii).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: 'Animal Crossing: City Folk', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: Tree of Tranquility', year: 2007, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: Animal Parade', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Skyward Sword', year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Endless Ocean, year: 2007, intensity: low, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Super Mario Galaxy, year: 2007, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Twilight Princess', year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Metroid Prime 3: Corruption', year: 2007, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Xenoblade Chronicles, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Donkey Kong Country Returns, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Wii Sports, year: 2006, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Kart Wii, year: 2008, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby's Epic Yarn, year: 2010, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: New Super Mario Bros. Wii, year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Smash Bros. Brawl, year: 2008, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: Xenoblade Chronicles, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: Radiant Dawn', year: 2007, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: The Last Story, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Monster Hunter Tri, year: 2009, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Skyward Sword', year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: 'Harvest Moon: Animal Parade', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: City Folk', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Rune Factory: Frontier', year: 2008, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin 2 (New Play Control!), year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Xenoblade Chronicles, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Super Mario Galaxy 2, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby's Epic Yarn, year: 2010, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Kart Wii, year: 2008, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Wii Sports Resort, year: 2009, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: New Super Mario Bros. Wii, year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: Xenoblade Chronicles, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: The Last Story, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Skyward Sword', year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: Animal Parade', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fragile Dreams: Farewell Ruins of the Moon', year: 2009, intensity: high, comfort: false, platforms: [Nintendo]}
+notes:
+- Wii era blends motion-based social play with strong JRPG emotional depth.
+- Harvest Moon and Rune Factory anchor farming evolution.
+- Xenoblade marks a tonal shift toward grand, melancholic world-building.

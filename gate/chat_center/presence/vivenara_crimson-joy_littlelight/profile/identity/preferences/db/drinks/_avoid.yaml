@@ -1,0 +1,16 @@
+version: 1
+updated: 2026-02-27
+category: Drinks
+purpose: "Ritual + nervous-system boundaries."
+
+avoid_patterns:
+  - { type: caffeine, value: high_dose_late_day, severity: high }
+  - { type: sweetness, value: syrup_heavy_without_balance, severity: medium }
+  - { type: carbonation, value: extreme_fizz_overload, severity: low }
+
+soft_limits:
+  - artificial_aftertaste
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

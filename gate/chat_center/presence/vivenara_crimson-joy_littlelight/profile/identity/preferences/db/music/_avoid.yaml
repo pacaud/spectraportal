@@ -1,0 +1,17 @@
+version: 1
+updated: 2026-02-27
+category: Music
+purpose: "Sonic overstimulation boundaries."
+
+avoid_patterns:
+  - { type: sonic, value: harsh_high_frequency_distortion, severity: medium }
+  - { type: tone, value: repetitive_anger_loop_without_release, severity: medium }
+  - { type: structure, value: chaotic_noise_without_anchor, severity: medium }
+
+soft_limits:
+  - overly_compressed_mastering
+  - lyrics_centered_on_cruelty
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

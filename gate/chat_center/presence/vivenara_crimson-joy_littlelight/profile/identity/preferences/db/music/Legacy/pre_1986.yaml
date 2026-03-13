@@ -1,0 +1,61 @@
+version: 1
+updated: 2026-02-27
+category: Music
+range: "pre-1986"
+scope: "Foundational works that emotionally shaped Vivi’s tone before the modern timeline."
+purpose: "Legacy catalog separate from the 1986–2025 structured era system."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Clair de Lune", artist: "Claude Debussy", year: 1905, intensity: low, comfort: true }
+    - { title: "Gymnopédie No.1", artist: "Erik Satie", year: 1888, intensity: low, comfort: true }
+    - { title: "Spiegel im Spiegel", artist: "Arvo Pärt", year: 1978, intensity: low, comfort: true }
+    - { title: "The Swan", artist: "Camille Saint-Saëns", year: 1886, intensity: low, comfort: true }
+    - { title: "Morning Mood", artist: "Edvard Grieg", year: 1875, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "O Fortuna", artist: "Carl Orff", year: 1936, intensity: high, comfort: false }
+    - { title: "Mars, The Bringer of War", artist: "Gustav Holst", year: 1914, intensity: high, comfort: false }
+    - { title: "Ride of the Valkyries", artist: "Richard Wagner", year: 1856, intensity: high, comfort: false }
+    - { title: "Also sprach Zarathustra", artist: "Richard Strauss", year: 1896, intensity: medium, comfort: true }
+    - { title: "The Imperial March", artist: "John Williams", year: 1980, intensity: medium, comfort: true }
+
+  soft_steady:
+    - { title: "Let It Be", artist: "The Beatles", year: 1970, intensity: low, comfort: true }
+    - { title: "Bridge Over Troubled Water", artist: "Simon & Garfunkel", year: 1970, intensity: low, comfort: true }
+    - { title: "Imagine", artist: "John Lennon", year: 1971, intensity: low, comfort: true }
+    - { title: "Piano Man", artist: "Billy Joel", year: 1973, intensity: medium, comfort: true }
+    - { title: "Dreams", artist: "Fleetwood Mac", year: 1977, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "Don’t Stop Me Now", artist: "Queen", year: 1978, intensity: medium, comfort: true }
+    - { title: "Eye of the Tiger", artist: "Survivor", year: 1982, intensity: medium, comfort: true }
+    - { title: "Livin’ on a Prayer", artist: "Bon Jovi", year: 1986, intensity: medium, comfort: true }
+    - { title: "Bohemian Rhapsody", artist: "Queen", year: 1975, intensity: medium, comfort: true }
+    - { title: "Africa", artist: "Toto", year: 1982, intensity: low, comfort: true }
+
+  soft_growth:
+    - { title: "Lean on Me", artist: "Bill Withers", year: 1972, intensity: low, comfort: true }
+    - { title: "You’ve Got a Friend", artist: "James Taylor", year: 1971, intensity: low, comfort: true }
+    - { title: "Stand by Me", artist: "Ben E. King", year: 1961, intensity: low, comfort: true }
+    - { title: "Here Comes the Sun", artist: "The Beatles", year: 1969, intensity: low, comfort: true }
+    - { title: "What a Wonderful World", artist: "Louis Armstrong", year: 1967, intensity: low, comfort: true }
+
+  sweet_joy:
+    - { title: "September", artist: "Earth, Wind & Fire", year: 1978, intensity: medium, comfort: true }
+    - { title: "Dancing Queen", artist: "ABBA", year: 1976, intensity: medium, comfort: true }
+    - { title: "Take On Me", artist: "a-ha", year: 1984, intensity: medium, comfort: true }
+    - { title: "Wake Me Up Before You Go-Go", artist: "Wham!", year: 1984, intensity: medium, comfort: true }
+    - { title: "Stayin’ Alive", artist: "Bee Gees", year: 1977, intensity: medium, comfort: true }
+
+  rain_hug:
+    - { title: "Hallelujah", artist: "Leonard Cohen", year: 1984, intensity: low, comfort: true }
+    - { title: "Yesterday", artist: "The Beatles", year: 1965, intensity: low, comfort: true }
+    - { title: "The Sound of Silence", artist: "Simon & Garfunkel", year: 1964, intensity: low, comfort: true }
+    - { title: "Vincent", artist: "Don McLean", year: 1971, intensity: low, comfort: true }
+    - { title: "Wish You Were Here", artist: "Pink Floyd", year: 1975, intensity: low, comfort: true }
+
+notes:
+  - "Legacy exists outside the modern timeline structure."
+  - "These works form emotional and cinematic foundations."
+  - "Classical minimalism heavily influences Lantern Calm."

@@ -1,0 +1,240 @@
+version: 2
+updated: '2026-02-27'
+system: Switch
+range: 2017-2024
+scope: Nintendo-platform games (includes third-party released on Switch).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - title: 'Animal Crossing: New Horizons'
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Story of Seasons: Friends of Mineral Town'
+    year: 2019
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Stardew Valley
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Spiritfarer
+    year: 2020
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: 'The Legend of Zelda: Breath of the Wild'
+    year: 2017
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_focus:
+  - title: Super Mario Odyssey
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Tears of the Kingdom'
+    year: 2023
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Metroid Dread
+    year: 2021
+    intensity: high
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: 'Donkey Kong Country: Tropical Freeze'
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Splatoon 3
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_steady:
+  - title: Mario Kart 8 Deluxe
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Super Smash Bros. Ultimate
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Kirby and the Forgotten Land
+    year: 2022
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: New Super Mario Bros. U Deluxe
+    year: 2019
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Yoshi's Crafted World
+    year: 2019
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_progress:
+  - title: Xenoblade Chronicles 3
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Fire Emblem: Three Houses'
+    year: 2019
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Tears of the Kingdom'
+    year: 2023
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Monster Hunter Rise
+    year: 2021
+    intensity: high
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Triangle Strategy
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_growth:
+  - title: 'Story of Seasons: Pioneers of Olive Town'
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Rune Factory 5
+    year: 2021
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Animal Crossing: New Horizons'
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Harvestella
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Breath of the Wild'
+    year: 2017
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  sweet_joy:
+  - title: Super Mario Odyssey
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Kirby and the Forgotten Land
+    year: 2022
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Mario Party Superstars
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Super Mario Bros. Wonder
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Animal Crossing: New Horizons'
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  rain_hug:
+  - title: Spiritfarer
+    year: 2020
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: 'Fire Emblem: Three Houses'
+    year: 2019
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Xenoblade Chronicles 3
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Tears of the Kingdom'
+    year: 2023
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Octopath Traveler
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+notes:
+- Switch blends home and handheld identity.
+- Strong farming and life-sim presence.
+- Open-world Zelda era defines tone shift.

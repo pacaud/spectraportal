@@ -1,0 +1,61 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+range: "2020-2025"
+scope: "Vivi’s Movies map for the era 2020–2025."
+purpose: "Contained narrative films aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Encanto", year: 2021, origin: US, genre: animated-musical, intensity: low, comfort: true }
+    - { title: "The Boy, the Mole, the Fox and the Horse", year: 2022, origin: UK, genre: animated, intensity: low, comfort: true }
+    - { title: "Turning Red", year: 2022, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "The Super Mario Bros. Movie", year: 2023, origin: US/JP, genre: animated, intensity: low, comfort: true }
+    - { title: "Suzume", year: 2022, origin: JP, genre: anime, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Dune: Part One", year: 2021, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Oppenheimer", year: 2023, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Batman", year: 2022, origin: US, genre: thriller, intensity: medium, comfort: false }
+    - { title: "Spider-Man: Across the Spider-Verse", year: 2023, origin: US, genre: animated, intensity: medium, comfort: true }
+    - { title: "John Wick: Chapter 4", year: 2023, origin: US, genre: action, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "Glass Onion", year: 2022, origin: US, genre: mystery-comedy, intensity: low, comfort: true }
+    - { title: "Sonic the Hedgehog 2", year: 2022, origin: US/JP, genre: comedy-adventure, intensity: low, comfort: true }
+    - { title: "Barbie", year: 2023, origin: US, genre: comedy-drama, intensity: low, comfort: true }
+    - { title: "Top Gun: Maverick", year: 2022, origin: US, genre: action, intensity: medium, comfort: true }
+    - { title: "No Time to Die", year: 2021, origin: UK/US, genre: action, intensity: medium, comfort: true }
+
+  soft_progress:
+    - { title: "Everything Everywhere All at Once", year: 2022, origin: US, genre: sci-fi-drama, intensity: medium, comfort: true }
+    - { title: "The Boy and the Heron", year: 2023, origin: JP, genre: anime-fantasy, intensity: medium, comfort: true }
+    - { title: "The Mitchells vs. The Machines", year: 2021, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "CODA", year: 2021, origin: US, genre: drama, intensity: low, comfort: true }
+    - { title: "Spider-Man: No Way Home", year: 2021, origin: US, genre: superhero, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "Soul", year: 2020, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Violet Evergarden: The Movie", year: 2020, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+    - { title: "Minari", year: 2020, origin: US, genre: drama, intensity: low, comfort: true }
+    - { title: "Past Lives", year: 2023, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "A Man Called Otto", year: 2022, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "The Whale", year: 2022, origin: US, genre: drama, intensity: medium, comfort: false }
+
+  sweet_joy:
+    - { title: "Theater Camp", year: 2023, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Dungeons & Dragons: Honor Among Thieves", year: 2023, origin: US, genre: comedy-adventure, intensity: low, comfort: true }
+    - { title: "Free Guy", year: 2021, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Wonka", year: 2023, origin: US/UK, genre: musical, intensity: low, comfort: true }
+    - { title: "Guardians of the Galaxy Vol. 3", year: 2023, origin: US, genre: superhero, intensity: medium, comfort: true }
+
+  rain_hug:
+    - { title: "The Father", year: 2020, origin: UK/FR, genre: drama, intensity: high, comfort: false }
+    - { title: "Aftersun", year: 2022, origin: UK, genre: drama, intensity: medium, comfort: false }
+    - { title: "All of Us Strangers", year: 2023, origin: UK, genre: drama, intensity: medium, comfort: false }
+    - { title: "The Banshees of Inisherin", year: 2022, origin: IE/UK, genre: drama, intensity: medium, comfort: false }
+    - { title: "The Power of the Dog", year: 2021, origin: NZ/US, genre: drama, intensity: high, comfort: false }
+
+notes:
+  - "Movies in this era split between comfort animation and emotionally intense modern drama."
+  - "If you want strict uniqueness per lane, we can remove duplicates like CODA/Mitchells."

@@ -1,0 +1,18 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+purpose: "Compressed-intensity boundaries."
+
+avoid_patterns:
+  - { type: genre, value: torture_porn_style_horror, severity: high }
+  - { type: tone, value: hopeless_endings_without_arc, severity: medium }
+  - { type: pacing, value: nonstop_anxiety_no_breathing_room, severity: medium }
+  - { type: theme, value: humiliation_as_comedy, severity: medium }
+
+soft_limits:
+  - excessive_jump_scares
+  - bleak_realism_back_to_back
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

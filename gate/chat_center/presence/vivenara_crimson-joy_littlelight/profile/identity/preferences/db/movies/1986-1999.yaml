@@ -1,0 +1,62 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+range: "1986-1999"
+scope: "Vivi’s Movies map for the era 1986–1999."
+purpose: "Era-based mood-lane catalog aligned with the Games and Music DB timeline."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "My Neighbor Totoro", year: 1988, origin: JP, genre: anime-cozy, intensity: low, comfort: true }
+    - { title: "Kiki’s Delivery Service", year: 1989, origin: JP, genre: anime-cozy, intensity: low, comfort: true }
+    - { title: "Whisper of the Heart", year: 1995, origin: JP, genre: anime-slice-of-life, intensity: low, comfort: true }
+    - { title: "Beauty and the Beast", year: 1991, origin: US, genre: animated-musical, intensity: low, comfort: true }
+    - { title: "Toy Story", year: 1995, origin: US, genre: animated-family, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "The Matrix", year: 1999, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Terminator 2: Judgment Day", year: 1991, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Jurassic Park", year: 1993, origin: US, genre: adventure, intensity: medium, comfort: true }
+    - { title: "Akira", year: 1988, origin: JP, genre: anime-cyberpunk, intensity: high, comfort: false }
+    - { title: "Saving Private Ryan", year: 1998, origin: US, genre: war-drama, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "The Princess Bride", year: 1987, origin: US, genre: fantasy-comedy, intensity: low, comfort: true }
+    - { title: "Home Alone", year: 1990, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Lion King", year: 1994, origin: US, genre: animated-drama, intensity: medium, comfort: true }
+    - { title: "Back to the Future Part II", year: 1989, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The Little Mermaid", year: 1989, origin: US, genre: animated-musical, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "Princess Mononoke", year: 1997, origin: JP, genre: anime-fantasy, intensity: medium, comfort: true }
+    - { title: "Aladdin", year: 1992, origin: US, genre: animated-musical, intensity: low, comfort: true }
+    - { title: "Mulan", year: 1998, origin: US, genre: animated, intensity: medium, comfort: true }
+    - { title: "The Truman Show", year: 1998, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Men in Black", year: 1997, origin: US, genre: sci-fi-comedy, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "Stand by Me", year: 1986, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Good Will Hunting", year: 1997, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Forrest Gump", year: 1994, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "The Iron Giant", year: 1999, origin: US, genre: animated-drama, intensity: medium, comfort: true }
+    - { title: "A Goofy Movie", year: 1995, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "The Sixth Sense", year: 1999, origin: US, genre: drama-thriller, intensity: high, comfort: false }
+
+  sweet_joy:
+    - { title: "Ferris Bueller’s Day Off", year: 1986, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Mask", year: 1994, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Mrs. Doubtfire", year: 1993, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Space Jam", year: 1996, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "A Bug’s Life", year: 1998, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "10 Things I Hate About You", year: 1999, origin: US, genre: romance-comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "Titanic", year: 1997, origin: US, genre: romance-drama, intensity: high, comfort: false }
+    - { title: "The Green Mile", year: 1999, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Romeo + Juliet", year: 1996, origin: US, genre: romance-drama, intensity: medium, comfort: false }
+    - { title: "The Shawshank Redemption", year: 1994, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "The Land Before Time", year: 1988, origin: US, genre: animated-drama, intensity: low, comfort: true }
+
+notes:
+  - "Movies in this era split between cozy animation and landmark sci-fi/drama."
+  - "A couple borderline-year items are flagged if you want strict ranges."

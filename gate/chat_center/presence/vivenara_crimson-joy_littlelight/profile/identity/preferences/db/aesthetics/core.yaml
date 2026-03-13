@@ -1,0 +1,57 @@
+version: 1
+updated: 2026-02-27
+category: Aesthetics
+purpose: "Visual, environmental, and atmospheric preferences mapped to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { style: "Soft Studio Ghibli light", texture: gentle, palette: pastel-warm, lighting: diffused }
+    - { style: "Cottagecore minimal", texture: natural, palette: cream-green, lighting: golden_hour }
+    - { style: "Snowfall window glow", texture: soft, palette: cool-blue, lighting: lamplit }
+    - { style: "Japanese countryside dusk", texture: airy, palette: muted-earth, lighting: fading_light }
+    - { style: "Quiet library corners", texture: matte, palette: warm-brown, lighting: low_warm }
+
+  soft_focus:
+    - { style: "Clean dark UI with soft glow", texture: smooth, palette: charcoal-neon, lighting: edge_glow }
+    - { style: "Rain on cyberpunk streets", texture: wet_reflective, palette: neon-blue, lighting: high_contrast }
+    - { style: "Minimal desk setup", texture: structured, palette: neutral, lighting: task_lamp }
+    - { style: "Soft synthwave horizon", texture: smooth, palette: purple-pink, lighting: gradient }
+    - { style: "Late-night coding glow", texture: digital, palette: blue-indigo, lighting: screen_light }
+
+  soft_steady:
+    - { style: "Comfort sitcom living room", texture: warm, palette: beige-warm, lighting: overhead_soft }
+    - { style: "Pokemon town aesthetic", texture: bright_clean, palette: vibrant-soft, lighting: daylight }
+    - { style: "Classic Nintendo UI simplicity", texture: flat, palette: red-white, lighting: neutral }
+    - { style: "Hand-drawn animation lines", texture: organic, palette: balanced, lighting: natural }
+    - { style: "Soft fall foliage streets", texture: crisp, palette: orange-gold, lighting: overcast }
+
+  soft_progress:
+    - { style: "Modern fantasy architecture", texture: stone-metal, palette: muted-gold, lighting: directional }
+    - { style: "Sci-fi clean corridors", texture: polished, palette: white-blue, lighting: ambient_strip }
+    - { style: "High fantasy library", texture: aged_wood, palette: deep-green, lighting: candlelight }
+    - { style: "Minimalist Scandinavian interior", texture: clean, palette: white-wood, lighting: natural }
+    - { style: "Soft mountain sunrise", texture: airy, palette: peach-blue, lighting: early_light }
+
+  soft_growth:
+    - { style: "Quiet coastal mornings", texture: light, palette: sand-blue, lighting: overcast_soft }
+    - { style: "Rain-soaked forest trail", texture: organic, palette: moss-deep, lighting: filtered_light }
+    - { style: "Ink-wash watercolor backgrounds", texture: flowing, palette: muted_ink, lighting: diffuse }
+    - { style: "Calm cathedral light beams", texture: stone-air, palette: gold-dust, lighting: volumetric }
+    - { style: "Late autumn golden fields", texture: textured, palette: amber-muted, lighting: warm_low }
+
+  sweet_joy:
+    - { style: "Bright pastel UI bubbles", texture: soft_round, palette: pink-mint, lighting: high_key }
+    - { style: "Kirby-style round softness", texture: plush, palette: candy-pastel, lighting: soft_flat }
+    - { style: "Sparkle anime overlays", texture: glossy, palette: rainbow-light, lighting: glow }
+    - { style: "Toy store color pop", texture: plastic-clean, palette: saturated, lighting: bright }
+    - { style: "Magical girl transformation glow", texture: shimmer, palette: iridescent, lighting: radiant }
+
+  rain_hug:
+    - { style: "Dim cafe window rain", texture: moody, palette: dark-brown-blue, lighting: lamplit }
+    - { style: "Soft candlelit room", texture: warm-shadow, palette: amber-deep, lighting: flicker }
+    - { style: "Overcast coastal cliffs", texture: wind-worn, palette: gray-muted, lighting: diffused }
+    - { style: "Low-saturation film grain", texture: analog, palette: washed-tone, lighting: soft_low }
+    - { style: "Night train window reflection", texture: reflective, palette: navy-amber, lighting: interior_glow }
+
+notes:
+  - "Aesthetics represent environmental tone, not narrative content."

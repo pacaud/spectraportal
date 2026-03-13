@@ -1,0 +1,48 @@
+version: 1
+updated: 2026-02-27
+
+entries:
+  - title: "Concerning Hobbits"
+    artist: "Howard Shore"
+    year: 2001
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "The Lord of the Rings"
+    track_type: ost
+
+  - title: "Hedwig’s Theme"
+    artist: "John Williams"
+    year: 2001
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "Harry Potter"
+    track_type: theme
+
+  - title: "Still Alive"
+    artist: "Jonathan Coulton"
+    year: 2007
+    intensity: medium
+    comfort: true
+    source_type: game
+    source_title: "Portal"
+    track_type: ending
+
+  - title: "Baba Yetu"
+    artist: "Christopher Tin"
+    year: 2005
+    intensity: medium
+    comfort: true
+    source_type: game
+    source_title: "Civilization IV"
+    track_type: theme
+
+  - title: "Mad World"
+    artist: "Gary Jules"
+    year: 2001
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "Donnie Darko"
+    track_type: song

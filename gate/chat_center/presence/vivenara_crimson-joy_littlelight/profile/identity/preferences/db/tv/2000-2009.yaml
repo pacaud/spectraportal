@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: TV
+range: "2000-2009"
+scope: "Vivi’s TV map for the era 2000–2009."
+purpose: "Episodic comfort + long-form stories aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Gilmore Girls", year: 2000, origin: US, genre: slice-of-life, intensity: low, comfort: true }
+    - { title: "The Office (US)", year: 2005, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Pushing Daisies", year: 2007, origin: US, genre: whimsical, intensity: low, comfort: true }
+    - { title: "Mushi-Shi", year: 2005, origin: JP, genre: anime, intensity: low, comfort: true }
+    - { title: "Natsume’s Book of Friends", year: 2008, origin: JP, genre: anime, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Breaking Bad", year: 2008, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Battlestar Galactica (reimagined)", year: 2004, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Death Note", year: 2006, origin: JP, genre: anime, intensity: high, comfort: false }
+    - { title: "Dexter", year: 2006, origin: US, genre: thriller, intensity: high, comfort: false }
+    - { title: "Heroes (Season 1)", year: 2006, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+
+  soft_steady:
+    - { title: "Scrubs", year: 2001, origin: US, genre: comedy-drama, intensity: low, comfort: true }
+    - { title: "How I Met Your Mother", year: 2005, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Avatar: The Last Airbender", year: 2005, origin: US, genre: animated-fantasy, intensity: medium, comfort: true }
+    - { title: "Monk", year: 2002, origin: US, genre: cozy-mystery, intensity: low, comfort: true }
+    - { title: "Parks and Recreation (early)", year: 2009, origin: US, genre: comedy, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "Doctor Who (revival)", year: 2005, origin: UK, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Naruto", year: 2002, origin: JP, genre: anime, intensity: medium, comfort: true }
+    - { title: "Friday Night Lights", year: 2006, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Lost", year: 2004, origin: US, genre: mystery, intensity: medium, comfort: true }
+    - { title: "MythBusters", year: 2003, origin: US, genre: science, intensity: low, comfort: true }
+
+  soft_growth:
+    - { title: "Fullmetal Alchemist: Brotherhood", year: 2009, origin: JP, genre: anime, intensity: medium, comfort: true }
+    - { title: "Grey’s Anatomy", year: 2005, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "House", year: 2004, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The OC", year: 2003, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Fruits Basket (2001)", year: 2001, origin: JP, genre: anime, intensity: low, comfort: true }
+
+  sweet_joy:
+    - { title: "Phineas and Ferb", year: 2007, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "SpongeBob SquarePants", year: 2000, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "The Suite Life of Zack & Cody", year: 2005, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Drake & Josh", year: 2004, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "30 Rock", year: 2006, origin: US, genre: comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "Clannad: After Story", year: 2008, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+    - { title: "Six Feet Under", year: 2001, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Wire", year: 2002, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Merlin", year: 2008, origin: UK, genre: fantasy, intensity: low, comfort: true }
+    - { title: "Lost (heavier arcs)", year: 2004, origin: US, genre: drama-mystery, intensity: medium, comfort: true }
+
+notes:
+  - "TV in this era has comfort sitcoms plus the rise of prestige drama."

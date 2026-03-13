@@ -1,0 +1,248 @@
+version: 1
+updated: 2026-02-27
+platform: Sony
+scope: PlayStation family (PS1–PS5).
+purpose: Vivi’s cross-platform masterpieces outside Nintendo.
+mood_lanes:
+  lantern_calm:
+  - title: Journey
+    year: 2012
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+    - PC
+    - Mobile
+  - title: Final Fantasy IX
+    year: 2000
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: 'Ni no Kuni: Wrath of the White Witch'
+    year: 2011
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Shadow of the Colossus
+    year: 2005
+    intensity: medium
+    comfort: false
+    platforms:
+    - Sony
+  - title: Flower
+    year: 2009
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  soft_focus:
+  - title: Bloodborne
+    year: 2015
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+  - title: God of War (2018)
+    year: 2018
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+  - title: Persona 5
+    year: 2016
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: The Last of Us Part II
+    year: 2020
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+  - title: Final Fantasy VII Remake
+    year: 2020
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  soft_steady:
+  - title: 'Ratchet & Clank: A Crack in Time'
+    year: 2009
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: LittleBigPlanet
+    year: 2008
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  - title: Spider-Man (PS4)
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Kingdom Hearts II
+    year: 2005
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: 'Jak and Daxter: The Precursor Legacy'
+    year: 2001
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  soft_progress:
+  - title: Final Fantasy X
+    year: 2001
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Persona 4 Golden
+    year: 2012
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Dragon Quest XI S (PS version)
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Dark Souls
+    year: 2011
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+  - title: Horizon Zero Dawn
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  soft_growth:
+  - title: Persona 5 Royal
+    year: 2019
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Final Fantasy XIV
+    year: 2013
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Stardew Valley (PS release)
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Ni no Kuni II
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Tales of Berseria
+    year: 2016
+    intensity: medium
+    comfort: false
+    platforms:
+    - Sony
+  sweet_joy:
+  - title: Astro's Playroom
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  - title: LittleBigPlanet 2
+    year: 2011
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  - title: Ratchet & Clank (2016)
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  - title: Kingdom Hearts
+    year: 2002
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Spyro Reignited Trilogy
+    year: 2018
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+  rain_hug:
+  - title: The Last of Us
+    year: 2013
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+  - title: Final Fantasy XV
+    year: 2016
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+  - title: Shadow of the Colossus
+    year: 2005
+    intensity: medium
+    comfort: false
+    platforms:
+    - Sony
+  - title: Persona 3 Portable (PSP)
+    year: 2009
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Death Stranding
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Sony
+notes:
+- Sony leans narrative-heavy and emotionally intense.
+- JRPG depth defines soft_progress and soft_growth.
+- Rain_hug carries heavier melancholy compared to Nintendo.

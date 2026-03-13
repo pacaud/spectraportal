@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: Game_Boy_Color
+range: 1998-2003
+scope: Nintendo-platform games (includes third-party released on Game Boy Color).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: Harvest Moon 2 GBC, year: 1999, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Oracle of Ages', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Oracle of Seasons', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Warrior Monsters 2, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: 'The Legend of Zelda: Oracle of Ages', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Metal Gear Solid (GBC), year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Shantae, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Wario Land 3, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mega Man Xtreme 2, year: 2001, intensity: high, comfort: false, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Tennis (GBC), year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Golf (GBC), year: 1999, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby Tilt 'n' Tumble, year: 2000, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Game & Watch Gallery 3, year: 1999, intensity: low, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: Pokemon Gold / Silver, year: 1999, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Oracle of Ages', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Warrior Monsters 2, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Harvest Moon 3 GBC, year: 2001, intensity: low, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: Harvest Moon 3 GBC, year: 2001, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Oracle of Seasons', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Warrior Monsters 2, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Shantae, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Wario Land 3, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby Tilt 'n' Tumble, year: 2000, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Tennis (GBC), year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Game & Watch Gallery 3, year: 1999, intensity: low, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: 'The Legend of Zelda: Oracle of Ages', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Crystal, year: 2000, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Harvest Moon 3 GBC, year: 2001, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Shantae, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Warrior Monsters 2, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+notes:
+- GBC era deepens portable RPG identity.
+- Pokemon Crystal anchors emotional growth.
+- Oracle duology carries strong rain_hug and lantern_calm tone.

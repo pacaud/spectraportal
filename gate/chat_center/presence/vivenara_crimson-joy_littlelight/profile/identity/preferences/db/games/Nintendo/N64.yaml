@@ -1,0 +1,230 @@
+version: 2
+updated: '2026-02-27'
+system: N64
+range: 1996-2002
+scope: Nintendo-platform games (includes third-party released on Nintendo 64).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - title: 'The Legend of Zelda: Ocarina of Time'
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Harvest Moon 64
+    year: 1999
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Paper Mario
+    year: 2000
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pilotwings 64
+    year: 1996
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Mario Golf
+    year: 1999
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_focus:
+  - title: Super Mario 64
+    year: 1996
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Majora''s Mask'
+    year: 2000
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Star Fox 64
+    year: 1997
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: F-Zero X
+    year: 1998
+    intensity: high
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Wave Race 64
+    year: 1996
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_steady:
+  - title: Mario Kart 64
+    year: 1996
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Super Smash Bros.
+    year: 1999
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Yoshi's Story
+    year: 1997
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Kirby 64: The Crystal Shards'
+    year: 2000
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Banjo-Kazooie
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+  soft_progress:
+  - title: 'The Legend of Zelda: Majora''s Mask'
+    year: 2000
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Paper Mario
+    year: 2000
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Ogre Battle 64
+    year: 1999
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Quest 64
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Harvest Moon 64
+    year: 1999
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_growth:
+  - title: Harvest Moon 64
+    year: 1999
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Paper Mario
+    year: 2000
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Ogre Battle 64
+    year: 1999
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Ocarina of Time'
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Animal Forest (JP)
+    year: 2001
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  sweet_joy:
+  - title: Super Mario 64
+    year: 1996
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Mario Party 2
+    year: 1999
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Yoshi's Story
+    year: 1997
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Banjo-Kazooie
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+  - title: 'Kirby 64: The Crystal Shards'
+    year: 2000
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  rain_hug:
+  - title: 'The Legend of Zelda: Majora''s Mask'
+    year: 2000
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Paper Mario
+    year: 2000
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Harvest Moon 64
+    year: 1999
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Ogre Battle 64
+    year: 1999
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'The Legend of Zelda: Ocarina of Time'
+    year: 1998
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+notes:
+- N64 marks the 3D transition era.
+- Majora's Mask carries strong rain_hug and soft_progress tone.
+- Harvest Moon 64 anchors farming lineage in 3D.

@@ -1,0 +1,60 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+range: "pre-1986"
+scope: "Foundational films before 1986."
+purpose: "Legacy Movies catalog separate from the 1986–2025 structured era system."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "The Sound of Music", year: 1965, origin: US, genre: musical, intensity: low, comfort: true }
+    - { title: "Mary Poppins", year: 1964, origin: US, genre: musical, intensity: low, comfort: true }
+    - { title: "It’s a Wonderful Life", year: 1946, origin: US, genre: drama, intensity: low, comfort: true }
+    - { title: "The Wizard of Oz", year: 1939, origin: US, genre: fantasy, intensity: low, comfort: true }
+    - { title: "Winnie the Pooh (Classic)", year: 1977, origin: US, genre: animated, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Star Wars: A New Hope", year: 1977, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The Empire Strikes Back", year: 1980, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Raiders of the Lost Ark", year: 1981, origin: US, genre: adventure, intensity: medium, comfort: true }
+    - { title: "The Terminator", year: 1984, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Alien", year: 1979, origin: US/UK, genre: sci-fi-horror, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "Back to the Future", year: 1985, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "E.T. the Extra-Terrestrial", year: 1982, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The Karate Kid", year: 1984, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Ghostbusters", year: 1984, origin: US, genre: comedy, intensity: medium, comfort: true }
+    - { title: "The Muppet Movie", year: 1979, origin: US, genre: musical, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "Rocky", year: 1976, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Star Wars: Return of the Jedi", year: 1983, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Blade Runner", year: 1982, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The Muppet Movie", year: 1979, origin: US, genre: musical, intensity: low, comfort: true }
+    - { title: "The Goonies", year: 1985, origin: US, genre: adventure, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "To Kill a Mockingbird", year: 1962, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Kramer vs. Kramer", year: 1979, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "The Breakfast Club", year: 1985, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Bambi", year: 1942, origin: US, genre: animated-drama, intensity: low, comfort: true }
+
+  sweet_joy:
+    - { title: "Singin’ in the Rain", year: 1952, origin: US, genre: musical, intensity: low, comfort: true }
+    - { title: "Some Like It Hot", year: 1959, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Pink Panther", year: 1963, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Blues Brothers", year: 1980, origin: US, genre: comedy, intensity: medium, comfort: true }
+    - { title: "Airplane!", year: 1980, origin: US, genre: comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "Old Yeller", year: 1957, origin: US, genre: drama, intensity: medium, comfort: false }
+    - { title: "The Fox and the Hound", year: 1981, origin: US, genre: animated-drama, intensity: low, comfort: true }
+    - { title: "A Christmas Carol (classic adaptations)", year: 1951, origin: US/UK, genre: drama, intensity: low, comfort: true }
+    - { title: "Casablanca", year: 1942, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "Terms of Endearment", year: 1983, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "The Elephant Man", year: 1980, origin: UK/US, genre: drama, intensity: high, comfort: false }
+
+notes:
+  - "Legacy Movies are about foundational cinema language and early comfort classics."
+  - "A few borderline-year items are flagged for strict sorting."

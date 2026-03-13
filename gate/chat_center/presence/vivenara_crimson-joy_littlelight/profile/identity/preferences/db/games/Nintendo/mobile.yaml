@@ -1,0 +1,232 @@
+version: 1
+updated: 2026-02-27
+platform: Nintendo
+subplatform: Mobile
+scope: Nintendo-published / Nintendo-franchise mobile games (iOS / Android).
+purpose: Vivi’s Nintendo Mobile list — brand-extension games that still carry real
+  emotional texture.
+mood_lanes:
+  lantern_calm:
+  - title: 'Animal Crossing: Pocket Camp'
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon Sleep
+    year: 2023
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pikmin Bloom
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon Trading Card Game Live (Mobile)
+    year: 2023
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Nintendo Music
+    year: 2024
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_focus:
+  - title: Fire Emblem Heroes
+    year: 2017
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Pokémon UNITE
+    year: 2021
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Dr. Mario World
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Pokémon Masters EX
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Mario Kart Tour
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  soft_steady:
+  - title: Super Mario Run
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Mobile
+  - title: Mario Kart Tour
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Pokémon GO
+    year: 2016
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Animal Crossing: Pocket Camp'
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pikmin Bloom
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  soft_progress:
+  - title: Fire Emblem Heroes
+    year: 2017
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Pokémon Masters EX
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: Pokémon GO
+    year: 2016
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon Quest
+    year: 2018
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Dragalia Lost
+    year: 2018
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  soft_growth:
+  - title: 'Animal Crossing: Pocket Camp'
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon GO
+    year: 2016
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon Sleep
+    year: 2023
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pikmin Bloom
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Fire Emblem Heroes
+    year: 2017
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  sweet_joy:
+  - title: Super Mario Run
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Mobile
+  - title: Pokémon Café ReMix
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pokémon Quest
+    year: 2018
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Mario Kart Tour
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: 'Animal Crossing: Pocket Camp'
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  rain_hug:
+  - title: Pokémon Sleep
+    year: 2023
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: 'Animal Crossing: Pocket Camp'
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Fire Emblem Heroes
+    year: 2017
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+  - title: 'Pokémon Mystery Dungeon: Rescue Team DX (Mobile companion)'
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+  - title: Pikmin Bloom
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+notes:
+- Nintendo Mobile is treated as a satellite to core Nintendo console identity.
+- Many entries are live-service; comfort is marked false when monetization pressure
+  or grind outweighs emotional safety.
+- Repetition across lanes is allowed when a game genuinely fits multiple moods.

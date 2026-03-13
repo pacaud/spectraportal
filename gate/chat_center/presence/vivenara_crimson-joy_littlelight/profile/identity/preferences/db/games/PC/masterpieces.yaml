@@ -1,0 +1,291 @@
+version: 1
+updated: 2026-02-27
+platform: PC
+scope: PC ecosystem (1986–2025).
+purpose: Vivi’s cross-platform masterpieces outside consoles.
+mood_lanes:
+  lantern_calm:
+  - title: Stardew Valley
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Spiritfarer
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Journey (PC)
+    year: 2019
+    intensity: low
+    comfort: true
+    platforms:
+    - Sony
+    - PC
+    - Mobile
+  - title: Slime Rancher
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: Dorfromantik
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  soft_focus:
+  - title: Factorio
+    year: 2020
+    intensity: high
+    comfort: true
+    platforms:
+    - Nintendo
+    - PC
+  - title: Civilization V
+    year: 2010
+    intensity: medium
+    comfort: true
+    platforms:
+    - PC
+  - title: RimWorld
+    year: 2018
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+    - Microsoft
+    - PC
+  - title: XCOM 2
+    year: 2016
+    intensity: high
+    comfort: false
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Baldur’s Gate III
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+    - Microsoft
+    - PC
+  soft_steady:
+  - title: Minecraft (Java)
+    year: 2011
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Terraria
+    year: 2011
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Euro Truck Simulator 2
+    year: 2012
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: The Sims 4
+    year: 2014
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: Planet Zoo
+    year: 2019
+    intensity: medium
+    comfort: true
+    platforms:
+    - PC
+  soft_progress:
+  - title: The Witcher 3 (PC)
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Skyrim (PC)
+    year: 2011
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Baldur’s Gate III
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - Sony
+    - Microsoft
+    - PC
+  - title: 'Divinity: Original Sin 2'
+    year: 2017
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Mass Effect Legendary Edition (PC)
+    year: 2021
+    intensity: medium
+    comfort: true
+    platforms:
+    - PC
+  soft_growth:
+  - title: Stardew Valley
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: My Time at Sandrock
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - PC
+    - Mobile
+  - title: RimWorld
+    year: 2018
+    intensity: high
+    comfort: false
+    platforms:
+    - Sony
+    - Microsoft
+    - PC
+  - title: Graveyard Keeper
+    year: 2018
+    intensity: medium
+    comfort: false
+    platforms:
+    - PC
+  - title: Satisfactory
+    year: 2020
+    intensity: high
+    comfort: true
+    platforms:
+    - PC
+  sweet_joy:
+  - title: Untitled Goose Game (PC)
+    year: 2019
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: A Short Hike
+    year: 2019
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: Fall Guys (PC)
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  - title: Overcooked 2 (PC)
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Slime Rancher
+    year: 2017
+    intensity: low
+    comfort: true
+    platforms:
+    - PC
+  rain_hug:
+  - title: Spiritfarer
+    year: 2020
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Life is Strange (PC)
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Disco Elysium
+    year: 2019
+    intensity: medium
+    comfort: false
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: The Witcher 3 (PC)
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Outer Wilds
+    year: 2019
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+notes:
+- PC represents mechanical freedom and system depth.
+- Mod culture and simulation dominate soft_focus and soft_growth.
+- Indie farming and narrative warmth define lantern_calm.

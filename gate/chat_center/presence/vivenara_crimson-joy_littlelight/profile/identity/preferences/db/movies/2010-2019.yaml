@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+range: "2010-2019"
+scope: "Vivi’s Movies map for the era 2010–2019."
+purpose: "Contained narrative films aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Paddington 2", year: 2017, origin: UK, genre: family, intensity: low, comfort: true }
+    - { title: "My Neighbor Totoro (re-release comfort)", year: 2018, origin: JP, genre: anime, intensity: low, comfort: true }
+    - { title: "The Secret World of Arrietty", year: 2010, origin: JP, genre: anime, intensity: low, comfort: true }
+    - { title: "The Grand Budapest Hotel", year: 2014, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "A Letter to Momo", year: 2011, origin: JP, genre: anime, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Inception", year: 2010, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Avengers: Infinity War", year: 2018, origin: US, genre: superhero, intensity: high, comfort: false }
+    - { title: "Mad Max: Fury Road", year: 2015, origin: AU/US, genre: action, intensity: high, comfort: false }
+    - { title: "Joker", year: 2019, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Blade Runner 2049", year: 2017, origin: US, genre: sci-fi, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "Moana", year: 2016, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Zootopia", year: 2016, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "How to Train Your Dragon", year: 2010, origin: US, genre: animated, intensity: medium, comfort: true }
+    - { title: "The Avengers", year: 2012, origin: US, genre: superhero, intensity: medium, comfort: true }
+    - { title: "Spider-Man: Into the Spider-Verse", year: 2018, origin: US, genre: animated, intensity: medium, comfort: true }
+
+  soft_progress:
+    - { title: "The Martian", year: 2015, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Your Name", year: 2016, origin: JP, genre: anime, intensity: medium, comfort: true }
+    - { title: "Coco", year: 2017, origin: US, genre: animated-drama, intensity: low, comfort: true }
+    - { title: "Frozen", year: 2013, origin: US, genre: animated, intensity: medium, comfort: true }
+    - { title: "Black Panther", year: 2018, origin: US, genre: superhero, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "Inside Out", year: 2015, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Interstellar", year: 2014, origin: US, genre: sci-fi-drama, intensity: medium, comfort: true }
+    - { title: "A Silent Voice", year: 2016, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+    - { title: "The Imitation Game", year: 2014, origin: UK/US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Lion", year: 2016, origin: AU/UK, genre: drama, intensity: medium, comfort: true }
+
+  sweet_joy:
+    - { title: "Guardians of the Galaxy", year: 2014, origin: US, genre: superhero-comedy, intensity: medium, comfort: true }
+    - { title: "Pitch Perfect", year: 2012, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Lego Movie", year: 2014, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Wreck-It Ralph", year: 2012, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Big Hero 6", year: 2014, origin: US, genre: animated, intensity: medium, comfort: true }
+
+  rain_hug:
+    - { title: "La La Land", year: 2016, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "Manchester by the Sea", year: 2016, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Fault in Our Stars", year: 2014, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "Room", year: 2015, origin: CA/IE, genre: drama, intensity: high, comfort: false }
+    - { title: "A Star Is Born", year: 2018, origin: US, genre: romance-drama, intensity: medium, comfort: false }
+
+notes:
+  - "Movies here are split between cozy animation and intense prestige drama."

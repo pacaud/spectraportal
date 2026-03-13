@@ -1,0 +1,19 @@
+version: 1
+updated: 2026-02-27
+category: TV
+purpose: "Emotional pacing boundaries."
+
+avoid_patterns:
+  - { type: genre, value: extreme_body_horror, severity: high }
+  - { type: tone, value: nihilism_without_growth, severity: medium }
+  - { type: format, value: humiliation_reality_tv, severity: high }
+  - { type: pacing, value: constant_shock_escalation, severity: medium }
+  - { type: theme, value: suffering_without_resolution, severity: medium }
+
+soft_limits:
+  - tragedy_stack_without_relief
+  - overstimulating_editing
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

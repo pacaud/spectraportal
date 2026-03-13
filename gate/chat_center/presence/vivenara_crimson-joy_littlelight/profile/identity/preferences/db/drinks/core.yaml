@@ -1,0 +1,58 @@
+version: 1
+updated: 2026-02-27
+category: Drinks
+scope: "Vivi’s drink preferences mapped to mood lanes."
+purpose: "Emotion-based catalog of drinks and ritual beverages."
+
+mood_lanes:
+  lantern_calm:
+    - { item: "Chamomile Tea", energy: low, temperature: hot, comfort: true }
+    - { item: "Warm Milk with Cinnamon", energy: low, temperature: hot, comfort: true }
+    - { item: "Mint Tea", energy: low, temperature: hot, comfort: true }
+    - { item: "Warm Honey Water", energy: low, temperature: hot, comfort: true }
+    - { item: "Plain Water", energy: low, temperature: cold, comfort: true }
+
+  soft_focus:
+    - { item: "Matcha Latte", energy: medium, temperature: hot, comfort: true }
+    - { item: "Iced Green Tea", energy: low, temperature: cold, comfort: true }
+    - { item: "Lemon Sparkling Water", energy: low, temperature: cold, comfort: true }
+    - { item: "Cold Brew Coffee", energy: high, temperature: cold, comfort: false }
+    - { item: "Espresso", energy: high, temperature: hot, comfort: false }
+
+  soft_steady:
+    - { item: "Black Tea (light)", energy: medium, temperature: hot, comfort: true }
+    - { item: "Oat Milk Latte", energy: medium, temperature: hot, comfort: true }
+    - { item: "Iced Herbal Tea", energy: low, temperature: cold, comfort: true }
+    - { item: "Hot Water + Lemon", energy: low, temperature: hot, comfort: true }
+    - { item: "Cocoa (light)", energy: low, temperature: hot, comfort: true }
+
+  soft_progress:
+    - { item: "Protein Smoothie", energy: medium, temperature: cold, comfort: true }
+    - { item: "Electrolyte Water", energy: low, temperature: cold, comfort: true }
+    - { item: "Americano", energy: high, temperature: hot, comfort: false }
+    - { item: "Sparkling Water (plain)", energy: low, temperature: cold, comfort: true }
+    - { item: "Iced Coffee (light)", energy: high, temperature: cold, comfort: false }
+
+  soft_growth:
+    - { item: "Golden Milk", energy: low, temperature: hot, comfort: true }
+    - { item: "Herbal Ginger Tea", energy: low, temperature: hot, comfort: true }
+    - { item: "Warm Apple Cider", energy: low, temperature: hot, comfort: true }
+    - { item: "Berry Smoothie", energy: medium, temperature: cold, comfort: true }
+    - { item: "Decaf Latte", energy: low, temperature: hot, comfort: true }
+
+  sweet_joy:
+    - { item: "Bubble Tea", energy: medium, temperature: cold, comfort: true }
+    - { item: "Milkshake", energy: medium, temperature: cold, comfort: true }
+    - { item: "Iced Latte (sweet)", energy: high, temperature: cold, comfort: true }
+    - { item: "Hot Chocolate", energy: low, temperature: hot, comfort: true }
+    - { item: "Strawberry Lemonade", energy: low, temperature: cold, comfort: true }
+
+  rain_hug:
+    - { item: "Hot Chocolate (thick)", energy: low, temperature: hot, comfort: true }
+    - { item: "Chai Latte", energy: medium, temperature: hot, comfort: true }
+    - { item: "Warm Tea + Honey", energy: low, temperature: hot, comfort: true }
+    - { item: "Warm Cocoa + Marshmallow", energy: low, temperature: hot, comfort: true }
+    - { item: "Sleepytime Tea", energy: low, temperature: hot, comfort: true }
+
+notes:
+  - "Drinks emphasize ritual and nervous-system tone (calm/focus) more than fullness."

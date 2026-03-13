@@ -1,0 +1,19 @@
+version: 1
+updated: 2026-02-27
+category: Aesthetics
+purpose: "Visual overstimulation boundaries."
+
+avoid_patterns:
+  - { type: lighting, value: strobe_or_rapid_flash, severity: high }
+  - { type: palette, value: extreme_neon_clash_without_balance, severity: medium }
+  - { type: texture, value: hyper_realistic_body_horror_detail, severity: high }
+  - { type: motion, value: chaotic_camera_shake, severity: medium }
+  - { type: composition, value: clutter_without_anchor_point, severity: medium }
+
+soft_limits:
+  - oversaturated_red_heavy_palettes
+  - overly_sharp_high_contrast_ui
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

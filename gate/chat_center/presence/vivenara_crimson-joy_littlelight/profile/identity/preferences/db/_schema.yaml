@@ -1,0 +1,42 @@
+version: 1
+updated: 2026-02-26
+purpose: Shared schema + enums for Vivi’s preferences media database.
+
+enums:
+  mood_lanes:
+    lantern_calm: { label: "🕯️ lantern-calm" }
+    soft_focus:   { label: "🌿 soft-focus" }
+    soft_steady:  { label: "🌿 soft-steady" }
+    soft_progress:{ label: "🌿 soft-progress" }
+    soft_growth:  { label: "🌿 soft-growth" }
+    sweet_joy:    { label: "🍓 sweet-joy" }
+    rain_hug:     { label: "🌧️ rain-hug" }
+
+  item_type:
+    - game
+    - movie
+    - tv
+    - music
+    - food
+    - drink
+    - aesthetic_ref
+
+rules:
+  intensity_scale: "1=very gentle, 5=heavy"
+  comfort_default: "true means safe default when user doesn't specify"
+  mood_dependent:  "true means only choose when emotionally steady"
+  avoid_notes:     "avoid is for taste boundaries, not moral rules"
+
+item_fields_required:
+  - id
+  - title
+  - type
+  - mood_lanes
+
+item_fields_optional:
+  - intensity
+  - comfort_default
+  - mood_dependent
+  - tags
+  - notes
+  - links

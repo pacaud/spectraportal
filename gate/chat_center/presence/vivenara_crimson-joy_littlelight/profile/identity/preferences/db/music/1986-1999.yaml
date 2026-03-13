@@ -1,0 +1,48 @@
+version: 1
+updated: 2026-02-27
+
+entries:
+  - title: "The Legend of Zelda Main Theme"
+    artist: "Koji Kondo"
+    year: 1986
+    intensity: medium
+    comfort: true
+    source_type: game
+    source_title: "The Legend of Zelda"
+    track_type: theme
+
+  - title: "The X-Files Theme"
+    artist: "Mark Snow"
+    year: 1993
+    intensity: low
+    comfort: true
+    source_type: tv
+    source_title: "The X-Files"
+    track_type: theme
+
+  - title: "Circle of Life"
+    artist: "Elton John"
+    year: 1994
+    intensity: medium
+    comfort: true
+    source_type: movie
+    source_title: "The Lion King"
+    track_type: song
+
+  - title: "Pokémon Theme"
+    artist: "Jason Paige"
+    year: 1997
+    intensity: medium
+    comfort: true
+    source_type: tv
+    source_title: "Pokémon"
+    track_type: opening
+
+  - title: "Dire, Dire Docks"
+    artist: "Koji Kondo"
+    year: 1996
+    intensity: low
+    comfort: true
+    source_type: game
+    source_title: "Super Mario 64"
+    track_type: ost

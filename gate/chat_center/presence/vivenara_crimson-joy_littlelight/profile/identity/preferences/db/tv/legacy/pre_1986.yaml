@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: TV
+range: "pre-1986"
+scope: "Foundational TV series before 1986."
+purpose: "Legacy TV catalog separate from the 1986–2025 structured era system."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Mister Rogers’ Neighborhood", year: 1968, origin: US, genre: family, intensity: low, comfort: true }
+    - { title: "The Joy of Painting", year: 1983, origin: US, genre: cozy, intensity: low, comfort: true }
+    - { title: "Sesame Street", year: 1969, origin: US, genre: family, intensity: low, comfort: true }
+    - { title: "Anne of Green Gables", year: 1985, origin: CA, genre: drama, intensity: low, comfort: true }
+    - { title: "Heidi (TV)", year: 1974, origin: JP, genre: family, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Doctor Who (Classic)", year: 1963, origin: UK, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The Twilight Zone", year: 1959, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Star Trek (TOS)", year: 1966, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "The A-Team", year: 1983, origin: US, genre: action, intensity: medium, comfort: true }
+    - { title: "M*A*S*H", year: 1972, origin: US, genre: comedy-drama, intensity: medium, comfort: true }
+
+  soft_steady:
+    - { title: "Cheers", year: 1982, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Cosby Show", year: 1984, origin: US, genre: family-comedy, intensity: low, comfort: true }
+    - { title: "Happy Days", year: 1974, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Muppet Show", year: 1976, origin: US/UK, genre: comedy, intensity: low, comfort: true }
+    - { title: "Scooby-Doo, Where Are You!", year: 1969, origin: US, genre: animated-mystery, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "MacGyver", year: 1985, origin: US, genre: action, intensity: medium, comfort: true }
+    - { title: "Knight Rider", year: 1982, origin: US, genre: action, intensity: medium, comfort: true }
+    - { title: "The Jetsons", year: 1962, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "ThunderCats", year: 1985, origin: US, genre: animated-action, intensity: medium, comfort: true }
+    - { title: "Inspector Gadget", year: 1983, origin: CA/US, genre: animated-comedy, intensity: low, comfort: true }
+
+  soft_growth:
+    - { title: "Little House on the Prairie", year: 1974, origin: US, genre: family, intensity: low, comfort: true }
+    - { title: "The Waltons", year: 1972, origin: US, genre: family, intensity: low, comfort: true }
+    - { title: "Roots", year: 1977, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Carol Burnett Show", year: 1967, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Fraggle Rock", year: 1983, origin: CA/US, genre: family, intensity: low, comfort: true }
+
+  sweet_joy:
+    - { title: "I Love Lucy", year: 1951, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Brady Bunch", year: 1969, origin: US, genre: family-comedy, intensity: low, comfort: true }
+    - { title: "Looney Tunes (Classic)", year: 1930, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "The Flintstones", year: 1960, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "Taxi", year: 1978, origin: US, genre: comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "MAS*H (heavier episodes)", year: 1972, origin: US, genre: comedy-drama, intensity: medium, comfort: true }
+    - { title: "The Incredible Hulk", year: 1977, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "All in the Family", year: 1971, origin: US, genre: comedy-drama, intensity: medium, comfort: true }
+    - { title: "The Andy Griffith Show", year: 1960, origin: US, genre: cozy, intensity: low, comfort: true }
+    - { title: "The Twilight Zone (quiet episodes)", year: 1959, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+
+notes:
+  - "TV Legacy is about long-form comfort, ritual watching, and early genre DNA."

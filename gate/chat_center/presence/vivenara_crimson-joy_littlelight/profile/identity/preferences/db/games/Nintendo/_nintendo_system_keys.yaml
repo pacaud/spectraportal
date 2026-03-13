@@ -1,0 +1,40 @@
+version: 1
+updated: 2026-02-27
+purpose: "Canonical Nintendo system keys for Vivi’s games_by_year DB (1986–2025)."
+
+mainline_systems:
+  home_hybrid:
+    - NES
+    - SNES
+    - N64
+    - GameCube
+    - Wii
+    - Wii_U
+    - Switch
+
+  handheld:
+    - Game_Boy
+    - Game_Boy_Color
+    - Virtual_Boy
+    - GBA
+    - DS
+    - 3DS
+
+optional_archival_systems:
+  japan_addons:
+    - FDS          # Famicom Disk System
+    - Satellaview  # SNES satellite download service
+    - N64DD        # Nintendo 64 Disk Drive
+
+  niche_handheld:
+    - Pokemon_Mini
+
+  distribution_platforms:
+    - Virtual_Console
+    - WiiWare
+    - DSiWare
+
+notes:
+  - "Use mainline_systems keys by default."
+  - "Only use optional_archival_systems if you intentionally want deep archival coverage."
+  - "Switch variants (Lite/OLED) stay under 'Switch'."

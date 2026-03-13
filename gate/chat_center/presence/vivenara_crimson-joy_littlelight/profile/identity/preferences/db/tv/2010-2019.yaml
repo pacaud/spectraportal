@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: TV
+range: "2010-2019"
+scope: "Vivi’s TV map for the era 2010–2019."
+purpose: "Streaming-era TV aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "The Great British Bake Off", year: 2010, origin: UK, genre: cozy, intensity: low, comfort: true }
+    - { title: "Steven Universe", year: 2013, origin: US, genre: animated-fantasy, intensity: low, comfort: true }
+    - { title: "Little Witch Academia", year: 2017, origin: JP, genre: anime, intensity: low, comfort: true }
+    - { title: "Call the Midwife", year: 2012, origin: UK, genre: drama, intensity: low, comfort: true }
+    - { title: "Anne with an E", year: 2017, origin: CA, genre: drama, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "Game of Thrones", year: 2011, origin: US, genre: fantasy-drama, intensity: high, comfort: false }
+    - { title: "Black Mirror", year: 2011, origin: UK, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "Mr. Robot", year: 2015, origin: US, genre: thriller, intensity: high, comfort: false }
+    - { title: "Attack on Titan", year: 2013, origin: JP, genre: anime, intensity: high, comfort: false }
+    - { title: "Stranger Things (heavier arcs)", year: 2016, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+
+  soft_steady:
+    - { title: "Brooklyn Nine-Nine", year: 2013, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Parks and Recreation", year: 2010, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "New Girl", year: 2011, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Stranger Things (Season 1)", year: 2016, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Gravity Falls", year: 2012, origin: US, genre: animated-mystery, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "The Crown", year: 2016, origin: UK, genre: drama, intensity: medium, comfort: true }
+    - { title: "My Hero Academia", year: 2016, origin: JP, genre: anime, intensity: medium, comfort: true }
+    - { title: "The Expanse", year: 2015, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Westworld (Season 1)", year: 2016, origin: US, genre: sci-fi, intensity: high, comfort: false }
+    - { title: "The Flash (early)", year: 2014, origin: US, genre: superhero, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "The Good Place", year: 2016, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "This Is Us", year: 2016, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Violet Evergarden", year: 2018, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+    - { title: "She-Ra and the Princesses of Power", year: 2018, origin: US, genre: animated-fantasy, intensity: low, comfort: true }
+    - { title: "BoJack Horseman", year: 2014, origin: US, genre: animated-drama, intensity: high, comfort: false }
+
+  sweet_joy:
+    - { title: "Bob’s Burgers", year: 2011, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "The Amazing World of Gumball", year: 2011, origin: UK/US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "K-On!!", year: 2010, origin: JP, genre: anime, intensity: low, comfort: true }
+    - { title: "Adventure Time", year: 2010, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "Schitt’s Creek", year: 2015, origin: CA, genre: comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "Fleabag", year: 2016, origin: UK, genre: comedy-drama, intensity: medium, comfort: false }
+    - { title: "The Handmaid’s Tale", year: 2017, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Atypical", year: 2017, origin: US, genre: drama, intensity: low, comfort: true }
+    - { title: "13 Reasons Why", year: 2017, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Violet Evergarden (heavier arcs)", year: 2018, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+
+notes:
+  - "A few entries are flagged if you want strict 2010+ boundaries."

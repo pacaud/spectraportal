@@ -1,0 +1,255 @@
+version: 1
+updated: 2026-02-27
+platform: Microsoft
+scope: Xbox family (Xbox–Xbox Series).
+purpose: Vivi’s cross-platform masterpieces outside Nintendo.
+mood_lanes:
+  lantern_calm:
+  - title: Ori and the Blind Forest
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+    - PC
+  - title: Ori and the Will of the Wisps
+    year: 2020
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+    - PC
+  - title: Fable II
+    year: 2008
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Forza Horizon 4
+    year: 2018
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Viva Piñata
+    year: 2006
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  soft_focus:
+  - title: Halo 3
+    year: 2007
+    intensity: high
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: 'Halo: Reach'
+    year: 2010
+    intensity: high
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: Gears of War 2
+    year: 2008
+    intensity: high
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: Elden Ring (Xbox)
+    year: 2022
+    intensity: high
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: Starfield
+    year: 2023
+    intensity: medium
+    comfort: false
+    platforms:
+    - Microsoft
+  soft_steady:
+  - title: Forza Horizon 5
+    year: 2021
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Minecraft (Xbox)
+    year: 2012
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Sea of Thieves
+    year: 2018
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Fable III
+    year: 2010
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Hi-Fi Rush
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  soft_progress:
+  - title: Mass Effect 2
+    year: 2010
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: 'The Elder Scrolls V: Skyrim (Xbox)'
+    year: 2011
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: The Witcher 3 (Xbox)
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: 'Dragon Age: Origins'
+    year: 2009
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: 'Fallout: New Vegas'
+    year: 2010
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  soft_growth:
+  - title: Stardew Valley (Xbox)
+    year: 2016
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Grounded
+    year: 2022
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: State of Decay 2
+    year: 2018
+    intensity: medium
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: Minecraft (Xbox)
+    year: 2012
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+    - Mobile
+  - title: Forza Horizon 4
+    year: 2018
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  sweet_joy:
+  - title: 'Viva Piñata: Trouble in Paradise'
+    year: 2008
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Hi-Fi Rush
+    year: 2023
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Rare Replay
+    year: 2015
+    intensity: low
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Psychonauts 2
+    year: 2021
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: Banjo-Kazooie (Xbox)
+    year: 2008
+    intensity: low
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+  rain_hug:
+  - title: 'Halo: Reach'
+    year: 2010
+    intensity: high
+    comfort: false
+    platforms:
+    - Microsoft
+  - title: Mass Effect 2
+    year: 2010
+    intensity: medium
+    comfort: true
+    platforms:
+    - Microsoft
+  - title: The Witcher 3 (Xbox)
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Sony
+    - Microsoft
+    - PC
+  - title: Ori and the Blind Forest
+    year: 2015
+    intensity: medium
+    comfort: true
+    platforms:
+    - Nintendo
+    - Microsoft
+    - PC
+  - title: Red Dead Redemption 2 (Xbox)
+    year: 2018
+    intensity: medium
+    comfort: false
+    platforms:
+    - Microsoft
+notes:
+- Microsoft leans into scale, systems, and multiplayer backbone.
+- Western RPG progression defines soft_progress.
+- Ori anchors emotional warmth within the ecosystem.

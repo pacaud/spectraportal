@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: GameCube
+range: 2001-2007
+scope: Nintendo-platform games (includes third-party released on GameCube).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: Animal Crossing, year: 2001, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: A Wonderful Life', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: The Wind Waker', year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin 2, year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Paper Mario: The Thousand-Year Door', year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Metroid Prime, year: 2002, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Twilight Princess', year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Smash Bros. Melee, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: F-Zero GX, year: 2003, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Resident Evil 4, year: 2005, intensity: high, comfort: false, platforms: [Nintendo]}
+  soft_steady:
+  - {title: 'Mario Kart: Double Dash!!', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Sunshine, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Luigi's Mansion, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby Air Ride, year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Sonic Adventure 2: Battle', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: 'Fire Emblem: Path of Radiance', year: 2005, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: 'Paper Mario: The Thousand-Year Door', year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Metroid Prime 2: Echoes', year: 2004, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'Baten Kaitos: Eternal Wings and the Lost Ocean', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Skies of Arcadia Legends, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: 'Harvest Moon: A Wonderful Life', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Animal Crossing, year: 2001, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin 2, year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: Path of Radiance', year: 2005, intensity: high, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: 'Mario Kart: Double Dash!!', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby Air Ride, year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Sunshine, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'WarioWare, Inc.: Mega Party Games!', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Party 4, year: 2002, intensity: low, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: 'The Legend of Zelda: The Wind Waker', year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: A Wonderful Life', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Metroid Prime, year: 2002, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'Baten Kaitos: Eternal Wings and the Lost Ocean', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: Path of Radiance', year: 2005, intensity: high, comfort: true, platforms: [Nintendo]}
+notes:
+- GameCube era blends cozy experimentation with darker emotional tone.
+- Animal Crossing establishes long-term life-sim identity.
+- 'Harvest Moon: A Wonderful Life anchors farming lineage in 3D era.'

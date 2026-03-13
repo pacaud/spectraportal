@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: Movies
+range: "2000-2009"
+scope: "Vivi’s Movies map for the era 2000–2009."
+purpose: "Contained narrative films aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Spirited Away", year: 2001, origin: JP, genre: anime-fantasy, intensity: low, comfort: true }
+    - { title: "Howl’s Moving Castle", year: 2004, origin: JP, genre: anime-fantasy, intensity: low, comfort: true }
+    - { title: "Amélie", year: 2001, origin: FR, genre: romance, intensity: low, comfort: true }
+    - { title: "Pride & Prejudice", year: 2005, origin: UK/US, genre: romance-drama, intensity: low, comfort: true }
+    - { title: "Ratatouille", year: 2007, origin: US, genre: animated-family, intensity: low, comfort: true }
+
+  soft_focus:
+    - { title: "The Dark Knight", year: 2008, origin: US, genre: action-drama, intensity: high, comfort: false }
+    - { title: "Gladiator", year: 2000, origin: US/UK, genre: drama, intensity: high, comfort: false }
+    - { title: "No Country for Old Men", year: 2007, origin: US, genre: thriller, intensity: high, comfort: false }
+    - { title: "The Lord of the Rings: The Two Towers", year: 2002, origin: NZ/US, genre: fantasy, intensity: medium, comfort: true }
+    - { title: "There Will Be Blood", year: 2007, origin: US, genre: drama, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "Harry Potter and the Sorcerer’s Stone", year: 2001, origin: UK/US, genre: fantasy, intensity: low, comfort: true }
+    - { title: "Finding Nemo", year: 2003, origin: US, genre: animated-family, intensity: low, comfort: true }
+    - { title: "The Incredibles", year: 2004, origin: US, genre: animated, intensity: medium, comfort: true }
+    - { title: "Mean Girls", year: 2004, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Shrek", year: 2001, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "The Lord of the Rings: The Return of the King", year: 2003, origin: NZ/US, genre: fantasy, intensity: medium, comfort: true }
+    - { title: "Iron Man", year: 2008, origin: US, genre: superhero, intensity: medium, comfort: true }
+    - { title: "The Devil Wears Prada", year: 2006, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Spider-Man 2", year: 2004, origin: US, genre: superhero, intensity: medium, comfort: true }
+    - { title: "Casino Royale", year: 2006, origin: UK/US, genre: action, intensity: medium, comfort: true }
+
+  soft_growth:
+    - { title: "Up", year: 2009, origin: US, genre: animated-drama, intensity: low, comfort: true }
+    - { title: "The Pursuit of Happyness", year: 2006, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Wall-E", year: 2008, origin: US, genre: animated, intensity: low, comfort: true }
+    - { title: "A Beautiful Mind", year: 2001, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Eternal Sunshine of the Spotless Mind", year: 2004, origin: US, genre: drama, intensity: medium, comfort: true }
+
+  sweet_joy:
+    - { title: "Legally Blonde", year: 2001, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "The Emperor’s New Groove", year: 2000, origin: US, genre: animated-comedy, intensity: low, comfort: true }
+    - { title: "High School Musical", year: 2006, origin: US, genre: musical, intensity: low, comfort: true }
+    - { title: "School of Rock", year: 2003, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Mamma Mia!", year: 2008, origin: US/UK, genre: musical, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "A Walk to Remember", year: 2002, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "The Notebook", year: 2004, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "The Pianist", year: 2002, origin: FR/PL, genre: drama, intensity: high, comfort: false }
+    - { title: "Brokeback Mountain", year: 2005, origin: US, genre: romance-drama, intensity: medium, comfort: true }
+    - { title: "The Curious Case of Benjamin Button", year: 2008, origin: US, genre: drama, intensity: medium, comfort: true }
+
+notes:
+  - "Movies in this era are franchise-scale plus emotionally grounded drama."

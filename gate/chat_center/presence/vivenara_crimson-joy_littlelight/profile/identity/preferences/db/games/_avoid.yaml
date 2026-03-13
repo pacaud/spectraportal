@@ -1,0 +1,20 @@
+version: 1
+updated: 2026-02-27
+category: Games
+purpose: "Mechanical or emotional patterns that reduce enjoyment."
+
+avoid_patterns:
+  - { type: mechanic, value: extreme_grind_without_meaningful_progress, severity: medium }
+  - { type: mechanic, value: permadeath_without_recovery_option, severity: medium }
+  - { type: pacing, value: relentless_timer_pressure, severity: medium }
+  - { type: economy, value: aggressive_gacha_monetization, severity: high }
+  - { type: tone, value: cruelty_as_primary_game_loop, severity: high }
+
+soft_limits:
+  - twitch_reflex_only_design
+  - camera_motion_sickness_prone
+  - over_tutorialization
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

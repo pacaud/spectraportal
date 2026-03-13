@@ -1,0 +1,48 @@
+version: 1
+updated: 2026-02-27
+
+entries:
+  - title: "Time"
+    artist: "Hans Zimmer"
+    year: 2010
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "Inception"
+    track_type: ost
+
+  - title: "Let It Go"
+    artist: "Idina Menzel"
+    year: 2013
+    intensity: medium
+    comfort: true
+    source_type: movie
+    source_title: "Frozen"
+    track_type: song
+
+  - title: "Gurenge"
+    artist: "LiSA"
+    year: 2019
+    intensity: medium
+    comfort: true
+    source_type: tv
+    source_title: "Demon Slayer"
+    track_type: opening
+
+  - title: "The Mandalorian Theme"
+    artist: "Ludwig Göransson"
+    year: 2019
+    intensity: medium
+    comfort: true
+    source_type: tv
+    source_title: "The Mandalorian"
+    track_type: theme
+
+  - title: "Gerudo Valley (Orchestral)"
+    artist: "Koji Kondo"
+    year: 1998
+    intensity: medium
+    comfort: true
+    source_type: game
+    source_title: "The Legend of Zelda: Ocarina of Time"
+    track_type: ost

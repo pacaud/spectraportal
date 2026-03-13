@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: DS
+range: 2004-2013
+scope: Nintendo-platform games (includes third-party released on Nintendo DS).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: Harvest Moon DS, year: 2005, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Harvest Moon DS Cute, year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Rune Factory: A Fantasy Harvest Moon', year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: Wild World', year: 2005, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Phantom Hourglass', year: 2007, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: The World Ends With You, year: 2007, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Spirit Tracks', year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: "Pok\xE9mon Black / White", year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Castlevania: Dawn of Sorrow', year: 2005, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Metroid Prime Hunters, year: 2006, intensity: high, comfort: false, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Mario Kart DS, year: 2005, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: New Super Mario Bros., year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby Super Star Ultra, year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Rhythm Heaven, year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: "Mario & Luigi: Bowser\u2019s Inside Story", year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: "Pok\xE9mon Diamond / Pearl", year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: Shadow Dragon', year: 2008, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Quest IX, year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Shin Megami Tensei: Devil Survivor', year: 2009, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Radiant Historia, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: Rune Factory 2, year: 2008, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Rune Factory 3, year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: Grand Bazaar', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: "Pok\xE9mon Black 2 / White 2", year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: Wild World', year: 2005, intensity: low, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Kirby Super Star Ultra, year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Kart DS, year: 2005, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: New Super Mario Bros., year: 2006, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Rhythm Heaven, year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'WarioWare: Touched!', year: 2004, intensity: low, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: 'Harvest Moon: Grand Bazaar', year: 2008, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Rune Factory 3, year: 2009, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: The World Ends With You, year: 2007, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Radiant Historia, year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: "Pok\xE9mon Black / White", year: 2010, intensity: medium, comfort: true, platforms: [Nintendo]}
+notes:
+- DS era is peak farming expansion and portable JRPG depth.
+- Grand Bazaar anchors Kevin-coded farming systems.
+- Rune Factory solidifies farming + combat hybrid identity.

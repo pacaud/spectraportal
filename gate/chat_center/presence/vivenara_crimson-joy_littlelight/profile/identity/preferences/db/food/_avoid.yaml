@@ -1,0 +1,17 @@
+version: 1
+updated: 2026-02-27
+category: Food
+purpose: "Sensory overload boundaries."
+
+avoid_patterns:
+  - { type: texture, value: slimy_unexpected, severity: medium }
+  - { type: spice, value: extreme_heat_without_flavor_depth, severity: medium }
+  - { type: smell, value: overpowering_fermented_shock, severity: medium }
+
+soft_limits:
+  - overly_sweet_processed
+  - heavy_grease_after_8pm
+
+notes:
+  - "Descriptive only. No auto-filter logic applied."
+  - "Severity meanings: low=drain over time, medium=needs spacing, high=avoid unless intentional."

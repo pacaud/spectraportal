@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: GBA
+range: 2001-2008
+scope: Nintendo-platform games (includes third-party released on Game Boy Advance).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: 'Harvest Moon: Friends of Mineral Town', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: More Friends of Mineral Town', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: The Minish Cap', year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Emerald, year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Golden Sun, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Metroid Fusion, year: 2002, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'Metroid: Zero Mission', year: 2004, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: The Minish Cap', year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Castlevania: Aria of Sorrow', year: 2003, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Advance Wars, year: 2001, intensity: high, comfort: true, platforms: [Nintendo]}
+  soft_steady:
+  - {title: 'Mario Kart: Super Circuit', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Mario & Luigi: Superstar Saga', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Kirby: Nightmare in Dream Land', year: 2002, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'WarioWare, Inc.: Mega Microgame$', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Advance 2, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: Fire Emblem, year: 2003, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: The Sacred Stones', year: 2004, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: 'Golden Sun: The Lost Age', year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Ruby / Sapphire, year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Final Fantasy Tactics Advance, year: 2003, intensity: high, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: 'Harvest Moon: Friends of Mineral Town', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Emerald, year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: The Sacred Stones', year: 2004, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: 'Golden Sun: The Lost Age', year: 2002, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Mario & Luigi: Superstar Saga', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Kirby & the Amazing Mirror, year: 2004, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'WarioWare, Inc.: Mega Microgame$', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Super Mario Advance 4: Super Mario Bros. 3', year: 2003, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Mario Kart: Super Circuit', year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon FireRed / LeafGreen, year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: Golden Sun, year: 2001, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Harvest Moon: Friends of Mineral Town', year: 2003, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: The Minish Cap', year: 2004, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: The Sacred Stones', year: 2004, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Metroid Fusion, year: 2002, intensity: high, comfort: false, platforms: [Nintendo]}
+notes:
+- GBA represents peak 2D pixel artistry.
+- Friends of Mineral Town anchors portable farming identity.
+- Fire Emblem establishes long-form emotional strategy in the West.

@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: Wii_U
+range: 2012-2017
+scope: Nintendo-platform games (includes third-party released on Wii U).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: 'Animal Crossing: Amiibo Festival', year: 2015, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Yoshi's Woolly World, year: 2015, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Captain Toad: Treasure Tracker', year: 2014, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin 3, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Breath of the Wild', year: 2017, intensity: high, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Super Mario 3D World, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Bayonetta 2, year: 2014, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'Donkey Kong Country: Tropical Freeze', year: 2014, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: The Wonderful 101, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Splatoon, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Mario Kart 8, year: 2014, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Smash Bros. for Wii U, year: 2014, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Nintendo Land, year: 2012, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: New Super Mario Bros. U, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Maker, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: 'The Legend of Zelda: Breath of the Wild', year: 2017, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Xenoblade Chronicles X, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Tokyo Mirage Sessions #FE', year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Monster Hunter 3 Ultimate, year: 2013, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Pikmin 3, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: Pikmin 3, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Maker, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: Amiibo Festival', year: 2015, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Breath of the Wild', year: 2017, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Yoshi's Woolly World, year: 2015, intensity: low, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Super Mario 3D World, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Kart 8, year: 2014, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Splatoon, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Nintendo Land, year: 2012, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Yoshi's Woolly World, year: 2015, intensity: low, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: 'The Legend of Zelda: Breath of the Wild', year: 2017, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Xenoblade Chronicles X, year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Tokyo Mirage Sessions #FE', year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pikmin 3, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Bayonetta 2, year: 2014, intensity: high, comfort: false, platforms: [Nintendo]}
+notes:
+- Wii U serves as the experimental bridge to Switch.
+- Breath of the Wild is included as cross-gen anchor.
+- System emphasizes creative tools and open-world transition.

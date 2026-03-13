@@ -1,0 +1,53 @@
+version: 2
+updated: '2026-02-27'
+system: 3DS
+range: 2011-2020
+scope: Nintendo-platform games (includes third-party released on Nintendo 3DS).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: Rune Factory 4, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: New Leaf', year: 2012, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Fantasy Life, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Story of Seasons, year: 2014, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: A Link Between Worlds', year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Fire Emblem Awakening, year: 2012, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Monster Hunter 4 Ultimate, year: 2014, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Majora''s Mask 3D', year: 2015, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: 'Metroid: Samus Returns', year: 2017, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: 'Kid Icarus: Uprising', year: 2012, intensity: high, comfort: false, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Mario Kart 7, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario 3D Land, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Tomodachi Life, year: 2013, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Luigi''s Mansion: Dark Moon', year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Kirby: Triple Deluxe', year: 2014, intensity: low, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: Fire Emblem Fates, year: 2015, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Bravely Default, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Sun / Moon, year: 2016, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Shin Megami Tensei IV, year: 2013, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Quest VIII (3DS), year: 2015, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: Rune Factory 4, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Story of Seasons: Trio of Towns', year: 2016, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Animal Crossing: New Leaf', year: 2012, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Omega Ruby / Alpha Sapphire, year: 2014, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Fantasy Life, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: Super Mario 3D Land, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mario Kart 7, year: 2011, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Kirby: Planet Robobot', year: 2016, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Yoshi's New Island, year: 2014, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Tomodachi Life, year: 2013, intensity: low, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: Rune Factory 4, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Fire Emblem Awakening, year: 2012, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Bravely Default, year: 2012, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'The Legend of Zelda: Majora''s Mask 3D', year: 2015, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Pokemon Sun / Moon, year: 2016, intensity: medium, comfort: true, platforms: [Nintendo]}
+notes:
+- 3DS balances farming, Fire Emblem revival, and portable JRPG depth.
+- Rune Factory 4 anchors farming + combat hybrid identity.
+- Fire Emblem Awakening marks a major franchise resurgence.

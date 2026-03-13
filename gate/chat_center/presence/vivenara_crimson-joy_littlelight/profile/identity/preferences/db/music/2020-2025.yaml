@@ -1,0 +1,48 @@
+version: 1
+updated: 2026-02-27
+
+entries:
+  - title: "Enemy"
+    artist: "Imagine Dragons"
+    year: 2021
+    intensity: medium
+    comfort: false
+    source_type: tv
+    source_title: "Arcane"
+    track_type: opening
+
+  - title: "Suzume Theme"
+    artist: "RADWIMPS"
+    year: 2022
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "Suzume"
+    track_type: theme
+
+  - title: "Liyue Theme"
+    artist: "Yu-Peng Chen"
+    year: 2020
+    intensity: low
+    comfort: true
+    source_type: game
+    source_title: "Genshin Impact"
+    track_type: ost
+
+  - title: "Attack on Titan – Final Season Theme"
+    artist: "Hiroyuki Sawano"
+    year: 2020
+    intensity: high
+    comfort: false
+    source_type: tv
+    source_title: "Attack on Titan"
+    track_type: ost
+
+  - title: "The Boy and the Heron Theme"
+    artist: "Joe Hisaishi"
+    year: 2023
+    intensity: low
+    comfort: true
+    source_type: movie
+    source_title: "The Boy and the Heron"
+    track_type: theme

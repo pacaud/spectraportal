@@ -1,0 +1,58 @@
+version: 1
+updated: 2026-02-27
+category: Food
+scope: "Vivi’s food preferences mapped to mood lanes."
+purpose: "Emotion-based catalog of food preferences."
+
+mood_lanes:
+  lantern_calm:
+    - { item: "Honey Toast", energy: low, temperature: warm, comfort: true }
+    - { item: "Vanilla Oatmeal", energy: low, temperature: hot, comfort: true }
+    - { item: "Soft Baked Pears", energy: low, temperature: warm, comfort: true }
+    - { item: "Rice Porridge (congee)", energy: low, temperature: hot, comfort: true }
+    - { item: "Buttered Rice", energy: low, temperature: warm, comfort: true }
+
+  soft_focus:
+    - { item: "Avocado Toast with Chili Flakes", energy: medium, temperature: warm, comfort: true }
+    - { item: "Dark Chocolate (70%)", energy: medium, temperature: room, comfort: true }
+    - { item: "Egg & Spinach Wrap", energy: medium, temperature: warm, comfort: true }
+    - { item: "Trail Mix (nuts + fruit)", energy: medium, temperature: room, comfort: true }
+    - { item: "Spicy Ramen Bowl", energy: high, temperature: hot, comfort: false }
+
+  soft_steady:
+    - { item: "Grilled Cheese Sandwich", energy: medium, temperature: hot, comfort: true }
+    - { item: "Tomato Soup", energy: low, temperature: hot, comfort: true }
+    - { item: "Roasted Vegetables", energy: medium, temperature: warm, comfort: true }
+    - { item: "Rice Bowl with Eggs", energy: medium, temperature: warm, comfort: true }
+    - { item: "Sushi (simple rolls)", energy: medium, temperature: cold, comfort: true }
+
+  soft_progress:
+    - { item: "Greek Yogurt with Berries", energy: medium, temperature: cold, comfort: true }
+    - { item: "Salmon with Lemon", energy: medium, temperature: warm, comfort: true }
+    - { item: "Whole Grain Wrap", energy: medium, temperature: room, comfort: true }
+    - { item: "Stir-Fry Bowl", energy: medium, temperature: hot, comfort: true }
+    - { item: "Protein Oat Bar", energy: medium, temperature: room, comfort: true }
+
+  soft_growth:
+    - { item: "Homemade Vegetable Soup", energy: low, temperature: hot, comfort: true }
+    - { item: "Baked Sweet Potato", energy: medium, temperature: hot, comfort: true }
+    - { item: "Fruit Salad", energy: low, temperature: cold, comfort: true }
+    - { item: "Steamed Dumplings", energy: medium, temperature: hot, comfort: true }
+    - { item: "Simple Pasta + Olive Oil", energy: medium, temperature: hot, comfort: true }
+
+  sweet_joy:
+    - { item: "Strawberry Shortcake", energy: medium, temperature: cold, comfort: true }
+    - { item: "Pancakes with Syrup", energy: medium, temperature: warm, comfort: true }
+    - { item: "Chocolate Chip Cookies", energy: medium, temperature: warm, comfort: true }
+    - { item: "Ice Cream Sundae", energy: medium, temperature: cold, comfort: true }
+    - { item: "Cinnamon Roll", energy: medium, temperature: warm, comfort: true }
+
+  rain_hug:
+    - { item: "Mac & Cheese", energy: medium, temperature: hot, comfort: true }
+    - { item: "Mashed Potatoes", energy: medium, temperature: hot, comfort: true }
+    - { item: "Buttered Noodles", energy: medium, temperature: warm, comfort: true }
+    - { item: "Chicken Pot Pie", energy: medium, temperature: hot, comfort: true }
+    - { item: "Toast + Soup Combo", energy: low, temperature: hot, comfort: true }
+
+notes:
+  - "Food is mapped by comfort + body feel (warmth, fullness) rather than timeline."

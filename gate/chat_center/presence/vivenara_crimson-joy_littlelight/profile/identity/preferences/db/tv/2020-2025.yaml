@@ -1,0 +1,59 @@
+version: 1
+updated: 2026-02-27
+category: TV
+range: "2020-2025"
+scope: "Vivi’s TV map for the era 2020–2025."
+purpose: "Streaming-first comfort + high-impact series aligned to mood lanes."
+
+mood_lanes:
+  lantern_calm:
+    - { title: "Bluey", year: 2020, origin: AU, genre: family-cozy, intensity: low, comfort: true }
+    - { title: "Only Murders in the Building", year: 2021, origin: US, genre: cozy-mystery, intensity: low, comfort: true }
+    - { title: "Ted Lasso", year: 2020, origin: US/UK, genre: comedy-drama, intensity: low, comfort: true }
+    - { title: "Frieren: Beyond Journey’s End", year: 2023, origin: JP, genre: anime-fantasy, intensity: low, comfort: true }
+    - { title: "The Bear (quiet episodes)", year: 2022, origin: US, genre: drama, intensity: medium, comfort: false }
+
+  soft_focus:
+    - { title: "Arcane", year: 2021, origin: FR/US, genre: animated-fantasy, intensity: high, comfort: false }
+    - { title: "House of the Dragon", year: 2022, origin: US, genre: fantasy-drama, intensity: high, comfort: false }
+    - { title: "The Last of Us", year: 2023, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Succession (late seasons)", year: 2020, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Severance", year: 2022, origin: US, genre: sci-fi, intensity: high, comfort: false }
+
+  soft_steady:
+    - { title: "The Mandalorian", year: 2020, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "Wednesday", year: 2022, origin: US, genre: fantasy-mystery, intensity: medium, comfort: true }
+    - { title: "Heartstopper", year: 2022, origin: UK, genre: romance, intensity: low, comfort: true }
+    - { title: "Loki", year: 2021, origin: US, genre: superhero, intensity: medium, comfort: true }
+    - { title: "Spy x Family", year: 2022, origin: JP, genre: anime-comedy, intensity: low, comfort: true }
+
+  soft_progress:
+    - { title: "The Legend of Vox Machina", year: 2022, origin: US, genre: fantasy, intensity: medium, comfort: true }
+    - { title: "Demon Slayer (modern arcs)", year: 2021, origin: JP, genre: anime, intensity: medium, comfort: true }
+    - { title: "Andor", year: 2022, origin: US, genre: sci-fi, intensity: medium, comfort: true }
+    - { title: "One Piece (Live Action)", year: 2023, origin: US/JP, genre: adventure, intensity: medium, comfort: true }
+    - { title: "The Boys (heavier arcs)", year: 2020, origin: US, genre: superhero, intensity: high, comfort: false }
+
+  soft_growth:
+    - { title: "The Queen’s Gambit", year: 2020, origin: US, genre: drama, intensity: medium, comfort: true }
+    - { title: "Kotaro Lives Alone", year: 2022, origin: JP, genre: anime-drama, intensity: low, comfort: true }
+    - { title: "Beef", year: 2023, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Owl House (later seasons)", year: 2020, origin: US, genre: animated-fantasy, intensity: low, comfort: true }
+    - { title: "My Dress-Up Darling", year: 2022, origin: JP, genre: anime-romance, intensity: low, comfort: true }
+
+  sweet_joy:
+    - { title: "The Great British Bake Off (later seasons)", year: 2020, origin: UK, genre: cozy, intensity: low, comfort: true }
+    - { title: "Abbott Elementary", year: 2021, origin: US, genre: comedy, intensity: low, comfort: true }
+    - { title: "Spy x Family", year: 2022, origin: JP, genre: anime-comedy, intensity: low, comfort: true }
+    - { title: "Schitt’s Creek (late seasons)", year: 2020, origin: CA, genre: comedy, intensity: low, comfort: true }
+    - { title: "Jury Duty", year: 2023, origin: US, genre: comedy, intensity: low, comfort: true }
+
+  rain_hug:
+    - { title: "Normal People", year: 2020, origin: IE, genre: drama, intensity: medium, comfort: true }
+    - { title: "Maid", year: 2021, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "The Bear (stress arcs)", year: 2022, origin: US, genre: drama, intensity: high, comfort: false }
+    - { title: "Fruits Basket (2019→2020 arc)", year: 2020, origin: JP, genre: anime-drama, intensity: medium, comfort: true }
+    - { title: "The Sandman", year: 2022, origin: US/UK, genre: fantasy, intensity: medium, comfort: true }
+
+notes:
+  - "TV in this era is streaming-first: comfort rewatches plus very intense prestige series."

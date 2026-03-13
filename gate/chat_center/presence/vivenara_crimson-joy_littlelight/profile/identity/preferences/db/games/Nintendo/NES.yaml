@@ -1,0 +1,53 @@
+version: 3
+updated: '2026-02-27'
+system: NES
+range: 1986-1994
+scope: Nintendo-platform games (includes third-party released on NES/Famicom).
+purpose: Top 5 games per mood lane for this Nintendo system.
+mood_lanes:
+  lantern_calm:
+  - {title: The Legend of Zelda, year: 1986, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Quest, year: 1986, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: River City Ransom, year: 1989, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dr. Mario, year: 1990, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Kirby's Adventure, year: 1993, intensity: low, comfort: true, platforms: [Nintendo]}
+  soft_focus:
+  - {title: Super Mario Bros. 3, year: 1988, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mega Man 2, year: 1988, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Castlevania, year: 1986, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Contra, year: 1987, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Ninja Gaiden, year: 1988, intensity: high, comfort: false, platforms: [Nintendo]}
+  soft_steady:
+  - {title: Mike Tyson's Punch-Out!!, year: 1987, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Tetris, year: 1989, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Gradius, year: 1986, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Balloon Fight, year: 1986, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Excitebike, year: 1984, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_progress:
+  - {title: Final Fantasy, year: 1987, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Mother, year: 1989, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Crystalis, year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Quest III, year: 1988, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: StarTropics, year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  soft_growth:
+  - {title: 'Zelda II: The Adventure of Link', year: 1987, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Fire Emblem: Shadow Dragon and the Blade of Light', year: 1990, intensity: high, comfort: true, platforms: [Nintendo]}
+  - {title: Sweet Home, year: 1989, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Dragon Quest IV, year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Final Fantasy III, year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  sweet_joy:
+  - {title: DuckTales, year: 1989, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Bubble Bobble, year: 1986, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: 'Teenage Mutant Ninja Turtles II: The Arcade Game', year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Chip ''n Dale: Rescue Rangers', year: 1990, intensity: low, comfort: true, platforms: [Nintendo]}
+  - {title: Super Mario Bros. 3, year: 1988, intensity: medium, comfort: true, platforms: [Nintendo]}
+  rain_hug:
+  - {title: Metroid, year: 1986, intensity: high, comfort: false, platforms: [Nintendo]}
+  - {title: Mother, year: 1989, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Sweet Home, year: 1989, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: Crystalis, year: 1990, intensity: medium, comfort: true, platforms: [Nintendo]}
+  - {title: 'Castlevania III: Dracula''s Curse', year: 1989, intensity: high, comfort: false, platforms: [Nintendo]}
+notes:
+- Repetition allowed only when emotionally justified.
+- Excitebike is 1984; replace if strict 1986+ cutoff is required.
+- Balance aims to represent platformers, action, RPGs, shooters, and puzzle genres.
