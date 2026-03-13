@@ -11,6 +11,7 @@ set -euo pipefail
 # - dev:       deploy ./docs -> $WEBROOT_DEV
 # - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/)
 # - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
+# - srv:        deploy ./boot ./chat_center ./core -> /srv/spectraportal
 # - docs:       compatibility alias for dev
 #
 # Usage:
@@ -19,6 +20,7 @@ set -euo pipefail
 #   scripts/sp_deploy.sh gate --repo /path/to/repo --src gate
 #   scripts/sp_deploy.sh gate-draft --repo /path/to/repo
 #   scripts/sp_deploy.sh gate-draft --repo /path/to/repo --src gate/drafts
+#   scripts/sp_deploy.sh srv --repo /path/to/repo
 #   scripts/sp_deploy.sh dev --repo /path/to/repo --src docs
 # ============================================================
 
@@ -34,11 +36,13 @@ Targets:
   dev         Deploy repo/docs by default
   gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/)
   gate-draft   Deploy repo/gate/drafts by default
+  srv          Deploy repo/boot, repo/chat_center, repo/core to /srv/spectraportal
   docs         Alias of dev
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
   --src PATH  Source folder override for assets/framework/dev/gate/gate-draft
+              (not used for srv)
               Absolute paths are allowed; relative paths are resolved under --repo
 EOF
 }
@@ -100,6 +104,10 @@ fi
 : "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
 : "${WORKSPACE_ROOT:=/srv/spectraportal/workspace/site}"
 : "${WORKSPACE_GATE_DRAFTS:=$WORKSPACE_ROOT/gate/drafts}"
+: "${SRV_ROOT:=/srv/spectraportal}"
+: "${SRV_BOOT:=$SRV_ROOT/boot}"
+: "${SRV_CHAT_CENTER:=$SRV_ROOT/chat_center}"
+: "${SRV_CORE:=$SRV_ROOT/core}"
 
 if [[ -n "$REPO_OVERRIDE" ]]; then
   REPO_ROOT="$(cd "$REPO_OVERRIDE" && pwd)"
@@ -249,6 +257,46 @@ if [[ "$TARGET" == "gate-draft" ]]; then
   exit 0
 fi
 
+
+if [[ "$TARGET" == "srv" ]]; then
+  BOOT_SRC="$REPO_ROOT/boot"
+  CHAT_CENTER_SRC="$REPO_ROOT/chat_center"
+  CORE_SRC="$REPO_ROOT/core"
+
+  echo "[deploy] srv -> /srv/spectraportal"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] boot: $BOOT_SRC"
+  echo "[deploy] chat_center: $CHAT_CENTER_SRC"
+  echo "[deploy] core: $CORE_SRC"
+
+  if [[ ! -d "$BOOT_SRC" ]]; then
+    echo "[deploy] ERROR: missing boot source: $BOOT_SRC" >&2
+    exit 1
+  fi
+
+  if [[ ! -d "$CHAT_CENTER_SRC" ]]; then
+    echo "[deploy] ERROR: missing chat_center source: $CHAT_CENTER_SRC" >&2
+    exit 1
+  fi
+
+  if [[ ! -d "$CORE_SRC" ]]; then
+    echo "[deploy] ERROR: missing core source: $CORE_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$SRV_ROOT"
+  remote_mkdir "$SRV_BOOT"
+  remote_mkdir "$SRV_CHAT_CENTER"
+  remote_mkdir "$SRV_CORE"
+
+  rsync_push "$BOOT_SRC/" "$REMOTE:$SRV_BOOT/"
+  rsync_push "$CHAT_CENTER_SRC/" "$REMOTE:$SRV_CHAT_CENTER/"
+  rsync_push "$CORE_SRC/" "$REMOTE:$SRV_CORE/"
+
+  echo "[deploy] srv done"
+  exit 0
+fi
+
 if [[ "$TARGET" == "dev" ]]; then
   DOCS_SRC="$(resolve_src docs)"
   echo "[deploy] dev -> spectraportal.dev"
@@ -268,6 +316,6 @@ if [[ "$TARGET" == "dev" ]]; then
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | gate-draft" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | gate-draft | srv" >&2
 echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1

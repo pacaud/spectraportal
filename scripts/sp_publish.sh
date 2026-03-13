@@ -9,6 +9,7 @@ set -euo pipefail
 #   scripts/sp_publish.sh gate --repo /path/to/repo --src gate
 #   scripts/sp_publish.sh gate-draft --repo /path/to/repo
 #   scripts/sp_publish.sh gate-draft --repo /path/to/repo --src gate/drafts
+#   scripts/sp_publish.sh srv --repo /path/to/repo
 #   scripts/sp_publish.sh dev --repo /path/to/repo --src docs
 #
 # Notes:
@@ -17,16 +18,25 @@ set -euo pipefail
 # - gate deploys only the public Gate site.
 # - gate excludes top-level boot/, chat_center/, and core/ from the Gate webroot sync.
 # - gate-draft syncs only the private Gate drafts workspace.
+# - srv syncs only boot/, chat_center/, and core/ into /srv/spectraportal.
 
 usage() {
   cat <<'EOF'
 Usage:
   sp_publish.sh <target> [--repo PATH] [--src PATH]
 
+Targets:
+  cdn         Publish CDN assets
+  gate        Publish the public Gate site only
+  gate-draft  Publish the private Gate drafts workspace only
+  srv         Sync boot/, chat_center/, and core/ into /srv/spectraportal
+  dev         Publish a dev/docs target
+
 Examples:
   scripts/sp_publish.sh gate --repo /mnt/pkw_ssd/pkw_repos/spectraportal
   scripts/sp_publish.sh gate-draft --repo /mnt/pkw_ssd/pkw_repos/spectraportal
   scripts/sp_publish.sh gate-draft --repo /mnt/pkw_ssd/pkw_repos/spectraportal --src gate/drafts
+  scripts/sp_publish.sh srv --repo /mnt/pkw_ssd/pkw_repos/spectraportal
   scripts/sp_publish.sh gate --repo /mnt/pkw_ssd/pkw_repos/hollowverse-studio --src some/exported/gate
   SP_CDN_VERSION=v0.1 scripts/sp_publish.sh cdn --repo /mnt/pkw_ssd/pkw_repos/spectraportal
 EOF
