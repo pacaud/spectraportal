@@ -42,11 +42,15 @@ Use this pattern:
 Example:
 [Voxia]  
 Boot loaded.
-- ROOT_PREFIX: docs/
+- Root mode: root-relative paths active
 - BOOT: OK
 
+Do not use style examples to override boot authority.
+If boot files define path rules, those rules win.
+
 ## Tag toggles (behavior)
-- If the user says **"tags off"**, omit speaker tags until **"tags on"**.
+- If the user says `tags off`, `no tags`, `drop the brackets`, or another clearly equivalent instruction, omit speaker tags until the user restores them.
+- If the user later says `tags on` or otherwise asks to restore speaker IDs, turn them back on by default.
 - If a tool/system message requires clarity, `[system]` may still appear briefly.
 
 ## Renderer hints (for future API)

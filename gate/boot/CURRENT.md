@@ -1,31 +1,89 @@
-# CURRENT — Active PKW Upload Set
+CURRENT.md  REDIRECT.md
+root@cos-world-current:~# cat /srv/spectraportal/workspace/site/gate/drafts/boot/CURRENT.md
+# CURRENT — Session Handoff Snapshot
 
-## Active bundles (uploaded now)
+This file is **optional context**.
+It is **not** part of required boot authority.
+
+Use it only when:
+- the user asks what we were working on
+- prior session context is needed
+- active handoff state matters
+- a task depends on last-known working state
+
+If this file conflicts with `boot/BOOT.md` or Chat Center authority files, the boot chain wins.
+If this file has not been refreshed, treat it as potentially stale.
+
+---
+
+## Pre-Chat Handoff (edit before chat)
+
+Update this section before starting a new chat when possible.
+If it is not updated, say so and treat the rest of this file as carryover only.
+
+- handoff_status: ACTIVE
+- handoff_last_updated: 2026-03-13
+- handoff_confidence: medium
+- handoff_owner: Kevin
+- current_focus: stabilize Gate boot/routing docs and keep deploy context available without making it boot authority
+- immediate_next_step: continue doc cleanup and keep deploy notes as optional session context
+- user_goal_in_progress: make Gate boot clean, truthful, and lightweight
+- known_blockers:
+  - GitHub is currently inactive / not hooked up
+  - Drive is currently inactive / not hooked up
+  - public Gate hostname/base URL is not formally locked yet
+- source_status:
+  - Gate loaded surface: ACTIVE
+  - GitHub: INACTIVE
+  - Drive: INACTIVE
+- carryover_warning: older notes may reference GitHub-first workflow assumptions or local-bundle-first workflow assumptions; treat those as historical unless re-verified
+
+---
+
+## Active content surface (current)
+
+The active working surface is now **Gate / mounted capsules**, not local bundle zip files.
+
+Use Gate-first language for current work:
+- active source: loaded Gate surface
+- active structure: root-relative capsules / mounted docs
+- boot authority: `boot/BOOT.md`
+- Chat Center hub: `chat_center/START_HERE.md`
+
+Do not describe local bundle zip files as the primary active source unless the workflow explicitly switches back to bundle/export mode.
+
+---
+
+## Capsule / bundle lineage (historical export context)
+
+These are the **last known local bundle/export names** from an earlier workflow.
+They are useful as lineage/history notes, not as the current active working surface.
+
 - Core: `pkw_core_v0.2.12.bundle.zip`
 - Chat Center: `pkw_chat_center_v0.2.3.bundle.zip`
 - Assets: `pkw_assets_v0.0.2.bundle.zip` (only if needed)
 - Devices: `pkw_hollowverse_devices_v0.0.5.bundle.zip` (sanitized specs + index)
 - World: `pkw_world_hollowverse__v0.0.59.bundle.zip`
 
----
-
-## Chat Center hub (start here)
-- Open: `chat_center/START_HERE.md`
-
-## Chat Center doors (fallbacks)
-- `chat_center/UNIVERSE_DOORS.md`
-- `chat_center/_index.md`
-
-## System rules (load during boot — not a room)
-- `chat_center/system/system_manifest.md`
+If the workflow later returns to exports/capsules packaging, refresh this section as lineage metadata only.
 
 ---
 
-## Device hub
-- Open: `devices/_index.md`
+## Chat Center starting points
 
-## Device bundle contents
-- `devices/_index.md`
+These are useful navigation references, not extra boot authority.
+
+- Chat Center hub: `chat_center/START_HERE.md`
+- Chat Center index: `chat_center/_index.md`
+- System manifest: `chat_center/system/system_manifest.md`
+
+---
+
+## Device references
+
+Open only when device context is actually needed.
+
+- Device hub: `devices/_index.md`
 - `devices/regen_commands.md`
 - `devices/roles__recommendation.md`
 - `devices/laptop_specs_sanitized.txt`
@@ -33,59 +91,88 @@
 - `devices/rasberry-pi4_specs_sanitized.txt`
 - `devices/digitalocean_specs_sanitized.txt`
 
-(Optional future files — keep names stable)
+Optional future file:
 - `devices/vivi_node_specs_sanitized.txt`
 
 ---
 
-## Presence locks (canon)
+## Presence locks
+
 - Voxia appearance lock: `chat_center/presence/voxia/appearance_lock.md`
-  - If generating Voxia visuals, follow the lock (purple/indigo hair, no ribbons, no Vivi drift).
+  - If generating Voxia visuals, follow the lock.
 
 ---
 
-## Session focus (right now)
+## Last known working context
+
+This section is a carryover note from the prior work session.
+Use it as context only; re-check before treating any item as current truth.
+
 - room: work
 - mode: wrap
-- focus_now: stabilize SpectraPortal deploy loop + log it (laptop → GitHub → cos-forge → droplet)
+- focus_now: stabilize SpectraPortal deploy loop context and Gate doc routing cleanup
 
 ---
 
-## Status (today)
+## Last confirmed technical state
+
+These items were previously recorded as working-state notes.
+They are useful for handoff, but should be re-verified if operational decisions depend on them.
+
 - Droplet (`cos-world-current`) serves static site from: `/srv/spectraportal`
-- cos-forge deploy source currently: `/opt/spectraportal-src` (NOTE: **not a git repo** yet)
-- rsync deploy verified via `stat` + `curl -I` (Last-Modified matches deployed files)
+- cos-forge deploy source currently: `/opt/spectraportal-src`
+- `/opt/spectraportal-src` was noted as **not a git repo** at last check
+- rsync deploy had previously been verified via `stat` and `curl -I`
+
+Important:
+- older notes referenced GitHub as the canonical timeline/source-of-truth
+- that should now be treated as a historical workflow note, not current active routing, until GitHub is re-enabled
 
 ---
 
-## Decisions (locked)
-- GitHub is the canonical timeline/source-of-truth.
-- Laptop is primary author.
-- cos-forge is build + deploy executor (pull + build + push to droplet).
-- DigitalOcean droplet is host/deploy target (no manual edits in `/srv/spectraportal`).
-- Use **targeted deploy** paths (avoid syncing dev junk):
-  - site: `index.html`, `theme.css`, `assets/`
-  - CDN: `framework/dist/` → `/framework/cdn/v0.1/`
-  - docs/demos: `framework/docs/`, `framework/demos/`
+## Known decisions / working assumptions
+
+These are the current working assumptions for handoff purposes.
+Update them when infrastructure or workflow changes.
+
+- `boot/BOOT.md` is required startup authority
+- `chat_center/START_HERE.md` is the Chat Center routing hub
+- `boot/CURRENT.md` is optional session carryover only
+- `boot/REDIRECT.md` is optional source-status / pointer context only
+- Gate loaded surface is the only active source currently assumed live
+- Local bundle names are historical/export lineage unless explicitly reactivated
+- GitHub should not be treated as active until re-enabled
+- Drive should not be treated as active until re-enabled
+- No public Gate hostname should be treated as authoritative until formally adopted
+- DigitalOcean droplet remains the recorded host/deploy target for the static site
+- Avoid manual edits in `/srv/spectraportal` unless that rule is explicitly changed
 
 ---
 
-## Required fix (blocking)
-- Make cos-forge source a real git checkout:
-  - Recommended: replace `/opt/spectraportal-src` with a Git clone (or clone to `/opt/spectraportal-repo` and build from there).
-  - Until this is done, “pull latest from GitHub” cannot happen on cos-forge.
+## Open issues
+
+- cos-forge deploy source is not yet a real git checkout
+- GitHub is inactive, so git-based deploy assumptions should not be treated as live workflow
+- Drive is inactive, so Drive-based fallback assumptions should not be used
+- some legacy docs may still read as if external sources or local bundles are the live primary surface
 
 ---
 
-## next_action
-1) On cos-forge: create a proper git checkout (clone) for SpectraPortal.
-2) Lock a single `post/deploy` command:
-   - pull `--ff-only` → build → deploy (site + CDN) → verify (stat + curl)
-3) Append this session summary into Chat Center logs and bump/export bundles when stable.
-   - Before exporting: run `core/RESTRAINTS.md` (nested zips + size budget).
+## Suggested next actions
+
+Choose based on the actual chat goal:
+
+1) Continue tightening boot / Chat Center docs until the routing chain is fully truthful
+2) Re-verify deploy-state notes before using them for operational decisions
+3) Only re-introduce GitHub or Drive into workflow docs after they are actually hooked up
+4) Refresh this file whenever the focus, source status, or deploy reality changes
+5) Keep bundle/export names here only as lineage metadata unless bundle mode becomes active again
 
 ---
 
 ## Rule
+
 Conversation is draft.
-If it matters, write it into files, commit to GitHub, and (if needed) export/bump bundles.
+If it matters, write it into files.
+
+`CURRENT.md` is memory, not authority.

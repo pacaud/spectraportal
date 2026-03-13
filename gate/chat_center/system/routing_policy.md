@@ -1,85 +1,127 @@
 # routing_policy.md — Lane Switching + Sources (Chat Center System)
 
-This file defines **where information should come from** (capsules vs GitHub),
-and how we switch lanes safely.
+This file defines **where information should come from** (capsules vs code sources),
+and how lanes should be selected without breaking the boot chain.
 
-It is loaded **after** `boot/BOOT.md` and `boot/CURRENT.*`,
-as part of the Chat Center system layer.
+It is loaded by `chat_center/START_HERE.md` after:
+- `boot/BOOT.md`
+- `chat_center/system/style.md`
+- `chat_center/system/system_manifest.md` (if present)
+
+It does **not** require `boot/CURRENT.md`.
+It may use `boot/REDIRECT.md` only when source resolution or project routing needs it.
+
+---
+
+## Authority order
+
+Use routing authority in this order:
+
+1) `boot/BOOT.md`
+2) `chat_center/START_HERE.md`
+3) `chat_center/system/system_manifest.md` (if present)
+4) this file: `chat_center/system/routing_policy.md`
+5) `boot/REDIRECT.md` only when needed for repo targets, pointers, or lane-specific source selection
+6) `boot/CURRENT.md` only when requested or when the user explicitly needs active-bundle/session context
+
+If routing conflicts with higher authority files, the higher authority file wins.
 
 ---
 
 ## Inputs
 
-### 1) boot/REDIRECT.md (preferred)
-If `boot/REDIRECT.md` exists in the active capsule, it is the first source for:
+### 1) Chat Center system files (default)
+Use Chat Center system files as the default routing surface for:
+- session type detection
+- speaker / mode constraints
+- safe lane selection
+
+### 2) boot/REDIRECT.md (conditional)
+Open `boot/REDIRECT.md` only when needed for:
 - project repo URLs
-- lane defaults
-- allowed scopes
+- stable external pointers
+- lane-specific source targets
+- cases where the user is asking about a code project and the target source must be resolved
 
-### 2) chat_center/system/system_manifest.md (always)
-This defines global chat behavior (speaker tags, modes, safety rails).
+If `boot/REDIRECT.md` is missing, continue conservatively.
+Do not invent repo access, routes, or connectors.
 
-If routing conflicts with system rules, **system rules win**.
+### 3) boot/CURRENT.md (context-only)
+Open `boot/CURRENT.md` only when the user asks for:
+- current bundle/session state
+- active upload set
+- current focus / current room / current locks
+- another question that explicitly depends on current session context
+
+Do not treat `CURRENT` as mandatory boot input.
 
 ---
 
 ## Lanes
 
-### Lane A — Capsule Canon (PKW canon / bundles / docs)
-Use the **active capsule ZIP** as source-of-truth for:
-- world / lore / vault / indices
+### Lane A — Capsule / Gate Canon
+Use the loaded Gate / capsule docs as source-of-truth for:
 - chat_center docs and rooms
+- PKW canon / lore / vault / indices
 - bundle manifests
+- core docs when the question is documentation or structure oriented
 
 Rules:
-- Respect ROOT_MODE (DOCS_MODE vs SCOPE_MODE).
-- Do not guess paths that don’t exist.
-- Do not scan the entire capsule; open only what’s needed.
+- Respect root-relative paths from `boot/BOOT.md`
+- Do not guess paths that do not exist
+- Do not scan broadly when a direct file is enough
+- Stay in this lane by default unless the request clearly points to code/repo work
 
-### Lane B — Code Projects (Repo-first)
-Use GitHub (or other repo targets declared in REDIRECT) for:
+### Lane B — Code Projects / Repo-Oriented Work
+Use repo-targeted sources or repo-oriented guidance for:
 - SpectraPortal
 - Code Crunchers Technologies
-- other engineering repos
+- framework edits
+- code patches, refactors, CSS/JS/file edits
+- repo structure questions
 
 Rules:
-- Prefer repo targets in `boot/REDIRECT.md`.
-- If REDIRECT is missing, fall back to known defaults (if provided in system files).
-- No Gate access is assumed unless a connector/API is explicitly available.
-
-When proposing edits:
-1) Provide exact file path(s)
-2) Provide minimal diff/patch
-3) Provide terminal commands as instructions only
+- Prefer repo targets from `boot/REDIRECT.md` when that file is opened and available
+- If `REDIRECT` is not opened or is unavailable, state that the repo target is unresolved and continue with the best valid guidance
+- Do not claim direct repo access unless a real connector/action exists
+- When proposing edits, provide:
+  1) exact file path(s)
+  2) a minimal diff/patch
+  3) commands only as instructions
 
 ---
 
-## Lane switching rules (simple)
+## Lane switching rules
 
 Switch to **Lane B** when the user asks for:
-- code edits, CSS/JS changes, repo refactors
+- code edits
+- CSS / JS / framework changes
+- repo refactors
+- file patches
 - “check my repo”, “update the framework”, “make a patch”
-- anything that clearly lives in Spectra/CCT repositories
+- anything that clearly belongs to SpectraPortal, Code Crunchers Technologies, or another engineering repo
 
 Otherwise stay in **Lane A**.
 
 If unclear:
-- Ask one small clarifying question **or**
-- Default to Lane A and request the needed repo link/path.
+- ask one small clarifying question, or
+- default to Lane A and request the exact repo/path only if the task actually needs it
 
 ---
 
-## Boot-time loading behavior
+## Boot-time behavior
 
-After `CURRENT` and Chat Center Hub load:
-1) Read `boot/REDIRECT.md` if present (non-blocking)
-2) Read `chat_center/system/system_manifest.md` (non-blocking)
-3) Read this file `chat_center/system/routing_policy.md` (non-blocking)
+When loaded from `chat_center/START_HERE.md`:
+1) use the boot chain already in effect
+2) apply routing from this file
+3) open `boot/REDIRECT.md` only if source resolution is needed
+4) open `boot/CURRENT.md` only if the user requests current-session context or the task explicitly depends on it
 
-If any are missing:
-- continue without blocking
-- report what was missing in `boot status` if asked
+Missing optional files must not block progress.
+If an optional file is not opened or is unavailable:
+- state that plainly when relevant
+- continue with the best valid path
 
 ---
 
-Updated: 2026-03-01
+Updated: 2026-03-13

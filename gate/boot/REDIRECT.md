@@ -1,94 +1,137 @@
-# REDIRECT.md — Stable Pointer Hub (Gate + Drive + GitHub)
+# REDIRECT.md — Stable Pointer Hub (Gate + external source status)
 
-Use these URLs when referencing PKW docs and CodeCrunchers projects in chat.
+Use this file to resolve **preferred sources**, **source status**, and **fallback order** for PKW docs and project questions.
 
-**Read source for sessions (PKW canon):** Gate Mirror  
-**Edit/build source-of-truth (code projects):** GitHub  
-**Last-resort access:** Drive (human links) + Drive Gateway (Apps Script)
-
----
-
-## GitHub (code projects — preferred when editing / reviewing code)
-
-When Kevin asks about **SpectraPortal** or **Code Crunchers Technologies** code, treat these repos as the
-authoritative source-of-truth (unless he explicitly says “use Gate” or “use a local bundle”).
-
-- SpectraPortal repo: https://github.com/pacaud/spectraportal
-- Code Crunchers Technologies repo: https://github.com/pacaud/code-crunchers-technologies
-
-### GitHub reading/search guidance (chat)
-
-- If Kevin asks to **find** something (“search for”, “where is”, “grep”, “locate”), search within the repo first:
-  - Prefer file/paths in: `README.md`, `POINTERS.md`, `docs/`, `framework/`, `source/`, `hooks/`, and root `index.html` (as applicable).
-- If Kevin asks to **edit** a file, respond with:
-  1) The exact file path in the repo,
-  2) A minimal diff/patch snippet,
-  3) Any follow-up commands (git add/commit/push) *as instructions only*.
-
-Notes:
-- ChatGPT cannot “pull” private repos or your local working tree automatically—GitHub links are how I can read the current public source.
-- If a file only exists locally, paste it or provide a Gate/Drive link.
+This file is **optional at boot**.
+Open it only when source resolution, project targeting, or external pointer selection is needed.
 
 ---
 
-## Gate Mirror (preferred for PKW canon chats)
+## Purpose
 
-### Base endpoints
+Use this file to answer questions like:
+- which source should be treated as preferred for this task?
+- which sources are currently active vs inactive?
+- where should repo-oriented work point once external sources are re-enabled?
+- what is the fallback order if an external source is unavailable?
 
-- CURRENT:      https://gate.hollowverse.studio/boot/CURRENT.json
-- INDEX:        https://gate.hollowverse.studio/boot/index.json
-- BOOT:         https://gate.hollowverse.studio/boot/BOOT.json
-- SHA256SUMS:   https://gate.hollowverse.studio/SHA256SUMS.txt
-
-### Hash pointer note (tolerant)
-
-- If `index.json` includes `paths.sha256sums`, prefer that.
-- If it does **not** include it, use the **root** SHA256SUMS URL above.
-- If any SHA256SUMS URL 404s, continue anyway (integrity must not block boot).
+This file does **not** grant access by itself.
+Do not assume any connector, repo read capability, or external fetch capability unless it exists in the live tool surface.
 
 ---
 
-## Gate docs (capsules)
+## Source status
 
-- boot capsule:        https://gate.hollowverse.studio/boot/docs/boot/BOOT.json
-- current capsule:     https://gate.hollowverse.studio/boot/docs/boot/CURRENT.json
+### 1) Loaded Gate surface / active capsule docs
+Status: **ACTIVE**
 
-- core index:          https://gate.hollowverse.studio/boot/docs/core/_index.json
-- chat_center index:   https://gate.hollowverse.studio/boot/docs/chat_center/_index.json
-- hollowverse index:   https://gate.hollowverse.studio/boot/docs/hollowverse/_index.json
-- devices index:       https://gate.hollowverse.studio/boot/docs/devices/_index.json
+Prefer the currently loaded Gate surface or active capsule docs for:
+- PKW canon
+- chat_center docs and rooms
+- core docs
+- bundle structure and internal documentation
+- current live routing authority
 
-Notes:
-- Folder URLs may 404. Always open a file (`_index.json`, `START_HERE.json`, `README.json`).
-- Prefer `.json` capsules over `.md` when available.
+If no live mirror/base URL is formally locked yet:
+- use the currently mounted/readable Gate surface first
+- avoid hard-coding public hostnames into routing language
+- treat hostnames and mirror endpoints as deployment details, not routing authority
 
----
+### 2) GitHub repo targets
+Status: **INACTIVE / not hooked up**
 
-## Drive Canon Root
+Do **not** treat GitHub as an active routing source until it is actually connected and verified in the current environment.
 
-- Root folder (human): https://drive.google.com/drive/folders/1ryBnj5QtQQnV3pSVhAQYMS2THV8VO9VW?usp=sharing
-- DRIVE_ROOT_ID: 1ryBnj5QtQQnV3pSVhAQYMS2THV8VO9VW
+GitHub may still be the intended future source-of-truth for repo-oriented work, but while inactive:
+- do not route to GitHub by default
+- do not imply repo search/read access
+- do not present repo URLs as if they are currently usable workflow endpoints
+- if repo guidance is still useful, provide path-level guidance only when the needed structure is already known from the live surface or user-provided files
 
-## Drive Gateway (Apps Script Web App)
+### 3) Drive / Drive Gateway
+Status: **INACTIVE / not hooked up**
 
-- DRIVE_GATEWAY_URL: https://script.google.com/macros/s/AKfycby4osjXtV0xbLhgJ4L2eR2yzbYSjCueGNJ2dCQi_To-rZx4b1eAqNPaLdCiYDbLdkK-/exec
+Do **not** treat Drive as an active fallback until it is actually connected and verified.
 
-### Gateway operations
-- List (inventory): `DRIVE_GATEWAY_URL?op=list&rootId=DRIVE_ROOT_ID&contains=<text>&max=<n>`
-- Get (fetch text file): `DRIVE_GATEWAY_URL?op=get&rootId=DRIVE_ROOT_ID&id=<FILE_ID>`
-
-Important: when asking GPT to open gateway URLs, paste the FULL URL including query params.
-
----
-
-## Boot Order (always)
-
-1) Open **GPTS_BOOT.md** (Project upload) and follow it.
-2) If the request is **PKW canon**, use **Gate Mirror** first.
-3) If the request is **SpectraPortal** or **Code Crunchers** code, use **GitHub** first.
-4) If Gate is unavailable for canon reads, fall back to **GitHub** (read-only) or **bundles**.
-5) Drive links/Gateway are last-resort access.
+While inactive:
+- do not route to it by default
+- do not print stale folder IDs or gateway URLs as if they are ready to use
+- treat Drive wiring as an integration/deployment detail, not a routing dependency
 
 ---
 
-Updated: {today}
+## External source placeholders
+
+These are placeholders for future activation, not current routing promises.
+
+### GitHub placeholders
+- `SPECTRAPORTAL_REPO_URL`: UNSET
+- `CCT_REPO_URL`: UNSET
+
+When GitHub is re-enabled:
+- add the approved repo URLs here
+- mark GitHub as ACTIVE only after the environment can actually use it
+- keep repo access wording truthful to the real tool surface
+
+### Gate endpoint placeholders
+Only use concrete endpoint URLs after a real Gate base URL or mirror host is officially locked.
+Until then, keep endpoint references symbolic or local to the mounted/readable surface.
+
+- `GATE_BASE_URL`: UNSET
+- `GATE_BOOT_POINTER`: `boot/BOOT.*`
+- `GATE_CURRENT_POINTER`: `boot/CURRENT.*`
+- `GATE_INDEX_POINTER`: `boot/index.*`
+- `GATE_SHA256_POINTER`: `SHA256SUMS.txt`
+
+Rules:
+- do not hard-code a public hostname until it is formally adopted
+- prefer exact file pointers over folder URLs
+- prefer the active mirror format (`.json`, `.md`, or other) that the live surface actually uses
+- integrity pointers must not block boot or safe progress
+- if external access is unavailable, do not pretend any endpoint was opened
+
+### Drive placeholders
+- `DRIVE_ROOT_ID`: UNSET
+- `DRIVE_GATEWAY_URL`: UNSET
+
+When Drive is re-enabled:
+- add the current live root ID and gateway URL here
+- mark Drive as ACTIVE only after verification
+
+---
+
+## Selection rules
+
+Use these rules when deciding which source to point to:
+
+1) For PKW canon or Chat Center structure questions, prefer the loaded Gate surface or active capsule docs
+2) Do not use GitHub unless it has been explicitly re-enabled and verified
+3) Do not use Drive unless it has been explicitly re-enabled and verified
+4) If an inactive source would normally be preferred, say that it is inactive and continue with the best valid Gate-local path
+5) Do not use a public Gate hostname as authority until that hostname is officially adopted
+
+---
+
+## Repo-oriented work while GitHub is inactive
+
+If the user asks for SpectraPortal, Code Crunchers Technologies, or other repo-style work while GitHub is inactive:
+- use Gate/local docs if they contain the needed structure
+- ask for pasted file text or an accessible local/Gate path when exact code content is required
+- provide minimal patch suggestions only when the target file/path is known
+- do not imply that a repo was searched or opened
+
+---
+
+## Boot order reference
+
+At session start, follow the actual boot chain:
+1) `GPTS_BOOT.md`
+2) `boot/BOOT.md`
+3) `chat_center/START_HERE.md`
+4) Chat Center authority files required by `START_HERE`
+
+Open `REDIRECT.md` only when needed for source selection or project routing.
+
+---
+
+Updated: 2026-03-13
