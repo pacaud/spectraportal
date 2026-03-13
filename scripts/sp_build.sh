@@ -13,7 +13,7 @@ set -euo pipefail
 #   SP_CDN_VERSION=v0.1 scripts/sp_build.sh cdn --repo /path/to/repo --src framework
 #
 # Notes:
-# - dev/ (from ./docs), assets/, framework/, gate/, and gate-draft/ are source sites
+# - dev/ (from ./docs), assets/, framework/, gate/, gate-draft/, and srv are source targets
 #   and do not currently require a build step.
 # - The target name is `dev`, but it deploys the local ./docs source tree by default.
 # - This script does NOT require npm/package.json.
@@ -31,8 +31,9 @@ Targets:
   framework   No build step required
   dev         No build step required
   gate        No build step required
-  gate-draft   No build step required
-  docs         Alias of dev (no build step required)
+  gate-draft  No build step required
+  srv         No build step required
+  docs        Alias of dev (no build step required)
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
@@ -161,7 +162,7 @@ while i < n:
         result.append(ch)
         if escape:
             escape = False
-        elif ch == "\\":
+        elif ch == "\":
             escape = True
         elif ch == quote:
             in_string = False

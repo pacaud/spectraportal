@@ -5,13 +5,13 @@ set -euo pipefail
 # SpectraPortal Deploy
 #
 # Targets:
-# - cdn:       deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
-# - assets:    deploy ./assets -> $WEBROOT_ASSETS
-# - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
-# - dev:       deploy ./docs -> $WEBROOT_DEV
+# - cdn:        deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
+# - assets:     deploy ./assets -> $WEBROOT_ASSETS
+# - framework:  deploy ./framework -> $WEBROOT_FRAMEWORK
+# - dev:        deploy ./docs -> $WEBROOT_DEV
 # - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/)
 # - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
-# - srv:        deploy ./boot ./chat_center ./core -> /srv/spectraportal
+# - srv:        deploy ./gate/boot ./gate/chat_center ./gate/core -> /srv/spectraportal
 # - docs:       compatibility alias for dev
 #
 # Usage:
@@ -35,9 +35,9 @@ Targets:
   framework   Deploy repo/framework by default
   dev         Deploy repo/docs by default
   gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/)
-  gate-draft   Deploy repo/gate/drafts by default
-  srv          Deploy repo/boot, repo/chat_center, repo/core to /srv/spectraportal
-  docs         Alias of dev
+  gate-draft  Deploy repo/gate/drafts by default
+  srv         Deploy repo/gate/boot, repo/gate/chat_center, repo/gate/core to /srv/spectraportal
+  docs        Alias of dev
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
@@ -257,11 +257,10 @@ if [[ "$TARGET" == "gate-draft" ]]; then
   exit 0
 fi
 
-
 if [[ "$TARGET" == "srv" ]]; then
-  BOOT_SRC="$REPO_ROOT/boot"
-  CHAT_CENTER_SRC="$REPO_ROOT/chat_center"
-  CORE_SRC="$REPO_ROOT/core"
+  BOOT_SRC="$REPO_ROOT/gate/boot"
+  CHAT_CENTER_SRC="$REPO_ROOT/gate/chat_center"
+  CORE_SRC="$REPO_ROOT/gate/core"
 
   echo "[deploy] srv -> /srv/spectraportal"
   echo "[deploy] repo: $REPO_ROOT"

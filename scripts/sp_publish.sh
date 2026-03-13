@@ -15,10 +15,10 @@ set -euo pipefail
 # Notes:
 # - All options after <target> are forwarded to both build and deploy.
 # - For non-cdn targets, build is currently a no-op.
-# - gate deploys only the public Gate site.
-# - gate excludes top-level boot/, chat_center/, and core/ from the Gate webroot sync.
-# - gate-draft syncs only the private Gate drafts workspace.
-# - srv syncs only boot/, chat_center/, and core/ into /srv/spectraportal.
+# - gate deploys only the public Gate site from repo/gate.
+# - gate excludes repo/gate/boot, repo/gate/chat_center, and repo/gate/core from the Gate webroot sync.
+# - gate-draft syncs only the private Gate drafts workspace from repo/gate/drafts.
+# - srv syncs only repo/gate/boot, repo/gate/chat_center, and repo/gate/core into /srv/spectraportal.
 
 usage() {
   cat <<'EOF'
@@ -29,7 +29,7 @@ Targets:
   cdn         Publish CDN assets
   gate        Publish the public Gate site only
   gate-draft  Publish the private Gate drafts workspace only
-  srv         Sync boot/, chat_center/, and core/ into /srv/spectraportal
+  srv         Sync gate/boot, gate/chat_center, and gate/core into /srv/spectraportal
   dev         Publish a dev/docs target
 
 Examples:
