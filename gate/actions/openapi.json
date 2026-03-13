@@ -3,333 +3,33 @@
   "info": {
     "title": "Spectra Gate API",
     "version": "1.0.0",
-    "description": "Live Spectra Gate workspace API. Supports workspace listing, file listing and reading, drafts-only file writes, drafts-only folder create/delete, drafts-only move operations, and points summary."
+    "description": "Live Spectra Gate workspace API. Mutating operations are restricted by the backend to drafts/ paths."
   },
   "servers": [
     {
-      "url": "https://gate.spectraportal.dev",
-      "description": "Production Gate server"
+      "url": "https://gate.spectraportal.dev"
     }
   ],
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "API token",
-        "description": "Optional Bearer token. Required when API_TOKEN is configured on the server."
-      }
-    },
-    "schemas": {
-      "WorkspaceList": {
-        "type": "object",
-        "properties": {
-          "workspaces": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "workspaces"
-        ],
-        "additionalProperties": true
-      },
-      "WorkspaceEntry": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string",
-            "enum": [
-              "file",
-              "dir"
-            ]
-          },
-          "size": {
-            "type": "integer"
-          },
-          "modified": {
-            "type": "string",
-            "description": "UTC ISO-8601 timestamp."
-          }
-        },
-        "required": [
-          "name",
-          "type"
-        ],
-        "additionalProperties": true
-      },
-      "FileListResponse": {
-        "type": "object",
-        "properties": {
-          "ws": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkspaceEntry"
-            }
-          }
-        },
-        "required": [
-          "ws",
-          "path",
-          "items"
-        ],
-        "additionalProperties": true
-      },
-      "FileReadResponse": {
-        "type": "object",
-        "properties": {
-          "ws": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "content": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "ws",
-          "path",
-          "content"
-        ],
-        "additionalProperties": true
-      },
-      "WriteFileRequest": {
-        "type": "object",
-        "properties": {
-          "content": {
-            "type": "string",
-            "description": "Full file contents to write."
-          }
-        },
-        "required": [
-          "content"
-        ],
-        "additionalProperties": false
-      },
-      "WriteFileResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "ws": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          },
-          "bytes": {
-            "type": "integer"
-          }
-        },
-        "required": [
-          "ok",
-          "ws",
-          "path"
-        ],
-        "additionalProperties": true
-      },
-      "PathMutationResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "ws": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "ok",
-          "ws",
-          "path"
-        ],
-        "additionalProperties": true
-      },
-      "MoveRequest": {
-        "type": "object",
-        "properties": {
-          "ws": {
-            "type": "string",
-            "description": "Workspace name. Optional if included in from path using back-compat format."
-          },
-          "from": {
-            "type": "string",
-            "description": "Source path. For drafts-only mutations, this must resolve inside drafts/."
-          },
-          "to": {
-            "type": "string",
-            "description": "Destination path. For drafts-only mutations, this must resolve inside drafts/."
-          },
-          "overwrite": {
-            "type": "boolean",
-            "default": false
-          }
-        },
-        "required": [
-          "from",
-          "to"
-        ],
-        "additionalProperties": false
-      },
-      "MoveResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "ws": {
-            "type": "string"
-          },
-          "from": {
-            "type": "string"
-          },
-          "to": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "ok",
-          "ws",
-          "from",
-          "to"
-        ],
-        "additionalProperties": true
-      },
-      "PointsSummaryResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "events": {
-            "type": "integer"
-          },
-          "by_event": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "integer"
-            }
-          }
-        },
-        "required": [
-          "ok",
-          "events",
-          "by_event"
-        ],
-        "additionalProperties": true
-      },
-      "ApiHealthResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "ok"
-        ],
-        "additionalProperties": true
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean"
-          },
-          "error": {
-            "type": "string"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": true
-      }
-    },
-    "parameters": {
-      "WorkspaceParam": {
-        "name": "ws",
-        "in": "query",
-        "required": true,
-        "description": "Workspace name, for example gate.",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "OptionalPathParam": {
-        "name": "path",
-        "in": "query",
-        "required": false,
-        "description": "Optional path inside the workspace.",
-        "schema": {
-          "type": "string"
-        }
-      },
-      "RequiredPathParam": {
-        "name": "path",
-        "in": "query",
-        "required": true,
-        "description": "Path inside the workspace.",
-        "schema": {
-          "type": "string"
-        }
-      }
-    },
-    "responses": {
-      "BadRequest": {
-        "description": "Invalid request"
-      },
-      "Unauthorized": {
-        "description": "Missing or invalid bearer token"
-      },
-      "Forbidden": {
-        "description": "Mutation outside drafts/ is not allowed"
-      },
-      "NotFound": {
-        "description": "Requested resource not found"
-      },
-      "Conflict": {
-        "description": "Destination exists and overwrite was false"
-      }
-    }
-  },
   "paths": {
     "/api/health": {
       "get": {
-        "operationId": "getApiHealth",
-        "summary": "Get API health",
-        "description": "Checks whether the live API endpoint is up.",
+        "operationId": "getGateHealth",
+        "summary": "Check API health",
         "responses": {
           "200": {
             "description": "Health response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiHealthResponse"
-                },
-                "examples": {
-                  "default": {
-                    "value": {
-                      "ok": true
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
                     }
-                  }
+                  },
+                  "required": [
+                    "ok"
+                  ]
                 }
               }
             }
@@ -340,35 +40,28 @@
     "/api/workspaces": {
       "get": {
         "operationId": "listWorkspaces",
-        "summary": "List available workspaces",
-        "description": "Returns all available workspace names.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "List workspaces",
         "responses": {
           "200": {
             "description": "Workspace list",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WorkspaceList"
-                },
-                "examples": {
-                  "default": {
-                    "value": {
-                      "workspaces": [
-                        "gate"
-                      ]
+                  "type": "object",
+                  "properties": {
+                    "workspaces": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
-                  }
+                  },
+                  "required": [
+                    "workspaces"
+                  ]
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
@@ -376,53 +69,86 @@
     "/api/files": {
       "get": {
         "operationId": "listWorkspaceFiles",
-        "summary": "List files in a workspace",
-        "description": "Lists files for a workspace. Optionally provide a directory path within the workspace.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "List files in a workspace directory",
         "parameters": [
           {
-            "$ref": "#/components/parameters/WorkspaceParam"
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
           },
           {
-            "$ref": "#/components/parameters/OptionalPathParam"
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional relative path inside the workspace, for example drafts"
           }
         ],
         "responses": {
           "200": {
-            "description": "File listing response",
+            "description": "Directory listing",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FileListResponse"
-                },
-                "examples": {
-                  "drafts": {
-                    "value": {
-                      "ws": "gate",
-                      "path": "drafts",
-                      "items": [
-                        {
-                          "name": "test-draft.md",
-                          "type": "file",
-                          "size": 35,
-                          "modified": "2026-03-13T00:06:05Z"
-                        }
-                      ]
+                  "type": "object",
+                  "properties": {
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "file",
+                              "dir"
+                            ]
+                          },
+                          "size": {
+                            "type": "integer"
+                          },
+                          "modified": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "type",
+                          "size",
+                          "modified"
+                        ]
+                      }
                     }
-                  }
+                  },
+                  "required": [
+                    "ws",
+                    "path",
+                    "items"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
+            "description": "Invalid request"
           },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+          "404": {
+            "description": "Workspace not found"
           }
         }
       }
@@ -430,73 +156,84 @@
     "/api/file": {
       "get": {
         "operationId": "getWorkspaceFile",
-        "summary": "Read a file from a workspace",
-        "description": "Reads a single file from a workspace and returns its content.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Read a workspace file",
         "parameters": [
           {
-            "$ref": "#/components/parameters/WorkspaceParam"
-          },
-          {
-            "$ref": "#/components/parameters/RequiredPathParam"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "File response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FileReadResponse"
-                },
-                "examples": {
-                  "draft": {
-                    "value": {
-                      "ws": "gate",
-                      "path": "drafts/test-draft.md",
-                      "content": "# Test Draft\nUpdated after rebuild\n"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFound"
-          }
-        }
-      },
-      "put": {
-        "operationId": "writeWorkspaceDraft",
-        "summary": "Create or overwrite a draft file in a workspace",
-        "description": "Writes a file only inside drafts/ for a workspace. The backend enforces drafts-only restrictions.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/WorkspaceParam"
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
           },
           {
             "name": "path",
             "in": "query",
             "required": true,
-            "description": "Path inside the workspace. Must begin with drafts/.",
             "schema": {
               "type": "string"
+            },
+            "description": "Relative path inside the workspace, for example drafts/test-draft.md"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File contents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ws",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "File not found"
+          }
+        }
+      },
+      "put": {
+        "operationId": "writeWorkspaceDraft",
+        "summary": "Create or overwrite a draft file",
+        "description": "Writes a file only inside drafts/ for a workspace. The backend enforces drafts-only restrictions.",
+        "parameters": [
+          {
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace-relative path. Must begin with drafts/, for example drafts/test-draft.md"
           }
         ],
         "requestBody": {
@@ -504,14 +241,16 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/WriteFileRequest"
-              },
-              "examples": {
-                "draft": {
-                  "value": {
-                    "content": "# Test Draft\nUpdated after rebuild\n"
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
                   }
-                }
+                },
+                "required": [
+                  "content"
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -522,80 +261,100 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WriteFileResponse"
-                },
-                "examples": {
-                  "success": {
-                    "value": {
-                      "ok": true,
-                      "ws": "gate",
-                      "path": "drafts/test-draft.md",
-                      "bytes": 35
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "bytes": {
+                      "type": "integer"
                     }
-                  }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "path"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "description": "Invalid request"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "description": "Write outside drafts is not allowed"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "Workspace not found"
           }
         }
       },
       "delete": {
         "operationId": "deleteWorkspaceDraftFile",
         "summary": "Delete a draft file",
-        "description": "Deletes a file only inside drafts/ for a workspace.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "description": "Deletes a file only inside drafts/ for a workspace. The backend enforces drafts-only restrictions.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/WorkspaceParam"
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
           },
           {
             "name": "path",
             "in": "query",
             "required": true,
-            "description": "Path inside the workspace. Must begin with drafts/.",
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "Workspace-relative path. Must begin with drafts/, for example drafts/test-draft.md"
           }
         ],
         "responses": {
           "200": {
-            "description": "Draft file deleted",
+            "description": "Draft file deleted successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PathMutationResponse"
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "path"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "description": "Invalid request"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "description": "Delete outside drafts is not allowed"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "File not found"
           }
         }
       }
@@ -603,97 +362,125 @@
     "/api/folder": {
       "post": {
         "operationId": "createWorkspaceDraftFolder",
-        "summary": "Create a draft folder",
-        "description": "Creates a folder only inside drafts/ for a workspace.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Create a drafts folder",
+        "description": "Creates a folder only inside drafts/ for a workspace. The backend enforces drafts-only restrictions.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/WorkspaceParam"
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
           },
           {
             "name": "path",
             "in": "query",
             "required": true,
-            "description": "Folder path inside the workspace. Must begin with drafts/.",
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "Workspace-relative path. Must begin with drafts/, for example drafts/notes"
           }
         ],
         "responses": {
           "200": {
-            "description": "Draft folder created",
+            "description": "Draft folder created successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PathMutationResponse"
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "path"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "description": "Invalid request"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "description": "Create outside drafts is not allowed"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "Workspace not found"
           }
         }
       },
       "delete": {
         "operationId": "deleteWorkspaceDraftFolder",
-        "summary": "Delete a draft folder",
-        "description": "Deletes a folder only inside drafts/ for a workspace.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Delete a drafts folder",
+        "description": "Deletes a folder only inside drafts/ for a workspace. The backend enforces drafts-only restrictions.",
         "parameters": [
           {
-            "$ref": "#/components/parameters/WorkspaceParam"
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
           },
           {
             "name": "path",
             "in": "query",
             "required": true,
-            "description": "Folder path inside the workspace. Must begin with drafts/.",
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "Workspace-relative path. Must begin with drafts/, for example drafts/notes"
           }
         ],
         "responses": {
           "200": {
-            "description": "Draft folder deleted",
+            "description": "Draft folder deleted successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PathMutationResponse"
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ws": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "path"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "description": "Invalid request"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "description": "Delete outside drafts is not allowed"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "Folder not found"
           }
         }
       }
@@ -701,58 +488,84 @@
     "/api/move": {
       "post": {
         "operationId": "moveWorkspaceDraftPath",
-        "summary": "Move or rename a draft file or folder",
-        "description": "Moves a file or folder only inside drafts/ for a workspace.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
+        "summary": "Move or rename a drafts path",
+        "description": "Moves a file or folder only within drafts/ for a workspace. The backend enforces drafts-only restrictions.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MoveRequest"
-              },
-              "examples": {
-                "rename": {
-                  "value": {
-                    "ws": "gate",
-                    "from": "drafts/old-name.md",
-                    "to": "drafts/new-name.md",
-                    "overwrite": false
+                "type": "object",
+                "properties": {
+                  "ws": {
+                    "type": "string",
+                    "description": "Workspace name, for example gate"
+                  },
+                  "from": {
+                    "type": "string",
+                    "description": "Source path inside the workspace, must begin with drafts/"
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Destination path inside the workspace, must begin with drafts/"
+                  },
+                  "overwrite": {
+                    "type": "boolean",
+                    "default": false
                   }
-                }
+                },
+                "required": [
+                  "ws",
+                  "from",
+                  "to"
+                ],
+                "additionalProperties": false
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Draft path moved",
+            "description": "Draft path moved successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MoveResponse"
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ws": {
+                      "type": "string"
+                    },
+                    "from": {
+                      "type": "string"
+                    },
+                    "to": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "ws",
+                    "from",
+                    "to"
+                  ]
                 }
               }
             }
           },
           "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
+            "description": "Invalid request"
           },
           "403": {
-            "$ref": "#/components/responses/Forbidden"
+            "description": "Move outside drafts is not allowed"
           },
           "404": {
-            "$ref": "#/components/responses/NotFound"
+            "description": "Source not found"
           },
           "409": {
-            "$ref": "#/components/responses/Conflict"
+            "description": "Destination exists"
           }
         }
       }
@@ -761,25 +574,35 @@
       "get": {
         "operationId": "getPointsSummary",
         "summary": "Get points event summary",
-        "description": "Returns the total number of logged points events and a breakdown by event type.",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "Points summary",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PointsSummaryResponse"
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "events": {
+                      "type": "integer"
+                    },
+                    "by_event": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "events",
+                    "by_event"
+                  ]
                 }
               }
             }
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
           }
         }
       }
