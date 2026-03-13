@@ -1,5 +1,3 @@
-CURRENT.md  REDIRECT.md
-root@cos-world-current:~# cat /srv/spectraportal/workspace/site/gate/drafts/boot/CURRENT.md
 # CURRENT — Session Handoff Snapshot
 
 This file is **optional context**.
@@ -40,6 +38,29 @@ If it is not updated, say so and treat the rest of this file as carryover only.
 
 ---
 
+## Archive recall (optional handoff memory)
+
+Use `drafts/old_chat_archive/` as the dated session-history surface.
+
+When `boot/CURRENT.md` is opened for handoff/context:
+- check `drafts/old_chat_archive/` only when prior session detail is actually needed
+- prefer the most recent relevant archive note(s)
+- do not scan the entire archive unless the user explicitly asks for deeper history
+- do not treat archive notes as boot authority
+
+Important:
+- archive recall is **not** part of required boot
+- `boot/BOOT.md` still starts the session
+- archive notes support memory and continuity only
+
+Later, when useful:
+- summarize relevant archive material into the appropriate room or doc
+- examples:
+  - work/deploy/device material → `chat_center/rooms/work/`
+  - finance/subscription/tax material → `chat_center/rooms/finance/`
+
+---
+
 ## Active content surface (current)
 
 The active working surface is now **Gate / mounted capsules**, not local bundle zip files.
@@ -75,24 +96,46 @@ These are useful navigation references, not extra boot authority.
 
 - Chat Center hub: `chat_center/START_HERE.md`
 - Chat Center index: `chat_center/_index.md`
+- Work room: `chat_center/rooms/work/_index.md`
+- Finance room: `chat_center/rooms/finance/_index.md`
 - System manifest: `chat_center/system/system_manifest.md`
+
+---
+
+## Current room mappings
+
+Use these as practical routing hints for current working material:
+
+- `chat_center/rooms/work/`
+  - devices
+  - machine specs
+  - regen commands
+  - infra/deploy notes
+  - structured work context
+
+- `chat_center/rooms/finance/`
+  - budgets
+  - subscriptions
+  - pricing
+  - tax defaults
+  - money-planning notes
 
 ---
 
 ## Device references
 
+Device and machine references currently live in the work room surface.
 Open only when device context is actually needed.
 
-- Device hub: `devices/_index.md`
-- `devices/regen_commands.md`
-- `devices/roles__recommendation.md`
-- `devices/laptop_specs_sanitized.txt`
-- `devices/desktop_specs_sanitized.txt`
-- `devices/rasberry-pi4_specs_sanitized.txt`
-- `devices/digitalocean_specs_sanitized.txt`
+- `chat_center/rooms/work/_index.md`
+- `chat_center/rooms/work/regen_commands.md`
+- `chat_center/rooms/work/laptop_specs_sanitized.txt`
+- `chat_center/rooms/work/desktop_specs_sanitized.txt`
+- `chat_center/rooms/work/rasberry-pi4_specs_sanitized.txt`
+- `chat_center/rooms/work/digitalocean_specs_sanitized.txt`
 
 Optional future file:
-- `devices/vivi_node_specs_sanitized.txt`
+- `chat_center/rooms/work/vivi_node_specs_sanitized.txt`
 
 ---
 
@@ -139,6 +182,7 @@ Update them when infrastructure or workflow changes.
 - `chat_center/START_HERE.md` is the Chat Center routing hub
 - `boot/CURRENT.md` is optional session carryover only
 - `boot/REDIRECT.md` is optional source-status / pointer context only
+- `drafts/old_chat_archive/` is optional dated session history, not boot authority
 - Gate loaded surface is the only active source currently assumed live
 - Local bundle names are historical/export lineage unless explicitly reactivated
 - GitHub should not be treated as active until re-enabled
@@ -167,6 +211,7 @@ Choose based on the actual chat goal:
 3) Only re-introduce GitHub or Drive into workflow docs after they are actually hooked up
 4) Refresh this file whenever the focus, source status, or deploy reality changes
 5) Keep bundle/export names here only as lineage metadata unless bundle mode becomes active again
+6) Use the old chat archive when carryover detail is needed, then summarize relevant findings into rooms when that helps long-term organization
 
 ---
 

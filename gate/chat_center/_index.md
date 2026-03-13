@@ -1,40 +1,59 @@
-# _index
+# Chat Center — Index
 
-Directory: system
-Updated: 2026-02-28
-
----
-
-Purpose:
-This directory contains the structured components related to `system`.
+Directory: `chat_center/`
+Updated: 2026-03-13
 
 ---
 
-Contents:
-(All files within this directory are considered part of the `system` layer.)
+## Purpose
+
+Chat Center is the session and conversation layer.
+It contains:
+- startup handoff into Chat Center behavior
+- system rules for style and routing
+- room-based conversation buckets
+- presence and supporting chat structures
+
+This file is a **navigation hub**, not routing authority.
 
 ---
 
-Notes:
+## Primary entry points
+
+- Startup hub: `START_HERE.md`
+- Rooms index: `rooms/_index.md`
+- System layer: `system/_index.md`
+- Presence: `presence/`
+
+Boot authority is defined in:
+- `boot/BOOT.md`
+
+Chat Center session routing is defined in:
+- `chat_center/START_HERE.md`
+- `chat_center/system/routing_policy.md`
+
+`GPTS_BOOT.md` is the assistant harness, not the Chat Center routing document.
+
+---
+
+## Rooms in current use
+
+- `rooms/work/` — structured work, devices, specs, infra notes, deploy context
+- `rooms/finance/` — pricing, budgets, subscriptions, taxes, money planning
+- `rooms/just_chatting/` — casual conversation
+- `rooms/playground/` — experiments and drafts
+- `rooms/review/` — wrap-ups and checkpoints
+- `rooms/recovery/` — grounding and overwhelm support
+- `rooms/media/` — games, anime, and media talk
+- `rooms/roleplay/` — RP sessions and scene work
+
+---
+
+## Notes
+
 - Additive expansion allowed.
 - Structural rewrites require review.
-
-
----
-
-## Routing Model
-
-This Chat Center operates in two conceptual lanes:
-
-- **Capsule Canon** → World, lore, vault, and bundle content (from the active capsule)
-- **Repo / Code Lane** → Engineering work (from repo targets defined in `boot/REDIRECT.md`)
-
-Lane rules are defined in:
-- `system/routing_policy.md`
-
-Boot logic is defined in:
-- `GPTS_BOOT.md`
-
-This file does not perform routing itself — it acts as a navigational hub only.
+- Rooms are conversation buckets, not global authority files.
+- If a room is not mounted or not populated yet, state that plainly.
 
 ---
