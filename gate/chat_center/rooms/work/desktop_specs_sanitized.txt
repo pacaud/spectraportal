@@ -1,0 +1,59 @@
+﻿SANITIZED DESKTOP SPECS REPORT
+Generated: 2026-02-15T03:04:37+00:00
+Note: excludes hostname, usernames, serial numbers, MAC addresses, and IP addresses.
+
+== OS ==
+Name: Ubuntu
+Version: 24.04.4 LTS (Noble Numbat)
+Kernel: 6.8.0-100-generic
+Arch: x86_64
+
+== System (model/vendor, no serial) ==
+sys_vendor: To Be Filled By O.E.M.
+product_name: To Be Filled By O.E.M.
+product_version: To Be Filled By O.E.M.
+bios_version: P4.50
+bios_date: 11/04/2020
+
+== CPU ==
+CPU(s):                                  12
+Model name:                              AMD Ryzen 5 3600X 6-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      6
+Socket(s):                               1
+NUMA node0 CPU(s):                       0-11
+
+== Memory ==
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       2.4Gi        26Gi       159Mi       3.2Gi        28Gi
+Swap:          8.0Gi          0B       8.0Gi
+
+== Storage (no mount paths) ==
+NAME   TYPE   SIZE MODEL            ROTA
+loop0  loop     4K                     1
+loop1  loop    74M                     1
+loop2  loop 531.4M                     1
+loop3  loop  91.7M                     1
+loop4  loop  48.1M                     1
+loop5  loop 226.6M                     1
+sda    disk 931.5G WDC WD10EADS-22M    1
+|-sda1 part     1G                     1
+`-sda2 part 930.5G                     1
+sdb    disk 931.5G TOSHIBA DT01ACA1    1
+`-sdb1 part 931.5G                     1
+sdc    disk 931.5G WDC WDS100T2B0B     0
+`-sdc1 part 931.5G                     0
+sdd    disk 931.5G WDC WD10EALX-229    1
+`-sdd1 part 931.5G                     1
+
+== GPU ==
+VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Ellesmere [Radeon RX 470/480/570/570X/580/580X/590] (rev ef)
+
+== Network (no MAC/IP) ==
+lo UNKNOWN
+enp8s0 UP
+tailscale0 UNKNOWN
+
+== Dev Tools ==
+Node: v18.19.1
+NPM:  9.2.0

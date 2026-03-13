@@ -1,0 +1,46 @@
+﻿SANITIZED REMOTE SPECS REPORT (DigitalOcean)
+Generated: 2026-02-15T03:28:25+00:00
+Note: excludes hostname, usernames, serial numbers, MAC addresses, and IP addresses.
+
+== OS ==
+Name: Ubuntu
+Version: 24.04.3 LTS (Noble Numbat)
+Kernel: 6.8.0-88-generic
+Arch: x86_64
+
+== CPU ==
+CPU(s):                               1
+Model name:                           DO-Premium-Intel
+BIOS Model name:                      pc-i440fx-6.1  CPU @ 2.0GHz
+Thread(s) per core:                   1
+Core(s) per socket:                   1
+Socket(s):                            1
+NUMA node0 CPU(s):                    0
+
+== Memory ==
+               total        used        free      shared  buff/cache   available
+Mem:           961Mi       544Mi        93Mi       5.4Mi       482Mi       417Mi
+Swap:             0B          0B          0B
+
+== Storage (no mount paths) ==
+NAME    TYPE  SIZE MODEL  ROTA
+sda     disk  100G Volume    1
+vda     disk   35G           1
+Γö£ΓöÇvda1  part   34G           1
+Γö£ΓöÇvda14 part    4M           1
+Γö£ΓöÇvda15 part  106M           1
+ΓööΓöÇvda16 part  913M           1
+vdb     disk  488K           1
+
+== Network (no MAC/IP) ==
+lo UNKNOWN
+eth0 UP
+eth1 UP
+docker0 DOWN
+br-e80c7ea3b35e UP
+vethf4ad85c@if2 UP
+tailscale0 UNKNOWN
+
+== Dev Tools ==
+Node: not found
+NPM:  not found

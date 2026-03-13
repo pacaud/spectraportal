@@ -1,0 +1,44 @@
+﻿SANITIZED REMOTE SPECS REPORT
+Generated: 2026-02-15T03:09:35+00:00
+Note: excludes hostname, usernames, serial numbers, MAC addresses, and IP addresses.
+
+== OS ==
+Name: Debian GNU/Linux
+Version: 13 (trixie)
+Kernel: 6.12.47+rpt-rpi-v8
+Arch: aarch64
+
+== System (model/vendor, no serial) ==
+
+== CPU ==
+CPU(s):                                  4
+Model name:                              Cortex-A72
+Thread(s) per core:                      1
+Socket(s):                               -
+NUMA node0 CPU(s):                       0-3
+NUMA node1 CPU(s):                       0-3
+
+== Memory ==
+               total        used        free      shared  buff/cache   available
+Mem:           3.7Gi       299Mi       2.8Gi        69Mi       720Mi       3.4Gi
+Swap:          2.0Gi          0B       2.0Gi
+
+== Storage (no mount paths) ==
+NAME        TYPE  SIZE MODEL ROTA
+loop0       loop    2G          0
+mmcblk0     disk 59.5G          0
+|-mmcblk0p1 part  512M          0
+`-mmcblk0p2 part   59G          0
+zram0       disk    2G          0
+
+== GPU ==
+
+== Network (no MAC/IP) ==
+lo UNKNOWN
+eth0 UP
+wlan0 DOWN
+tailscale0 UNKNOWN
+
+== Dev Tools ==
+Node: not found
+NPM:  not found

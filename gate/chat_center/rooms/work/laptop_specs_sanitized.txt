@@ -1,0 +1,77 @@
+﻿SANITIZED LAPTOP SPECS REPORT
+Generated: 2026-02-14 16:57:10
+Note: This report intentionally excludes email, usernames, serial numbers, MAC addresses, and IP addresses.
+
+============================================================
+Operating System
+============================================================
+Name:         Microsoft Windows 11 Home
+Version:      10.0.26200
+Build:        26200
+Architecture: 64-bit
+
+============================================================
+System
+============================================================
+Manufacturer: Acer
+Model:        Predator PH315-53
+System Type:  x64-based PC
+RAM Total:    15.84 GB
+
+============================================================
+CPU
+============================================================
+Name:               Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz
+Cores:              6
+Logical Processors: 12
+Max Clock (MHz):    2592
+
+============================================================
+RAM Modules
+============================================================
+- 8 GB | Speed: 3200 | Configured: 2933 | Manufacturer: Samsung | Part: M471A1K43DB1-CWE    
+- 8 GB | Speed: 3200 | Configured: 2933 | Manufacturer: Samsung | Part: M471A1K43DB1-CWE    
+
+============================================================
+BIOS (no serial numbers)
+============================================================
+BIOS Version: V2.04
+BIOS Vendor:  Insyde Corp.
+
+============================================================
+Motherboard
+============================================================
+Manufacturer: CML
+Product:      QX50_CMS
+Version:      V2.04
+
+============================================================
+Graphics (GPU)
+============================================================
+- Intel(R) UHD Graphics | VRAM: 1 GB | Driver: 27.20.100.8280
+- NVIDIA GeForce RTX 2060 | VRAM: 4 GB | Driver: 32.0.15.9174
+
+============================================================
+Storage (Physical Disks)
+============================================================
+- WDC PC SN730 SDBQNTY-1T00-1014 | Type: SSD | Size: 953.87 GB | Health: Healthy
+
+============================================================
+Network (No MAC / No IP)
+============================================================
+- Killer(R) Wi-Fi 6 AX1650i 160MHz Wireless Network Adapter (201NGW) | Speed: 130000000
+- Tailscale Tunnel | Speed: 100000000000
+- NordLynx Tunnel | Speed: 100000000000
+
+============================================================
+Battery (Best-effort)
+============================================================
+Battery details not available via WMI on this device.
+
+============================================================
+Dev Tools
+============================================================
+Node: v24.13.1
+NPM:  11.8.0
+
+Done.
