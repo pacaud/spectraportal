@@ -606,6 +606,161 @@
           }
         }
       }
+    },
+    "/api/library/files": {
+      "get": {
+        "operationId": "listLibraryFiles",
+        "summary": "List files in chat_center or core",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "chat_center",
+                "core"
+              ]
+            },
+            "description": "Which read-only area to browse"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional relative path inside the area"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Directory listing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "area": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "file",
+                              "dir"
+                            ]
+                          },
+                          "size": {
+                            "type": "integer"
+                          },
+                          "modified": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "type",
+                          "size",
+                          "modified"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "area",
+                    "path",
+                    "items"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "Area not found"
+          }
+        }
+      }
+    },
+    "/api/library/file": {
+      "get": {
+        "operationId": "getLibraryFile",
+        "summary": "Read a file from chat_center or core",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "chat_center",
+                "core"
+              ]
+            },
+            "description": "Which read-only area to read from"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Relative file path inside the area"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File contents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "area": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "area",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "File not found"
+          }
+        }
+      }
     }
   }
 }
