@@ -9,7 +9,7 @@ set -euo pipefail
 # - assets:    deploy ./assets -> $WEBROOT_ASSETS
 # - framework: deploy ./framework -> $WEBROOT_FRAMEWORK
 # - dev:       deploy ./docs -> $WEBROOT_DEV
-# - gate:       deploy ./gate -> $WEBROOT_GATE
+# - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/)
 # - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
 # - docs:       compatibility alias for dev
 #
@@ -32,7 +32,7 @@ Targets:
   assets      Deploy repo/assets by default
   framework   Deploy repo/framework by default
   dev         Deploy repo/docs by default
-  gate        Deploy repo/gate by default
+  gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/)
   gate-draft   Deploy repo/gate/drafts by default
   docs         Alias of dev
 
@@ -134,6 +134,13 @@ rsync_push() {
   rsync -av --delete "$SRC" "$DST"
 }
 
+rsync_push_filtered() {
+  local SRC="$1"
+  local DST="$2"
+  shift 2 || true
+  rsync -av --delete "$@" "$SRC" "$DST"
+}
+
 remote_mkdir() {
   local DST="$1"
   ssh "$REMOTE" "mkdir -p '$DST'"
@@ -213,7 +220,11 @@ if [[ "$TARGET" == "gate" ]]; then
   fi
 
   remote_mkdir "$WEBROOT_GATE"
-  rsync_push "$GATE_SRC/" "$REMOTE:$WEBROOT_GATE/"
+  echo "[deploy] excluding from webroot: boot/ chat_center/ core/"
+  rsync_push_filtered "$GATE_SRC/" "$REMOTE:$WEBROOT_GATE/" \
+    --exclude 'boot/' \
+    --exclude 'chat_center/' \
+    --exclude 'core/'
 
   echo "[deploy] gate done"
   exit 0

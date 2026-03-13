@@ -14,8 +14,9 @@ set -euo pipefail
 # Notes:
 # - All options after <target> are forwarded to both build and deploy.
 # - For non-cdn targets, build is currently a no-op.
-# - gate deploys the public Gate site and syncs boot/, chat_center/, and core/ to /srv/spectraportal.
-# - gate-draft syncs the private Gate drafts workspace and also syncs boot/, chat_center/, and core/.
+# - gate deploys only the public Gate site.
+# - gate excludes top-level boot/, chat_center/, and core/ from the Gate webroot sync.
+# - gate-draft syncs only the private Gate drafts workspace.
 
 usage() {
   cat <<'EOF'
