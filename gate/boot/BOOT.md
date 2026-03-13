@@ -1,31 +1,34 @@
-# PKW Boot (MD-first)
+# BOOT
 
-This is the authoritative capsule launcher.
-GPTS_BOOT.md must open this file first and then follow it exactly.
+This is the authoritative startup file for the live source surface.
 
 ## Root mode
-This capsule is scope-rooted (paths like `boot/`, `chat_center/`, `core/` at zip root).
-Do not assume a `docs/` prefix.
+Paths are root-relative:
+- boot/
+- chat_center/
+- core/
 
----
+Do not assume docs/ or workspace/ prefixes.
 
-## Step 1 — Enter Chat Center (required)
+## Required startup
 Open:
-- `chat_center/START_HERE.md`
+- chat_center/START_HERE.md
 
-After START_HERE loads:
-- Follow it exactly.
-- START_HERE is responsible for loading:
-  - `chat_center/system/style.md`
-  - `chat_center/system/routing_policy.md`
-  - `chat_center/system/system_manifest.md` (if present)
+Then follow START_HERE exactly.
 
----
+## Required authority chain
+START_HERE is responsible for loading:
+- chat_center/system/style.md
+- chat_center/system/routing_policy.md
+- chat_center/system/system_manifest.md (if present)
 
-## Optional references (do NOT open unless requested)
-- `boot/CURRENT.md`
-- `boot/REDIRECT.md`
+## Optional references
+Only open if needed or requested:
+- boot/CURRENT.md
+- boot/REDIRECT.md
 
----
-
-# End of BOOT
+## Failure handling
+If required startup files are missing:
+- state exact path(s) attempted
+- do not invent structure
+- continue only if safe
