@@ -610,7 +610,7 @@
     "/api/library/files": {
       "get": {
         "operationId": "listLibraryFiles",
-        "summary": "List files in chat_center or core",
+        "summary": "List files in chat_center, core, or boot",
         "parameters": [
           {
             "name": "area",
@@ -620,7 +620,8 @@
               "type": "string",
               "enum": [
                 "chat_center",
-                "core"
+                "core",
+                "boot"
               ]
             },
             "description": "Which read-only area to browse"
@@ -701,7 +702,7 @@
     "/api/library/file": {
       "get": {
         "operationId": "getLibraryFile",
-        "summary": "Read a file from chat_center or core",
+        "summary": "Read a file from chat_center, core, or boot",
         "parameters": [
           {
             "name": "area",
@@ -711,7 +712,8 @@
               "type": "string",
               "enum": [
                 "chat_center",
-                "core"
+                "core",
+                "boot"
               ]
             },
             "description": "Which read-only area to read from"
