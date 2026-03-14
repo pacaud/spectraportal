@@ -1,30 +1,32 @@
 ---
 vivi_component: cottage_map_index
-version: 1.0
-updated: 2026-01-23
+version: 1.1
+updated: 2026-03-14
 name: "Cottage — Map Index"
 type: index
-status: seeded
+status: active
 tags:
 - cottage
 - map
 - index
 ---
+
 # Cottage — Map Index
 
-**Up:** [Forest index](../../_index.md)
+**Up:** [Forest places](../_index.md) • [Forest index](../../_index.md)
 
-This is the cottage’s simple navigation hub. Keep it light. Rooms stay modular.
+This is the cottage’s navigation hub.
+Keep it light. Rooms stay modular.
 
 ## Rooms
-- [Sitting Room](sitting_room/_index.md) *(shared presence + gentle anchors)*
-- [Kitchenette](kitchenette/kitchenette__README.md) *(tea, toast, small care)*
-- [Hallway](hallway/_index.md) *(quiet transitions)*
-- [Bedroom Nook](bedroom_nook/bedroom_nook__README.md) *(rest without pressure)*
-- [Study Nook](study_nook/study_nook__README.md) *(focus without grind)*
+- [Sitting Room](sitting_room/_index.md)
+- [Kitchenette](kitchenette/_index.md)
+- [Hallway](hallway/_index.md)
+- [Bedroom Nook](bedroom_nook/_index.md)
+- [Study Nook](study_nook/_index.md)
 
 ## Thresholds
-- [Deck](deck/_index.md) *(items, utilities, vault access layer)*
+- [Deck](deck/_index.md)
 
-## Wiring (starter)
+## Wiring
 - [_wiring.md](_wiring.md)

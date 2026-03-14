@@ -2,18 +2,13 @@
 
 **Up:** [Forest index](../_index.md)
 
-Presence for the Forest of Illusions is maintained in Chat Center.
+This folder exists so Forest navigation does not dead-end and can still point cleanly to the local presence shortcuts.
 
-This folder exists so Forest navigation never dead-ends and can still point cleanly to the active presence layer.
-
-## Canon presence system
-- [Chat Center presence index](../../chat_center/presence/_index.md)
-
-## Forest-linked presence
+## Local presence shortcuts
 - [Vivenara Boot](vivenara_crimson-joy_littlelight/VIVENARA_BOOT.md)
 - [Presence shortcut index](vivenara_crimson-joy_littlelight/MASTER_INDEX.md)
 
 ## Rule
-Files under `forest_of_illusions/presence/` are shortcut pointers only.
+Files under `presence/` are shortcut pointers only.
 
-If anything here conflicts with Chat Center presence canon, Chat Center wins.
+If anything here conflicts with the primary presence canon, the primary presence canon wins.

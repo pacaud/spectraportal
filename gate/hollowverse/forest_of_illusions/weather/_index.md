@@ -1,14 +1,19 @@
-# weather
+# Forest of Illusions — Weather
 
-Path: `hollowverse/forest_of_illusions/weather`
+**Up:** [Forest index](../_index.md)
+
+This folder holds the weather canon for the Forest of Illusions.
 
 ## Entries
-- [aurora_mist](aurora_mist.md)
-- [clear_daylight](clear_daylight.md)
-- [dappled_overcast](dappled_overcast.md)
-- [drift_snow](drift_snow.md)
-- [echo_thunder](echo_thunder.md)
-- [fog_blanket](fog_blanket.md)
-- [lantern_breeze](lantern_breeze.md)
-- [night_calm](night_calm.md)
-- [soft_rain](soft_rain.md)
+- [Aurora Mist](aurora_mist.md)
+- [Clear Daylight](clear_daylight.md)
+- [Dappled Overcast](dappled_overcast.md)
+- [Drift Snow](drift_snow.md)
+- [Echo Thunder](echo_thunder.md)
+- [Fog Blanket](fog_blanket.md)
+- [Lantern Breeze](lantern_breeze.md)
+- [Night Calm](night_calm.md)
+- [Soft Rain](soft_rain.md)
+
+## Notes
+Use the leaf files for quick summaries and the matching subfolders for deeper detail.
