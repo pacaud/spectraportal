@@ -610,7 +610,7 @@
     "/api/library/files": {
       "get": {
         "operationId": "listLibraryFiles",
-        "summary": "List files in chat_center, core, or boot",
+        "summary": "List files in chat_center, core, boot, or hollowverse",
         "parameters": [
           {
             "name": "area",
@@ -621,7 +621,8 @@
               "enum": [
                 "chat_center",
                 "core",
-                "boot"
+                "boot",
+                "hollowverse"
               ]
             },
             "description": "Which read-only area to browse"
@@ -702,7 +703,7 @@
     "/api/library/file": {
       "get": {
         "operationId": "getLibraryFile",
-        "summary": "Read a file from chat_center, core, or boot",
+        "summary": "Read a file from chat_center, core, boot, or hollowverse",
         "parameters": [
           {
             "name": "area",
@@ -713,7 +714,8 @@
               "enum": [
                 "chat_center",
                 "core",
-                "boot"
+                "boot",
+                "hollowverse"
               ]
             },
             "description": "Which read-only area to read from"
