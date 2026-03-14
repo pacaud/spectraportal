@@ -42,9 +42,13 @@ If it is not updated, say so and treat the rest of this file as carryover only.
 
 Use `drafts/old_chat_archive/` as the dated session-history surface.
 
+Latest archive note:
+- `drafts/old_chat_archive/2026-03-13__gate-hollowverse-wiring.md`
+
 When `boot/CURRENT.md` is opened for handoff/context:
 - check `drafts/old_chat_archive/` only when prior session detail is actually needed
 - prefer the most recent relevant archive note(s)
+- start with the latest archive note above unless a different one is more relevant
 - do not scan the entire archive unless the user explicitly asks for deeper history
 - do not treat archive notes as boot authority
 
