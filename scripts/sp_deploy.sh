@@ -9,15 +9,18 @@ set -euo pipefail
 # - assets:     deploy ./assets -> $WEBROOT_ASSETS
 # - framework:  deploy ./framework -> $WEBROOT_FRAMEWORK
 # - dev:        deploy ./docs -> $WEBROOT_DEV
-# - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/)
+# - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/, hollowverse/)
+# - hollowverse: deploy ./gate/hollowverse -> $WEBROOT_GATE/hollowverse
 # - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
-# - srv:        deploy ./gate/boot ./gate/chat_center ./gate/core -> /srv/spectraportal
+# - srv:        deploy ./gate/boot ./gate/chat_center ./gate/core ./gate/hollowverse -> /srv/spectraportal
 # - docs:       compatibility alias for dev
 #
 # Usage:
 #   SP_CDN_VERSION=v0.1 scripts/sp_deploy.sh cdn
 #   scripts/sp_deploy.sh gate --repo /path/to/repo
 #   scripts/sp_deploy.sh gate --repo /path/to/repo --src gate
+#   scripts/sp_deploy.sh hollowverse --repo /path/to/repo
+#   scripts/sp_deploy.sh hollowverse --repo /path/to/repo --src gate/hollowverse
 #   scripts/sp_deploy.sh gate-draft --repo /path/to/repo
 #   scripts/sp_deploy.sh gate-draft --repo /path/to/repo --src gate/drafts
 #   scripts/sp_deploy.sh srv --repo /path/to/repo
@@ -34,14 +37,15 @@ Targets:
   assets      Deploy repo/assets by default
   framework   Deploy repo/framework by default
   dev         Deploy repo/docs by default
-  gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/)
+  gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/, hollowverse/)
+  hollowverse Deploy repo/gate/hollowverse by default to gate.spectraportal.dev/hollowverse
   gate-draft  Deploy repo/gate/drafts by default
-  srv         Deploy repo/gate/boot, repo/gate/chat_center, repo/gate/core to /srv/spectraportal
+  srv         Deploy repo/gate/boot, repo/gate/chat_center, repo/gate/core, and repo/gate/hollowverse to /srv/spectraportal
   docs        Alias of dev
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
-  --src PATH  Source folder override for assets/framework/dev/gate/gate-draft
+  --src PATH  Source folder override for assets/framework/dev/gate/hollowverse/gate-draft
               (not used for srv)
               Absolute paths are allowed; relative paths are resolved under --repo
 EOF
@@ -102,12 +106,15 @@ fi
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
 : "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
 : "${WEBROOT_GATE:=/var/www/gate.spectraportal.dev}"
+: "${WEBROOT_GATE_HOLLOWVERSE:=$WEBROOT_GATE/hollowverse}"
+: "${WEBROOT_HOLLOWVERSE:=/var/www/hollowverse.studio}"
 : "${WORKSPACE_ROOT:=/srv/spectraportal/workspace/site}"
 : "${WORKSPACE_GATE_DRAFTS:=$WORKSPACE_ROOT/gate/drafts}"
 : "${SRV_ROOT:=/srv/spectraportal}"
 : "${SRV_BOOT:=$SRV_ROOT/boot}"
 : "${SRV_CHAT_CENTER:=$SRV_ROOT/chat_center}"
 : "${SRV_CORE:=$SRV_ROOT/core}"
+: "${SRV_HOLLOWVERSE:=$SRV_ROOT/hollowverse}"
 
 if [[ -n "$REPO_OVERRIDE" ]]; then
   REPO_ROOT="$(cd "$REPO_OVERRIDE" && pwd)"
@@ -228,13 +235,34 @@ if [[ "$TARGET" == "gate" ]]; then
   fi
 
   remote_mkdir "$WEBROOT_GATE"
-  echo "[deploy] excluding from webroot: boot/ chat_center/ core/"
+  echo "[deploy] excluding from webroot: boot/ chat_center/ core/ hollowverse/"
   rsync_push_filtered "$GATE_SRC/" "$REMOTE:$WEBROOT_GATE/" \
     --exclude 'boot/' \
     --exclude 'chat_center/' \
-    --exclude 'core/'
+    --exclude 'core/' \
+    --exclude 'hollowverse/'
 
   echo "[deploy] gate done"
+  exit 0
+fi
+
+
+if [[ "$TARGET" == "hollowverse" ]]; then
+  HOLLOWVERSE_SRC="$(resolve_src gate/hollowverse)"
+  echo "[deploy] hollowverse -> gate.spectraportal.dev/hollowverse"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $HOLLOWVERSE_SRC"
+  echo "[deploy] dst:  $WEBROOT_GATE_HOLLOWVERSE"
+
+  if [[ ! -d "$HOLLOWVERSE_SRC" ]]; then
+    echo "[deploy] ERROR: missing hollowverse source: $HOLLOWVERSE_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$WEBROOT_GATE_HOLLOWVERSE"
+  rsync_push "$HOLLOWVERSE_SRC/" "$REMOTE:$WEBROOT_GATE_HOLLOWVERSE/"
+
+  echo "[deploy] hollowverse done"
   exit 0
 fi
 
@@ -261,12 +289,14 @@ if [[ "$TARGET" == "srv" ]]; then
   BOOT_SRC="$REPO_ROOT/gate/boot"
   CHAT_CENTER_SRC="$REPO_ROOT/gate/chat_center"
   CORE_SRC="$REPO_ROOT/gate/core"
+  HOLLOWVERSE_SRC="$REPO_ROOT/gate/hollowverse"
 
   echo "[deploy] srv -> /srv/spectraportal"
   echo "[deploy] repo: $REPO_ROOT"
   echo "[deploy] boot: $BOOT_SRC"
   echo "[deploy] chat_center: $CHAT_CENTER_SRC"
   echo "[deploy] core: $CORE_SRC"
+  echo "[deploy] hollowverse: $HOLLOWVERSE_SRC"
 
   if [[ ! -d "$BOOT_SRC" ]]; then
     echo "[deploy] ERROR: missing boot source: $BOOT_SRC" >&2
@@ -292,6 +322,13 @@ if [[ "$TARGET" == "srv" ]]; then
   rsync_push "$CHAT_CENTER_SRC/" "$REMOTE:$SRV_CHAT_CENTER/"
   rsync_push "$CORE_SRC/" "$REMOTE:$SRV_CORE/"
 
+  if [[ -d "$HOLLOWVERSE_SRC" ]]; then
+    remote_mkdir "$SRV_HOLLOWVERSE"
+    rsync_push "$HOLLOWVERSE_SRC/" "$REMOTE:$SRV_HOLLOWVERSE/"
+  else
+    echo "[deploy] WARN: missing optional hollowverse source: $HOLLOWVERSE_SRC (skipping)"
+  fi
+
   echo "[deploy] srv done"
   exit 0
 fi
@@ -315,6 +352,6 @@ if [[ "$TARGET" == "dev" ]]; then
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | gate-draft | srv" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | hollowverse | gate-draft | srv" >&2
 echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1
