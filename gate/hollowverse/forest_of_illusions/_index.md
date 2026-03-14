@@ -1,13 +1,17 @@
-# Hollowverse — World Hub
+# Forest of Illusions — Index
 
-This folder is the navigation hub for Hollowverse.
+This folder is the navigation hub for Forest of Illusions.
 
 ## Primary doors
 - [START_HERE.md](START_HERE.md)
 
-## Worlds
-- [Forest of Illusions](FOREST_OF_ILLUSIONS.md)
-- [Forest of Illusion](FOREST_OF_ILLUSION.md)
+## Main navigation
+- [Places](places/_index.md)
+- [Terrain](terrain/_index.md)
+- [Vegetation](vegetation/_index.md)
+- [Animals](animals/_index.md)
+- [Weather](weather/_index.md)
+- [Presence](presence/_index.md)
 
-## Index
-- [forest_of_illusions/_index.md](forest_of_illusions/_index.md)
+## Quick jump
+- [The Cottage](places/cottage/_index.md)
