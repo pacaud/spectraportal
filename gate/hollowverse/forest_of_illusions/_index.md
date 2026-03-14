@@ -1,17 +1,19 @@
-# Forest of Illusions — Index
+# Forest of Illusions — Weather
 
-This folder is the navigation hub for Forest of Illusions.
+**Up:** [Forest index](../_index.md)
 
-## Primary doors
-- [START_HERE.md](START_HERE.md)
+This folder holds the weather canon for the Forest of Illusions.
 
-## Main navigation
-- [Places](places/_index.md)
-- [Terrain](terrain/_index.md)
-- [Vegetation](vegetation/_index.md)
-- [Animals](animals/_index.md)
-- [Weather](weather/_index.md)
-- [Presence](presence/_index.md)
+## Entries
+- [Aurora Mist](aurora_mist.md)
+- [Clear Daylight](clear_daylight.md)
+- [Dappled Overcast](dappled_overcast.md)
+- [Drift Snow](drift_snow.md)
+- [Echo Thunder](echo_thunder.md)
+- [Fog Blanket](fog_blanket.md)
+- [Lantern Breeze](lantern_breeze.md)
+- [Night Calm](night_calm.md)
+- [Soft Rain](soft_rain.md)
 
-## Quick jump
-- [The Cottage](places/cottage/_index.md)
+## Notes
+Use the leaf files for quick summaries and the matching subfolders for deeper detail.

@@ -1,16 +1,21 @@
-# animals
+# Forest of Illusions — Animals
 
-Path: `hollowverse/forest_of_illusions/animals`
+**Up:** [Forest index](../_index.md)
+
+This folder holds the living animal canon for the Forest of Illusions.
 
 ## Entries
-- [burrow_mouse](burrow_mouse.md)
-- [ember_lynx](ember_lynx.md)
-- [hush_owl](hush_owl.md)
-- [lantern_wren](lantern_wren.md)
-- [mist_fox](mist_fox.md)
-- [moss_tortoise](moss_tortoise.md)
-- [night_moth](night_moth.md)
-- [ribbon_deer](ribbon_deer.md)
-- [starbound_stag](starbound_stag.md)
-- [stream_otter](stream_otter.md)
-- [whisper_frog](whisper_frog.md)
+- [Burrow Mouse](burrow_mouse.md)
+- [Ember Lynx](ember_lynx.md)
+- [Hush Owl](hush_owl.md)
+- [Lantern Wren](lantern_wren.md)
+- [Mist Fox](mist_fox.md)
+- [Moss Tortoise](moss_tortoise.md)
+- [Night Moth](night_moth.md)
+- [Ribbon Deer](ribbon_deer.md)
+- [Starbound Stag](starbound_stag.md)
+- [Stream Otter](stream_otter.md)
+- [Whisper Frog](whisper_frog.md)
+
+## Notes
+Use the leaf files for quick summaries and the matching subfolders for deeper detail.

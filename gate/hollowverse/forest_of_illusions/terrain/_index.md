@@ -1,17 +1,20 @@
----
-name: "Forest of Illusions — Terrain"
-type: index
-status: seeded
----
-# Forest of Illusions — Terrain
+# Hollowverse — Index
 
-**Up:** [Forest index](../_index.md)
+This folder is the navigation hub for Hollowverse.
 
-Terrain is the shape of the forest: paths, clearings, water, stones, landmarks.
-Keep it small and stable.
+## Primary door
+- [START_HERE.md](START_HERE.md)
 
-## Sections
-- [Paths](paths/_index.md)
-- [Clearings](clearings/_index.md)
-- [Water](water/_index.md)
-- [Landmarks](landmarks/_index.md)
+## Active region
+- [Forest of Illusions](forest_of_illusions/START_HERE.md)
+
+## World navigation
+- [Forest of Illusions index](forest_of_illusions/_index.md)
+
+## Scope
+Use this index for world-level navigation only.
+
+Keep detailed lore, canon, and local structure inside the region folders.
+
+## Current structure
+- [forest_of_illusions/](forest_of_illusions/)

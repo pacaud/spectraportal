@@ -1,12 +1,19 @@
-# Kitchenette (Cottage)
+# Kitchenette
 
-**Up:** [Cottage map](../_index.md) • [Sitting Room](../sitting_room/_index.md) • [Forest index](../../../_index.md)
+**Up:** [Cottage map](../_index.md)
 
-## Start here
-- [Kitchenette — Room Page](kitchenette__README.md)
+The Kitchenette is the cottage’s small care and ritual space.
 
-## Files
+## Read first
+- [Kitchenette README](kitchenette__README.md)
+
+## Local files
+- [Overview](kitchenette.md)
+- [Inventory](kitchenette__inventory.md)
 - [Layout](kitchenette__layout.md)
 - [Objects](kitchenette__objects.md)
 - [Rituals](kitchenette__rituals.md)
-- [Inventory](kitchenette__inventory.md)
+
+## Connected spaces
+- [Hallway](hallway/)
+- [Deck](deck/)
