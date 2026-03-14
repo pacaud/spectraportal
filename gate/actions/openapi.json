@@ -627,6 +627,7 @@
                 "core",
                 "boot",
                 "hollowverse",
+                "framework",
                 "assets"
               ]
             },
