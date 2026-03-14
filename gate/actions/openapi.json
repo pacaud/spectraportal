@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Spectra Gate API",
-    "version": "1.0.0",
-    "description": "Live Spectra Gate workspace API. Mutating operations are restricted by the backend to drafts/ paths."
+    "version": "1.1.0",
+    "description": "Live Spectra Gate workspace API. Mutating operations are restricted by the backend to drafts/ paths. Includes raw file endpoints for inline byte-serving."
   },
   "servers": [
     {
@@ -179,7 +179,7 @@
         ],
         "responses": {
           "200": {
-            "description": "File contents",
+            "description": "Text file contents",
             "content": {
               "application/json": {
                 "schema": {
@@ -193,12 +193,20 @@
                     },
                     "content": {
                       "type": "string"
+                    },
+                    "size": {
+                      "type": "integer"
+                    },
+                    "mime": {
+                      "type": "string"
                     }
                   },
                   "required": [
                     "ws",
                     "path",
-                    "content"
+                    "content",
+                    "size",
+                    "mime"
                   ]
                 }
               }
@@ -209,6 +217,12 @@
           },
           "404": {
             "description": "File not found"
+          },
+          "413": {
+            "description": "File too large for JSON text response"
+          },
+          "415": {
+            "description": "Non-text file; use /api/file/raw"
           }
         }
       },
@@ -271,9 +285,6 @@
                     },
                     "path": {
                       "type": "string"
-                    },
-                    "bytes": {
-                      "type": "integer"
                     }
                   },
                   "required": [
@@ -582,23 +593,16 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "ok": {
-                      "type": "boolean"
-                    },
-                    "events": {
+                    "total": {
                       "type": "integer"
                     },
-                    "by_event": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "integer"
-                      }
+                    "today": {
+                      "type": "integer"
                     }
                   },
                   "required": [
-                    "ok",
-                    "events",
-                    "by_event"
+                    "total",
+                    "today"
                   ]
                 }
               }
@@ -734,7 +738,7 @@
         ],
         "responses": {
           "200": {
-            "description": "File contents",
+            "description": "Text file contents",
             "content": {
               "application/json": {
                 "schema": {
@@ -748,13 +752,124 @@
                     },
                     "content": {
                       "type": "string"
+                    },
+                    "size": {
+                      "type": "integer"
+                    },
+                    "mime": {
+                      "type": "string"
                     }
                   },
                   "required": [
                     "area",
                     "path",
-                    "content"
+                    "content",
+                    "size",
+                    "mime"
                   ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "File not found"
+          },
+          "413": {
+            "description": "File too large for JSON text response"
+          },
+          "415": {
+            "description": "Non-text file; use /api/library/raw"
+          }
+        }
+      }
+    },
+    "/api/file/raw": {
+      "get": {
+        "operationId": "getWorkspaceFileRaw",
+        "summary": "Read raw bytes from a workspace file",
+        "parameters": [
+          {
+            "name": "ws",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Workspace name, for example gate"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Relative path inside the workspace"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Raw file response",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          },
+          "404": {
+            "description": "File not found"
+          }
+        }
+      }
+    },
+    "/api/library/raw": {
+      "get": {
+        "operationId": "getLibraryFileRaw",
+        "summary": "Read raw bytes from chat_center, core, boot, hollowverse, or assets",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "chat_center",
+                "core",
+                "boot",
+                "hollowverse",
+                "assets"
+              ]
+            },
+            "description": "Which read-only area to read from"
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Relative file path inside the area"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Raw file response",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
                 }
               }
             }
