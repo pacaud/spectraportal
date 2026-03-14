@@ -8,7 +8,8 @@ set -euo pipefail
 # - cdn:        deploy ./cdn/<version> and ./cdn/latest -> $WEBROOT_CDN
 # - assets:     deploy ./assets -> $WEBROOT_ASSETS
 # - framework:  deploy ./framework -> $WEBROOT_FRAMEWORK
-# - dev:        deploy ./docs -> $WEBROOT_DEV
+# - dev:        deploy ./docs -> $WEBROOT_DEV and ./browse -> $WEBROOT_DEV/browse when present
+# - browse:     deploy ./browse -> $WEBROOT_DEV/browse
 # - gate:       deploy ./gate -> $WEBROOT_GATE (excluding boot/, chat_center/, core/, hollowverse/)
 # - hollowverse: deploy ./gate/hollowverse -> $WEBROOT_GATE/hollowverse
 # - gate-draft: deploy ./gate/drafts -> $WORKSPACE_GATE_DRAFTS
@@ -25,6 +26,8 @@ set -euo pipefail
 #   scripts/sp_deploy.sh gate-draft --repo /path/to/repo --src gate/drafts
 #   scripts/sp_deploy.sh srv --repo /path/to/repo
 #   scripts/sp_deploy.sh dev --repo /path/to/repo --src docs
+#   scripts/sp_deploy.sh browse --repo /path/to/repo
+#   scripts/sp_deploy.sh browse --repo /path/to/repo --src browse
 # ============================================================
 
 usage() {
@@ -36,7 +39,8 @@ Targets:
   cdn         Deploy repo/cdn/<version> and repo/cdn/latest
   assets      Deploy repo/assets by default
   framework   Deploy repo/framework by default
-  dev         Deploy repo/docs by default
+  dev         Deploy repo/docs by default and repo/browse to /browse when present
+  browse      Deploy repo/browse by default to spectraportal.dev/browse
   gate        Deploy repo/gate by default (excluding boot/, chat_center/, core/, hollowverse/)
   hollowverse Deploy repo/gate/hollowverse by default to gate.spectraportal.dev/hollowverse
   gate-draft  Deploy repo/gate/drafts by default
@@ -45,7 +49,7 @@ Targets:
 
 Options:
   --repo PATH Repo root to use instead of the parent of this script
-  --src PATH  Source folder override for assets/framework/dev/gate/hollowverse/gate-draft
+  --src PATH  Source folder override for assets/framework/dev/browse/gate/hollowverse/gate-draft
               (not used for srv)
               Absolute paths are allowed; relative paths are resolved under --repo
 EOF
@@ -102,6 +106,7 @@ fi
 : "${REMOTE:=root@100.121.30.60}"
 : "${WEBROOT_DEV:=/var/www/spectraportal.dev}"
 : "${WEBROOT_DOCS:=$WEBROOT_DEV}"
+: "${WEBROOT_DEV_BROWSE:=$WEBROOT_DEV/browse}"
 : "${WEBROOT_FRAMEWORK:=/var/www/framework.spectraportal.dev}"
 : "${WEBROOT_CDN:=/var/www/cdn.spectraportal.dev}"
 : "${WEBROOT_ASSETS:=/var/www/assets.spectraportal.dev}"
@@ -133,6 +138,11 @@ resolve_src() {
   else
     printf '%s\n' "$REPO_ROOT/$default_rel"
   fi
+}
+
+resolve_default_src() {
+  local default_rel="$1"
+  printf '%s\n' "$REPO_ROOT/$default_rel"
 }
 
 CDN_SRC_VERSION="$REPO_ROOT/cdn/$SP_CDN_VERSION"
@@ -333,11 +343,33 @@ if [[ "$TARGET" == "srv" ]]; then
   exit 0
 fi
 
+
+if [[ "$TARGET" == "browse" ]]; then
+  BROWSE_SRC="$(resolve_src browse)"
+  echo "[deploy] browse -> spectraportal.dev/browse"
+  echo "[deploy] repo: $REPO_ROOT"
+  echo "[deploy] src:  $BROWSE_SRC"
+  echo "[deploy] dst:  $WEBROOT_DEV_BROWSE"
+
+  if [[ ! -d "$BROWSE_SRC" ]]; then
+    echo "[deploy] ERROR: missing browse source: $BROWSE_SRC" >&2
+    exit 1
+  fi
+
+  remote_mkdir "$WEBROOT_DEV_BROWSE"
+  rsync_push "$BROWSE_SRC/" "$REMOTE:$WEBROOT_DEV_BROWSE/"
+
+  echo "[deploy] browse done"
+  exit 0
+fi
+
 if [[ "$TARGET" == "dev" ]]; then
   DOCS_SRC="$(resolve_src docs)"
+  BROWSE_SRC="$(resolve_default_src browse)"
   echo "[deploy] dev -> spectraportal.dev"
   echo "[deploy] repo: $REPO_ROOT"
   echo "[deploy] src:  $DOCS_SRC"
+  echo "[deploy] browse sidecar: $BROWSE_SRC"
 
   if [[ ! -d "$DOCS_SRC" ]]; then
     echo "[deploy] ERROR: missing docs source: $DOCS_SRC" >&2
@@ -345,13 +377,20 @@ if [[ "$TARGET" == "dev" ]]; then
   fi
 
   remote_mkdir "$WEBROOT_DEV"
-  rsync_push "$DOCS_SRC/" "$REMOTE:$WEBROOT_DEV/"
+  rsync_push_filtered "$DOCS_SRC/" "$REMOTE:$WEBROOT_DEV/" --exclude "/browse"
+
+  if [[ -d "$BROWSE_SRC" ]]; then
+    remote_mkdir "$WEBROOT_DEV_BROWSE"
+    rsync_push "$BROWSE_SRC/" "$REMOTE:$WEBROOT_DEV_BROWSE/"
+  else
+    echo "[deploy] info: browse source not found at $BROWSE_SRC (preserving existing /browse if present)"
+  fi
 
   echo "[deploy] dev done"
   exit 0
 fi
 
 echo "[deploy] ERROR: unknown target: $TARGET" >&2
-echo "[deploy] Valid targets: cdn | assets | framework | dev | gate | hollowverse | gate-draft | srv" >&2
+echo "[deploy] Valid targets: cdn | assets | framework | dev | browse | gate | hollowverse | gate-draft | srv" >&2
 echo "[deploy] Legacy alias still supported: docs -> dev" >&2
 exit 1

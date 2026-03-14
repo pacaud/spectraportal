@@ -13,6 +13,8 @@ set -euo pipefail
 #   scripts/sp_publish.sh gate-draft --repo /path/to/repo --src gate/drafts
 #   scripts/sp_publish.sh srv --repo /path/to/repo
 #   scripts/sp_publish.sh dev --repo /path/to/repo --src docs
+#   scripts/sp_publish.sh browse --repo /path/to/repo
+#   scripts/sp_publish.sh browse --repo /path/to/repo --src browse
 #
 # Notes:
 # - All options after <target> are forwarded to both build and deploy.
@@ -34,7 +36,8 @@ Targets:
   hollowverse Publish the public Gate Hollowverse endpoint only
   gate-draft  Publish the private Gate drafts workspace only
   srv         Sync gate/boot, gate/chat_center, gate/core, and gate/hollowverse into /srv/spectraportal
-  dev         Publish a dev/docs target
+  dev         Publish the main spectraportal.dev site and repo/browse when present
+  browse      Publish only spectraportal.dev/browse
 
 Examples:
   scripts/sp_publish.sh gate --repo /mnt/pkw_ssd/pkw_repos/spectraportal

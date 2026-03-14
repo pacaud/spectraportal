@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Spectra Viewer</title>
+
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/css/spectra.min.css">
+  <link rel="stylesheet" href="https://cdn.spectraportal.dev/v0.1/themes/theme.min.css">
+
+  <style>
+    :root{
+      --sv-sidebar-w: 16rem;
+      --sv-preview-w: 28rem;
+      --sv-app-h: calc(100vh - 9rem);
+    }
+
+    body{
+      background: var(--sp-bg);
+      color: var(--sp-text);
+    }
+
+    .sv-shell{
+      display: grid;
+      grid-template-columns: var(--sv-sidebar-w) minmax(0, 1fr) var(--sv-preview-w);
+      gap: var(--sp-4);
+      min-height: var(--sv-app-h);
+      align-items: start;
+    }
+
+    .sv-panel{
+      min-width: 0;
+      height: var(--sv-app-h);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sv-toolbar{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      align-items: end;
+    }
+
+    .sv-toolbar__grow{
+      flex: 1 1 18rem;
+    }
+
+    .sv-breadcrumbs{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      align-items: center;
+      font-size: var(--sp-fs-2);
+    }
+
+    .sv-breadcrumbs button{
+      appearance: none;
+      background: transparent;
+      border: 0;
+      color: var(--sp-link);
+      cursor: pointer;
+      padding: 0;
+      font: inherit;
+    }
+
+    .sv-area-list,
+    .sv-file-list{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sv-area-list li + li,
+    .sv-file-list li + li{
+      margin-top: var(--sp-2);
+    }
+
+    .sv-area-btn,
+    .sv-file-btn{
+      width: 100%;
+      text-align: left;
+      appearance: none;
+      background: transparent;
+      color: inherit;
+      border: var(--sp-border-1);
+      border-radius: var(--sp-radius-2);
+      padding: var(--sp-3);
+      cursor: pointer;
+      transition: background var(--sp-duration-2) var(--sp-ease-standard), border-color var(--sp-duration-2) var(--sp-ease-standard);
+    }
+
+    .sv-area-btn:hover,
+    .sv-file-btn:hover{
+      background: var(--sp-elev);
+      border-color: var(--sp-border-strong);
+    }
+
+    .sv-area-btn[aria-current="true"],
+    .sv-file-btn[aria-current="true"]{
+      background: color-mix(in oklab, var(--sp-accent) 14%, var(--sp-elev));
+      border-color: color-mix(in oklab, var(--sp-accent) 45%, var(--sp-border));
+    }
+
+    .sv-file-row{
+      display: flex;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      align-items: center;
+    }
+
+    .sv-file-meta{
+      font-size: var(--sp-fs-1);
+      color: var(--sp-muted);
+      white-space: nowrap;
+    }
+
+    .sv-scroll{
+      overflow: auto;
+      min-height: 0;
+    }
+
+    .sv-preview{
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: var(--sp-font-mono);
+      font-size: var(--sp-fs-1);
+      line-height: var(--sp-lh-3);
+      padding: var(--sp-3);
+      border: var(--sp-border-1);
+      border-radius: var(--sp-radius-2);
+      background: var(--sp-surface-2);
+      min-height: 12rem;
+    }
+
+    .sv-status{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+
+    .sv-image-preview{
+      max-width: 100%;
+      border-radius: var(--sp-radius-2);
+      border: var(--sp-border-1);
+      display: block;
+    }
+
+    @media (max-width: 1100px){
+      .sv-shell{
+        grid-template-columns: 1fr;
+      }
+
+      .sv-panel{
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="sp-header">
+    <div class="sp-header__inner sp-container">
+      <div class="sp-header__left">
+        <a class="sp-brand" href="#">
+          <span class="sp-brand__text">Spectra Viewer</span>
+          <span class="sp-badge sp-badge--soft">v0</span>
+        </a>
+      </div>
+      <nav class="sp-header__center sp-nav" aria-label="Primary">
+        <a class="sp-nav__link" href="#browser">Browser</a>
+        <a class="sp-nav__link" href="#preview">Preview</a>
+      </nav>
+      <div class="sp-header__right"></div>
+    </div>
+  </header>
+
+  <main class="sp-container sp-stack sp-mt-4 sp-mb-4">
+    <section class="sp-card sp-card--elev">
+      <div class="sp-card__body sp-stack">
+        <div class="sp-stack">
+          <p class="sp-muted">Gate-backed explorer</p>
+          <h1 class="sp-h1">Browse library areas with Spectra components.</h1>
+          <p class="sp-muted">This is a read-only viewer shell for assets, framework, docs surfaces, and future mounted areas.</p>
+        </div>
+
+        <div class="sv-toolbar">
+          <div class="sp-field sv-toolbar__grow">
+            <label class="sp-label" for="pathInput">Path</label>
+            <input class="sp-input" id="pathInput" value="brand/" />
+          </div>
+          <div class="sp-field">
+            <label class="sp-label" for="searchInput">Filter</label>
+            <input class="sp-input" id="searchInput" placeholder="Find files" />
+          </div>
+          <button class="sp-btn sp-btn--primary" id="refreshBtn" type="button">Refresh</button>
+        </div>
+
+        <div class="sv-status">
+          <span class="sp-badge sp-badge--soft" id="statusArea">assets</span>
+          <span class="sp-badge sp-badge--soft" id="statusPath">brand/</span>
+          <span class="sp-muted" id="statusText">Mock mode</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="browser" class="sv-shell">
+      <article class="sp-card sv-panel">
+        <div class="sp-card__header">
+          <h2 class="sp-h3">Areas</h2>
+        </div>
+        <div class="sp-card__body sv-scroll">
+          <ul class="sv-area-list" id="areaList"></ul>
+        </div>
+      </article>
+
+      <article class="sp-card sv-panel">
+        <div class="sp-card__header sp-stack">
+          <h2 class="sp-h3">Browser</h2>
+          <div class="sv-breadcrumbs" id="breadcrumbs"></div>
+        </div>
+        <div class="sp-card__body sv-scroll">
+          <ul class="sv-file-list" id="fileList"></ul>
+        </div>
+      </article>
+
+      <article id="preview" class="sp-card sv-panel">
+        <div class="sp-card__header">
+          <h2 class="sp-h3">Preview</h2>
+        </div>
+        <div class="sp-card__body sv-scroll sp-stack">
+          <div id="previewMeta" class="sp-muted">Select a file or folder.</div>
+          <div id="previewContent" class="sv-preview">No selection yet.</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const mockData = {
+      assets: {
+        "": [
+          { name: "brand", type: "dir", size: "—" },
+          { name: "ui", type: "dir", size: "—" },
+          { name: "textures", type: "dir", size: "—" }
+        ],
+        "brand/": [
+          { name: "spectraportal-favicon.svg", type: "file", size: "8 KB", preview: "image", url: "https://assets.spectraportal.dev/brand/spectraportal-favicon.svg" },
+          { name: "spectraportal-token_color.svg", type: "file", size: "12 KB", preview: "image", url: "https://assets.spectraportal.dev/brand/spectraportal-token_color.svg" },
+          { name: "spectraportal-wave.svg", type: "file", size: "14 KB", preview: "image", url: "https://assets.spectraportal.dev/brand/spectraportal-wave.svg" }
+        ]
+      },
+      framework: {
+        "": [
+          { name: "base", type: "dir", size: "—" },
+          { name: "components", type: "dir", size: "—" },
+          { name: "patterns", type: "dir", size: "—" },
+          { name: "tokens", type: "dir", size: "—" },
+          { name: "utilities", type: "dir", size: "—" },
+          { name: "spectra.css", type: "file", size: "1.1 KB", preview: "text", text: "@import './tokens/core.css';
+@import './components/button.css';
+@import './utilities/utilities.css';" }
+        ],
+        "components/": [
+          { name: "button.css", type: "file", size: "2.0 KB", preview: "text", text: ".sp-btn { display: inline-flex; }" },
+          { name: "card.css", type: "file", size: "703 B", preview: "text", text: ".sp-card { background: var(--sp-surface); }" },
+          { name: "input.css", type: "file", size: "1.7 KB", preview: "text", text: ".sp-input { width: 100%; }" }
+        ]
+      },
+      boot: {
+        "": [
+          { name: "BOOT.md", type: "file", size: "1.0 KB", preview: "text", text: "# BOOT
+This is the authoritative startup file for the live source surface." }
+        ]
+      },
+      chat_center: {
+        "": [
+          { name: "START_HERE.md", type: "file", size: "2.7 KB", preview: "text", text: "# START_HERE — Chat Center Hub" },
+          { name: "system", type: "dir", size: "—" }
+        ]
+      }
+    };
+
+    const state = {
+      area: "assets",
+      path: "brand/",
+      selectedKey: null,
+      filter: ""
+    };
+
+    const areaList = document.getElementById("areaList");
+    const fileList = document.getElementById("fileList");
+    const breadcrumbs = document.getElementById("breadcrumbs");
+    const previewMeta = document.getElementById("previewMeta");
+    const previewContent = document.getElementById("previewContent");
+    const pathInput = document.getElementById("pathInput");
+    const searchInput = document.getElementById("searchInput");
+    const statusArea = document.getElementById("statusArea");
+    const statusPath = document.getElementById("statusPath");
+    const statusText = document.getElementById("statusText");
+
+    const areas = Object.keys(mockData);
+
+    function normalizePath(path){
+      if (!path) return "";
+      return path.endsWith("/") ? path : path + "/";
+    }
+
+    function getEntries(){
+      const bucket = mockData[state.area] || {};
+      return bucket[state.path] || [];
+    }
+
+    function renderAreas(){
+      areaList.innerHTML = "";
+      areas.forEach((area) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "sv-area-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-current", String(area === state.area));
+        btn.innerHTML = `<strong>${area}</strong><div class="sp-muted">Library area</div>`;
+        btn.addEventListener("click", () => {
+          state.area = area;
+          state.path = Object.keys(mockData[area])[0] || "";
+          state.selectedKey = null;
+          pathInput.value = state.path;
+          render();
+        });
+        li.appendChild(btn);
+        areaList.appendChild(li);
+      });
+    }
+
+    function renderBreadcrumbs(){
+      breadcrumbs.innerHTML = "";
+      const root = document.createElement("button");
+      root.type = "button";
+      root.textContent = state.area;
+      root.addEventListener("click", () => {
+        state.path = "";
+        pathInput.value = state.path;
+        render();
+      });
+      breadcrumbs.appendChild(root);
+
+      const parts = state.path.split("/").filter(Boolean);
+      let acc = "";
+      parts.forEach((part) => {
+        const sep = document.createElement("span");
+        sep.textContent = "/";
+        breadcrumbs.appendChild(sep);
+        acc += part + "/";
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = part;
+        btn.addEventListener("click", () => {
+          state.path = acc;
+          pathInput.value = state.path;
+          render();
+        });
+        breadcrumbs.appendChild(btn);
+      });
+    }
+
+    function renderFiles(){
+      fileList.innerHTML = "";
+      const entries = getEntries().filter((entry) => entry.name.toLowerCase().includes(state.filter.toLowerCase()));
+
+      if (!entries.length){
+        const li = document.createElement("li");
+        li.innerHTML = `<div class="sp-muted">No files match this view.</div>`;
+        fileList.appendChild(li);
+        return;
+      }
+
+      entries.forEach((entry) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.className = "sv-file-btn";
+        btn.type = "button";
+        const key = `${state.area}:${state.path}:${entry.name}`;
+        btn.setAttribute("aria-current", String(key === state.selectedKey));
+        btn.innerHTML = `
+          <div class="sv-file-row">
+            <div>
+              <strong>${entry.name}</strong>
+              <div class="sp-muted">${entry.type}</div>
+            </div>
+            <div class="sv-file-meta">${entry.size}</div>
+          </div>`;
+
+        btn.addEventListener("click", () => {
+          state.selectedKey = key;
+          if (entry.type === "dir") {
+            state.path = normalizePath(state.path + entry.name);
+            pathInput.value = state.path;
+          }
+          preview(entry);
+          render();
+        });
+
+        li.appendChild(btn);
+        fileList.appendChild(li);
+      });
+    }
+
+    function preview(entry){
+      if (entry.type === "dir") {
+        previewMeta.textContent = `Directory · ${state.area}/${state.path}`;
+        previewContent.textContent = "Directory selected. Open to browse contents.";
+        return;
+      }
+
+      previewMeta.textContent = `File · ${entry.name} · ${entry.size}`;
+      if (entry.preview === "image" && entry.url) {
+        previewContent.innerHTML = `<img class="sv-image-preview" src="${entry.url}" alt="${entry.name}">`;
+        return;
+      }
+
+      previewContent.textContent = entry.text || "No preview available.";
+    }
+
+    function renderStatus(){
+      statusArea.textContent = state.area;
+      statusPath.textContent = state.path || "/";
+      statusText.textContent = "Mock mode · ready for Gate list/read wiring";
+    }
+
+    function render(){
+      renderAreas();
+      renderBreadcrumbs();
+      renderFiles();
+      renderStatus();
+    }
+
+    pathInput.addEventListener("change", () => {
+      state.path = normalizePath(pathInput.value.trim());
+      state.selectedKey = null;
+      render();
+    });
+
+    searchInput.addEventListener("input", () => {
+      state.filter = searchInput.value.trim();
+      renderFiles();
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", () => {
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
