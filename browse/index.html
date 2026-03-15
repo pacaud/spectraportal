@@ -10,8 +10,7 @@
 
   <style>
     :root{
-      --sv-sidebar-w: 16rem;
-      --sv-preview-w: 28rem;
+      --sv-preview-w: minmax(22rem, 36rem);
       --sv-app-h: calc(100vh - 9rem);
     }
 
@@ -22,7 +21,7 @@
 
     .sv-shell{
       display: grid;
-      grid-template-columns: var(--sv-sidebar-w) minmax(0, 1fr) var(--sv-preview-w);
+      grid-template-columns: minmax(0, 1.35fr) minmax(22rem, 1fr);
       gap: var(--sp-4);
       min-height: var(--sv-app-h);
       align-items: start;
@@ -43,7 +42,7 @@
     }
 
     .sv-toolbar__grow{
-      flex: 1 1 18rem;
+      flex: 1 1 20rem;
     }
 
     .sv-breadcrumbs{
@@ -64,19 +63,16 @@
       font: inherit;
     }
 
-    .sv-area-list,
     .sv-file-list{
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    .sv-area-list li + li,
     .sv-file-list li + li{
       margin-top: var(--sp-2);
     }
 
-    .sv-area-btn,
     .sv-file-btn{
       width: 100%;
       text-align: left;
@@ -90,13 +86,11 @@
       transition: background var(--sp-duration-2) var(--sp-ease-standard), border-color var(--sp-duration-2) var(--sp-ease-standard);
     }
 
-    .sv-area-btn:hover,
     .sv-file-btn:hover{
       background: var(--sp-elev);
       border-color: var(--sp-border-strong);
     }
 
-    .sv-area-btn[aria-current="true"],
     .sv-file-btn[aria-current="true"]{
       background: color-mix(in oklab, var(--sp-accent) 14%, var(--sp-elev));
       border-color: color-mix(in oklab, var(--sp-accent) 45%, var(--sp-border));
@@ -168,7 +162,7 @@
         </a>
       </div>
       <nav class="sp-header__center sp-nav" aria-label="Primary">
-        <a class="sp-nav__link" href="#browser">Browser</a>
+        <a class="sp-nav__link" href="#browser">Browse</a>
         <a class="sp-nav__link" href="#preview">Preview</a>
       </nav>
       <div class="sp-header__right"></div>
@@ -180,13 +174,13 @@
       <div class="sp-card__body sp-stack">
         <div class="sp-stack">
           <p class="sp-muted">Gate-backed explorer</p>
-          <h1 class="sp-h1">Browse library areas with Spectra components.</h1>
-          <p class="sp-muted">This is a read-only viewer shell for assets, framework, docs surfaces, and future mounted areas.</p>
+          <h1 class="sp-h1">Browse files with Spectra components.</h1>
+          <p class="sp-muted">This is a read-only viewer shell for assets, framework, docs surfaces, and future mounted sources.</p>
         </div>
 
         <div class="sv-toolbar">
           <div class="sp-field sv-toolbar__grow">
-            <label class="sp-label" for="pathInput">Path</label>
+            <label class="sp-label" for="pathInput">Browse</label>
             <input class="sp-input" id="pathInput" value="brand/" />
           </div>
           <div class="sp-field">
@@ -197,26 +191,16 @@
         </div>
 
         <div class="sv-status">
-          <span class="sp-badge sp-badge--soft" id="statusArea">assets</span>
           <span class="sp-badge sp-badge--soft" id="statusPath">brand/</span>
           <span class="sp-muted" id="statusText">Mock mode</span>
         </div>
       </div>
     </section>
 
-    <section id="browser" class="sv-shell">
-      <article class="sp-card sv-panel">
-        <div class="sp-card__header">
-          <h2 class="sp-h3">Areas</h2>
-        </div>
-        <div class="sp-card__body sv-scroll">
-          <ul class="sv-area-list" id="areaList"></ul>
-        </div>
-      </article>
-
-      <article class="sp-card sv-panel">
+    <section class="sv-shell">
+      <article id="browser" class="sp-card sv-panel">
         <div class="sp-card__header sp-stack">
-          <h2 class="sp-h3">Browser</h2>
+          <h2 class="sp-h3">Browse</h2>
           <div class="sv-breadcrumbs" id="breadcrumbs"></div>
         </div>
         <div class="sp-card__body sv-scroll">
@@ -257,9 +241,7 @@
           { name: "patterns", type: "dir", size: "—" },
           { name: "tokens", type: "dir", size: "—" },
           { name: "utilities", type: "dir", size: "—" },
-          { name: "spectra.css", type: "file", size: "1.1 KB", preview: "text", text: "@import './tokens/core.css';
-@import './components/button.css';
-@import './utilities/utilities.css';" }
+          { name: "spectra.css", type: "file", size: "1.1 KB", preview: "text", text: "@import './tokens/core.css';\n@import './components/button.css';\n@import './utilities/utilities.css';" }
         ],
         "components/": [
           { name: "button.css", type: "file", size: "2.0 KB", preview: "text", text: ".sp-btn { display: inline-flex; }" },
@@ -269,8 +251,7 @@
       },
       boot: {
         "": [
-          { name: "BOOT.md", type: "file", size: "1.0 KB", preview: "text", text: "# BOOT
-This is the authoritative startup file for the live source surface." }
+          { name: "BOOT.md", type: "file", size: "1.0 KB", preview: "text", text: "# BOOT\nThis is the authoritative startup file for the live source surface." }
         ]
       },
       chat_center: {
@@ -288,18 +269,14 @@ This is the authoritative startup file for the live source surface." }
       filter: ""
     };
 
-    const areaList = document.getElementById("areaList");
     const fileList = document.getElementById("fileList");
     const breadcrumbs = document.getElementById("breadcrumbs");
     const previewMeta = document.getElementById("previewMeta");
     const previewContent = document.getElementById("previewContent");
     const pathInput = document.getElementById("pathInput");
     const searchInput = document.getElementById("searchInput");
-    const statusArea = document.getElementById("statusArea");
     const statusPath = document.getElementById("statusPath");
     const statusText = document.getElementById("statusText");
-
-    const areas = Object.keys(mockData);
 
     function normalizePath(path){
       if (!path) return "";
@@ -311,32 +288,11 @@ This is the authoritative startup file for the live source surface." }
       return bucket[state.path] || [];
     }
 
-    function renderAreas(){
-      areaList.innerHTML = "";
-      areas.forEach((area) => {
-        const li = document.createElement("li");
-        const btn = document.createElement("button");
-        btn.className = "sv-area-btn";
-        btn.type = "button";
-        btn.setAttribute("aria-current", String(area === state.area));
-        btn.innerHTML = `<strong>${area}</strong><div class="sp-muted">Library area</div>`;
-        btn.addEventListener("click", () => {
-          state.area = area;
-          state.path = Object.keys(mockData[area])[0] || "";
-          state.selectedKey = null;
-          pathInput.value = state.path;
-          render();
-        });
-        li.appendChild(btn);
-        areaList.appendChild(li);
-      });
-    }
-
     function renderBreadcrumbs(){
       breadcrumbs.innerHTML = "";
       const root = document.createElement("button");
       root.type = "button";
-      root.textContent = state.area;
+      root.textContent = "root";
       root.addEventListener("click", () => {
         state.path = "";
         pathInput.value = state.path;
@@ -407,7 +363,7 @@ This is the authoritative startup file for the live source surface." }
 
     function preview(entry){
       if (entry.type === "dir") {
-        previewMeta.textContent = `Directory · ${state.area}/${state.path}`;
+        previewMeta.textContent = `Directory · ${state.path || "/"}`;
         previewContent.textContent = "Directory selected. Open to browse contents.";
         return;
       }
@@ -422,13 +378,11 @@ This is the authoritative startup file for the live source surface." }
     }
 
     function renderStatus(){
-      statusArea.textContent = state.area;
       statusPath.textContent = state.path || "/";
       statusText.textContent = "Mock mode · ready for Gate list/read wiring";
     }
 
     function render(){
-      renderAreas();
       renderBreadcrumbs();
       renderFiles();
       renderStatus();
