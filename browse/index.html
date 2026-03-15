@@ -87,6 +87,13 @@
       align-items: end;
     }
 
+    .sv-browserBadges{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+
     .sv-fileList{
       list-style: none;
       margin: 0;
@@ -352,6 +359,10 @@
               <h2 class="sp-h3">Browse:</h2>
               <span class="sv-browserTitlePath" id="browseTitlePath">drafts/spectra-viewer/</span>
             </div>
+            <div class="sv-browserBadges" aria-label="Browse capabilities">
+              <span class="sp-badge sp-badge--soft">Downloads</span>
+              <span class="sp-badge sp-badge--soft">Uploads</span>
+            </div>
           </div>
         </div>
         <div class="sp-card__body sv-scroll">
@@ -396,7 +407,7 @@
       ],
       "spectra-viewer/": [
         { name: "index.html", type: "file", size: "23.7 KB", preview: "text", text: "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <title>Spectra Viewer</title>\n  </head>\n  <body>\n    <h1>Spectra Viewer draft</h1>\n  </body>\n</html>" },
-        { name: "plan.md", type: "file", size: "1.8 KB", preview: "text", text: "# Spectra Viewer Plan\n\n- Fill remaining height\n- Cleaner browse header\n- Parent directory row\n- No footer" }
+        { name: "plan.md", type: "file", size: "1.8 KB", preview: "text", text: "# Spectra Viewer Plan\n\n- Fill remaining height\n- Cleaner browse header\n- Parent directory row\n- Downloads / Uploads badges" }
       ]
     };
 
