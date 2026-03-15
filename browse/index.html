@@ -213,6 +213,13 @@
       display: block;
     }
 
+    .sv-metaLink{
+      color: var(--sp-link);
+      text-decoration: underline;
+      text-underline-offset: var(--sp-underline-offset);
+      word-break: break-all;
+    }
+
     .sv-footer__row{
       display: flex;
       justify-content: space-between;
@@ -263,13 +270,23 @@
         <div class="sp-stack">
           <p class="sp-muted">Gate-backed explorer</p>
           <h1 class="sp-h1">Browse files with Spectra components.</h1>
-          <p class="sp-muted">This is a read-only viewer shell for assets, framework, docs surfaces, and future mounted sources.</p>
+          <p class="sp-muted">This is a read-only viewer shell for assets, framework, docs surfaces, and Gate drafts.</p>
         </div>
 
         <div class="sv-toolbar">
+          <div class="sp-field">
+            <label class="sp-label" for="sourceSelect">Source</label>
+            <select class="sp-input" id="sourceSelect">
+              <option value="drafts">Gate Drafts</option>
+              <option value="framework">Framework</option>
+              <option value="assets">Assets</option>
+              <option value="boot">Boot</option>
+              <option value="chat_center">Chat Center</option>
+            </select>
+          </div>
           <div class="sp-field sv-toolbar__grow">
             <label class="sp-label" for="pathInput">Browse</label>
-            <input class="sp-input" id="pathInput" value="brand/" />
+            <input class="sp-input" id="pathInput" value="spectra-viewer/" />
           </div>
           <div class="sp-field">
             <label class="sp-label" for="searchInput">Filter</label>
@@ -279,9 +296,9 @@
         </div>
 
         <div class="sv-status">
-          <span class="sp-badge sp-badge--soft" id="statusPath">brand/</span>
+          <span class="sp-badge sp-badge--soft" id="statusPath">spectra-viewer/</span>
           <span class="sp-badge sp-badge--soft" id="statusMode">terminal</span>
-          <span class="sp-muted" id="statusText">Mock mode</span>
+          <span class="sp-muted" id="statusText">Drafts path ready</span>
         </div>
       </div>
     </section>
@@ -330,7 +347,7 @@
           <nav class="sv-footer__links sp-row" aria-label="Viewer footer">
             <a class="sp-link" href="#browser">Browse</a>
             <a class="sp-link" href="#preview">Preview</a>
-            <a class="sp-link" href="#">Top</a>
+            <a class="sp-link" href="https://gate.spectraportal.dev/drafts/spectra-viewer/index.html">Viewer draft URL</a>
           </nav>
         </div>
       </div>
@@ -338,7 +355,50 @@
   </footer>
 
   <script>
+    const sources = {
+      drafts: {
+        label: "Gate Drafts",
+        rootLabel: "drafts",
+        defaultPath: "spectra-viewer/",
+        publicBase: "https://gate.spectraportal.dev/drafts/"
+      },
+      framework: {
+        label: "Framework",
+        rootLabel: "framework",
+        defaultPath: "",
+        publicBase: ""
+      },
+      assets: {
+        label: "Assets",
+        rootLabel: "assets",
+        defaultPath: "brand/",
+        publicBase: "https://assets.spectraportal.dev/"
+      },
+      boot: {
+        label: "Boot",
+        rootLabel: "boot",
+        defaultPath: "",
+        publicBase: ""
+      },
+      chat_center: {
+        label: "Chat Center",
+        rootLabel: "chat_center",
+        defaultPath: "",
+        publicBase: ""
+      }
+    };
+
     const mockData = {
+      drafts: {
+        "": [
+          { name: "spectra-viewer", type: "dir", size: "—" },
+          { name: "test-draft.md", type: "file", size: "76 B", preview: "text", text: "# Test Draft\n\nThis is a writable Gate draft." }
+        ],
+        "spectra-viewer/": [
+          { name: "index.html", type: "file", size: "18.8 KB", preview: "text", text: "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <title>Spectra Viewer</title>\n  </head>\n  <body>\n    <h1>Spectra Viewer draft</h1>\n  </body>\n</html>" },
+          { name: "plan.md", type: "file", size: "1.8 KB", preview: "text", text: "# Spectra Viewer Plan\n\n- Gate drafts source\n- Browse + preview\n- Terminal view\n- Public drafts path" }
+        ]
+      },
       assets: {
         "": [
           { name: "brand", type: "dir", size: "—" },
@@ -380,8 +440,8 @@
     };
 
     const state = {
-      area: "assets",
-      path: "brand/",
+      source: "drafts",
+      path: "spectra-viewer/",
       selectedKey: null,
       filter: "",
       previewMode: "terminal",
@@ -394,6 +454,7 @@
     const previewContent = document.getElementById("previewContent");
     const pathInput = document.getElementById("pathInput");
     const searchInput = document.getElementById("searchInput");
+    const sourceSelect = document.getElementById("sourceSelect");
     const statusPath = document.getElementById("statusPath");
     const statusMode = document.getElementById("statusMode");
     const statusText = document.getElementById("statusText");
@@ -406,8 +467,22 @@
     }
 
     function getEntries(){
-      const bucket = mockData[state.area] || {};
+      const bucket = mockData[state.source] || {};
       return bucket[state.path] || [];
+    }
+
+    function getPublicUrl(entry){
+      const source = sources[state.source];
+      if (!source || !source.publicBase) return "";
+      if (!entry) return source.publicBase + state.path;
+      return source.publicBase + state.path + entry.name;
+    }
+
+    function getDisplayLocation(entry){
+      const publicUrl = getPublicUrl(entry);
+      if (publicUrl) return publicUrl;
+      if (entry) return `viewer://${state.source}/${state.path}${entry.name}`;
+      return `viewer://${state.source}/${state.path}`;
     }
 
     function getEffectivePreviewMode(entry){
@@ -427,10 +502,12 @@
       breadcrumbs.innerHTML = "";
       const root = document.createElement("button");
       root.type = "button";
-      root.textContent = "root";
+      root.textContent = sources[state.source].rootLabel;
       root.addEventListener("click", () => {
         state.path = "";
         pathInput.value = state.path;
+        state.selectedKey = null;
+        state.selectedEntry = null;
         render();
       });
       breadcrumbs.appendChild(root);
@@ -448,7 +525,10 @@
         btn.addEventListener("click", () => {
           state.path = acc;
           pathInput.value = state.path;
+          state.selectedKey = null;
+          state.selectedEntry = null;
           render();
+          autoPreviewPreferredEntry();
         });
         breadcrumbs.appendChild(btn);
       });
@@ -470,7 +550,7 @@
         const btn = document.createElement("button");
         btn.className = "sv-file-btn";
         btn.type = "button";
-        const key = `${state.area}:${state.path}:${entry.name}`;
+        const key = `${state.source}:${state.path}:${entry.name}`;
         btn.setAttribute("aria-current", String(key === state.selectedKey));
         btn.innerHTML = `
           <div class="sv-file-row">
@@ -487,6 +567,11 @@
           if (entry.type === "dir") {
             state.path = normalizePath(state.path + entry.name);
             pathInput.value = state.path;
+            state.selectedKey = null;
+            state.selectedEntry = null;
+            render();
+            autoPreviewPreferredEntry();
+            return;
           }
           preview(entry);
           render();
@@ -512,13 +597,13 @@
       renderPreviewModeControls(entry);
 
       if (entry.type === "dir") {
-        previewMeta.textContent = `Directory · ${state.path || "/"}`;
+        previewMeta.innerHTML = `Directory · <a class="sv-metaLink" href="${getDisplayLocation()}" target="_blank" rel="noreferrer">${getDisplayLocation()}</a>`;
         previewContent.className = "sv-preview";
         previewContent.textContent = "Directory selected. Open to browse contents.";
         return;
       }
 
-      previewMeta.textContent = `File · ${entry.name} · ${entry.size}`;
+      previewMeta.innerHTML = `File · ${entry.name} · ${entry.size} · <a class="sv-metaLink" href="${getDisplayLocation(entry)}" target="_blank" rel="noreferrer">open path</a>`;
 
       if (entry.preview === "image" && entry.url) {
         previewContent.className = "sv-preview";
@@ -537,7 +622,7 @@
                 <span class="sv-terminal__dot"></span>
                 <span class="sv-terminal__dot"></span>
               </div>
-              <span>viewer://${state.area}/${state.path}${entry.name}</span>
+              <span>${escapeHtml(getDisplayLocation(entry))}</span>
             </div>
             <pre class="sv-terminal__body"><span class="sv-terminal__prompt">$ cat ${escapeHtml(entry.name)}</span>
 
@@ -550,9 +635,25 @@ ${terminalText}</pre>
       previewContent.textContent = entry.text || "No preview available.";
     }
 
+    function autoPreviewPreferredEntry(){
+      const entries = getEntries();
+      const preferred = entries.find((entry) => entry.type === "file" && entry.preview !== "image") || entries.find((entry) => entry.type === "file");
+      if (!preferred) {
+        previewMeta.innerHTML = `Select a file or folder. Current path: <a class="sv-metaLink" href="${getDisplayLocation()}" target="_blank" rel="noreferrer">${getDisplayLocation()}</a>`;
+        previewContent.className = "sv-preview";
+        previewContent.textContent = "No selection yet.";
+        renderPreviewModeControls(null);
+        return;
+      }
+      state.selectedKey = `${state.source}:${state.path}:${preferred.name}`;
+      preview(preferred);
+    }
+
     function renderStatus(){
       statusPath.textContent = state.path || "/";
-      statusText.textContent = "Mock mode · ready for Gate list/read wiring";
+      statusText.textContent = state.source === "drafts"
+        ? `Drafts path ready · ${sources[state.source].publicBase}`
+        : `Mock mode · ${sources[state.source].label}`;
       renderPreviewModeControls(state.selectedEntry);
     }
 
@@ -560,6 +661,20 @@ ${terminalText}</pre>
       renderBreadcrumbs();
       renderFiles();
       renderStatus();
+      sourceSelect.value = state.source;
+    }
+
+    function openSource(key){
+      state.source = key;
+      state.path = sources[key].defaultPath;
+      state.selectedKey = null;
+      state.selectedEntry = null;
+      pathInput.value = state.path;
+      previewContent.className = "sv-preview";
+      previewContent.textContent = "No selection yet.";
+      previewMeta.textContent = "Select a file or folder.";
+      render();
+      autoPreviewPreferredEntry();
     }
 
     modeNormalBtn.addEventListener("click", () => {
@@ -580,6 +695,10 @@ ${terminalText}</pre>
       }
     });
 
+    sourceSelect.addEventListener("change", () => {
+      openSource(sourceSelect.value);
+    });
+
     pathInput.addEventListener("change", () => {
       state.path = normalizePath(pathInput.value.trim());
       state.selectedKey = null;
@@ -588,6 +707,7 @@ ${terminalText}</pre>
       previewContent.textContent = "No selection yet.";
       previewMeta.textContent = "Select a file or folder.";
       render();
+      autoPreviewPreferredEntry();
     });
 
     searchInput.addEventListener("input", () => {
@@ -597,9 +717,10 @@ ${terminalText}</pre>
 
     document.getElementById("refreshBtn").addEventListener("click", () => {
       render();
+      autoPreviewPreferredEntry();
     });
 
-    render();
+    openSource("drafts");
   </script>
 </body>
 </html>
