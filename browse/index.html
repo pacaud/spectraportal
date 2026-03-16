@@ -26,7 +26,7 @@
       margin: 0;
       min-height: 100dvh;
       display: grid;
-      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-rows: auto minmax(0, 1fr) auto;
       overflow: hidden;
       background: var(--sp-bg);
       color: var(--sp-text);
@@ -35,17 +35,20 @@
     .sv-main{
       min-height: 0;
       overflow: hidden;
-      padding-top: var(--sp-4);
-      padding-bottom: var(--sp-4);
+      padding: 0;
+      width: 100%;
+      max-width: none;
     }
 
     .sv-shell{
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-      gap: var(--sp-4);
+      gap: var(--sp-3);
       height: 100%;
       min-height: 0;
       align-items: stretch;
+      padding: var(--sp-2);
+      box-sizing: border-box;
     }
 
     .sv-panel{
@@ -80,6 +83,13 @@
       font-size: var(--sp-fs-2);
     }
 
+    .sv-previewHeading{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      align-items: center;
+    }
+
     .sv-previewModes{
       display: flex;
       flex-wrap: wrap;
@@ -87,11 +97,43 @@
       align-items: end;
     }
 
-    .sv-browserBadges{
+    .sv-drawerSection{
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: var(--sp-2);
-      align-items: center;
+    }
+
+    .sv-drawerSectionTitle{
+      font-size: var(--sp-fs-1);
+      color: var(--sp-muted);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .sv-drawerActionsStack{
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .sv-searchRow{
+      display: flex;
+      gap: var(--sp-3);
+      align-items: stretch;
+    }
+
+    .sv-searchRow .sp-field{
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .sv-searchRow .sp-input{
+      min-width: 0;
+    }
+
+    .sv-searchRow .sp-btn{
+      flex: 0 0 auto;
+      white-space: nowrap;
     }
 
     .sv-fileList{
@@ -102,6 +144,12 @@
 
     .sv-fileList li + li{
       margin-top: var(--sp-2);
+    }
+
+    .sv-fileItem{
+      display: flex;
+      gap: var(--sp-2);
+      align-items: stretch;
     }
 
     .sv-fileBtn{
@@ -117,6 +165,10 @@
       transition: background var(--sp-duration-2) var(--sp-ease-standard), border-color var(--sp-duration-2) var(--sp-ease-standard);
     }
 
+    .sv-fileItem .sv-fileBtn{
+      flex: 1 1 auto;
+    }
+
     .sv-fileBtn:hover{
       background: var(--sp-elev);
       border-color: var(--sp-border-strong);
@@ -127,11 +179,56 @@
       border-color: color-mix(in oklab, var(--sp-accent) 45%, var(--sp-border));
     }
 
+    .sv-fileAction{
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.25rem;
+      padding: 0 var(--sp-2);
+      border: var(--sp-border-1);
+      border-radius: var(--sp-radius-2);
+      color: var(--sp-link);
+      text-decoration: none;
+      background: transparent;
+      transition: background var(--sp-duration-2) var(--sp-ease-standard), border-color var(--sp-duration-2) var(--sp-ease-standard), color var(--sp-duration-2) var(--sp-ease-standard);
+    }
+
+    .sv-fileAction:hover{
+      background: var(--sp-elev);
+      border-color: var(--sp-border-strong);
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: var(--sp-underline);
+    }
+
     .sv-fileRow{
       display: flex;
       justify-content: space-between;
       gap: var(--sp-3);
       align-items: center;
+    }
+
+    .sv-fileName{
+      display: flex;
+      flex-wrap: nowrap;
+      gap: .2rem;
+      align-items: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sv-fileTitle{
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .sv-fileKind{
+      font-size: .9em;
+      color: var(--sp-muted);
+      white-space: nowrap;
+      flex: 0 0 auto;
+      opacity: .82;
     }
 
     .sv-fileMeta{
@@ -285,6 +382,43 @@
       align-items: end;
     }
 
+    .sv-footerWrap{
+      margin-top: var(--sp-3);
+      padding: 0 var(--sp-2) var(--sp-2);
+    }
+
+    .demo-footer__row{
+      display: flex;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--sp-text-muted);
+      font-size: var(--sp-fs-1);
+    }
+
+    .demo-footer__credit{
+      color: var(--sp-text-muted);
+    }
+
+    .demo-footer__links{
+      display: flex;
+      gap: var(--sp-4);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .demo-footer__link{
+      color: var(--sp-text-muted);
+      text-decoration: none;
+    }
+
+    .demo-footer__link:hover{
+      color: var(--sp-text);
+      text-decoration: underline;
+      text-decoration-color: var(--sp-underline);
+    }
+
     @media (max-width: 820px){
       body{
         overflow: auto;
@@ -297,6 +431,7 @@
       .sv-shell{
         grid-template-columns: 1fr;
         height: auto;
+        padding: var(--sp-2);
       }
 
       .sv-panel{
@@ -305,6 +440,15 @@
 
       .sv-drawer{
         width: min(90vw, 26rem);
+      }
+
+      .sv-searchRow{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .demo-footer__row{
+        align-items: flex-start;
       }
     }
   </style>
@@ -315,20 +459,27 @@
     <div class="sv-drawerHeader">
       <div class="sp-stack">
         <strong>Browse tools</strong>
-        <span class="sp-muted">Search and jump to matching files.</span>
       </div>
       <button class="sp-btn sp-btn--sm" id="drawerCloseBtn" type="button">Close</button>
     </div>
     <div class="sv-drawerBody">
-      <div class="sp-field">
-        <label class="sp-label" for="searchInput">Search</label>
-        <input class="sp-input" id="searchInput" placeholder="Type a file name and press Enter" />
+      <div class="sv-drawerSection">
+        <div class="sv-drawerSectionTitle">Search</div>
+        <div class="sv-searchRow">
+          <div class="sp-field">
+            <input class="sp-input" id="searchInput" aria-label="Search files" placeholder="Search files" />
+          </div>
+          <button class="sp-btn sp-btn--primary sp-btn--sm" id="searchBtn" type="button">Search</button>
+        </div>
       </div>
-      <div class="sv-drawerActions">
-        <button class="sp-btn sp-btn--primary" id="searchBtn" type="button">Search</button>
-        <button class="sp-btn" id="refreshBtn" type="button">Refresh</button>
+
+      <div class="sv-drawerSection">
+        <div class="sv-drawerSectionTitle">Actions</div>
+        <div class="sv-drawerActionsStack">
+          <button class="sp-btn" id="refreshBtn" type="button">Refresh</button>
+          <button class="sp-btn" id="uploadBtn" type="button">Upload to drafts</button>
+        </div>
       </div>
-      <p class="sp-muted">Search filters the current browse list and selects the first match in the browser panel.</p>
     </div>
   </aside>
 
@@ -357,11 +508,7 @@
           <div class="sv-browserHeader">
             <div class="sv-browserTitle">
               <h2 class="sp-h3">Browse:</h2>
-              <span class="sv-browserTitlePath" id="browseTitlePath">drafts/spectra-viewer/</span>
-            </div>
-            <div class="sv-browserBadges" aria-label="Browse capabilities">
-              <span class="sp-badge sp-badge--soft">Downloads</span>
-              <span class="sp-badge sp-badge--soft">Uploads</span>
+              <span class="sv-browserTitlePath" id="browseTitlePath">drafts/</span>
             </div>
           </div>
         </div>
@@ -373,11 +520,9 @@
       <article id="preview" class="sp-card sv-panel">
         <div class="sp-card__header">
           <div class="sv-previewHeader">
-            <div class="sp-stack">
+            <div class="sv-previewHeading">
               <h2 class="sp-h3">Preview</h2>
-              <div class="sp-inline">
-                <span class="sp-badge sp-badge--soft" id="statusMode">terminal</span>
-              </div>
+              <span class="sp-badge sp-badge--soft" id="statusMode">terminal</span>
             </div>
             <div class="sv-previewModes" aria-label="Preview modes">
               <button class="sp-btn sp-btn--sm" id="modeNormalBtn" type="button">Normal</button>
@@ -393,26 +538,126 @@
     </section>
   </main>
 
+  <footer class="sp-footer sv-footerWrap" aria-label="Site footer">
+    <div>
+      <section class="sp-card sp-card--surface">
+        <div class="sp-card__body">
+          <div class="demo-footer__row">
+            <div>
+              © <span id="footerYear"></span> Spectra Portal. All rights reserved.
+              <span class="demo-footer__credit">
+                · Built by <a class="demo-footer__link" href="https://codecruncherstechnologies.com">Code Crunchers Technologies</a>
+              </span>
+            </div>
+            <nav class="demo-footer__links" aria-label="Legal">
+              <a class="demo-footer__link" href="#">Privacy</a>
+              <a class="demo-footer__link" href="#">Terms</a>
+              <a class="demo-footer__link" href="#">Licenses</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>
+
   <script>
     const source = {
       label: "Gate Drafts",
       rootLabel: "drafts",
-      publicBase: "https://gate.spectraportal.dev/drafts/"
+      publicBase: "/drafts/"
     };
 
-    const mockData = {
+    const treeData = {
       "": [
-        { name: "spectra-viewer", type: "dir", size: "—" },
-        { name: "test-draft.md", type: "file", size: "76 B", preview: "text", text: "# Test Draft\n\nThis is a writable Gate draft." }
+        { name: "boot", type: "dir" },
+        { name: "chat_center", type: "dir" },
+        { name: "deploy", type: "dir" },
+        { name: "hollowverse", type: "dir" },
+        { name: "old_chat_archive", type: "dir" },
+        { name: "spectra-viewer", type: "dir" },
+        { name: "test", type: "dir" },
+        { name: "test-draft.md", type: "file", size: 76 }
+      ],
+      "boot/": [
+        { name: "assets-endpoint-plan.md", type: "file", size: 3013 },
+        { name: "BOOT.md", type: "file", size: 1049 },
+        { name: "CURRENT.md", type: "file", size: 8068 },
+        { name: "REDIRECT.md", type: "file", size: 4991 },
+        { name: "WRAP.md", type: "file", size: 2002 }
+      ],
+      "chat_center/": [
+        { name: "system", type: "dir" },
+        { name: "_index.md", type: "file", size: 1478 },
+        { name: "START_HERE.md", type: "file", size: 2765 }
+      ],
+      "chat_center/system/": [
+        { name: "routing_policy.md", type: "file", size: 4071 },
+        { name: "style.md", type: "file", size: 2215 },
+        { name: "system_manifest.md", type: "file", size: 2771 }
+      ],
+      "deploy/": [
+        { name: "nginx-drafts-route.conf", type: "file", size: 1712 },
+        { name: "spectraportal.dev-with-drafts.conf", type: "file", size: 1013 }
+      ],
+      "hollowverse/": [
+        { name: "forest_of_illusions", type: "dir" },
+        { name: "_index.md", type: "file", size: 487 }
+      ],
+      "hollowverse/forest_of_illusions/": [
+        { name: "animals", type: "dir" },
+        { name: "places", type: "dir" },
+        { name: "presence", type: "dir" },
+        { name: "terrain", type: "dir" },
+        { name: "weather", type: "dir" },
+        { name: "_index.md", type: "file", size: 411 }
+      ],
+      "hollowverse/forest_of_illusions/animals/": [
+        { name: "_index.md", type: "file", size: 606 }
+      ],
+      "hollowverse/forest_of_illusions/places/": [
+        { name: "cottage", type: "dir" }
+      ],
+      "hollowverse/forest_of_illusions/places/cottage/": [
+        { name: "bedroom_nook", type: "dir" },
+        { name: "kitchenette", type: "dir" },
+        { name: "study_nook", type: "dir" },
+        { name: "_index.md", type: "file", size: 615 }
+      ],
+      "hollowverse/forest_of_illusions/places/cottage/bedroom_nook/": [
+        { name: "_index.md", type: "file", size: 452 }
+      ],
+      "hollowverse/forest_of_illusions/places/cottage/kitchenette/": [
+        { name: "_index.md", type: "file", size: 432 }
+      ],
+      "hollowverse/forest_of_illusions/places/cottage/study_nook/": [
+        { name: "_index.md", type: "file", size: 427 }
+      ],
+      "hollowverse/forest_of_illusions/presence/": [
+        { name: "_index.md", type: "file", size: 524 }
+      ],
+      "hollowverse/forest_of_illusions/terrain/": [
+        { name: "_index.md", type: "file", size: 417 }
+      ],
+      "hollowverse/forest_of_illusions/weather/": [
+        { name: "_index.md", type: "file", size: 550 }
+      ],
+      "old_chat_archive/": [
+        { name: "2026-03-13__gate-hollowverse-wiring.md", type: "file", size: 3123 },
+        { name: "2026-03-15__spectra-viewer-handoff.md", type: "file", size: 2938 },
+        { name: "README.md", type: "file", size: 785 }
       ],
       "spectra-viewer/": [
-        { name: "index.html", type: "file", size: "23.7 KB", preview: "text", text: "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <title>Spectra Viewer</title>\n  </head>\n  <body>\n    <h1>Spectra Viewer draft</h1>\n  </body>\n</html>" },
-        { name: "plan.md", type: "file", size: "1.8 KB", preview: "text", text: "# Spectra Viewer Plan\n\n- Fill remaining height\n- Cleaner browse header\n- Parent directory row\n- Downloads / Uploads badges" }
+        { name: "index.html", type: "file", size: 21649 },
+        { name: "plan.md", type: "file", size: 1843 }
+      ],
+      "test/": [
+        { name: "index.html", type: "file", size: 978 },
+        { name: "test.md", type: "file", size: 56 }
       ]
     };
 
     const state = {
-      path: "spectra-viewer/",
+      path: "",
       selectedKey: null,
       filter: "",
       previewMode: "terminal",
@@ -432,6 +677,7 @@
     const drawerCloseBtn = document.getElementById("drawerCloseBtn");
     const drawerBackdrop = document.getElementById("drawerBackdrop");
     const toolDrawer = document.getElementById("toolDrawer");
+    const uploadBtn = document.getElementById("uploadBtn");
 
     function normalizePath(path){
       if (!path) return "";
@@ -439,7 +685,7 @@
     }
 
     function getEntries(){
-      return mockData[state.path] || [];
+      return treeData[state.path] || [];
     }
 
     function getParentPath(path = state.path){
@@ -479,7 +725,39 @@
       return String(value)
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function formatBytes(size){
+      if (!Number.isFinite(size)) return "—";
+      if (size < 1024) return `${size} B`;
+      if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`;
+      return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+    }
+
+    function truncateFileName(name, maxLength = 32){
+      if (name.length <= maxLength) return name;
+      const extMatch = name.match(/(\.[^.]+)$/);
+      const ext = extMatch ? extMatch[1] : "";
+      const stem = ext ? name.slice(0, -ext.length) : name;
+      const stemLength = Math.max(8, maxLength - ext.length - 1);
+      if (stem.length <= stemLength) return name;
+      return `${stem.slice(0, stemLength)}…${ext}`;
+    }
+
+    function getBrowseFileNameHtml(name){
+      const displayName = truncateFileName(name, 18);
+      return `<strong class="sv-fileTitle" title="${escapeHtml(name)}">${escapeHtml(displayName)}</strong>`;
+    }
+
+    function isImageFile(name){
+      return /\.(png|jpe?g|gif|webp|svg)$/i.test(name);
+    }
+
+    function isTextLikeFile(name){
+      return /\.(md|txt|html?|css|js|mjs|json|xml|ya?ml|conf|ini|sh)$/i.test(name);
     }
 
     function setDrawerOpen(open){
@@ -489,6 +767,8 @@
       toolDrawer.setAttribute("aria-hidden", String(!open));
       navDrawerToggleBtn.setAttribute("aria-expanded", String(open));
     }
+
+    function updateActions(){}
 
     function scrollSelectedIntoView(){
       if (!state.selectedKey) return;
@@ -513,14 +793,14 @@
             </div>
             <div class="sv-fileMeta">up</div>
           </div>`;
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", async () => {
           state.path = getParentPath();
           state.filter = "";
           searchInput.value = "";
           state.selectedKey = null;
           state.selectedEntry = null;
           render();
-          autoPreviewPreferredEntry();
+          await autoPreviewPreferredEntry();
         });
         li.appendChild(btn);
         fileList.appendChild(li);
@@ -537,6 +817,9 @@
 
       entries.forEach((entry) => {
         const li = document.createElement("li");
+        const item = document.createElement("div");
+        item.className = "sv-fileItem";
+
         const btn = document.createElement("button");
         btn.className = "sv-fileBtn";
         btn.type = "button";
@@ -545,14 +828,14 @@
         btn.setAttribute("aria-current", String(key === state.selectedKey));
         btn.innerHTML = `
           <div class="sv-fileRow">
-            <div>
-              <strong>${entry.name}</strong>
-              <div class="sp-muted">${entry.type}</div>
+            <div class="sv-fileName">
+              ${getBrowseFileNameHtml(entry.name)}
+              <span class="sv-fileKind">· ${entry.type}</span>
             </div>
-            <div class="sv-fileMeta">${entry.size}</div>
+            ${entry.type === "dir" ? '<div class="sv-fileMeta">—</div>' : ""}
           </div>`;
 
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", async () => {
           state.selectedKey = key;
           state.selectedEntry = entry;
           if (entry.type === "dir") {
@@ -562,15 +845,38 @@
             state.selectedKey = null;
             state.selectedEntry = null;
             render();
-            autoPreviewPreferredEntry();
+            await autoPreviewPreferredEntry();
             return;
           }
-          preview(entry);
+          await preview(entry);
           render();
           scrollSelectedIntoView();
         });
 
-        li.appendChild(btn);
+        item.appendChild(btn);
+
+        if (entry.type === "file") {
+          const downloadLink = document.createElement("a");
+          downloadLink.className = "sv-fileAction";
+          downloadLink.href = getDisplayLocation(entry);
+          downloadLink.download = entry.name;
+          downloadLink.textContent = "↓";
+          downloadLink.title = `Download ${entry.name}`;
+          downloadLink.setAttribute("aria-label", `Download ${entry.name}`);
+          item.appendChild(downloadLink);
+
+          const openLink = document.createElement("a");
+          openLink.className = "sv-fileAction";
+          openLink.href = getDisplayLocation(entry);
+          openLink.target = "_blank";
+          openLink.rel = "noreferrer";
+          openLink.textContent = "↗";
+          openLink.title = `Open ${entry.name}`;
+          openLink.setAttribute("aria-label", `Open ${entry.name}`);
+          item.appendChild(openLink);
+        }
+
+        li.appendChild(item);
         fileList.appendChild(li);
       });
     }
@@ -579,15 +885,28 @@
       const effectiveMode = getEffectivePreviewMode(entry);
       modeNormalBtn.className = effectiveMode === "normal" ? "sp-btn sp-btn--sm sp-btn--primary" : "sp-btn sp-btn--sm";
       modeTerminalBtn.className = effectiveMode === "terminal" ? "sp-btn sp-btn--sm sp-btn--primary" : "sp-btn sp-btn--sm";
-      const terminalAllowed = Boolean(entry && entry.type !== "dir" && entry.preview !== "image");
+      const terminalAllowed = Boolean(entry && entry.type !== "dir" && !isImageFile(entry.name));
       modeTerminalBtn.disabled = !terminalAllowed;
       statusMode.textContent = effectiveMode;
     }
 
-    function preview(entry){
+    async function loadFile(entry){
+      const response = await fetch(getDisplayLocation(entry), { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      if (isImageFile(entry.name)) {
+        return { kind: "image", url: getDisplayLocation(entry) };
+      }
+      const text = await response.text();
+      return { kind: isTextLikeFile(entry.name) ? "text" : "text", text };
+    }
+
+    async function preview(entry){
       state.selectedEntry = entry;
       const effectiveMode = getEffectivePreviewMode(entry);
       renderPreviewModeControls(entry);
+      updateActions();
 
       if (entry.type === "dir") {
         previewMeta.innerHTML = `Directory · <a class="sv-metaLink" href="${getDisplayLocation()}" target="_blank" rel="noreferrer">${getDisplayLocation()}</a>`;
@@ -596,75 +915,97 @@
         return;
       }
 
-      previewMeta.innerHTML = `File · ${entry.name} · ${entry.size} · <a class="sv-metaLink" href="${getDisplayLocation(entry)}" target="_blank" rel="noreferrer">open path</a>`;
-
-      if (entry.preview === "image" && entry.url) {
-        previewContent.className = "sv-preview";
-        previewContent.innerHTML = `<img class="sv-imagePreview" src="${entry.url}" alt="${entry.name}">`;
-        return;
-      }
-
-      if (effectiveMode === "terminal") {
-        const terminalText = escapeHtml(entry.text || "No preview available.");
-        previewContent.className = "sv-preview sv-preview--terminal";
-        previewContent.innerHTML = `
-          <div class="sv-terminal">
-            <div class="sv-terminal__bar">
-              <div class="sv-terminal__dots" aria-hidden="true">
-                <span class="sv-terminal__dot"></span>
-                <span class="sv-terminal__dot"></span>
-                <span class="sv-terminal__dot"></span>
-              </div>
-              <span>${escapeHtml(getDisplayLocation(entry))}</span>
-            </div>
-            <pre class="sv-terminal__body"><span class="sv-terminal__prompt">$ cat ${escapeHtml(entry.name)}</span>
-
-${terminalText}</pre>
-          </div>`;
-        return;
-      }
-
+      previewMeta.textContent = `File · ${entry.name} · ${formatBytes(entry.size)}`;
       previewContent.className = "sv-preview";
-      previewContent.textContent = entry.text || "No preview available.";
+      previewContent.textContent = "Loading preview…";
+
+      try {
+        const loaded = await loadFile(entry);
+
+        if (loaded.kind === "image") {
+          previewContent.className = "sv-preview";
+          previewContent.innerHTML = `<img class="sv-imagePreview" src="${loaded.url}" alt="${entry.name}">`;
+          return;
+        }
+
+        const text = loaded.text || "";
+
+        if (effectiveMode === "terminal") {
+          previewContent.className = "sv-preview sv-preview--terminal";
+          previewContent.innerHTML = `
+            <div class="sv-terminal">
+              <div class="sv-terminal__bar">
+                <div class="sv-terminal__dots" aria-hidden="true">
+                  <span class="sv-terminal__dot"></span>
+                  <span class="sv-terminal__dot"></span>
+                  <span class="sv-terminal__dot"></span>
+                </div>
+                <span>${escapeHtml(getDisplayLocation(entry))}</span>
+              </div>
+              <pre class="sv-terminal__body"><span class="sv-terminal__prompt">$ cat ${escapeHtml(entry.name)}</span>
+
+${escapeHtml(text || "No preview available.")}</pre>
+            </div>`;
+          return;
+        }
+
+        previewContent.className = "sv-preview";
+        previewContent.textContent = text || "No preview available.";
+      } catch (error) {
+        previewContent.className = "sv-preview";
+        previewContent.textContent = `Preview failed: ${error.message}`;
+      }
     }
 
-    function autoPreviewPreferredEntry(){
+    async function autoPreviewPreferredEntry(){
       const entries = getFilteredEntries();
-      const preferred = entries.find((entry) => entry.type === "file" && entry.preview !== "image") || entries.find((entry) => entry.type === "file");
+      const preferred = entries.find((entry) => entry.type === "file" && !isImageFile(entry.name)) || entries.find((entry) => entry.type === "file") || entries.find((entry) => entry.type === "dir");
       if (!preferred) {
+        state.selectedEntry = null;
         previewMeta.innerHTML = `Select a file or folder. Current path: <a class="sv-metaLink" href="${getDisplayLocation()}" target="_blank" rel="noreferrer">${getDisplayLocation()}</a>`;
         previewContent.className = "sv-preview";
         previewContent.textContent = state.filter ? `No matches for “${state.filter}”.` : "No selection yet.";
         renderPreviewModeControls(null);
+        updateActions();
         return;
       }
       state.selectedKey = `${state.path}:${preferred.name}`;
-      preview(preferred);
+      if (preferred.type === "dir") {
+        state.selectedEntry = preferred;
+        previewMeta.innerHTML = `Directory · <a class="sv-metaLink" href="${getDisplayLocation(preferred)}" target="_blank" rel="noreferrer">${getDisplayLocation(preferred)}</a>`;
+        previewContent.className = "sv-preview";
+        previewContent.textContent = "Directory selected. Open to browse contents.";
+        renderPreviewModeControls(preferred);
+        updateActions();
+      } else {
+        await preview(preferred);
+      }
       render();
       scrollSelectedIntoView();
     }
 
-    function performSearch(){
+    async function performSearch(){
       state.filter = searchInput.value.trim();
       render();
-      autoPreviewPreferredEntry();
+      await autoPreviewPreferredEntry();
     }
 
     function render(){
       browseTitlePath.textContent = getDisplayBrowsePath();
       renderFiles();
       renderPreviewModeControls(state.selectedEntry);
+      updateActions();
     }
 
-    searchInput.addEventListener("keydown", (event) => {
+    searchInput.addEventListener("keydown", async (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
-        performSearch();
+        await performSearch();
       }
     });
 
-    document.getElementById("searchBtn").addEventListener("click", () => {
-      performSearch();
+    document.getElementById("searchBtn").addEventListener("click", async () => {
+      await performSearch();
     });
 
     navDrawerToggleBtn.addEventListener("click", () => {
@@ -679,30 +1020,36 @@ ${terminalText}</pre>
       setDrawerOpen(false);
     });
 
-    modeNormalBtn.addEventListener("click", () => {
+    modeNormalBtn.addEventListener("click", async () => {
       state.previewMode = "normal";
       if (state.selectedEntry) {
-        preview(state.selectedEntry);
+        await preview(state.selectedEntry);
       } else {
         renderPreviewModeControls(null);
       }
     });
 
-    modeTerminalBtn.addEventListener("click", () => {
+    modeTerminalBtn.addEventListener("click", async () => {
       state.previewMode = "terminal";
       if (state.selectedEntry) {
-        preview(state.selectedEntry);
+        await preview(state.selectedEntry);
       } else {
         renderPreviewModeControls(null);
       }
     });
 
-    document.getElementById("refreshBtn").addEventListener("click", () => {
+    document.getElementById("refreshBtn").addEventListener("click", async () => {
       state.filter = "";
       searchInput.value = "";
       render();
-      autoPreviewPreferredEntry();
+      await autoPreviewPreferredEntry();
     });
+
+    uploadBtn.addEventListener("click", () => {
+      window.alert("Upload is not wired yet.");
+    });
+
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
 
     render();
     autoPreviewPreferredEntry();
